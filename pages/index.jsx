@@ -191,10 +191,10 @@ const Index4 = () => {
     <CImage className="d-block w-100" src="/assets/images/carousel/varanasi.png" alt="slide 1" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/assets/images/carousel/city2.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src="/assets/images/carousel/taj.png" alt="slide 3" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/assets/images/carousel/taj.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src="/assets/images/carousel/city2.png" alt="slide 2" />
   </CCarouselItem>
 </CCarousel>
       
@@ -610,224 +610,9 @@ const Index4 = () => {
         </div>
       </section>
       {/*====== End Service Section ======*/}
-      
-      {/*====== Start Features Section ======*/}
-      <section className="features-section gray-bg pt-100 pb-100">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="section-title mb-55 wow fadeInLeft">
-                <span className="sub-title">What We Provide</span>
-                <h2>Most Funning Company Travel and Tours</h2>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              {/*=== Features Content Box ===*/}
-              <div className="features-content-box pl-lg-70 wow fadeInRight">
-                <p className="mb-25">
-                  Sit amet consectetue integer eu tincidunt scelerisque. Sodales
-                  volutpat neque fermentum alesuada scelerisque massa.
-                </p>
-                <div className="row justify-content-center">
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={356} />+
-                      </h2>
-                      <p>Happy Traveler</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={852} />+
-                      </h2>
-                      <p>Tent Sites</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={99} />%
-                      </h2>
-                      <p>Positive Reviews</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/*=== Features Slider ===*/}
-          <Slider
-            {...sliderActive5Item}
-            className="slider-active-5-item wow fadeInUp"
-          >
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-10.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Wadi Musa, Ma'an Governorate, Jordan</h6>
-              </div>
-            </div>
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-11.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Tambon Ko Kut, จ.ตราด, Thailand</h6>
-              </div>
-            </div>
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-12.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Camper Trailer, New York</h6>
-              </div>
-            </div>
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-13.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Wadi Musa, Ma'an Governorate, Jordan</h6>
-              </div>
-            </div>
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-14.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Forest Tent Camping, South Africa</h6>
-              </div>
-            </div>
-            {/*=== Features Item ===*/}
-            <div className="single-features-item-three">
-              <div className="img-holder">
-                <img
-                  src="assets/images/features/feat-12.jpg"
-                  alt="Features Image"
-                />
-              </div>
-              <div className="content">
-                <h6>Camper Trailer, New York</h6>
-              </div>
-            </div>
-          </Slider>
-        </div>
-      </section>
-      {/*====== End Features Section ======*/}
-      {/*=== Start What We Section ===*/}
-      <section className="who-we-section pt-100 pb-50">
-        <div className="container">
-          <div className="row align-items-xl-center">
-            <div className="col-xl-5 order-2 order-xl-1">
-              {/*=== We Image Box ===*/}
-              <div className="we-image-box text-center text-xl-left pr-lg-30 mb-50 wow fadeInLeft">
-                <img
-                  src="assets/images/gallery/we-6.jpg"
-                  className="radius-top-left-right-288"
-                  alt="What We Image"
-                />
-              </div>
-            </div>
-            <div className="col-xl-7 order-1 order-xl-2">
-              {/*=== We Content Box ===*/}
-              <div className="we-contnet-box mb-20 wow fadeInRight">
-                {/*=== Section Title ===*/}
-                <div className="section-title mb-45">
-                  <span className="sub-title">Who We Are</span>
-                  <h2>Great Opportunity For Adventure &amp; Travels</h2>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    {/*=== Fancy Icon Box ===*/}
-                    <div className="fancy-icon-box-three mb-30">
-                      <div className="icon">
-                        <i className="flaticon-camping" />
-                      </div>
-                      <div className="text">
-                        <h5 className="title">Tent Camping</h5>
-                        <a href="#" className="btn-link">
-                          Read More <i className="far fa-long-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    {/*=== Fancy Icon Box ===*/}
-                    <div className="fancy-icon-box-three mb-30">
-                      <div className="icon">
-                        <i className="flaticon-biking-mountain" />
-                      </div>
-                      <div className="text">
-                        <h5 className="title">Mountain Biking</h5>
-                        <a href="#" className="btn-link">
-                          Read More <i className="far fa-long-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    {/*=== Fancy Icon Box ===*/}
-                    <div className="fancy-icon-box-three mb-30">
-                      <div className="icon">
-                        <i className="flaticon-fishing-2" />
-                      </div>
-                      <div className="text">
-                        <h5 className="title">Fishing &amp; Boat</h5>
-                        <a href="#" className="btn-link">
-                          Read More <i className="far fa-long-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    {/*=== Fancy Icon Box ===*/}
-                    <div className="fancy-icon-box-three mb-30">
-                      <div className="icon">
-                        <i className="flaticon-caravan" />
-                      </div>
-                      <div className="text">
-                        <h5 className="title">Camping Trailer</h5>
-                        <a href="#" className="btn-link">
-                          Read More <i className="far fa-long-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*=== End What We Section ===*/}
-      
+
+      {/* HEREEEEEEEEEEEEEEEEEEEEE */}
+
       {/*====== Start Why Choose Section ======*/}
       <section className="why-choose-section gray-bg pt-100 pb-50">
         <div className="container">
@@ -837,8 +622,8 @@ const Index4 = () => {
               <div className="choose-content-box pr-lg-70">
                 {/*=== Section Title ===*/}
                 <div className="section-title mb-45 wow fadeInDown">
-                  <span className="sub-title">Why Choose Us</span>
-                  <h2>People Why Choose Our Travel Adventure</h2>
+                  <span className="sub-title">Read FAQs</span>
+                  <h2>Curious Flyers Corner: Where Questions Take Flight</h2>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
@@ -848,9 +633,9 @@ const Index4 = () => {
                         <i className="flaticon-rabbit" />
                       </div>
                       <div className="text">
-                        <h4 className="title">Best Security</h4>
+                        <h4 className="title">Booking Bliss</h4>
                         <p>
-                          We denounce with righteous indignation and dislike
+                        Unlock the secrets to seamless flight reservations, changes, and cancellations.
                         </p>
                       </div>
                     </div>
@@ -862,9 +647,9 @@ const Index4 = () => {
                         <i className="flaticon-wifi-router" />
                       </div>
                       <div className="text">
-                        <h4 className="title">Free Internet</h4>
+                        <h4 className="title">Navigating Classes</h4>
                         <p>
-                          We denounce with righteous indignation and dislike
+                        Discover the perks of each class and learn how to upgrade or modify your seat preferences.
                         </p>
                       </div>
                     </div>
@@ -876,9 +661,9 @@ const Index4 = () => {
                         <i className="flaticon-solar-energy" />
                       </div>
                       <div className="text">
-                        <h4 className="title">Solar Energy</h4>
+                        <h4 className="title">SkyMiles Club</h4>
                         <p>
-                          We denounce with righteous indignation and dislike
+                        Get clarity on baggage rules, pet-friendly options, and assistance for special needs.
                         </p>
                       </div>
                     </div>
@@ -890,9 +675,9 @@ const Index4 = () => {
                         <i className="flaticon-cycling" />
                       </div>
                       <div className="text">
-                        <h4 className="title">Mountain Biking</h4>
+                        <h4 className="title">Policies Demystified</h4>
                         <p>
-                          We denounce with righteous indignation and dislike
+                        Join the Fair Flying loyalty program – understand benefits, earning, redeeming, and exclusive perks.
                         </p>
                       </div>
                     </div>
@@ -960,20 +745,18 @@ const Index4 = () => {
                       </div>
                     </div>
                     <p>
-                      To take a trivial example which of usev undertakes
-                      laborious physical exercise excepto obtain advantage from
-                      has any right to find fault with man who chooses to enjoy
+                    I have used Their service and they are incredible.
                     </p>
                     <div className="author-thumb-title">
                       <div className="author-thumb">
                         <img
-                          src="assets/images/testimonial/author-1.jpg"
+                          src="assets/images/testimonial/aman.png"
                           alt="Author Image"
                         />
                       </div>
                       <div className="author-title">
-                        <h3 className="title">Douglas D. Hall</h3>
-                        <p className="position">CEO &amp; Founder</p>
+                        <h3 className="title">Aman Verma</h3>
+                        <p className="position">From Delhi</p>
                       </div>
                     </div>
                   </div>
@@ -1010,9 +793,7 @@ const Index4 = () => {
                       </div>
                     </div>
                     <p>
-                      To take a trivial example which of usev undertakes
-                      laborious physical exercise excepto obtain advantage from
-                      has any right to find fault with man who chooses to enjoy
+                      Their service is seamless and best in class. They are also very supportive!
                     </p>
                     <div className="author-thumb-title">
                       <div className="author-thumb">
@@ -1023,57 +804,7 @@ const Index4 = () => {
                       </div>
                       <div className="author-title">
                         <h3 className="title">Douglas D. Hall</h3>
-                        <p className="position">CEO &amp; Founder</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/*=== Testimonial Item ===*/}
-                <div className="gw-testimonial-item">
-                  <div className="testimonial-inner-content">
-                    <div className="quote-rating-box">
-                      <div className="icon">
-                        <img
-                          src="assets/images/testimonial/quote.png"
-                          alt="quote icon"
-                        />
-                      </div>
-                      <div className="ratings-box">
-                        <h4>Quality Services</h4>
-                        <ul className="ratings">
-                          <li>
-                            <i className="fas fa-star" />
-                          </li>
-                          <li>
-                            <i className="fas fa-star" />
-                          </li>
-                          <li>
-                            <i className="fas fa-star" />
-                          </li>
-                          <li>
-                            <i className="fas fa-star" />
-                          </li>
-                          <li>
-                            <i className="fas fa-star" />
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <p>
-                      To take a trivial example which of usev undertakes
-                      laborious physical exercise excepto obtain advantage from
-                      has any right to find fault with man who chooses to enjoy
-                    </p>
-                    <div className="author-thumb-title">
-                      <div className="author-thumb">
-                        <img
-                          src="assets/images/testimonial/author-1.jpg"
-                          alt="Author Image"
-                        />
-                      </div>
-                      <div className="author-title">
-                        <h3 className="title">Douglas D. Hall</h3>
-                        <p className="position">CEO &amp; Founder</p>
+                        <p className="position">From Bihar</p>
                       </div>
                     </div>
                   </div>
@@ -1096,24 +827,24 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-7.jpg" alt="Blog Image" />
+                    <img src="assets/images/blog/image1.png" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
                       <span>
                         <i className="far fa-calendar-alt" />
-                        <a href="#">November 15, 2022</a>
+                        <a href="#">November 2022</a>
                       </span>
                       <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
                           <a>
-                            Meet Skeleton Svelte Taile Sind For Reactive UIs
+                          Bharat Gaurav train to start operation from today
                           </a>
                         </Link>
                       </h3>
                       <Link legacyBehavior href="/blog-details">
                         <a className="main-btn filled-btn">
-                          Read More
+                          Book Now
                           <i className="far fa-paper-plane" />
                         </a>
                       </Link>
@@ -1125,24 +856,24 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInDown">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-8.jpg" alt="Blog Image" />
+                    <img src="assets/images/blog/image2.png" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
                       <span>
                         <i className="far fa-calendar-alt" />
-                        <a href="#">November 15, 2022</a>
+                        <a href="#">November 2022</a>
                       </span>
                       <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
                           <a>
-                            Meet Skeleton Svelte Taile Sind For Reactive UIs
+                          Kazakhstan: Pyramid around 3,000 years old unearthed by archaeologists
                           </a>
                         </Link>
                       </h3>
                       <Link legacyBehavior href="/blog-details">
                         <a className="main-btn filled-btn">
-                          Read More
+                          Book Now
                           <i className="far fa-paper-plane" />
                         </a>
                       </Link>
@@ -1154,18 +885,18 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-9.jpg" alt="Blog Image" />
+                    <img src="assets/images/blog/image3.png" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
                       <span>
                         <i className="far fa-calendar-alt" />
-                        <a href="#">November 15, 2022</a>
+                        <a href="#">November 2022</a>
                       </span>
                       <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
                           <a>
-                            Meet Skeleton Svelte Taile Sind For Reactive UIs
+                          UAE Golden Visa: What is it? How to apply? Details here
                           </a>
                         </Link>
                       </h3>
