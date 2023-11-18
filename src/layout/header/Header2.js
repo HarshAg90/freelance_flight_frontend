@@ -66,7 +66,7 @@ const Header2 = () => {
               <div className="menu-button d-xl-block d-none">
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn primary-btn">
-                    Book Now
+                    Login
                     <i className="fas fa-paper-plane" />
                   </a>
                 </Link>

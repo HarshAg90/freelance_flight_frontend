@@ -25,24 +25,7 @@ const DeskTopMenu = () => {
           <li className="menu-item has-children">
             <a href="#">
               Home
-              <span className="dd-trigger">
-                <i className="far fa-angle-down" />
-              </span>
             </a>
-            <ul className="sub-menu">
-              <li>
-                <Link href="/">Home 01</Link>
-              </li>
-              <li>
-                <Link href="index-2">Home 02</Link>
-              </li>
-              <li>
-                <Link href="index-3">Home 03</Link>
-              </li>
-              <li>
-                <Link href="index-4">Home 04</Link>
-              </li>
-            </ul>
           </li>
           <li className="menu-item has-children">
             <a href="#">
@@ -91,44 +74,6 @@ const DeskTopMenu = () => {
                 <Link href="blog-details">Blog Details</Link>
               </li>
             </ul>
-          </li>
-          <li className="menu-item has-children">
-            <a href="#">
-              Pages
-              <span className="dd-trigger">
-                <i className="far fa-angle-down" />
-              </span>
-            </a>
-            <ul className="sub-menu">
-              <li>
-                <Link href="about">About Us</Link>
-              </li>
-              <li>
-                <Link href="gallery">Our Gallery</Link>
-              </li>
-              <li>
-                <Link href="events">Our Events</Link>
-              </li>
-              <li>
-                <Link href="shop">Our Shop</Link>
-              </li>
-              <li>
-                <Link href="product-details">Product Details</Link>
-              </li>
-              <li>
-                <Link href="contact">Contact</Link>
-              </li>
-            </ul>
-          </li>
-          <li className="menu-item search-item">
-            <div
-              className="search-btn"
-              data-bs-toggle="modal"
-              data-bs-target="#search-modal"
-              onClick={() => setSearchModal(true)}
-            >
-              <i className="far fa-search" />
-            </div>
           </li>
         </ul>
       </nav>

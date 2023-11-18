@@ -1625,14 +1625,14 @@ button {
 
 .placeCarousel{
   /* background-image: url(/public/assets/images/carousel/varanasi\ 1.png); */
-  background-image: url(/assets/images/carousel/varanasi.png);
-  background-size: 100% auto; /* 100% width, auto height */
+  /* background-image: url(/assets/images/carousel/varanasi.png); */
+   /* 100% width, auto height */
   /* background-size: cover; */
-  height: 125vh;
+  height: 130vh;
   /* background-repeat: no-repeat; */
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 180px 0 100px;
+  /* background-repeat: no-repeat;
+  margin: 0; */
+  /* padding: 180px 0 100px; */
 }
 
 /* Page Banner  */
