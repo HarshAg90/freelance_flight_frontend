@@ -23,7 +23,7 @@ const DeskTopMenu = () => {
       <nav className="main-menu d-none d-xl-block">
         <ul>
           <li className="menu-item has-children">
-            <a href="#">
+            <a href="/">
               Home
             </a>
           </li>
@@ -60,20 +60,9 @@ const DeskTopMenu = () => {
             </ul>
           </li>
           <li className="menu-item has-children">
-            <a href="#">
+            <a href="blog-details">
               Blog
-              <span className="dd-trigger">
-                <i className="far fa-angle-down" />
-              </span>
             </a>
-            <ul className="sub-menu">
-              <li>
-                <Link href="blog-list">Blog List</Link>
-              </li>
-              <li>
-                <Link href="blog-details">Blog Details</Link>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
@@ -91,7 +80,7 @@ const MobileMenu = () => {
     <nav className="main-menu d-block d-xl-none">
       <ul>
         <li className="menu-item has-children">
-          <a href="#">
+          <a href="/">
             Home
             <span className="dd-trigger" onClick={() => activeMenuSet("home")}>
               <i className="far fa-angle-down" />

@@ -46,53 +46,51 @@ const Index4 = () => {
                   >
                     <form className="booking-form-two">
                       <div className="form_group">
-                        <span>Check In</span>
+                        <span>From</span>
+                        <input
+                          type="text"
+                          className="form_control datepicker"
+                          placeholder="Airport-1"
+                        />
+                      </div>
+                      <div className="form_group">
+                        <span>To</span>
                         <label>
                           <i className="far fa-calendar-alt" />
                         </label>
                         <input
                           type="text"
                           className="form_control datepicker"
-                          placeholder="Check In"
+                          placeholder="Airport-2"
                         />
                       </div>
                       <div className="form_group">
-                        <span>Check Out</span>
-                        <label>
-                          <i className="far fa-calendar-alt" />
-                        </label>
-                        <input
-                          type="text"
-                          className="form_control datepicker"
-                          placeholder="Check Out"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <span>Guest</span>
+                        <span>Departure</span>
                         <label>
                           <i className="far fa-user-alt" />
                         </label>
                         <input
                           type="text"
                           className="form_control"
-                          placeholder="Guest"
+                          placeholder="12 Nov, 2023"
                           name="text"
                         />
                       </div>
                       <div className="form_group">
-                        <span>Accommodations</span>
-                        <select className="wide">
-                          <option value={1}>Classic Tent</option>
-                          <option value={1}>Forest Camping</option>
-                          <option value={1}>Small Trailer</option>
-                          <option value={1}>Tree House Tent</option>
-                          <option value={1}>Tent Camping</option>
-                          <option value={1}>Couple Tent</option>
-                        </select>
+                        <span>Return</span>
+                        <label>
+                          <i className="far fa-user-alt" />
+                        </label>
+                        <input
+                          type="text"
+                          className="form_control"
+                          placeholder="One Way"
+                          name="text"
+                        />
                       </div>
                       <div className="form_group">
                         <button className="booking-btn">
-                          Check Availability{" "}
+                          Book Now{" "}
                           <i className="far fa-angle-double-right" />
                         </button>
                       </div>
@@ -842,12 +840,6 @@ const Index4 = () => {
                           </a>
                         </Link>
                       </h3>
-                      <Link legacyBehavior href="/blog-details">
-                        <a className="main-btn filled-btn">
-                          Book Now
-                          <i className="far fa-paper-plane" />
-                        </a>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -871,12 +863,6 @@ const Index4 = () => {
                           </a>
                         </Link>
                       </h3>
-                      <Link legacyBehavior href="/blog-details">
-                        <a className="main-btn filled-btn">
-                          Book Now
-                          <i className="far fa-paper-plane" />
-                        </a>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -900,12 +886,6 @@ const Index4 = () => {
                           </a>
                         </Link>
                       </h3>
-                      <Link legacyBehavior href="/blog-details">
-                        <a className="main-btn filled-btn">
-                          Read More
-                          <i className="far fa-paper-plane" />
-                        </a>
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -915,84 +895,6 @@ const Index4 = () => {
         </div>
       </section>
       {/*====== End Testimonial Section ======*/}
-      {/*====== Start Partners Section ======*/}
-      <section className="partners-section black-dark-bg">
-        <div className="container">
-          {/*=== Partners Slider ===*/}
-          <Slider
-            {...partnerSliderOne}
-            className="partner-slider-one pt-80 pb-50 wow fadeInUp"
-          >
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-6.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-7.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-8.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-9.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-10.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-            {/*=== Partner Item ===*/}
-            <div className="single-partner-item">
-              <div className="partner-img">
-                <a href="#">
-                  <img
-                    src="assets/images/partner/partner-7.png"
-                    alt="Partner Image"
-                  />
-                </a>
-              </div>
-            </div>
-          </Slider>
-        </div>
-      </section>
-      {/*====== End Partners Section ======*/}
     </Layout>
   );
 };

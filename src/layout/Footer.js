@@ -19,9 +19,6 @@ const Footer = ({ bg, extraClass }) => {
                   <h3 className="title">
                     Need Any Support For Tour &amp; Travels ?
                   </h3>
-                  <a href="#" className="icon-btn">
-                    <i className="far fa-long-arrow-right" />
-                  </a>
                 </div>
               </div>
             </div>
@@ -35,9 +32,6 @@ const Footer = ({ bg, extraClass }) => {
                   <h3 className="title">
                     Ready to Get Started With Vacations!
                   </h3>
-                  <a href="#" className="icon-btn">
-                    <i className="far fa-long-arrow-right" />
-                  </a>
                 </div>
               </div>
             </div>
