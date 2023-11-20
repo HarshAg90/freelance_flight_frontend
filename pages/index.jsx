@@ -49,25 +49,25 @@ const Index4 = () => {
                         <span>From</span>
                         <input
                           type="text"
-                          className="form_control datepicker"
-                          placeholder="Airport-1"
+                          className="form_control"
+                          placeholder="Delhi"
                         />
                       </div>
                       <div className="form_group">
                         <span>To</span>
                         <label>
-                          <i className="far fa-calendar-alt" />
+                          <i className="far" />
                         </label>
                         <input
                           type="text"
-                          className="form_control datepicker"
-                          placeholder="Airport-2"
+                          className="form_control"
+                          placeholder="Mumbai"
                         />
                       </div>
                       <div className="form_group">
                         <span>Departure</span>
                         <label>
-                          <i className="far fa-user-alt" />
+                          <i className="far" />
                         </label>
                         <input
                           type="text"
@@ -79,12 +79,24 @@ const Index4 = () => {
                       <div className="form_group">
                         <span>Return</span>
                         <label>
-                          <i className="far fa-user-alt" />
+                          <i className="far" />
                         </label>
                         <input
                           type="text"
                           className="form_control"
                           placeholder="One Way"
+                          name="text"
+                        />
+                      </div>
+                      <div className="form_group">
+                        <span className="travelClass">Travelers & Class</span>
+                        <label>
+                          <i className="far" />
+                        </label>
+                        <input
+                          type="text"
+                          className="form_control"
+                          placeholder="3 Adults"
                           name="text"
                         />
                       </div>
@@ -227,13 +239,12 @@ const Index4 = () => {
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Himalayas, India
+                    Himachal Pradesh, India
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -258,13 +269,12 @@ const Index4 = () => {
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Himalayas, India
+                    Goa, India
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -289,13 +299,12 @@ const Index4 = () => {
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Himalayas, India
+                    Manipur, India
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -320,13 +329,12 @@ const Index4 = () => {
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Himalayas, India
+                    Kerala, India
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -351,13 +359,12 @@ const Index4 = () => {
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Wilderness, United States
+                    Andaman & Nicobar Island
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -385,10 +392,9 @@ const Index4 = () => {
                     Arefu, AG, Romania
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -408,18 +414,17 @@ const Index4 = () => {
                 <div className="place-content">
                   <h4 className="title">
                     <Link legacyBehavior href="/tour-details">
-                      Climbing Up The Hills
+                      Visit Bridge
                     </Link>
                   </h4>
                   <p className="location">
                     <i className="far fa-map-marker-alt" />
-                    Arefu, AG, Romania
+                    London, United Kingdom
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -439,7 +444,7 @@ const Index4 = () => {
                 <div className="place-content">
                   <h4 className="title">
                     <Link legacyBehavior href="/tour-details">
-                      Tracing Hill On Cloud
+                      Rafting
                     </Link>
                   </h4>
                   <p className="location">
@@ -447,10 +452,9 @@ const Index4 = () => {
                     Nordegg, Canada
                   </p>
                   <div className="meta">
-                    <span>
-                      <i className="far fa-calendar-alt" />
-                      25 Feb 2023
-                    </span>
+                  <p className="location">
+                    Best Time to Visit: <br/> Nov-Dec
+                  </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -487,9 +491,6 @@ const Index4 = () => {
                 />
               </div>
               <div className="content">
-                <a href="#" className="icon-btn">
-                  <i className="fas fa-heart" />
-                </a>
                 <h3 className="title">Service 1</h3>
                 <p>
                   Sit amet consecteturauris natoque name pellentue augue mattis
@@ -509,14 +510,6 @@ const Index4 = () => {
                     <i className="flaticon-fire" />
                   </span>
                 </div>
-                <div className="action-btn">
-                  <Link legacyBehavior href="/tour-details">
-                    <a className="main-btn primary-btn">
-                      Read More
-                      <i className="far fa-paper-plane" />
-                    </a>
-                  </Link>
-                </div>
               </div>
             </div>
             {/*=== Single Service Item ===*/}
@@ -528,9 +521,6 @@ const Index4 = () => {
                 />
               </div>
               <div className="content">
-                <a href="#" className="icon-btn">
-                  <i className="fas fa-heart" />
-                </a>
                 <h3 className="title">Service 2</h3>
                 <p>
                   Sit amet consecteturauris natoque name pellentue augue mattis
@@ -551,12 +541,6 @@ const Index4 = () => {
                   </span>
                 </div>
                 <div className="action-btn">
-                  <Link legacyBehavior href="/tour-details">
-                    <a className="main-btn primary-btn">
-                      Read More
-                      <i className="far fa-paper-plane" />
-                    </a>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -569,9 +553,6 @@ const Index4 = () => {
                 />
               </div>
               <div className="content">
-                <a href="#" className="icon-btn">
-                  <i className="fas fa-heart" />
-                </a>
                 <h3 className="title">Service 3</h3>
                 <p>
                   Sit amet consecteturauris natoque name pellentue augue mattis
@@ -592,12 +573,6 @@ const Index4 = () => {
                   </span>
                 </div>
                 <div className="action-btn">
-                  <Link legacyBehavior href="/tour-details">
-                    <a className="main-btn primary-btn">
-                      Read More
-                      <i className="far fa-paper-plane" />
-                    </a>
-                  </Link>
                 </div>
               </div>
             </div>

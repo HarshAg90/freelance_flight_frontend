@@ -39,6 +39,11 @@
   margin-top: -7% !important;
 }
 
+.bdaCircle{
+  margin-right: -30% !important;
+  visibility: hidden !important;
+}
+
 
 
 .contact-info-item .info p, .sidebar-widget-area .booking-info-widget ul.info-list li span span, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-total .total, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-extra .extra, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-item label, .sidebar-widget-area .tag-cloud-widget a, .blog-post .entry-content .block-quote span, .single-blog-post-four .entry-content .main-btn.filled-btn:hover i, .gw-testimonial-item-two .testimonial-inner-content > p, .gw-testimonial-item .testimonial-inner-content > p, .tour-area-nav .share-nav a, .related-tour-place .place-arrows .slick-arrow:hover, .booking-form-two .booking-btn, .activity-nav-tab .nav-tabs li a, .single-service-item-four:hover .content h3.title, .single-service-item-three .content .meta span.rate, .single-service-item .content .icon-btn, .check-list li, .single-skill-circle .inner-circle .number, .hero-wrapper-two .hero-content .hero-button .main-btn.primary-btn i, .nav-right-item .lang-dropdown .nice-select ul.list, .header-navigation .main-menu ul > li .sub-menu li a, .btn-link, .main-btn.filled-btn:hover i, .main-btn.filled-btn, .main-btn i, h6, h5, h4, h3, h2, h1 {
@@ -360,12 +365,20 @@ ul.social-link li {
 }
 
 .form_control {
-  width: 100%;
+  color: white;
   border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.form_control::placeholder {
+  color: rgb(141, 141, 141);
 }
 
 textarea.form_control {
-  padding-top: 15px;
+  padding-top: 5px;
   display: inherit;
 }
 
@@ -1539,7 +1552,7 @@ button {
 .hero-wrapper-four .hero-content .hero-search-form {
   position: relative;
   z-index: 1;
-  /* margin-right: -69%; */
+  border-radius: 20px !important;
 }
 
 @media (max-width: 1199px) {
@@ -1591,14 +1604,13 @@ button {
   background-color: #012852;
   padding: 30px 30px;
   position: relative;
-  border-radius: 10px;
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.07);
 }
 
 .hero-search-form .booking-form-two {
   background-color: #012852;
-  gap: 20px;
-  justify-content: space-between;
+  gap: 10px;
+  /* justify-content: space-between; */
 }
 
 
@@ -1628,7 +1640,7 @@ button {
   }
 }
 .hero-search-form .booking-form-two .booking-btn {
-  padding: 17px 19px;
+  /* padding: 17px 19px; */
 }
 
 
@@ -3201,6 +3213,12 @@ button {
             justify-content: space-between;
   }
 }
+
+.form_group span{
+  /* margin-left: -40% !important; */
+}
+
+
 @media (max-width: 1199px) {
   .booking-form-two {
     gap: 15px;
@@ -3226,9 +3244,21 @@ button {
   }
 }
 .booking-form-two .form_group > span {
-  font: 500 18px "Prompt", sans-serif;
+  color: white;
+  font: 200 1.5rem "Prompt", sans-serif;
   margin-bottom: 10px;
+  left: 100%;
+  padding-right: 90%;
+  transform: translateX(10%);
+  white-space: nowrap;
+  
 }
+
+.travelClass{
+  transform: translateX(5%) !important;
+}
+
+
 .booking-form-two .form_group label {
   position: absolute;
   top: 55px;

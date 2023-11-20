@@ -56,7 +56,7 @@ const Header4 = () => {
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn secondary-btn">
                     Book Now
-                    <i className="fas fa-paper-plane" />
+                    {/* <i className="fas fa-paper-plane" /> */}
                   </a>
                 </Link>
               </div>
@@ -67,7 +67,7 @@ const Header4 = () => {
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn primary-btn">
                     Login
-                    <i className="fas fa-paper-plane" />
+                    <i className="bdaCircle"/>
                   </a>
                 </Link>
               </div>
