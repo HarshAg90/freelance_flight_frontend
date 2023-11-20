@@ -32,6 +32,15 @@
     19. Wrapper css
 
 -----------------------------------------------------------------------------------*/
+.bookImg{
+  width: 15%;
+  z-index: 10;
+  position: relative;
+  margin-top: -7% !important;
+}
+
+
+
 .contact-info-item .info p, .sidebar-widget-area .booking-info-widget ul.info-list li span span, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-total .total, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-extra .extra, .sidebar-widget-area .booking-form-widget .sidebar-booking-form .booking-item label, .sidebar-widget-area .tag-cloud-widget a, .blog-post .entry-content .block-quote span, .single-blog-post-four .entry-content .main-btn.filled-btn:hover i, .gw-testimonial-item-two .testimonial-inner-content > p, .gw-testimonial-item .testimonial-inner-content > p, .tour-area-nav .share-nav a, .related-tour-place .place-arrows .slick-arrow:hover, .booking-form-two .booking-btn, .activity-nav-tab .nav-tabs li a, .single-service-item-four:hover .content h3.title, .single-service-item-three .content .meta span.rate, .single-service-item .content .icon-btn, .check-list li, .single-skill-circle .inner-circle .number, .hero-wrapper-two .hero-content .hero-button .main-btn.primary-btn i, .nav-right-item .lang-dropdown .nice-select ul.list, .header-navigation .main-menu ul > li .sub-menu li a, .btn-link, .main-btn.filled-btn:hover i, .main-btn.filled-btn, .main-btn i, h6, h5, h4, h3, h2, h1 {
   color: #473838;
 }

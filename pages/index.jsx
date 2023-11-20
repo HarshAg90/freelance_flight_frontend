@@ -88,14 +88,15 @@ const Index4 = () => {
                           name="text"
                         />
                       </div>
-                      <div className="form_group">
+                      {/* <div className="form_group">
                         <button className="booking-btn">
                           Book Now{" "}
                           <i className="far fa-angle-double-right" />
                         </button>
-                      </div>
+                      </div> */}
                     </form>
                   </div>
+                  <img className="bookImg" src="assets/images/hero/bookImage.png" />
                   <div className="shapeSub">
             <span>
               <img src="assets/images/hero/heroSub.png" />
@@ -836,7 +837,7 @@ const Index4 = () => {
                       <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
                           <a>
-                          Bharat Gaurav train to start operation from today
+                          Exploring India's Best-Kept Secrets: Unveiling the Hidden Gems
                           </a>
                         </Link>
                       </h3>
@@ -857,9 +858,9 @@ const Index4 = () => {
                         <a href="#">November 2022</a>
                       </span>
                       <h3 className="title">
-                        <Link legacyBehavior href="/blog-details">
+                        <Link legacyBehavior href="/index-4">
                           <a>
-                          Kazakhstan: Pyramid around 3,000 years old unearthed by archaeologists
+                          Unveiling India's Glorious Heritage: A Journey Through History
                           </a>
                         </Link>
                       </h3>
@@ -880,9 +881,9 @@ const Index4 = () => {
                         <a href="#">November 2022</a>
                       </span>
                       <h3 className="title">
-                        <Link legacyBehavior href="/blog-details">
+                        <Link legacyBehavior href="/index-3">
                           <a>
-                          UAE Golden Visa: What is it? How to apply? Details here
+                          Schengen Visa Types: Understanding the Different Categories and Their Eligibility Criteria
                           </a>
                         </Link>
                       </h3>
