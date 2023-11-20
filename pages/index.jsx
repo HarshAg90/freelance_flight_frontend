@@ -604,7 +604,7 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                        <i className="flaticon-rabbit" />
+                        <img className="qnaImage" src="assets/images/qna.png" alt="" />
                       </div>
                       <div className="text">
                         <h4 className="title">Booking Bliss</h4>
@@ -618,7 +618,7 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                        <i className="flaticon-wifi-router" />
+                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
                       </div>
                       <div className="text">
                         <h4 className="title">Navigating Classes</h4>
@@ -632,7 +632,7 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                        <i className="flaticon-solar-energy" />
+                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
                       </div>
                       <div className="text">
                         <h4 className="title">SkyMiles Club</h4>
@@ -646,7 +646,7 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                        <i className="flaticon-cycling" />
+                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
                       </div>
                       <div className="text">
                         <h4 className="title">Policies Demystified</h4>
