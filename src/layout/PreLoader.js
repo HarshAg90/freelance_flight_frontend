@@ -1,10 +1,10 @@
+import { SUBRESOURCE_INTEGRITY_MANIFEST } from "next/dist/shared/lib/constants";
+
 const PreLoader = () => {
+
   return (
     <div className="preloader">
-      <div className="loader">
-        <div className="pre-shadow" />
-        <div className="pre-box" />
-      </div>
+    <img src="assets/plane.gif"/>
     </div>
   );
 };
