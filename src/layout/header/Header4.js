@@ -55,7 +55,7 @@ const Header4 = () => {
               <div className="menu-button mt-40 d-xl-none">
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn secondary-btn">
-                    Book Now
+                    Login
                     {/* <i className="fas fa-paper-plane" /> */}
                   </a>
                 </Link>
@@ -66,7 +66,7 @@ const Header4 = () => {
               <div className="menu-button d-xl-block d-none">
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn primary-btn">
-                    Login Afain
+                    Login
                     <i className="bdaCircle"/>
                   </a>
                 </Link>

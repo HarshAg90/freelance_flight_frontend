@@ -3,75 +3,6 @@ import Menu from "../Menu";
 const DefaultHeader = () => {
   return (
     <header className="header-area header-three">
-      {/*====== Header Top Bar ======*/}
-      <div className="header-top-bar pt-30 pb-30">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xl-3 d-none d-xl-block">
-              {/*====== Site Branding ======*/}
-              <div className="site-brading">
-                <Link legacyBehavior href="/index-3">
-                  <a className="brand-logo">
-                    <img src="assets/images/logo/logo-black.png" alt="Logo" />
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <div className="col-xl-9 col-lg-12">
-              {/*====== Information Wrapper ======*/}
-              <div className="information-wrapper">
-                <div className="row">
-                  <div className="col-lg-4">
-                    <div className="single-info-item-two">
-                      <div className="inner-info">
-                        <div className="icon">
-                          <i className="far fa-map-marker-alt" />
-                        </div>
-                        <div className="info">
-                          <span className="title">Office Address</span>
-                          <h5>583 Main Street, USA</h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4">
-                    <div className="single-info-item-two">
-                      <div className="inner-info">
-                        <div className="icon">
-                          <i className="far fa-envelope" />
-                        </div>
-                        <div className="info">
-                          <span className="title">Email Address</span>
-                          <h5>
-                            <a href="mailto:support@gmail.com">
-                              support@gmail.com
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4">
-                    <div className="single-info-item-two">
-                      <div className="inner-info">
-                        <div className="icon">
-                          <i className="far fa-phone-plus" />
-                        </div>
-                        <div className="info">
-                          <span className="title">Drop a Line</span>
-                          <h5>
-                            <a href="tel:+000(123)45688">+000 (123) 456 88</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {/*====== Header Navigation ======*/}
       <div className="header-navigation">
         <div className="nav-overlay" />
@@ -121,25 +52,19 @@ const DefaultHeader = () => {
               <div className="menu-button mt-40 d-xl-none">
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn secondary-btn">
-                    Book Now
-                    <i className="fas fa-paper-plane" />
+                    Login
+                    <i className="bdaCircle" />
                   </a>
                 </Link>
               </div>
             </div>
             {/*====== Nav Right Item ======*/}
             <div className="nav-right-item">
-              <div className="lang-dropdown">
-                <select className="wide">
-                  <option value="English">English</option>
-                  <option value="French">French</option>
-                </select>
-              </div>
               <div className="menu-button d-xl-block d-none">
                 <Link legacyBehavior href="/contact">
                   <a className="main-btn primary-btn">
-                    Book Now
-                    <i className="fas fa-paper-plane" />
+                    Login
+                    <i className="bdaCircle" />
                   </a>
                 </Link>
               </div>
