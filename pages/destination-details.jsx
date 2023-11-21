@@ -41,18 +41,9 @@ const DestinationDetails = () => {
                 </ul>
               </div>
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam eaque ipsa
-                quae abillo inventore veritatis et quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-                quisquam est, qui dolorem ipsum quia dolor sit amet,
-                consectetur, adipisci velit, sed quia non numquam eius modi
-                tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem. Ut enim ad minima veniam, quis nostrum
-                exercitationem ullam corporis suscipit laboriosam nisut aliquid
-                exea commodi consequatur
+              Nestled along the pristine shores of a secluded beach, the Floating Villa offers an unparalleled blend of luxury and serenity. This architectural marvel hovers gently above the crystal-clear waters, providing an immersive experience that seamlessly integrates with the natural beauty of the surroundings.
+
+As the gentle waves create a soothing melody beneath the villa, guests are treated to breathtaking panoramic views of the azure sea and the horizon beyond. The villa's design harmonizes modern elegance with the coastal environment, featuring expansive glass windows that invite the outside in and blur the lines between the interior and the vast expanse of the ocean
               </p>
               <div className="row">
                 <div className="col-lg-6">
