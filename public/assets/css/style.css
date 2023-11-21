@@ -52,9 +52,25 @@
   font-size: 2rem !important;
 }
 
-.blog-details-wrapper > img{
-  width: 10% !important;
+.blog-details-wrapper p{
+  text-align: justify;
 }
+
+.vertical-line {
+  border-left: 1px solid #000 !important; /* You can adjust the color and width as needed */
+  height: 100% !important;
+}
+
+.hero-content{
+  margin-top: -5% !important;
+}
+
+/* HorizontalLine.module.css */
+.horizontalLine {
+  border-bottom: 5px solid #c8c0c0 !important;  /* You can adjust the color and height as needed */
+  width: 100% !important;
+}
+
 
 /* .preBody {
   background: skyblue;
@@ -1554,7 +1570,7 @@ button {
 
 .hero-wrapper-four .shape,
 .hero-wrapper-four .shapeSub {
-  width: 50%;
+  width: 45%;
   margin: 0 auto; /* Center horizontally */
 }
 

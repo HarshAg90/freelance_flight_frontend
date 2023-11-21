@@ -10,7 +10,7 @@ const BlogDetails = () => {
       <section className="blog-details-section pt-100 pb-100">
         <div className="container">
           <div className="row">
-            <div className="col-xl-12">
+            <div className="col-xl-6">
               {/*=== Blog Details Wrapper ===*/}
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
@@ -80,6 +80,10 @@ const BlogDetails = () => {
                   </div>
                 </div>
               </div>
+              
+            </div>
+
+            <div className="col-xl-6">
               {/* Detail-4  */}
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">

@@ -10,11 +10,14 @@ const BlogDetails = () => {
       <section className="blog-details-section pt-100 pb-100">
         <div className="container">
           <div className="row">
-            <div className="col-xl-12">
+            <div className="col-xl-6">
               {/*=== Blog Details Wrapper ===*/}
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Uniform Schengen Visa (USV) <br/>.
+                      </h3>
                     <img
                       src="assets/images/blog/blogZiro.png"
                       alt="Blog Image"
@@ -22,10 +25,8 @@ const BlogDetails = () => {
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Uniform Schengen Visa (USV)
-                      </h3>
-                      <p>
+                      
+                      <p><br/>
                       Categories: The USV is categorized into three main types:
 Short-Stay Visa (Type C): For tourism, business, or visiting friends/family, allowing stays up to 90 days within a 180-day period.
 Airport Transit Visa (Type A): For transit through airports in the Schengen Area without entering the country.
@@ -37,66 +38,19 @@ Eligibility Criteria: Applicants must demonstrate sufficient funds, purpose of t
                   </div>
                 </div>
               </div>
-              {/* Detail-2  */}
-              <div className="blog-details-wrapper pr-lg-50">
-                <div className="blog-post mb-60 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blogGokarna.png"
-                      alt="Blog Image"
-                    />
-                  </div>
-                  <div className="main-post">
-                    <div className="entry-content">
-                      <h3 className="title">
-                      Limited Territorial Validity Visa (LTV)
-
-                      </h3>
-                      <p>
-                      Categories: Issued for specific Schengen countries rather than the entire area.
-Eligibility Criteria: Usually granted for humanitarian reasons or international obligations, with restrictions on travel within the Schengen Zone.
-
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Detail-3  */}
-              <div className="blog-details-wrapper pr-lg-50">
-                <div className="blog-post mb-60 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blogSpiti.png"
-                      alt="Blog Image"
-                    />
-                  </div>
-                  <div className="main-post">
-                    <div className="entry-content">
-                      <h3 className="title">
-                      Spiti Valley, Himachal Pradesh
-
-                      </h3>
-                      <p>
-                      National Visas (D Visa)
-
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               {/* Detail-4  */}
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blogHampi.png"
-                      alt="Blog Image"
-                    />
+                  <h3 className="title">
+                  Top 10 Tips for a Successful Schengen Visa Application <br/>.
+                      </h3>
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <p>
-                      Top 10 Tips for a Successful Schengen Visa Application
+                      <p><br/>
+                      
 1. Plan Ahead
 Start the application process well in advance of your intended travel date, as visa processing times may vary.
 2. Know Your Purpose
@@ -123,21 +77,67 @@ Adhere strictly to the regulations and guidelines provided by the Schengen count
                   </div>
                 </div>
               </div>
-              {/* Detail-5  */}
-              <div className="blog-details-wrapper pr-lg-50">
+              
+            </div>
+            <div className="col-xl-6">
+{/* Detail-2  */}
+<div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Limited Territorial Validity Visa (LTV) <br/>.
+                      </h3>
                     <img
-                      src="assets/images/blog/blogMegh.png"
+                      src="assets/images/blog/blogGokarna.png"
                       alt="Blog Image"
                     />
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Conclusion
+                      
+                      <p><br/>
+                      Categories: Issued for specific Schengen countries rather than the entire area.
+Eligibility Criteria: Usually granted for humanitarian reasons or international obligations, with restrictions on travel within the Schengen Zone.
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Detail-3  */}
+              <div className="blog-details-wrapper pr-lg-50">
+                <div className="blog-post mb-60 wow fadeInUp">
+                  <div className="post-thumbnail">
+                  <h3 className="title">
+                      Spiti Valley, Himachal Pradesh <br/>.
                       </h3>
-                      <p>
+                    <img
+                      src="assets/images/blog/blogSpiti.png"
+                      alt="Blog Image"
+                    />
+                  </div>
+                  <div className="main-post">
+                    <div className="entry-content">
+                      <p><br/>
+                      National Visas (D Visa)
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Detail-5  */}
+              <div className="blog-details-wrapper pr-lg-50">
+                <div className="blog-post mb-60 wow fadeInUp">
+                  <div className="post-thumbnail">
+                  <h3 className="title">
+                      Conclusion <br/>.
+                      </h3>
+                  </div>
+                  <div className="main-post">
+                    <div className="entry-content">
+                      
+                      <p><br/>
                       A successful Schengen visa application requires meticulous planning, accurate documentation, and a clear demonstration of genuine intentions. Understanding the visa types and following these top 10 tips can significantly enhance the likelihood of a successful application, paving the way for a memorable and hassle-free European journey
                       </p>
                     </div>
@@ -145,6 +145,8 @@ Adhere strictly to the regulations and guidelines provided by the Schengen count
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </section>
