@@ -15,6 +15,10 @@ const BlogDetails = () => {
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Ziro Valley, Arunachal Pradesh
+                        <br/> .
+                      </h3>
                     <img
                       src="assets/images/blog/blogZiro.png"
                       alt="Blog Image"
@@ -22,11 +26,8 @@ const BlogDetails = () => {
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Ziro Valley, Arunachal Pradesh
-
-                      </h3>
-                      <p>
+                      
+                      <p><br/>
                       Tucked away in the northeastern state of Arunachal Pradesh, Ziro Valley is a haven for nature lovers and adventure seekers. Surrounded by misty mountains and lush paddy fields, this UNESCO World Heritage Site is known for its vibrant local culture, music festivals, and scenic hiking trails.
 
                     Explore the Apatani tribal culture, known for its unique farming practices and traditional houses. The Ziro Music Festival, held annually, attracts music enthusiasts from across the globe to immerse themselves in the local folk music scene.
@@ -42,6 +43,9 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Gokarna, Karnataka <br/>.
+                      </h3>
                     <img
                       src="assets/images/blog/blogGokarna.png"
                       alt="Blog Image"
@@ -49,10 +53,8 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Gokarna, Karnataka
-                      </h3>
-                      <p>
+                      
+                      <p> <br/>
                       Move over Goa, Gokarna is the new beach paradise on India's west coast. This serene coastal town offers pristine beaches, like Om Beach and Half Moon Beach, perfect for those seeking tranquility away from the hustle and bustle. Embrace the laid-back vibe, explore ancient temples, and indulge in delicious seafood by the shore.
 
                       </p>
@@ -64,6 +66,9 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Spiti Valley, Himachal Pradesh <br/>.
+                      </h3>
                     <img
                       src="assets/images/blog/blogSpiti.png"
                       alt="Blog Image"
@@ -71,11 +76,8 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Spiti Valley, Himachal Pradesh
-
-                      </h3>
-                      <p>
+                      
+                      <p><br/>
                       For the adventurous souls craving rugged landscapes and untouched beauty, Spiti Valley in Himachal Pradesh is a must-visit. Nestled amidst the Himalayas, this high-altitude desert boasts monasteries, clear rivers, and breathtaking vistas. Travelers can trek, camp, and immerse themselves in the local Tibetan culture.
 
 Key attractions include the centuries-old Ki Monastery perched atop a hill, the picturesque Chandratal Lake, and the ancient Tabo Monastery, known for its exquisite frescoes.
@@ -91,6 +93,9 @@ Access to Spiti Valley usually involves a road trip from Manali or Shimla, offer
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Hampi, Karnataka <br/>.
+                      </h3>
                     <img
                       src="assets/images/blog/blogHampi.png"
                       alt="Blog Image"
@@ -98,11 +103,8 @@ Access to Spiti Valley usually involves a road trip from Manali or Shimla, offer
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Hampi, Karnataka
-
-                      </h3>
-                      <p>
+                      
+                      <p> <br/>
                       Step into the ancient ruins of Hampi, a UNESCO World Heritage Site that transports you back in time. Marvel at the spectacular architecture of temples, bazaars, and monuments scattered across a surreal landscape of boulders. Hampi is a photographer's paradise and a historian's delight.
 
 Explore the Virupaksha Temple, the Vittala Temple with its iconic stone chariot, and the Royal Enclosure, which was once the seat of power. Hampi's vibrant history and magnificent ruins make it a captivating destination.
@@ -116,6 +118,9 @@ Explore the Virupaksha Temple, the Vittala Temple with its iconic stone chariot,
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
+                  <h3 className="title">
+                      Mawlynnong, Meghalaya <br/>.
+                      </h3>
                     <img
                       src="assets/images/blog/blogMegh.png"
                       alt="Blog Image"
@@ -123,10 +128,8 @@ Explore the Virupaksha Temple, the Vittala Temple with its iconic stone chariot,
                   </div>
                   <div className="main-post">
                     <div className="entry-content">
-                      <h3 className="title">
-                      Mawlynnong, Meghalaya
-                      </h3>
-                      <p>
+                      
+                      <p><br/>
                       Known as the cleanest village in Asia, Mawlynnong in Meghalaya offers a glimpse into sustainable living amidst lush greenery. Discover living root bridges, explore the nearby forests, and interact with the friendly Khasi tribe, known for their hospitality and eco-friendly lifestyle.
 
 The living root bridges, crafted by intertwining the aerial roots of rubber trees, are a testament to the harmony between nature and human ingenuity. Additionally, hike to the nearby Balancing Rock for panoramic views of Bangladesh.
