@@ -40,16 +40,35 @@
 }
 
 .bdaCircle{
+  width: 50% !important;
   margin-right: -30% !important;
   visibility: hidden !important;
+  /* margin-bottom: 10% !important; */
+}
+
+.main-btn{
+  height: 10% !important;
+  margin-bottom: 7% !important;
 }
 
 .qnaImage{
   width: 350% !important;
 }
 
-.primary-menu{
-  font-size: 2rem !important;
+
+/* Your existing styles for .primary-menu */
+.primary-menu {
+  height: 8vh !important;
+  margin-top: 1vh;
+}
+
+
+.primary-menu a{
+  font-size: 1.2rem !important;
+}
+
+.primary-menu img{
+  width: 12rem !important;
 }
 
 .blog-details-wrapper p{
@@ -1554,7 +1573,7 @@ button {
 .hero-wrapper-four {
   background-image: url(/assets/images/hero/HeroImage2.png);
   background-size: 100% auto;
-  height: 160vh;
+  height: 150vh;
   background-repeat: no-repeat;
   margin: 0;
   padding: 180px 0 100px;

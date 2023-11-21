@@ -165,7 +165,7 @@ const Index4 = () => {
         </div>  
       </section>
 
-      <div className="horizontalLine "></div>
+      {/* <div className="horizontalLine "></div> */}
 
       
       {/*====== End Hero Section ======*/}
