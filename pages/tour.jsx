@@ -611,37 +611,6 @@ const Tour = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-12">
-              {/*=== Gowilds Pagination ===*/}
-              <ul className="gowilds-pagination wow fadeInUp text-center">
-                <li>
-                  <a href="#">
-                    <i className="far fa-arrow-left" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="active">
-                    01
-                  </a>
-                </li>
-                <li>
-                  <a href="#">02</a>
-                </li>
-                <li>
-                  <a href="#">03</a>
-                </li>
-                <li>
-                  <a href="#">04</a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="far fa-arrow-right" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
       {/*====== End Places Section ======*/}
