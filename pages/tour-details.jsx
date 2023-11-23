@@ -1026,65 +1026,53 @@ const TourDetails = () => {
                 <div className="sidebar-widget-area pt-60 pl-lg-30">
                   {/*=== Booking Widget ===*/}
                   <div className="sidebar-widget booking-form-widget wow fadeInUp mb-40">
-                    <h4 className="widget-title">Booking Tour</h4>
+                    <h4 className="widget-title">Book Your Flight Now</h4>
                     <form
                       onSubmit={(e) => e.preventDefault()}
                       className="sidebar-booking-form"
                     >
                       <div className="booking-date-time mb-20">
                         <div className="booking-item">
-                          <label>Date</label>
+                          <label>From</label>
                           <div className="bk-item booking-time">
-                            <i className="far fa-calendar-alt" />
                             <input
                               type="text"
-                              placeholder="Select Date"
-                              className="datepicker"
                             />
                           </div>
                         </div>
                         <div className="booking-item">
-                          <label>Time</label>
-                          <div className="bk-item booking-date">
-                            <i className="far fa-calendar-alt" />
-                            <select className="wide">
-                              <option value={1}>12.00 Am</option>
-                              <option value={1}>01.00 Am</option>
-                              <option value={1}>02.00 Am</option>
-                              <option value={1}>03.00 Am</option>
-                              <option value={1}>04.00 Am</option>
-                              <option value={1}>05.00 Am</option>
-                              <option value={1}>06.00 Am</option>
-                              <option value={1}>07.00 Am</option>
-                              <option value={1}>08.00 Am</option>
-                              <option value={1}>09.00 Am</option>
-                              <option value={1}>10.00 Am</option>
-                              <option value={1}>11.00 Am</option>
-                              <option value={1}>12.00 Pm</option>
-                            </select>
+                          <label>To</label>
+                          <div className="bk-item booking-time">
+                            <input
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div className="booking-item">
+                          <label>Departure</label>
+                          <div className="bk-item booking-time">
+                            <input
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div className="booking-item">
+                          <label>Return</label>
+                          <div className="bk-item booking-time">
+                            <input
+                              type="text"
+                            />
                           </div>
                         </div>
                       </div>
                       <div className="booking-guest-box mb-20">
                         <h6 className="mb-20">Tickets</h6>
                         <div className="booking-item">
-                          <label>Adult (18+ years) $43</label>
+                          <label>Adult (18+ years)</label>
                           <div className="bk-item booking-user">
                             <i className="far fa-user" />
                             <select className="wide">
-                              <option value={1}>1</option>
-                              <option value={2}>2</option>
-                              <option value={3}>3</option>
-                              <option value={4}>4</option>
-                              <option value={5}>5</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="booking-item">
-                          <label>Youth (13-17 years) $29</label>
-                          <div className="bk-item booking-user">
-                            <i className="far fa-user" />
-                            <select className="wide">
+                              <option value={0}>0</option>
                               <option value={1}>1</option>
                               <option value={2}>2</option>
                               <option value={3}>3</option>
@@ -1098,6 +1086,7 @@ const TourDetails = () => {
                           <div className="bk-item booking-user">
                             <i className="far fa-user" />
                             <select className="wide">
+                              <option value={0}>0</option>
                               <option value={1}>1</option>
                               <option value={2}>2</option>
                               <option value={3}>3</option>
@@ -1105,23 +1094,6 @@ const TourDetails = () => {
                               <option value={5}>5</option>
                             </select>
                           </div>
-                        </div>
-                      </div>
-                      <div className="booking-extra mb-15 wow fadeInUp">
-                        <h6 className="mb-10">Aditional Services</h6>
-                        <div className="extra">
-                          <i className="fas fa-check-circle" />
-                          Service Per Boooking{" "}
-                          <span>
-                            <span className="currency">$</span>50
-                          </span>
-                        </div>
-                        <div className="extra">
-                          <i className="fas fa-check-circle" />
-                          Service Per Person{" "}
-                          <span>
-                            <span className="currency">$</span>20
-                          </span>
                         </div>
                       </div>
                       <div className="booking-total mb-20">
@@ -1134,7 +1106,7 @@ const TourDetails = () => {
                       </div>
                       <div className="submit-button">
                         <button className="main-btn primary-btn">
-                          Booking Now
+                          Book Now
                           <i className="far fa-paper-plane" />
                         </button>
                       </div>

@@ -33,9 +33,12 @@
 
 -----------------------------------------------------------------------------------*/
 
-.imgPlaceCarousel{
-  /* height: ; */
-  width: 80vw !important;
+.slick-track{
+  /* height: 120vh !important; */
+}
+
+.place-details-section .slick-list{
+  height: 100vh !important;
 }
 
 
@@ -66,9 +69,15 @@
 
 /* Your existing styles for .primary-menu */
 .primary-menu {
-  height: 8vh !important;
+  height: 6vh !important;
   margin-top: 1vh;
 }
+
+.primary-menu .main-btn{
+  border-radius: 10px !important;
+  height: 4vh !important;
+}
+
 
 
 .primary-menu a{
@@ -76,7 +85,7 @@
 }
 
 .primary-menu img{
-  width: 12rem !important;
+  width: 10rem !important;
 }
 
 .blog-details-wrapper p{

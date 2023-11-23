@@ -147,7 +147,7 @@ const Index4 = () => {
                       <h2 className="number">
                         <Counter end={42} />+
                       </h2>
-                      <p>Tent Sites</p>
+                      <p>Flights</p>
                     </div>
                   </div>
                   <div className="col-sm-4 col-6">

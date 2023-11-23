@@ -28,20 +28,11 @@ const DeskTopMenu = () => {
             </a>
           </li>
           <li className="menu-item has-children">
-            <a href="#">
+            <a href="tour">
               Tours
               <span className="dd-trigger">
-                <i className="far fa-angle-down" />
               </span>
             </a>
-            <ul className="sub-menu">
-              <li>
-                <Link href="tour">Tours</Link>
-              </li>
-              <li>
-                <Link href="tour-details">Tours Details</Link>
-              </li>
-            </ul>
           </li>
           <li className="menu-item has-children">
             <a href="#">
@@ -105,15 +96,11 @@ const MobileMenu = () => {
           <a href="#">
             Tours
             <span className="dd-trigger" onClick={() => activeMenuSet("Tours")}>
-              <i className="far fa-angle-down" />
             </span>
           </a>
           <ul className="sub-menu" style={activeLi("Tours")}>
             <li>
               <Link href="tour">Tours</Link>
-            </li>
-            <li>
-              <Link href="tour-details">Tours Details</Link>
             </li>
           </ul>
         </li>
