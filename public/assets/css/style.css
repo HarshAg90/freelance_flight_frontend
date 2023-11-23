@@ -32,6 +32,14 @@
     19. Wrapper css
 
 -----------------------------------------------------------------------------------*/
+
+.imgPlaceCarousel{
+  /* height: ; */
+  width: 80vw !important;
+}
+
+
+
 .bookImg{
   width: 15%;
   z-index: 10;
@@ -1723,6 +1731,10 @@ button {
 
 
 .placeCarousel{
+  display: flex;
+  /* position: ; */
+  justify-content: center;
+  align-items: center;
   /* background-image: url(/public/assets/images/carousel/varanasi\ 1.png); */
   /* background-image: url(/assets/images/carousel/varanasi.png); */
    /* 100% width, auto height */

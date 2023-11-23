@@ -10,6 +10,10 @@ const BlogDetails = () => {
       <section className="blog-details-section pt-100 pb-100">
         <div className="container">
           <div className="row">
+          <h2 className="title">
+          Exploring India's Best-Kept Secrets: Unveiling Hidden Gems
+                        
+                      </h2> <h8> <br/>.</h8>
             <div className="col-xl-6">
               {/*=== Blog Details Wrapper ===*/}
               <div className="blog-details-wrapper pr-lg-50">
@@ -17,8 +21,8 @@ const BlogDetails = () => {
                   <div className="post-thumbnail">
                   <h3 className="title">
                       Ziro Valley, Arunachal Pradesh
-                        <br/> .
-                      </h3>
+                        
+                      </h3><h8>. <br/></h8>
                     <img
                       src="assets/images/blog/blogZiro.png"
                       alt="Blog Image"
@@ -44,8 +48,8 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Gokarna, Karnataka <br/>.
-                      </h3>
+                      Gokarna, Karnataka 
+                      </h3><h8>. <br/></h8>
                     <img
                       src="assets/images/blog/blogGokarna.png"
                       alt="Blog Image"
@@ -67,8 +71,8 @@ To reach Ziro Valley, one can fly to Tezpur or Guwahati and then take a scenic r
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Spiti Valley, Himachal Pradesh <br/>.
-                      </h3>
+                      Spiti Valley, Himachal Pradesh 
+                      </h3><h8>. <br/></h8>
                     <img
                       src="assets/images/blog/blogSpiti.png"
                       alt="Blog Image"
@@ -97,8 +101,8 @@ Access to Spiti Valley usually involves a road trip from Manali or Shimla, offer
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Hampi, Karnataka <br/>.
-                      </h3>
+                      Hampi, Karnataka 
+                      </h3><h8>. <br/></h8>
                     <img
                       src="assets/images/blog/blogHampi.png"
                       alt="Blog Image"
@@ -122,8 +126,8 @@ Explore the Virupaksha Temple, the Vittala Temple with its iconic stone chariot,
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Mawlynnong, Meghalaya <br/>.
-                      </h3>
+                      Mawlynnong, Meghalaya 
+                      </h3><h8>. <br/></h8>
                     <img
                       src="assets/images/blog/blogMegh.png"
                       alt="Blog Image"

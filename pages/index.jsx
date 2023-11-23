@@ -199,7 +199,9 @@ const Index4 = () => {
     </Carousel>
       </div> */}
 
-<CCarousel controls>
+
+
+<CCarousel className="imgPlaceCarousel" controls>
   <CCarouselItem>
     <CImage className="d-block w-100" src="/assets/images/carousel/varanasi.png" alt="slide 1" />
   </CCarouselItem>
@@ -512,6 +514,8 @@ const Index4 = () => {
                     <i className="flaticon-fire" />
                   </span>
                 </div>
+                <div className="action-btn">
+                </div>
               </div>
             </div>
             {/*=== Single Service Item ===*/}
@@ -803,7 +807,7 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/image1.png" alt="Blog Image" />
+                    <img src="assets/images/blog/hiddenGem.png" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
@@ -826,7 +830,7 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInDown">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/image2.png" alt="Blog Image" />
+                    <img src="assets/images/blog/indHeritage.jpg" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
@@ -849,7 +853,7 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/image3.png" alt="Blog Image" />
+                    <img src="assets/images/blog/goldenVisa.png" alt="Blog Image" />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">

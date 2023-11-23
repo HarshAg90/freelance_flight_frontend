@@ -10,16 +10,20 @@ const BlogDetails = () => {
       <section className="blog-details-section pt-100 pb-100">
         <div className="container">
           <div className="row">
+          <h2 className="title">
+          Unveiling India's Heritage: A Journey Through History
+                        
+                      </h2> <h8> <br/>.</h8>
             <div className="col-xl-6">
               {/*=== Blog Details Wrapper ===*/}
               <div className="blog-details-wrapper pr-lg-50">
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Taj Mahal, Agra, Uttar Pradesh<br/>.
-                      </h3>
+                      Taj Mahal, Agra, Uttar Pradesh
+                      </h3><h8>. <br/></h8>
                     <img
-                      src="assets/images/blog/blogZiro.png"
+                      src="assets/images/blog/tajMahal.png"
                       alt="Blog Image"
                     />
                   </div>
@@ -38,10 +42,10 @@ const BlogDetails = () => {
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Jaipur City Palace, Rajasthan <br/>.
-                      </h3>
+                      Jaipur City Palace, Rajasthan 
+                      </h3><h8>. <br/></h8>
                     <img
-                      src="assets/images/blog/blogGokarna.png"
+                      src="assets/images/blog/cityPalace.png"
                       alt="Blog Image"
                     />
                   </div>
@@ -61,10 +65,10 @@ const BlogDetails = () => {
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Khajuraho Group of Monuments, Madhya Pradesh <br/>.
-                      </h3>
+                      Khajuraho Group of Monuments, Madhya Pradesh
+                      </h3><h8>. <br/></h8>
                     <img
-                      src="assets/images/blog/blogSpiti.png"
+                      src="assets/images/blog/khaj.png"
                       alt="Blog Image"
                     />
                   </div>
@@ -89,10 +93,10 @@ const BlogDetails = () => {
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Red Fort, Delhi <br/>.
-                      </h3>
+                      Red Fort, Delhi
+                      </h3><h8>. <br/></h8>
                     <img
-                      src="assets/images/blog/blogHampi.png"
+                      src="assets/images/blog/redFort.png"
                       alt="Blog Image"
                     />
                   </div>
@@ -112,10 +116,10 @@ const BlogDetails = () => {
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-thumbnail">
                   <h3 className="title">
-                      Ajanta and Ellora Caves, Maharashtra <br/>.
-                      </h3>
+                      Ajanta and Ellora Caves, Maharashtra
+                      </h3><h8>. <br/></h8>
                     <img
-                      src="assets/images/blog/blogMegh.png"
+                      src="assets/images/blog/ajanta.png"
                       alt="Blog Image"
                     />
                   </div>
