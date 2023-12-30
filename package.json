@@ -19,6 +19,8 @@
     "react-nice-select": "^1.0.4",
     "react-slick": "^0.29.0",
     "react-visibility-sensor": "^5.1.1",
+    "sass": "^1.69.5",
+    "scss": "^0.2.4",
     "slick-carousel": "^1.8.1",
     "wowjs": "^1.1.3"
   }

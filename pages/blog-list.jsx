@@ -3,6 +3,13 @@ import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import Link from "next/link";
 const BlogList = () => {
+  // firebase login 
+  // api call format
+  async function apicall(rew){
+    console.log(req) // exact same as request json
+    // add uid as header in every req 
+    return // text file as rep
+  }
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Blog List"} />

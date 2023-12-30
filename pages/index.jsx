@@ -6,13 +6,15 @@ import {
   testimonialSliderOne,
 } from "@/src/sliderProps";
 import dynamic from "next/dynamic";
-import { CCarousel, CCarouselItem, CImage } from '@coreui/react'
+import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import Link from "next/link";
 import Slider from "react-slick";
-import ImageSlider from '@/src/components/sliders/ImageSlider'
+import ImageSlider from "@/src/components/sliders/ImageSlider";
+
 const Counter = dynamic(() => import("@/src/components/Counter"), {
   ssr: false,
 });
+
 const Index4 = () => {
   const slides = [
     { url: "/assets/images/carousel/varanasi.png", title: "beach" },
@@ -25,7 +27,6 @@ const Index4 = () => {
       <section className="hero-section">
         {/*=== Hero Wrapper ===*/}
         <div className="hero-wrapper-four">
-          
           <div className="container">
             <div className="row">
               <div className="col-xl-12">
@@ -35,12 +36,12 @@ const Index4 = () => {
                     TIME TO TRAVEL!
                   </h1>
                   <div className="shape">
-            <span>
-              <img src="assets/images/hero/heroPlane.png" />
-            </span>
+                    <span>
+                      <img src="assets/images/hero/heroPlane.png" />
+                    </span>
                   </div>
                   {/*=== Hero Search ===*/}
-                  <div
+                  {/* <div
                     className="hero-search-form mb-40 wow fadeInDown"
                     data-wow-delay=".7s"
                   >
@@ -100,21 +101,21 @@ const Index4 = () => {
                           name="text"
                         />
                       </div>
-                      {/* <div className="form_group">
+                      <div className="form_group">
                         <button className="booking-btn">
-                          Book Now{" "}
-                          <i className="far fa-angle-double-right" />
+                          Book Now <i className="far fa-angle-double-right" />
                         </button>
-                      </div> */}
+                      </div>
                     </form>
-                  </div>
-                  <img className="bookImg" src="assets/images/hero/bookImage.png" />
+                  </div> */}
+                  {/* <img className="bookImg" src="assets/images/hero/bookImage.png" /> */}
+
+                  <Link href="/search">Get Started</Link>
                   <div className="shapeSub">
-            <span>
-              <img src="assets/images/hero/heroSub.png" />
-            </span>
+                    <span>
+                      <img src="assets/images/hero/heroSub.png" />
+                    </span>
                   </div>
-                  
                 </div>
               </div>
               {/* <div className="col-xl-5 d-xl-block d-none">
@@ -132,46 +133,44 @@ const Index4 = () => {
           </div>
 
           <div className="numbers row justify-content-center">
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={35} />K+
-                      </h2>
-                      <p>Happy Traveler</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={42} />+
-                      </h2>
-                      <p>Flights</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-4 col-6">
-                    {/*=== Counter Item ===*/}
-                    <div className="counter-item mb-55">
-                      <h2 className="number">
-                        <Counter end={99} />%
-                      </h2>
-                      <p>Positive Reviews</p>
-                    </div>
-                  </div>
+            <div className="col-sm-4 col-6">
+              {/*=== Counter Item ===*/}
+              <div className="counter-item mb-55">
+                <h2 className="number">
+                  <Counter end={35} />
+                  K+
+                </h2>
+                <p>Happy Traveler</p>
               </div>
-          
-
-        </div>  
+            </div>
+            <div className="col-sm-4 col-6">
+              {/*=== Counter Item ===*/}
+              <div className="counter-item mb-55">
+                <h2 className="number">
+                  <Counter end={42} />+
+                </h2>
+                <p>Flights</p>
+              </div>
+            </div>
+            <div className="col-sm-4 col-6">
+              {/*=== Counter Item ===*/}
+              <div className="counter-item mb-55">
+                <h2 className="number">
+                  <Counter end={99} />%
+                </h2>
+                <p>Positive Reviews</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* <div className="horizontalLine "></div> */}
 
-      
       {/*====== End Hero Section ======*/}
       <section className="placeCarousel pt-100 pb-70">
-      {/* <ImageSlider slides={slides} /> */}
-      {/* <div>
+        {/* <ImageSlider slides={slides} /> */}
+        {/* <div>
       <Carousel>
       <Carousel.Item>
         <img src="/assets/images/carousel/varanasi.png"/>
@@ -199,20 +198,29 @@ const Index4 = () => {
     </Carousel>
       </div> */}
 
-
-
-<CCarousel className="imgPlaceCarousel" controls>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src="/assets/images/carousel/varanasi.png" alt="slide 1" />
-  </CCarouselItem>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src="/assets/images/carousel/taj.png" alt="slide 3" />
-  </CCarouselItem>
-  <CCarouselItem>
-    <CImage className="d-block w-100" src="/assets/images/carousel/city2.png" alt="slide 2" />
-  </CCarouselItem>
-</CCarousel>
-      
+        <CCarousel className="imgPlaceCarousel" controls>
+          <CCarouselItem>
+            <CImage
+              className="d-block w-100"
+              src="/assets/images/carousel/varanasi.png"
+              alt="slide 1"
+            />
+          </CCarouselItem>
+          <CCarouselItem>
+            <CImage
+              className="d-block w-100"
+              src="/assets/images/carousel/taj.png"
+              alt="slide 3"
+            />
+          </CCarouselItem>
+          <CCarouselItem>
+            <CImage
+              className="d-block w-100"
+              src="/assets/images/carousel/city2.png"
+              alt="slide 2"
+            />
+          </CCarouselItem>
+        </CCarousel>
       </section>
       {/*====== Start Places Section ======*/}
       <section className="places-section pt-100 pb-70">
@@ -246,9 +254,9 @@ const Index4 = () => {
                     Himachal Pradesh, India
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -276,9 +284,9 @@ const Index4 = () => {
                     Goa, India
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -306,9 +314,9 @@ const Index4 = () => {
                     Manipur, India
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -336,9 +344,9 @@ const Index4 = () => {
                     Kerala, India
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -366,9 +374,9 @@ const Index4 = () => {
                     Andaman & Nicobar Island
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -396,9 +404,9 @@ const Index4 = () => {
                     Arefu, AG, Romania
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -426,9 +434,9 @@ const Index4 = () => {
                     London, United Kingdom
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -456,9 +464,9 @@ const Index4 = () => {
                     Nordegg, Canada
                   </p>
                   <div className="meta">
-                  <p className="location">
-                    Best Time to Visit: <br/> Nov-Dec
-                  </p>
+                    <p className="location">
+                      Best Time to Visit: <br /> Nov-Dec
+                    </p>
                     <a href="#" className="icon-btn">
                       <i className="far fa-arrow-right" />
                     </a>
@@ -478,7 +486,9 @@ const Index4 = () => {
               {/*=== Section Title ===*/}
               <div className="section-title text-center text-white mb-45 wow fadeInDown">
                 <span className="sub-title">Popular Services</span>
-                <h2>Hotel Booking Await On Our <br/> Site!</h2>
+                <h2>
+                  Hotel Booking Await On Our <br /> Site!
+                </h2>
               </div>
             </div>
           </div>
@@ -514,8 +524,7 @@ const Index4 = () => {
                     <i className="flaticon-fire" />
                   </span>
                 </div>
-                <div className="action-btn">
-                </div>
+                <div className="action-btn"></div>
               </div>
             </div>
             {/*=== Single Service Item ===*/}
@@ -546,8 +555,7 @@ const Index4 = () => {
                     <i className="flaticon-fire" />
                   </span>
                 </div>
-                <div className="action-btn">
-                </div>
+                <div className="action-btn"></div>
               </div>
             </div>
             {/*=== Single Service Item ===*/}
@@ -578,8 +586,7 @@ const Index4 = () => {
                     <i className="flaticon-fire" />
                   </span>
                 </div>
-                <div className="action-btn">
-                </div>
+                <div className="action-btn"></div>
               </div>
             </div>
           </Slider>
@@ -610,12 +617,17 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                        <img className="qnaImage" src="assets/images/qna.png" alt="" />
+                        <img
+                          className="qnaImage"
+                          src="assets/images/qna.png"
+                          alt=""
+                        />
                       </div>
                       <div className="text">
                         <h4 className="title">Booking Bliss</h4>
                         <p>
-                        Unlock the secrets to seamless flight reservations, changes, and cancellations.
+                          Unlock the secrets to seamless flight reservations,
+                          changes, and cancellations.
                         </p>
                       </div>
                     </div>
@@ -624,12 +636,17 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
+                        <img
+                          className="qnaImage"
+                          src="assets/images/qna.png"
+                          alt=""
+                        />
                       </div>
                       <div className="text">
                         <h4 className="title">Navigating Classes</h4>
                         <p>
-                        Discover the perks of each class and learn how to upgrade or modify your seat preferences.
+                          Discover the perks of each class and learn how to
+                          upgrade or modify your seat preferences.
                         </p>
                       </div>
                     </div>
@@ -638,12 +655,17 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
+                        <img
+                          className="qnaImage"
+                          src="assets/images/qna.png"
+                          alt=""
+                        />
                       </div>
                       <div className="text">
                         <h4 className="title">SkyMiles Club</h4>
                         <p>
-                        Get clarity on baggage rules, pet-friendly options, and assistance for special needs.
+                          Get clarity on baggage rules, pet-friendly options,
+                          and assistance for special needs.
                         </p>
                       </div>
                     </div>
@@ -652,12 +674,17 @@ const Index4 = () => {
                     {/*=== Fancy Icon Box ===*/}
                     <div className="fancy-icon-box-four mb-45 wow fadeInUp">
                       <div className="icon">
-                      <img className="qnaImage" src="assets/images/qna.png" alt="" />
+                        <img
+                          className="qnaImage"
+                          src="assets/images/qna.png"
+                          alt=""
+                        />
                       </div>
                       <div className="text">
                         <h4 className="title">Policies Demystified</h4>
                         <p>
-                        Join the Fair Flying loyalty program – understand benefits, earning, redeeming, and exclusive perks.
+                          Join the Fair Flying loyalty program – understand
+                          benefits, earning, redeeming, and exclusive perks.
                         </p>
                       </div>
                     </div>
@@ -724,9 +751,7 @@ const Index4 = () => {
                         </ul>
                       </div>
                     </div>
-                    <p>
-                    I have used Their service and they are incredible.
-                    </p>
+                    <p>I have used Their service and they are incredible.</p>
                     <div className="author-thumb-title">
                       <div className="author-thumb">
                         <img
@@ -773,7 +798,8 @@ const Index4 = () => {
                       </div>
                     </div>
                     <p>
-                      Their service is seamless and best in class. They are also very supportive!
+                      Their service is seamless and best in class. They are also
+                      very supportive!
                     </p>
                     <div className="author-thumb-title">
                       <div className="author-thumb">
@@ -807,7 +833,10 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/hiddenGem.png" alt="Blog Image" />
+                    <img
+                      src="assets/images/blog/hiddenGem.png"
+                      alt="Blog Image"
+                    />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
@@ -818,7 +847,8 @@ const Index4 = () => {
                       <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
                           <a>
-                          Exploring India's Best-Kept Secrets: Unveiling the Hidden Gems
+                            Exploring India's Best-Kept Secrets: Unveiling the
+                            Hidden Gems
                           </a>
                         </Link>
                       </h3>
@@ -830,7 +860,10 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInDown">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/indHeritage.jpg" alt="Blog Image" />
+                    <img
+                      src="assets/images/blog/indHeritage.jpg"
+                      alt="Blog Image"
+                    />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
@@ -841,7 +874,8 @@ const Index4 = () => {
                       <h3 className="title">
                         <Link legacyBehavior href="/index-4">
                           <a>
-                          Unveiling India's Glorious Heritage: A Journey Through History
+                            Unveiling India's Glorious Heritage: A Journey
+                            Through History
                           </a>
                         </Link>
                       </h3>
@@ -853,7 +887,10 @@ const Index4 = () => {
                 {/*=== Single Blog Post ===*/}
                 <div className="single-blog-post-three mb-40 wow fadeInUp">
                   <div className="post-thumbnail">
-                    <img src="assets/images/blog/goldenVisa.png" alt="Blog Image" />
+                    <img
+                      src="assets/images/blog/goldenVisa.png"
+                      alt="Blog Image"
+                    />
                   </div>
                   <div className="entry-content">
                     <div className="post-meta">
@@ -864,7 +901,8 @@ const Index4 = () => {
                       <h3 className="title">
                         <Link legacyBehavior href="/index-3">
                           <a>
-                          Schengen Visa Types: Understanding the Different Categories and Their Eligibility Criteria
+                            Schengen Visa Types: Understanding the Different
+                            Categories and Their Eligibility Criteria
                           </a>
                         </Link>
                       </h3>
