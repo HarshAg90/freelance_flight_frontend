@@ -110,7 +110,7 @@ const Index4 = () => {
                   </div> */}
                   {/* <img className="bookImg" src="assets/images/hero/bookImage.png" /> */}
 
-                  <Link href="/search">Get Started</Link>
+                  <Link id="Index_page_search_button" href="/search">GET STARTED</Link>
                   <div className="shapeSub">
                     <span>
                       <img src="assets/images/hero/heroSub.png" />

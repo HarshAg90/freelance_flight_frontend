@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 
@@ -147,12 +147,14 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
 };
 
 export default function Search() {
-  let [adult, setAdults] = useState(true);
-  let [adult_no, setAdult_no] = useState(1);
-  let [child, setChild] = useState(false);
-  let [child_no, setChild_no] = useState(0);
-  let [infant, setInfant] = useState(false);
-  let [infant_no, setInfant_no] = useState(0);
+  // let [ifadult, setifAdults] = useState(true);
+  let [adults, setAdults] = useState(1);
+  // let [ifchild, setifChild] = useState(false);
+  let [children, setChildren] = useState(0);
+  // let [ifInfants, setifInfants] = useState(false);
+  let [infants, setInfants] = useState(0);
+
+  let [popup, setpopup] = useState(false);
 
   let [origin, setOrigin] = useState("");
   let [Destination, setDestinationo] = useState("");
@@ -195,9 +197,9 @@ export default function Search() {
     }
   };
   var data = {
-    AdultCount: adult_no,
-    ChildCount: child_no,
-    InfantCount: infant_no,
+    AdultCount: adults,
+    ChildCount: children,
+    InfantCount: infants,
     JourneyType: selectValue,
     // 1 - oneway , 2 - return, 3 - multiCity, 4- advance search
     Segments: [
@@ -223,7 +225,7 @@ export default function Search() {
     }
     const performApiCall = async (requestData) => {
       try {
-        console.log(data)
+        console.log(data);
         const response = await fetch("http://13.235.99.157/search_flights", {
           method: "POST",
           headers: {
@@ -248,6 +250,68 @@ export default function Search() {
     performApiCall(data);
     // console.log(data)
   };
+
+  const toggleSection = (section) => {
+    if (popup) {
+      setpopup(false);
+    } else {
+      setpopup(true);
+    }
+  };
+
+  const incrementCount = (section) => {
+    switch (section) {
+      case "adults":
+        setAdults(adults + 1);
+        break;
+      case "children":
+        setChildren(children + 1);
+        break;
+      case "infants":
+        setInfants(infants + 1);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const decrementCount = (section) => {
+    switch (section) {
+      case "adults":
+        setAdults(adults > 0 ? adults - 1 : 0);
+        break;
+      case "children":
+        setChildren(children > 0 ? children - 1 : 0);
+        break;
+      case "infants":
+        setInfants(infants > 0 ? infants - 1 : 0);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const totalCount = adults + children + infants;
+
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        // Clicked outside the popup, close it
+        setpopup(false);
+      }
+    };
+
+    // Attach the event listener to the document
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Flight Search"} />
@@ -263,7 +327,7 @@ export default function Search() {
               <option value="2">Return</option>
               {/* <option value="3">multiCity</option> */}
             </select>
-            <div className="count">
+            {/* <div className="count">
               <div>
                 <input
                   type="checkbox"
@@ -324,6 +388,39 @@ export default function Search() {
                     }}
                   />
                 )}
+              </div>
+            </div> */}
+            <div className="box" >
+              <label onClick={() => toggleSection("")}>Travelers: {totalCount}</label>
+              <div
+                className="travelers-input"
+                style={{ display: popup ? "block" : "none" }}
+                ref={popupRef}
+              >
+                <div className="section">
+                  Adults
+                  <div>
+                    <button onClick={() => decrementCount("adults")}>-</button>
+                    {adults}
+                    <button onClick={() => incrementCount("adults")}>+</button>
+                  </div>
+                </div>
+                <div className="section">
+                  Children
+                  <div>
+                    <button onClick={() => decrementCount("children")}>-</button>
+                    {children}
+                    <button onClick={() => incrementCount("children")}>+</button>
+                  </div>
+                </div>
+                <div className="section">
+                  Infants
+                  <div>
+                    <button onClick={() => decrementCount("infants")}>-</button>
+                    {infants}
+                    <button onClick={() => incrementCount("infants")}>+</button>
+                  </div>
+                </div>
               </div>
             </div>
             <label>
