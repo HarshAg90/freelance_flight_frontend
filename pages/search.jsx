@@ -4,12 +4,10 @@ import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 
 const SelectOptionsExample = ({
-  selectedOption,
-  setSelectedOption,
-  str_desp,
-}) => {
-  //   const [selectedOption, setSelectedOption] = useState('');
-
+    selectedOption,
+    setSelectedOption,
+    str_desp,
+  }) => {
   const optionsData = [
     { name: "Andhra Pradesh", value: "AND" },
     { name: "Arunachal Pradesh", value: "ARU" },
@@ -50,9 +48,6 @@ const SelectOptionsExample = ({
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
-  // <div>
-  // <label>Select State:</label>
   return (
     <select
       class="display-block"
@@ -98,23 +93,39 @@ const FlightSearchResults = ({ results, onResultClick }) => {
                 padding: "10px",
                 margin: "10px",
               }}
+              className="results_tile"
             >
-              {console.log(result)}
-              <p>
-                Name: <span>{result.Segments[0][0].Airline.AirlineName}</span>,
-                Code: <span>{result.Segments[0][0].Airline.AirlineCode}</span>
-              </p>
-              <p>
-                Takeoff Time: {result.Segments[0][0].ArrTime}, Status{" "}
-                {result.Segments[0][0].FlightStatus}
-              </p>
-              <p>Fare - Rs {result.Fare.PublishedFare}</p>
-              {/* <p>ResultIndex: {result.ResultIndex}</p>
-              <p>Source: {result.Source}</p> */}
-              {/* Add more parameters as needed */}
-              <button onClick={() => handleResultClick(result)}>
-                Book Flight
-              </button>
+              {/* {console.log(result)} */}
+              <div className="top">
+                <h2>{result.Segments[0][0].FlightStatus}</h2>
+                <p>
+                  Airline:{" "}
+                  <span>{result.Segments[0][0].Airline.AirlineName}</span>,
+                  Code: <span>{result.Segments[0][0].Airline.AirlineCode}</span>
+                </p>
+                <p></p>
+              </div>
+              <div className="mid">
+                <p>
+                  {result.Segments[0][0].Origin.CityName},
+                  {result.Segments[0][0].Origin.CountryName} {">"}{" "}
+                  {result.Segments[0][0].Destination.CityName},
+                  {result.Segments[0][0].Origin.CountryName}
+                </p>
+                <p>
+                  takeoff: {breakdownDateTime(result.Segments[0][0].DepTime).date} @ {breakdownDateTime(result.Segments[0][0].DepTime).time}
+                </p>
+                <p>
+                landing: {breakdownDateTime(result.Segments[0][0].ArrTime).date} @ {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                  {}
+                </p>
+              </div>
+              <div className="down">
+                <p>Fare - Rs {result.Fare.PublishedFare}</p>
+                <button onClick={() => handleResultClick(result)}>
+                  Book Flight
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -123,27 +134,61 @@ const FlightSearchResults = ({ results, onResultClick }) => {
   );
 };
 
+function breakdownDateTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString);
+
+  // Format date
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  const dateFormatted = dateTime.toLocaleDateString('en-GB', options).replace(/\//g, '-');
+
+  // Format time
+  const timeFormatted = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  return { date: dateFormatted, time: timeFormatted };
+}
+
 const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
-  // State variable to store the selected date and time
-  //   const [selectedDateTime, setSelectedDateTime] = useState('');
-
-  // Event handler for date and time change
-  const handleDateTimeChange = (event) => {
-    setSelectedDateTime(event.target.value);
+  let [date, changeDate] = useState("");
+  let [time, changeTime] = useState("00:00:00");
+  const list = {
+    Anytime: "00:00:00",
+    Morning: "08:00:00",
+    AfterNoon: "14:00:00",
+    Evening: "19:00:00",
+    Night: "01:00:00",
   };
-
-  // <div>
-  //   <label>Select Date and Time:</label>
+  const handleSelect = (event) => {
+    changeTime(event.target.value);
+    setSelectedDateTime(`${date}T${event.target.value}`);
+    console.log(`${date}T${event.target.value}`)
+    console.log(selectedDateTime);
+  };
+  const handleDateTimeChange = (event) => {
+    changeDate(event.target.value);
+    setSelectedDateTime(`${event.target.value}T${time}`);
+    console.log(selectedDateTime);
+  };
   return (
-    <input
-      type="datetime-local"
-      value={selectedDateTime}
-      onChange={handleDateTimeChange}
-    />
+    <div className="">
+      <select
+        class="display-block"
+        value={time}
+        onChange={handleSelect}
+      >
+        <option value="00:00:00">Anytime</option>
+        <option value="08:00:00">Morning</option>
+        <option value="14:00:00">AfterNoon</option>
+        <option value="19:00:00">Evening</option>
+        <option value="01:00:00">Night</option>
+        {/* <option value="3">multiCity</option> */}
+      </select>
+      <input
+        type="date"
+        value={date}
+        onChange={handleDateTimeChange}
+      />
+    </div>
   );
-  //   {/* Display the selected date and time */}
-  //   {selectedDateTime && <p>Selected Date and Time: {selectedDateTime}</p>}
-  // </div>
 };
 
 export default function Search() {
@@ -197,9 +242,9 @@ export default function Search() {
     }
   };
   var data = {
-    AdultCount: adults,
-    ChildCount: children,
-    InfantCount: infants,
+    AdultCount: adults.toString(),
+    ChildCount: children.toString(),
+    InfantCount: infants.toString(),
     JourneyType: selectValue,
     // 1 - oneway , 2 - return, 3 - multiCity, 4- advance search
     Segments: [
@@ -226,7 +271,7 @@ export default function Search() {
     const performApiCall = async (requestData) => {
       try {
         console.log(data);
-        const response = await fetch("http://13.235.99.157/search_flights", {
+        const response = await fetch("http://localhost:5000/search_flights", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -304,11 +349,11 @@ export default function Search() {
     };
 
     // Attach the event listener to the document
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -327,71 +372,10 @@ export default function Search() {
               <option value="2">Return</option>
               {/* <option value="3">multiCity</option> */}
             </select>
-            {/* <div className="count">
-              <div>
-                <input
-                  type="checkbox"
-                  checked={adult}
-                  onChange={() => {
-                    adult ? setAdults(false) : setAdults(true);
-                  }}
-                />
-                <label>Adults</label>
-                {adult && (
-                  <input
-                    type="text"
-                    placeholder="Input 1"
-                    value={adult_no}
-                    onChange={(e) => {
-                      setAdult_no(e.target.value);
-                    }}
-                  />
-                )}
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  checked={child}
-                  onChange={() => {
-                    child ? setChild(false) : setChild(true);
-                  }}
-                />
-                <label>childs</label>
-                {child && (
-                  <input
-                    type="text"
-                    placeholder="Input 1"
-                    value={child_no}
-                    onChange={(e) => {
-                      setChild_no(e.target.value);
-                    }}
-                  />
-                )}
-              </div>
-
-              <div>
-                <input
-                  type="checkbox"
-                  checked={infant}
-                  onChange={() => {
-                    infant ? setInfant(false) : setInfant(true);
-                  }}
-                />
-                <label>infants</label>
-                {infant && (
-                  <input
-                    type="text"
-                    placeholder="Input 1"
-                    value={infant_no}
-                    onChange={(e) => {
-                      setInfant_no(e.target.value);
-                    }}
-                  />
-                )}
-              </div>
-            </div> */}
-            <div className="box" >
-              <label onClick={() => toggleSection("")}>Travelers: {totalCount}</label>
+            <div className="box">
+              <label onClick={() => toggleSection("")}>
+                Travelers: {totalCount}
+              </label>
               <div
                 className="travelers-input"
                 style={{ display: popup ? "block" : "none" }}
@@ -408,9 +392,13 @@ export default function Search() {
                 <div className="section">
                   Children
                   <div>
-                    <button onClick={() => decrementCount("children")}>-</button>
+                    <button onClick={() => decrementCount("children")}>
+                      -
+                    </button>
                     {children}
-                    <button onClick={() => incrementCount("children")}>+</button>
+                    <button onClick={() => incrementCount("children")}>
+                      +
+                    </button>
                   </div>
                 </div>
                 <div className="section">
@@ -423,8 +411,8 @@ export default function Search() {
                 </div>
               </div>
             </div>
-            <label>
-              Cabin Class:
+            <div className="">
+              <label>Cabin Class:</label>
               <select
                 class="display-block"
                 value={seat_class}
@@ -437,7 +425,7 @@ export default function Search() {
                 <option value="5">Premium</option>
                 <option value="6">First</option>
               </select>
-            </label>
+            </div>
           </div>
           <div className="mid">
             <SelectOptionsExample
@@ -453,14 +441,14 @@ export default function Search() {
           </div>
           <div className="down">
             <div className="">
-              <label>Arrival Date</label>
+              <label>Departure Date</label>
               <DateTimePicker
                 selectedDateTime={departure_time}
                 setSelectedDateTime={setDepTime}
               />
             </div>
             <div className="">
-              <label>Departure Date</label>
+              <label>Arrival Date</label>
               <DateTimePicker
                 selectedDateTime={arrival_time}
                 setSelectedDateTime={setArrTime}
