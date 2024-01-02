@@ -178,6 +178,33 @@
   h2 {
     font-size: 1.4rem;
   }
+
+  .input_form{
+    background: rgba(214, 255, 148, 0.823);
+    padding: 40px 10%;
+    .gr{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 20px;
+      background: transparent;
+      margin: 10px 0;
+    }
+    input{
+      padding: 5px 10px;
+      border: none;
+      border-bottom: 1px solid black;
+      background: transparent;
+    }
+    button{
+      padding: 10px 20px;
+      background-color: red;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.3rem;
+      margin: 20px 0;
+    }
+  }
 }
 
 .nice-select {

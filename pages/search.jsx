@@ -170,7 +170,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
   };
   return (
     <div className="">
-      <select
+      {/* <select
         class="display-block"
         value={time}
         onChange={handleSelect}
@@ -180,8 +180,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
         <option value="14:00:00">AfterNoon</option>
         <option value="19:00:00">Evening</option>
         <option value="01:00:00">Night</option>
-        {/* <option value="3">multiCity</option> */}
-      </select>
+      </select> */}
       <input
         type="date"
         value={date}

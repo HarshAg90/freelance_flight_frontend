@@ -55,22 +55,27 @@ export default function book() {
         </div>
         </div>
 
-        <div className="form">
-          <input type="text" placeholder="Title" />
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="text" placeholder="Pax Type" />
-          <input type="text" placeholder="Date Of Birth" />
-          <input type="text" placeholder="Gender" />
+      </div>
+      <div className="input_form">
+        <h1>Please enter your info to continue booking</h1>
+        <div className="gr">
+          <input type="text" placeholder="Title*" />
+          <input type="text" placeholder="First Name*" />
+          <input type="text" placeholder="Last Name*" />
+          <input type="text" placeholder="Pax Type*" />
+          <input type="text" placeholder="Date Of Birth*" />
+          <input type="text" placeholder="Gender*" />
           <input type="text" placeholder="Passport Number" />
+          
           <input type="text" placeholder="Passport Expiry" />
-          <input type="text" placeholder="Address Line" />
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Country Code" />
-          <input type="text" placeholder="Contact Number" />
-          <input type="text" placeholder="Email" />
+          <input type="text" placeholder="Address Line*" />
+          <input type="text" placeholder="City*" />
+          <input type="text" placeholder="Country Code*" />
+          <input type="text" placeholder="Contact Number*" />
+          <input type="text" placeholder="Email*" />
           <input type="text" placeholder="Is Lead Pax" />
         </div>
+        <button>Continue to payment page</button>
       </div>
     </div>
     </Layout>
