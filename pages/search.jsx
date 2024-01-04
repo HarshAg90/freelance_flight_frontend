@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import PageBanner from "@/src/components/PageBanner";
+import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
-
+import cityData from "@/src/components/data";
+import { server_url } from "@/src/config";
 const SelectOptionsExample = ({
-    selectedOption,
-    setSelectedOption,
-    str_desp,
-  }) => {
+  selectedOption,
+  setSelectedOption,
+  str_desp,
+}) => {
   const optionsData = [
     { name: "Andhra Pradesh", value: "AND" },
     { name: "Arunachal Pradesh", value: "ARU" },
@@ -62,20 +64,10 @@ const SelectOptionsExample = ({
       ))}
     </select>
   );
-  // {/* Display the selected option */}
-  // {selectedOption && (
-  //   <p>
-  //     Selected State:{" "}
-  //     {optionsData.find((option) => option.value === selectedOption).name}
-  //   </p>
-  // )} */}
-  // </div>
 };
 
 const FlightSearchResults = ({ results, onResultClick }) => {
-  // Function to handle result click
   const handleResultClick = (resultIndex) => {
-    // Call the provided callback function with the resultIndex
     onResultClick(resultIndex);
   };
 
@@ -96,6 +88,7 @@ const FlightSearchResults = ({ results, onResultClick }) => {
               className="results_tile"
             >
               {/* {console.log(result)} */}
+
               <div className="top">
                 <h2>{result.Segments[0][0].FlightStatus}</h2>
                 <p>
@@ -108,20 +101,30 @@ const FlightSearchResults = ({ results, onResultClick }) => {
               <div className="mid">
                 <p>
                   {result.Segments[0][0].Origin.CityName},
-                  {result.Segments[0][0].Origin.CountryName} {">"}{" "}
+                  {result.Segments[0][0].Origin.CountryName} @{" "}
+                  {breakdownDateTime(result.Segments[0][0].DepTime).time} {">"}{" "}
                   {result.Segments[0][0].Destination.CityName},
-                  {result.Segments[0][0].Origin.CountryName}
+                  {result.Segments[0][0].Destination.CountryName} @{" "}
+                  {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                </p>
+                {/* <p>
+                  takeoff:{" "}
+                  {breakdownDateTime(result.Segments[0][0].DepTime).date} @{" "}
+                  {breakdownDateTime(result.Segments[0][0].DepTime).time}
                 </p>
                 <p>
-                  takeoff: {breakdownDateTime(result.Segments[0][0].DepTime).date} @ {breakdownDateTime(result.Segments[0][0].DepTime).time}
-                </p>
-                <p>
-                landing: {breakdownDateTime(result.Segments[0][0].ArrTime).date} @ {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                  landing:{" "}
+                  {breakdownDateTime(result.Segments[0][0].ArrTime).date} @{" "}
+                  {breakdownDateTime(result.Segments[0][0].ArrTime).time}
                   {}
-                </p>
+                </p> */}
               </div>
               <div className="down">
-                <p>Fare - Rs {result.Fare.PublishedFare}</p>
+                <p>
+                  Fare - {result.FareDataMultiple[0].Fare.Currency}{" "}
+                  {result.Fare?.PublishedFare ? result.Fare.PublishedFare : (result.OfferedFare? result.OfferedFare:'')}
+                  {/* FareDataMultiple */}
+                </p>
                 <button onClick={() => handleResultClick(result)}>
                   Book Flight
                 </button>
@@ -138,11 +141,16 @@ function breakdownDateTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);
 
   // Format date
-  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-  const dateFormatted = dateTime.toLocaleDateString('en-GB', options).replace(/\//g, '-');
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const dateFormatted = dateTime
+    .toLocaleDateString("en-GB", options)
+    .replace(/\//g, "-");
 
   // Format time
-  const timeFormatted = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const timeFormatted = dateTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return { date: dateFormatted, time: timeFormatted };
 }
@@ -160,7 +168,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
   const handleSelect = (event) => {
     changeTime(event.target.value);
     setSelectedDateTime(`${date}T${event.target.value}`);
-    console.log(`${date}T${event.target.value}`)
+    console.log(`${date}T${event.target.value}`);
     console.log(selectedDateTime);
   };
   const handleDateTimeChange = (event) => {
@@ -181,11 +189,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
         <option value="19:00:00">Evening</option>
         <option value="01:00:00">Night</option>
       </select> */}
-      <input
-        type="date"
-        value={date}
-        onChange={handleDateTimeChange}
-      />
+      <input type="date" value={date} onChange={handleDateTimeChange} />
     </div>
   );
 };
@@ -211,6 +215,7 @@ export default function Search() {
   let [searchResponse, setSearchResponse] = useState();
 
   let [bookingData, setBookingData] = useState();
+  let [loading, setloading] = useState(false);
 
   const router = useRouter();
 
@@ -267,10 +272,11 @@ export default function Search() {
       alert("Please select departure and arrival time");
       return false;
     }
+    setloading(true);
     const performApiCall = async (requestData) => {
       try {
         console.log(data);
-        const response = await fetch("http://localhost:5000/search_flights", {
+        const response = await fetch(`${server_url}/search_flights`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -278,16 +284,23 @@ export default function Search() {
           },
           body: JSON.stringify({ data: requestData }),
         });
-
+        
         if (response.ok) {
           const data = await response.json();
+          setloading(false)
           // console.log('API Response:', data);
-          setSearchResponse(data);
-          setSearch(true);
+          if (data.Error.ErrorCode === "100") {
+            alert("no result found, please select different city");
+          } else {
+            setSearchResponse(data);
+            setSearch(true);
+          }
         } else {
+          setloading(false);
           alert("API Request Failed:", response.status, response.statusText);
         }
       } catch (error) {
+        setloading(false);
         alert("An error occurred during the API request:", error);
       }
     };
@@ -360,17 +373,20 @@ export default function Search() {
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Flight Search"} />
       <div id="Search_page">
+      <div className={loading?'loader':""}></div>
         <div className="querry">
           <div className="top">
-            <select
-              class="display-block"
-              value={selectValue}
-              onChange={handleSelectChange}
-            >
-              <option value="1">OneWay</option>
-              <option value="2">Return</option>
-              {/* <option value="3">multiCity</option> */}
-            </select>
+            <CitySelector
+              cityData={cityData}
+              setSelectedOption={setOrigin}
+              str_desp={"From where?"}
+            />
+            <CitySelector
+              cityData={cityData}
+              setSelectedOption={setDestinationo}
+              str_desp={"To where?"}
+            />
+
             <div className="box">
               <label onClick={() => toggleSection("")}>
                 Travelers: {totalCount}
@@ -427,16 +443,16 @@ export default function Search() {
             </div>
           </div>
           <div className="mid">
-            <SelectOptionsExample
+            {/* <SelectOptionsExample
               selectedOption={origin}
               setSelectedOption={setOrigin}
               str_desp={"From where?"}
             />
             <SelectOptionsExample
-              selectedOption={Destination}
-              setSelectedOption={setDestinationo}
-              str_desp={"To where?"}
-            />
+            selectedOption={Destination}
+            setSelectedOption={setDestinationo}
+            str_desp={"To where?"}
+          /> */}
           </div>
           <div className="down">
             <div className="">
@@ -453,14 +469,23 @@ export default function Search() {
                 setSelectedDateTime={setArrTime}
               />
             </div>
+            <select
+              class="display-block"
+              value={selectValue}
+              onChange={handleSelectChange}
+            >
+              <option value="1">OneWay</option>
+              <option value="2">Return</option>
+              {/* <option value="3">multiCity</option> */}
+            </select>
+            <button
+              onClick={() => {
+                Search_function();
+              }}
+            >
+              Search
+            </button>
           </div>
-          <button
-            onClick={() => {
-              Search_function();
-            }}
-          >
-            Search
-          </button>
         </div>
         {search && (
           <FlightSearchResults

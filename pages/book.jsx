@@ -3,6 +3,23 @@ import React from "react";
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 
+function breakdownDateTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString);
+
+  // Format date
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const dateFormatted = dateTime
+    .toLocaleDateString("en-GB", options)
+    .replace(/\//g, "-");
+
+  // Format time
+  const timeFormatted = dateTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return { date: dateFormatted, time: timeFormatted };
+}
 
 export default function book() {
   const router = useRouter();
@@ -12,7 +29,6 @@ export default function book() {
 
   console.log(data);
   let flight_details = data.Segments[0][0];
-  console.log(data.Segments[0][0]);
   return (
     <Layout extraClass={"pt-160"}>
     <PageBanner pageTitle={"Flight Booking"} />
@@ -29,7 +45,7 @@ export default function book() {
           <h2>Airline Name: <span>{flight_details.Airline.AirlineName}</span></h2>
           <h2>Class: <span>{flight_details.Airline.FareClass}</span></h2>
           <p>Flight Number <span>{flight_details.Airline.FlightNumber}</span></p>
-          <p><span>{flight_details.Airline.OperatingCarrier}</span></p>
+          <p>Opperating carrier: <span>{flight_details.Airline.OperatingCarrier}</span></p>
         </div>
         <div className="details">
           <div className="ori_dest">
@@ -47,11 +63,12 @@ export default function book() {
             </div>
         </div>
         <div className="departure">
-          <p>Departure time: <span>{flight_details.ArrTime}</span></p>
-          <p>Arrival time: <span>{flight_details.ArrTime}</span></p>
+          <p>Departure time: <span>{breakdownDateTime(flight_details.DepTime).date} @ {breakdownDateTime(flight_details.DepTime).time}</span></p>
+          <p>Arrival time: <span>{breakdownDateTime(flight_details.ArrTime).date} @ {breakdownDateTime(flight_details.ArrTime).time}</span></p>
           <p>Flight Duration: <span>{flight_details.Duration} minuts</span></p>
-            <p>Baggage: {flight_details.Baggage}</p>
-            <p>CabbinBaggage: {flight_details.CabinBaggage}</p>
+          <p>Baggage: {flight_details.Baggage}</p>
+          <p>CabbinBaggage: {flight_details.CabinBaggage}</p>
+          <p>Fare - <span>{data.FareDataMultiple[0].Fare.Currency} {data.Fare?.PublishedFare ? data.Fare.PublishedFare : (data.OfferedFare? data.OfferedFare:'')}</span></p>
         </div>
         </div>
 

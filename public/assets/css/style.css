@@ -71,7 +71,9 @@
 /* Your existing styles for .primary-menu */
 .primary-menu {
   height: 6vh !important;
-  margin-top: 1vh;
+  /* position: fixed; */
+  transform: translateY(10px);
+  /* margin-top: 1vh; */
 }
 
 .primary-menu .main-btn{
