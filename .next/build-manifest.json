@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/book": [
+    "/bookingPayment": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/book.js"
+      "static/chunks/pages/bookingPayment.js"
     ],
     "/search": [
       "static/chunks/webpack.js",

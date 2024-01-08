@@ -5,6 +5,8 @@ import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
+
+
 const SelectOptionsExample = ({
   selectedOption,
   setSelectedOption,
@@ -178,28 +180,14 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
   };
   return (
     <div className="">
-      {/* <select
-        class="display-block"
-        value={time}
-        onChange={handleSelect}
-      >
-        <option value="00:00:00">Anytime</option>
-        <option value="08:00:00">Morning</option>
-        <option value="14:00:00">AfterNoon</option>
-        <option value="19:00:00">Evening</option>
-        <option value="01:00:00">Night</option>
-      </select> */}
       <input type="date" value={date} onChange={handleDateTimeChange} />
     </div>
   );
 };
 
 export default function Search() {
-  // let [ifadult, setifAdults] = useState(true);
   let [adults, setAdults] = useState(1);
-  // let [ifchild, setifChild] = useState(false);
   let [children, setChildren] = useState(0);
-  // let [ifInfants, setifInfants] = useState(false);
   let [infants, setInfants] = useState(0);
 
   let [popup, setpopup] = useState(false);
@@ -222,12 +210,10 @@ export default function Search() {
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
     setSelectValue(selectedValue);
-    // console.log('Selected value:', selectedValue);
   };
   const handleClassChange = (e) => {
     const selectedValue = e.target.value;
     setSeat_Class(selectedValue);
-    // console.log('Selected value:', selectedValue);
   };
   var book_req_Fn = async (data) => {
     // console.log(data)
@@ -239,6 +225,7 @@ export default function Search() {
     setBookingData({ ...rest, ...data });
     console.log(bookingData);
     if (bookingData) {
+
       router.push({
         pathname: "/book",
         query: { data: JSON.stringify(bookingData) },
@@ -292,6 +279,7 @@ export default function Search() {
           if (data.Error.ErrorCode === "100") {
             alert("no result found, please select different city");
           } else {
+            console.log(data)
             setSearchResponse(data);
             setSearch(true);
           }
