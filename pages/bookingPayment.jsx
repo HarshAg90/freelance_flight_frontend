@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
+import { server_url } from "@/src/config";
 
 export default function BookingPayment({}) {
   let [isPaid, setIsPaid] = useState(false);
+  let [isLoading, setloading] = useState(false);
   let [PaymentPortalGen, setPaymentPortalGen] = useState(false);
-  let [PaymentPortal, setPaymentPoratl] = useState(false);
+  let [PaymentPortal, setPaymentPortal] = useState(false);
 
   const router = useRouter();
   const data = JSON.parse(router.query.data);
@@ -14,16 +16,14 @@ export default function BookingPayment({}) {
   console.log(data);
 
   let make_payment_request = () => {
-    // if (!departure_time || !arrival_time) {
-    //   alert("Please select departure and arrival time");
-    //   return false;
-    // }
+    if (!data) {
+      alert("data not found, please refill forum in previous page");
+      return false;
+    }
     setloading(true);
-
-
     const performApiCall = async (data) => {
-      try {
-        console.log(data);
+      // try {
+        // console.log(data);
         const response = await fetch(`${server_url}/create_payment_request`, {
           method: "POST",
           headers: {
@@ -37,20 +37,21 @@ export default function BookingPayment({}) {
           const data = await response.json();
           setloading(false);
           // console.log('API Response:', data);
-          if (data.ErrorCode === "100") {
-            alert("no result found, please select different city");
-          } else {
-            setSearchResponse(data);
-            setSearch(true);
+          if (data?.resp) {
+            // alert("payment request created")
+            setPaymentPortalGen(true)
+            setPaymentPortal(data.resp)
+          }else{
+            alert("error creating payment request")
           }
         } else {
           setloading(false);
           alert("API Request Failed:", response.status, response.statusText);
         }
-      } catch (error) {
-        setloading(false);
-        alert("An error occurred during the API request:", error);
-      }
+      // } catch (error) {
+      //   setloading(false);
+      //   alert("An error occurred during the API request:", error);
+      // }
     };
     performApiCall(data);
   };
@@ -58,8 +59,8 @@ export default function BookingPayment({}) {
     setloading(true);
     const performApiCall = async (data) => {
       try {
-        console.log(data);
-        const response = await fetch(`${server_url}/create_payment_request`, {
+        // console.log(data);
+        const response = await fetch(`${server_url}/check_payment_status`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -72,11 +73,11 @@ export default function BookingPayment({}) {
           const data = await response.json();
           setloading(false);
           // console.log('API Response:', data);
-          if (data.ErrorCode === "100") {
-            alert("no result found, please select different city");
+          if (data) {
+            setIsPaid(true);
           } else {
-            setSearchResponse(data);
-            setSearch(true);
+            alert("Payment incomplete please wait or cross check");
+            // setSearchResponse(data);
           }
         } else {
           setloading(false);
@@ -95,15 +96,13 @@ export default function BookingPayment({}) {
       alert("Payment not completed, please deposite money with us upfront");
       return false;
     }
-    if (!departure_time || !arrival_time) {
-      alert("Please select departure and arrival time");
-      return false;
-    }
     setloading(true);
     const performApiCall = async (requestData) => {
       try {
+
         console.log(data);
-        const response = await fetch(`${server_url}/bookFlight`, {
+        data.booking_data.TraceId = `${data.booking_data.TraceId}`
+        const response = await fetch(`${server_url}/book_flight`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -115,12 +114,16 @@ export default function BookingPayment({}) {
         if (response.ok) {
           const data = await response.json();
           setloading(false);
-          // console.log('API Response:', data);
-          if (data.Error.ErrorCode === "100") {
-            alert("no result found, please select different city");
+          console.log(data);
+          if (data.Error.ErrorCode) {
+            alert("Error in response");
+            // console.log(data)
           } else {
-            setSearchResponse(data);
-            setSearch(true);
+            // console.log("resp")
+            router.push({
+              pathname: "/BookingSuccessfull",
+              query: { data: JSON.stringify(data) },
+            });
           }
         } else {
           setloading(false);
@@ -219,13 +222,13 @@ export default function BookingPayment({}) {
               Platform Charge (15%): <span>{(data.flight_data.FareDataMultiple[0].OfferedFare * 0.15).toFixed(2)}</span>
             </p>
           </div>
-        <button>Pay</button>
-        {PaymentPortal && (
-        <button>Check Status</button>
+        <button onClick={()=>make_payment_request()}>Pay</button>
+        {PaymentPortalGen && (
+        <button onClick={()=>check_payment_request()}>Check Status</button>
         )}
         <p className="customer_care">*if money deducted and not showing here, please wait 10 minuts, if still a problem contact <span>XXXXXXXX98</span> </p>
         </div>
-        <button className={isPaid?"book success":"book"}>Book Flight</button>
+        <button className={isPaid?"book success":"book"} onClick={()=>book_flight()}>Book Flight</button>
       </div>
     </Layout>
   );
