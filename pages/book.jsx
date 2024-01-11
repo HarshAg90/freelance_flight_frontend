@@ -204,7 +204,7 @@ export default function book() {
         ):(
           <div className="btns">
             <button className="addP" onClick={handleAddPassenger}>Add Passenger</button>
-            <button className="submit"  onClick={()=>redirreect()}>Continue to payment page</button>
+            {(bookingData.Passengers.length >0) && (<button className="submit"  onClick={()=>redirreect()}>Continue to payment page</button>)}
           </div>
           )}
       </div>

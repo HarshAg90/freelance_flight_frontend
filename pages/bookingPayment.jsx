@@ -3,6 +3,7 @@ import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
 import { server_url } from "@/src/config";
+import Payment from "@/src/components/payment";
 
 export default function BookingPayment({}) {
   let [isPaid, setIsPaid] = useState(false);
@@ -140,6 +141,11 @@ export default function BookingPayment({}) {
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Book Flight"} />
+      <div className="top1">
+          <p className="">Enter Your details</p>
+          <p className="selected">Complete Payment</p>
+          <p className="">Book Your Flight</p>
+        </div>
       <div id="BookingPayment">
         <h1>Please confirm your payment</h1>
         <hr />
@@ -226,6 +232,7 @@ export default function BookingPayment({}) {
         {PaymentPortalGen && (
         <button onClick={()=>check_payment_request()}>Check Status</button>
         )}
+        {/* <Payment/> */}
         <p className="customer_care">*if money deducted and not showing here, please wait 10 minuts, if still a problem contact <span>XXXXXXXX98</span> </p>
         </div>
         <button className={isPaid?"book success":"book"} onClick={()=>book_flight()}>Book Flight</button>

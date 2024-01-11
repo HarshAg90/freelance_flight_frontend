@@ -7,19 +7,20 @@ const CitySelector= ({ cityData,setSelectedOption,str_desp }) => {
     const [selectedValue, setSelectedValue] = useState('');
     const [isInputFocused, setIsInputFocused] = useState(false);
     const [isListHovered, setIsListHovered] = useState(false);
-  
-    // console.log(cityData);
+    const majorCities = ["DEL",'BLR','BOM','HDD','MAA'];
     useEffect(() => {
-      // Filter the cities based on the search term
-      const filtered = Object.keys(cityData).filter((key) =>
-        cityData[key].toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    //   alert('done')
-      setFilteredCities(filtered);
+      if(searchTerm !==''){
+        const filtered = Object.keys(cityData).filter((key) =>
+          cityData[key].toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredCities(filtered);
+        console.log(filteredCities)
+      }else{
+        setFilteredCities(majorCities);
+      }
     }, [searchTerm, cityData]);
   
     const handleItemClick = (key) => {
-      // Set the selected key and value when an item is clicked
       setSelectedKey(key);
       setSelectedOption(key)
       setSelectedValue(cityData[key]);

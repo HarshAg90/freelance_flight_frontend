@@ -5,6 +5,8 @@ import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
+import { all } from "axios";
+import { home1Slider } from "@/src/sliderProps";
 
 
 const SelectOptionsExample = ({
@@ -75,7 +77,7 @@ const FlightSearchResults = ({ results, onResultClick }) => {
 
   return (
     <div className="search_res">
-      <h2>Available flights</h2>
+      <h1>Available Flights</h1>
       {results.map((resultGroup, index) => (
         <div key={index} className="results">
           {/* <h3>Result Group {index + 1}</h3> */}
@@ -93,23 +95,22 @@ const FlightSearchResults = ({ results, onResultClick }) => {
 
               <div className="top">
                 <h2>{result.Segments[0][0].FlightStatus}</h2>
-                <p>
+                <h2>
                   Airline:{" "}
-                  <span>{result.Segments[0][0].Airline.AirlineName}</span>,
+                  <span>{result.Segments[0][0].Airline.AirlineName}</span> |
                   Code: <span>{result.Segments[0][0].Airline.AirlineCode}</span>
-                </p>
-                <p></p>
-              </div>
-              <div className="mid">
+                </h2>
                 <p>
                   {result.Segments[0][0].Origin.CityName},
                   {result.Segments[0][0].Origin.CountryName} @{" "}
-                  {breakdownDateTime(result.Segments[0][0].DepTime).time} {">"}{" "}
+                  <span> {breakdownDateTime(result.Segments[0][0].DepTime).time}</span> {">"}{" "}
                   {result.Segments[0][0].Destination.CityName},
                   {result.Segments[0][0].Destination.CountryName} @{" "}
-                  {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                  <span>{breakdownDateTime(result.Segments[0][0].ArrTime).time}</span>
                 </p>
-                {/* <p>
+              </div>
+              {/* <div className="mid">
+                <p>
                   takeoff:{" "}
                   {breakdownDateTime(result.Segments[0][0].DepTime).date} @{" "}
                   {breakdownDateTime(result.Segments[0][0].DepTime).time}
@@ -119,22 +120,23 @@ const FlightSearchResults = ({ results, onResultClick }) => {
                   {breakdownDateTime(result.Segments[0][0].ArrTime).date} @{" "}
                   {breakdownDateTime(result.Segments[0][0].ArrTime).time}
                   {}
-                </p> */}
-              </div>
+                </p>
+              </div> */}
               <div className="down">
                 <p>
-                  Fare - {result.FareDataMultiple[0].Fare.Currency}{" "}
-                  {result.Fare?.PublishedFare ? result.Fare.PublishedFare : (result.OfferedFare? result.OfferedFare:'')}
+                  Fare - <span>{result.FareDataMultiple[0].Fare.Currency}{" "}
+                  {result.Fare?.PublishedFare ? result.Fare.PublishedFare : (result.OfferedFare? result.OfferedFare:'')}</span>
                   {/* FareDataMultiple */}
                 </p>
                 <button onClick={() => handleResultClick(result)}>
-                  Book Flight
+                  View Details
                 </button>
               </div>
             </div>
           ))}
         </div>
       ))}
+      <h1>... No more results</h1>
     </div>
   );
 };
@@ -202,9 +204,21 @@ export default function Search() {
   let [search, setSearch] = useState(false);
   let [searchResponse, setSearchResponse] = useState();
 
+  useEffect(()=>{
+    if(departure_time){
+      console.log(departure_time)
+      const originalDate = new Date(departure_time);
+      const nextDay = new Date(originalDate);
+      nextDay.setDate(originalDate.getDate() + 2);
+      const formattedResult = `${nextDay.getFullYear()}-${(nextDay.getMonth() + 1).toString().padStart(2, '0')}-${nextDay.getDate().toString().padStart(2, '0')}T${nextDay.getHours().toString().padStart(2, '0')}:${nextDay.getMinutes().toString().padStart(2, '0')}:${nextDay.getSeconds().toString().padStart(2, '0')}`;
+      setArrTime(formattedResult)
+    }
+  },[departure_time])
+
   let [bookingData, setBookingData] = useState();
   let [loading, setloading] = useState(false);
-
+  
+  let [allOptions, setAllOptions] = useState(false);
   const router = useRouter();
 
   const handleSelectChange = (e) => {
@@ -296,6 +310,8 @@ export default function Search() {
     // console.log(data)
   };
 
+
+  // Passanger count code
   const toggleSection = (section) => {
     if (popup) {
       setpopup(false);
@@ -303,7 +319,6 @@ export default function Search() {
       setpopup(true);
     }
   };
-
   const incrementCount = (section) => {
     switch (section) {
       case "adults":
@@ -319,7 +334,6 @@ export default function Search() {
         break;
     }
   };
-
   const decrementCount = (section) => {
     switch (section) {
       case "adults":
@@ -335,27 +349,20 @@ export default function Search() {
         break;
     }
   };
-
   const totalCount = adults + children + infants;
-
   const popupRef = useRef(null);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        // Clicked outside the popup, close it
         setpopup(false);
       }
     };
-
-    // Attach the event listener to the document
     document.addEventListener("mousedown", handleClickOutside);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
 
   return (
     <Layout extraClass={"pt-160"}>
@@ -376,7 +383,7 @@ export default function Search() {
             />
 
             <div className="box">
-              <label onClick={() => toggleSection("")}>
+              <label className="tLabel" onClick={() => toggleSection("")}>
                 Travelers: {totalCount}
               </label>
               <div
@@ -414,6 +421,24 @@ export default function Search() {
                 </div>
               </div>
             </div>
+            <div className="datePicker">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
+              <DateTimePicker
+                selectedDateTime={departure_time}
+                setSelectedDateTime={setDepTime}
+              />
+            </div>
+            <button
+              className="submit"
+              onClick={() => {
+                Search_function();
+              }}
+            >
+              Search
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" onClick={()=>{setAllOptions(!allOptions)}} className="moreBtn" height="16" width="10" viewBox="0 0 320 512"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+          </div>
+          <div className={'down '+(allOptions?'show':"")}>
             <div className="">
               <label>Cabin Class:</label>
               <select
@@ -429,29 +454,9 @@ export default function Search() {
                 <option value="6">First</option>
               </select>
             </div>
-          </div>
-          <div className="mid">
-            {/* <SelectOptionsExample
-              selectedOption={origin}
-              setSelectedOption={setOrigin}
-              str_desp={"From where?"}
-            />
-            <SelectOptionsExample
-            selectedOption={Destination}
-            setSelectedOption={setDestinationo}
-            str_desp={"To where?"}
-          /> */}
-          </div>
-          <div className="down">
-            <div className="">
-              <label>Departure Date</label>
-              <DateTimePicker
-                selectedDateTime={departure_time}
-                setSelectedDateTime={setDepTime}
-              />
-            </div>
-            <div className="">
+            <div className="datePicker">
               <label>Arrival Date</label>
+              {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
               <DateTimePicker
                 selectedDateTime={arrival_time}
                 setSelectedDateTime={setArrTime}
@@ -466,21 +471,27 @@ export default function Search() {
               <option value="2">Return</option>
               {/* <option value="3">multiCity</option> */}
             </select>
-            <button
-              onClick={() => {
-                Search_function();
-              }}
-            >
-              Search
-            </button>
+            
           </div>
         </div>
-        {search && (
+      <div className="main">
+        <div className="sidebar">
+              
+        </div>
+        <div className="content">
+        {search?(
           <FlightSearchResults
             results={searchResponse.Results}
             onResultClick={book_req_Fn}
           />
-        )}
+        ):(<div className="search_res">
+          <h1>Start search for your flights....</h1>
+        </div>)}
+        </div>
+      </div>
+      <div className="sidebar">
+
+      </div>
       </div>
     </Layout>
   );

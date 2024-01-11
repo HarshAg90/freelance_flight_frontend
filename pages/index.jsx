@@ -27,134 +27,45 @@ const Index4 = () => {
       <section className="hero-section">
         {/*=== Hero Wrapper ===*/}
         <div className="hero-wrapper-four">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-12">
-                {/*=== Hero Content ===*/}
-                <div className="hero-content">
-                  <h1 className="wow fadeInDown" data-wow-delay=".5s">
-                    TIME TO TRAVEL!
-                  </h1>
-                  <div className="shape">
-                    <span>
-                      <img src="assets/images/hero/heroPlane.png" />
-                    </span>
-                  </div>
-                  {/*=== Hero Search ===*/}
-                  {/* <div
-                    className="hero-search-form mb-40 wow fadeInDown"
-                    data-wow-delay=".7s"
-                  >
-                    <form className="booking-form-two">
-                      <div className="form_group">
-                        <span>From</span>
-                        <input
-                          type="text"
-                          className="form_control"
-                          placeholder="Delhi"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <span>To</span>
-                        <label>
-                          <i className="far" />
-                        </label>
-                        <input
-                          type="text"
-                          className="form_control"
-                          placeholder="Mumbai"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <span>Departure</span>
-                        <label>
-                          <i className="far" />
-                        </label>
-                        <input
-                          type="text"
-                          className="form_control"
-                          placeholder="12 Nov, 2023"
-                          name="text"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <span>Return</span>
-                        <label>
-                          <i className="far" />
-                        </label>
-                        <input
-                          type="text"
-                          className="form_control"
-                          placeholder="One Way"
-                          name="text"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <span className="travelClass">Travelers & Class</span>
-                        <label>
-                          <i className="far" />
-                        </label>
-                        <input
-                          type="text"
-                          className="form_control"
-                          placeholder="3 Adults"
-                          name="text"
-                        />
-                      </div>
-                      <div className="form_group">
-                        <button className="booking-btn">
-                          Book Now <i className="far fa-angle-double-right" />
-                        </button>
-                      </div>
-                    </form>
-                  </div> */}
-                  {/* <img className="bookImg" src="assets/images/hero/bookImage.png" /> */}
+          <div className="hero-content">
+            <h1 className="wow fadeInDown" data-wow-delay=".5s">
+              TIME TO TRAVEL!
+            </h1>
+            <div className="shape wow fadeInDown" data-wow-delay="1s">
+              <span>
+                <img src="assets/images/hero/heroPlane.png" />
+              </span>
+            </div>
 
-                  <Link id="Index_page_search_button" href="/search">GET STARTED</Link>
-                  <div className="shapeSub">
-                    <span>
-                      <img src="assets/images/hero/heroSub.png" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="col-xl-5 d-xl-block d-none">
-                <div
-                  className="hero-image wow fadeInRight"
-                  data-wow-delay=".8s"
-                >
-                  <img
-                    src="assets/images/hero/hero-four_img-1.jpg"
-                    alt="hero image"
-                  />
-                </div>
-              </div> */}
+            <Link id="search_button" href="/search" className="wow fadeInDown" data-wow-delay="1.5s">
+              GET STARTED
+            </Link>
+
+            <div className="shapeSub wow fadeInDown" data-wow-delay="2s">
+              <span>
+                <img src="assets/images/hero/heroSub.png" />
+              </span>
             </div>
           </div>
 
-          <div className="numbers row justify-content-center">
-            <div className="col-sm-4 col-6">
+          <div className="numbers">
               {/*=== Counter Item ===*/}
-              <div className="counter-item mb-55">
+              <div className="counter-item">
                 <h2 className="number">
                   <Counter end={35} />
                   K+
                 </h2>
                 <p>Happy Traveler</p>
               </div>
-            </div>
-            <div className="col-sm-4 col-6">
               {/*=== Counter Item ===*/}
-              <div className="counter-item mb-55">
+              <div className="counter-item">
                 <h2 className="number">
                   <Counter end={42} />+
                 </h2>
                 <p>Flights</p>
               </div>
-            </div>
-            <div className="col-sm-4 col-6">
               {/*=== Counter Item ===*/}
-              <div className="counter-item mb-55">
+              <div className="counter-item">
                 <h2 className="number">
                   <Counter end={99} />%
                 </h2>
@@ -162,13 +73,11 @@ const Index4 = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* <div className="horizontalLine "></div> */}
 
-      {/*====== End Hero Section ======*/}
-      <section className="placeCarousel pt-100 pb-70">
+      <section className="">
         {/* <ImageSlider slides={slides} /> */}
         {/* <div>
       <Carousel>
