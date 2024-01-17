@@ -5,70 +5,69 @@ import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
-import { all } from "axios";
-import { home1Slider } from "@/src/sliderProps";
+// import sideimg from "@/public/assets/images/search/fairflyings_sidebar.png"
+import Image from "next/image";
 
+// const SelectOptionsExample = ({
+//   selectedOption,
+//   setSelectedOption,
+//   str_desp,
+// }) => {
+//   const optionsData = [
+//     { name: "Andhra Pradesh", value: "AND" },
+//     { name: "Arunachal Pradesh", value: "ARU" },
+//     { name: "Assam", value: "ASM" },
+//     { name: "Bihar", value: "BIH" },
+//     { name: "Chhattisgarh", value: "CHG" },
+//     { name: "Goa", value: "GOA" },
+//     { name: "Gujarat", value: "GUJ" },
+//     { name: "Haryana", value: "HAR" },
+//     { name: "Himachal Pradesh", value: "HIM" },
+//     { name: "Jharkhand", value: "JHA" },
+//     { name: "Karnataka", value: "KAR" },
+//     { name: "Kerala", value: "KER" },
+//     { name: "Madhya Pradesh", value: "MAD" },
+//     { name: "Maharashtra", value: "MAH" },
+//     { name: "Manipur", value: "MAN" },
+//     { name: "Meghalaya", value: "MEG" },
+//     { name: "Mizoram", value: "MIZ" },
+//     { name: "Nagaland", value: "NAG" },
+//     { name: "Odisha", value: "ODI" },
+//     { name: "Punjab", value: "PUN" },
+//     { name: "Rajasthan", value: "RAJ" },
+//     { name: "Sikkim", value: "SIK" },
+//     { name: "Tamil Nadu", value: "TAM" },
+//     { name: "Telangana", value: "TEL" },
+//     { name: "Tripura", value: "TRI" },
+//     { name: "Uttar Pradesh", value: "UTT" },
+//     { name: "Uttarakhand", value: "UTK" },
+//     { name: "West Bengal", value: "WES" },
+//     { name: "Andaman and Nicobar Islands", value: "ANI" },
+//     { name: "Chandigarh", value: "CHD" },
+//     { name: "Dadra and Nagar Haveli and Daman and Diu", value: "DNH" },
+//     { name: "Lakshadweep", value: "LAK" },
+//     { name: "Delhi", value: "DEL" },
+//     { name: "Puducherry", value: "PUD" },
+//   ];
 
-const SelectOptionsExample = ({
-  selectedOption,
-  setSelectedOption,
-  str_desp,
-}) => {
-  const optionsData = [
-    { name: "Andhra Pradesh", value: "AND" },
-    { name: "Arunachal Pradesh", value: "ARU" },
-    { name: "Assam", value: "ASM" },
-    { name: "Bihar", value: "BIH" },
-    { name: "Chhattisgarh", value: "CHG" },
-    { name: "Goa", value: "GOA" },
-    { name: "Gujarat", value: "GUJ" },
-    { name: "Haryana", value: "HAR" },
-    { name: "Himachal Pradesh", value: "HIM" },
-    { name: "Jharkhand", value: "JHA" },
-    { name: "Karnataka", value: "KAR" },
-    { name: "Kerala", value: "KER" },
-    { name: "Madhya Pradesh", value: "MAD" },
-    { name: "Maharashtra", value: "MAH" },
-    { name: "Manipur", value: "MAN" },
-    { name: "Meghalaya", value: "MEG" },
-    { name: "Mizoram", value: "MIZ" },
-    { name: "Nagaland", value: "NAG" },
-    { name: "Odisha", value: "ODI" },
-    { name: "Punjab", value: "PUN" },
-    { name: "Rajasthan", value: "RAJ" },
-    { name: "Sikkim", value: "SIK" },
-    { name: "Tamil Nadu", value: "TAM" },
-    { name: "Telangana", value: "TEL" },
-    { name: "Tripura", value: "TRI" },
-    { name: "Uttar Pradesh", value: "UTT" },
-    { name: "Uttarakhand", value: "UTK" },
-    { name: "West Bengal", value: "WES" },
-    { name: "Andaman and Nicobar Islands", value: "ANI" },
-    { name: "Chandigarh", value: "CHD" },
-    { name: "Dadra and Nagar Haveli and Daman and Diu", value: "DNH" },
-    { name: "Lakshadweep", value: "LAK" },
-    { name: "Delhi", value: "DEL" },
-    { name: "Puducherry", value: "PUD" },
-  ];
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-  return (
-    <select
-      class="display-block"
-      value={selectedOption}
-      onChange={handleOptionChange}
-    >
-      <option value="">{str_desp}</option>
-      {optionsData.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.name}
-        </option>
-      ))}
-    </select>
-  );
-};
+//   const handleOptionChange = (event) => {
+//     setSelectedOption(event.target.value);
+//   };
+//   return (
+//     <select
+//       class="display-block"
+//       value={selectedOption}
+//       onChange={handleOptionChange}
+//     >
+//       <option value="">{str_desp}</option>
+//       {optionsData.map((option) => (
+//         <option key={option.value} value={option.value}>
+//           {option.name}
+//         </option>
+//       ))}
+//     </select>
+//   );
+// };
 
 const FlightSearchResults = ({ results, onResultClick }) => {
   const handleResultClick = (resultIndex) => {
@@ -103,10 +102,15 @@ const FlightSearchResults = ({ results, onResultClick }) => {
                 <p>
                   {result.Segments[0][0].Origin.CityName},
                   {result.Segments[0][0].Origin.CountryName} @{" "}
-                  <span> {breakdownDateTime(result.Segments[0][0].DepTime).time}</span> {">"}{" "}
-                  {result.Segments[0][0].Destination.CityName},
+                  <span>
+                    {" "}
+                    {breakdownDateTime(result.Segments[0][0].DepTime).time}
+                  </span>{" "}
+                  {">"} {result.Segments[0][0].Destination.CityName},
                   {result.Segments[0][0].Destination.CountryName} @{" "}
-                  <span>{breakdownDateTime(result.Segments[0][0].ArrTime).time}</span>
+                  <span>
+                    {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                  </span>
                 </p>
               </div>
               {/* <div className="mid">
@@ -124,8 +128,15 @@ const FlightSearchResults = ({ results, onResultClick }) => {
               </div> */}
               <div className="down">
                 <p>
-                  Fare - <span>{result.FareDataMultiple[0].Fare.Currency}{" "}
-                  {result.Fare?.PublishedFare ? result.Fare.PublishedFare : (result.OfferedFare? result.OfferedFare:'')}</span>
+                  Fare -{" "}
+                  <span>
+                    {result.FareDataMultiple[0].Fare.Currency}{" "}
+                    {result.Fare?.PublishedFare
+                      ? result.Fare.PublishedFare
+                      : result.OfferedFare
+                      ? result.OfferedFare
+                      : ""}
+                  </span>
                   {/* FareDataMultiple */}
                 </p>
                 <button onClick={() => handleResultClick(result)}>
@@ -187,6 +198,74 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
   );
 };
 
+function findMinMaxTime(data) {
+  let minDepartureTime = null;
+  let maxArrivalTime = null;
+
+  data?.forEach((item) => {
+    if (
+      item &&
+      item.Segments &&
+      item.Segments.length > 0 &&
+      item.Segments[0].length > 0
+    ) {
+      const arrivalTime = item.Segments[0][0].ArrTime;
+      const departureTime = item.Segments[0][0].DepTime;
+
+      if (arrivalTime) {
+        if (!maxArrivalTime || arrivalTime > maxArrivalTime) {
+          maxArrivalTime = arrivalTime;
+        }
+      }
+
+      if (departureTime) {
+        if (!minDepartureTime || departureTime < minDepartureTime) {
+          minDepartureTime = departureTime;
+        }
+      }
+    }
+  });
+
+  return { minDepartureTime, maxArrivalTime };
+}
+
+function filterArrayByTimeRange(data, startTime, endTime) {
+  return data?.filter((item) => {
+    if (
+      item &&
+      item.Segments &&
+      item.Segments.length > 0 &&
+      item.Segments[0].length > 0
+    ) {
+      const arrivalTime = item.Segments[0][0].ArrTime;
+      const departureTime = item.Segments[0][0].DepTime;
+
+      return (
+        arrivalTime >= startTime &&
+        arrivalTime <= endTime &&
+        departureTime >= startTime &&
+        departureTime <= endTime
+      );
+    }
+
+    return false;
+  });
+}
+
+function calculateDuration(minDepartureTime, maxArrivalTime) {
+  if (!minDepartureTime || !maxArrivalTime) {
+    return null; // Handle invalid input
+  }
+
+  const minTime = new Date(minDepartureTime);
+  const maxTime = new Date(maxArrivalTime);
+
+  const durationInMilliseconds = maxTime - minTime;
+  const durationInMinutes = durationInMilliseconds / (1000 * 60);
+
+  return durationInMinutes;
+}
+
 export default function Search() {
   let [adults, setAdults] = useState(1);
   let [children, setChildren] = useState(0);
@@ -203,49 +282,84 @@ export default function Search() {
 
   let [search, setSearch] = useState(false);
   let [searchResponse, setSearchResponse] = useState();
-
-  useEffect(()=>{
-    if(departure_time){
-      console.log(departure_time)
+  let [timeConfig, setTimeConfig] = useState({
+    minDepartureTime: "",
+    maxArrivalTime: "",
+  });
+  useEffect(() => {
+    if (departure_time) {
+      console.log(departure_time);
       const originalDate = new Date(departure_time);
       const nextDay = new Date(originalDate);
       nextDay.setDate(originalDate.getDate() + 2);
-      const formattedResult = `${nextDay.getFullYear()}-${(nextDay.getMonth() + 1).toString().padStart(2, '0')}-${nextDay.getDate().toString().padStart(2, '0')}T${nextDay.getHours().toString().padStart(2, '0')}:${nextDay.getMinutes().toString().padStart(2, '0')}:${nextDay.getSeconds().toString().padStart(2, '0')}`;
-      setArrTime(formattedResult)
+      const formattedResult = `${nextDay.getFullYear()}-${(
+        nextDay.getMonth() + 1
+      )
+        .toString()
+        .padStart(2, "0")}-${nextDay
+        .getDate()
+        .toString()
+        .padStart(2, "0")}T${nextDay
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${nextDay
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}:${nextDay.getSeconds().toString().padStart(2, "0")}`;
+      setArrTime(formattedResult);
     }
-  },[departure_time])
+  }, [departure_time]);
 
   let [bookingData, setBookingData] = useState();
   let [loading, setloading] = useState(false);
-  
+
   let [allOptions, setAllOptions] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const res = findMinMaxTime(searchResponse?.Results[0]);
+    setTimeConfig({
+      minDepartureTime: res.minDepartureTime,
+      maxArrivalTime: res.maxArrivalTime,
+    });
+    const duration = calculateDuration(
+      res.minDepartureTime,
+      res.maxArrivalTime
+    );
+    // console.log('Minimum Departure Time:', minDepalTime);
+  }, [searchResponse]);
 
   const handleSelectChange = (e) => {
     const selectedValue = e.target.value;
     setSelectValue(selectedValue);
   };
+
   const handleClassChange = (e) => {
     const selectedValue = e.target.value;
     setSeat_Class(selectedValue);
   };
+
   var book_req_Fn = async (data) => {
-    // console.log(data)
     console.log(data);
-    const { ["Results"]: removedKey, ...rest } = searchResponse;
-    console.log(rest);
+    if (data.FareDataMultiple[0].IsLCC) {
+      console.log(data);
+      const { ["Results"]: removedKey, ...rest } = searchResponse;
+      console.log(rest);
 
-    // console.log(rest)
-    setBookingData({ ...rest, ...data });
-    console.log(bookingData);
-    if (bookingData) {
-
-      router.push({
-        pathname: "/book",
-        query: { data: JSON.stringify(bookingData) },
-      });
+      // console.log(rest)
+      setBookingData({ ...rest, ...data });
+      console.log(bookingData);
+      if (bookingData) {
+        router.push({
+          pathname: "/book",
+          query: { data: JSON.stringify(bookingData) },
+        });
+      }
+    } else {
+      alert(`please check a LLC flight${data.FareDataMultiple[0].IsLCC}`);
     }
   };
+
   var data = {
     AdultCount: adults.toString(),
     ChildCount: children.toString(),
@@ -285,15 +399,15 @@ export default function Search() {
           },
           body: JSON.stringify({ data: requestData }),
         });
-        
+
         if (response.ok) {
           const data = await response.json();
-          setloading(false)
+          setloading(false);
           // console.log('API Response:', data);
           if (data.Error.ErrorCode === "100") {
             alert("no result found, please select different city");
           } else {
-            console.log(data)
+            console.log(data);
             setSearchResponse(data);
             setSearch(true);
           }
@@ -310,7 +424,6 @@ export default function Search() {
     // console.log(data)
   };
 
-
   // Passanger count code
   const toggleSection = (section) => {
     if (popup) {
@@ -319,6 +432,7 @@ export default function Search() {
       setpopup(true);
     }
   };
+
   const incrementCount = (section) => {
     switch (section) {
       case "adults":
@@ -334,6 +448,7 @@ export default function Search() {
         break;
     }
   };
+
   const decrementCount = (section) => {
     switch (section) {
       case "adults":
@@ -349,8 +464,10 @@ export default function Search() {
         break;
     }
   };
+
   const totalCount = adults + children + infants;
   const popupRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -363,12 +480,11 @@ export default function Search() {
     };
   }, []);
 
-
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Flight Search"} />
       <div id="Search_page">
-      <div className={loading?'loader':""}></div>
+        <div className={loading ? "loader" : ""}></div>
         <div className="querry">
           <div className="top">
             <CitySelector
@@ -422,7 +538,7 @@ export default function Search() {
               </div>
             </div>
             <div className="datePicker">
-            {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
+              {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
               <DateTimePicker
                 selectedDateTime={departure_time}
                 setSelectedDateTime={setDepTime}
@@ -436,9 +552,20 @@ export default function Search() {
             >
               Search
             </button>
-            <svg xmlns="http://www.w3.org/2000/svg" onClick={()=>{setAllOptions(!allOptions)}} className="moreBtn" height="16" width="10" viewBox="0 0 320 512"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => {
+                setAllOptions(!allOptions);
+              }}
+              className="moreBtn"
+              height="16"
+              width="10"
+              viewBox="0 0 320 512"
+            >
+              <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+            </svg>
           </div>
-          <div className={'down '+(allOptions?'show':"")}>
+          <div className={"down " + (allOptions ? "show" : "")}>
             <div className="">
               <label>Cabin Class:</label>
               <select
@@ -471,27 +598,51 @@ export default function Search() {
               <option value="2">Return</option>
               {/* <option value="3">multiCity</option> */}
             </select>
-            
           </div>
         </div>
-      <div className="main">
-        <div className="sidebar">
-              
+        <div className="main">
+          <div className="sidebar one">
+            <a href="">Get Fair alert</a>
+            <h2>Filter Your Results</h2>
+            <p>{searchResponse?.Results?searchResponse.Results[0].length:"--"} number of results</p>
+            <br />
+            <h2>Flight Time</h2>
+            <p>
+              {timeConfig.minDepartureTime} {"<>"} {timeConfig.maxArrivalTime}{" "}
+            </p>
+            <br />
+            <h2>Flight Duration</h2>
+            <p>addduration slider</p>
+            <br />
+            <h2>Dates</h2>
+            <input type="checkbox" name="" id="" />
+            <p> Alternate Dates</p>
+            <br />
+            <h2>Arilines</h2>
+            <p> Airline Filter</p>
+            <br />
+          </div>
+          {/* <div className="content"> */}
+          {search ? (
+            <FlightSearchResults
+              results={searchResponse.Results}
+              onResultClick={book_req_Fn}
+            />
+          ) : (
+            <div className="search_res">
+              <h1 className="heading">
+                {loading?("Looking for your perfect flight, Please wait...."):"Search route for your dream vacation...."}
+              </h1>
+            </div>
+          )}
+          {/* </div> */}
+          <div className="sidebar">
+            <img
+              src="/assets/images/search/fairflyings_sidebar.png"
+              alt="this is an img"
+            />
+          </div>
         </div>
-        <div className="content">
-        {search?(
-          <FlightSearchResults
-            results={searchResponse.Results}
-            onResultClick={book_req_Fn}
-          />
-        ):(<div className="search_res">
-          <h1>Start search for your flights....</h1>
-        </div>)}
-        </div>
-      </div>
-      <div className="sidebar">
-
-      </div>
       </div>
     </Layout>
   );

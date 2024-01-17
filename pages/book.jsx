@@ -46,19 +46,26 @@ const Passenger = ({addPassenger, fair, onClose})=>{
     Gender: '1',
     PassportNo: '',
     PassportExpiry: '',
+    PassportIssueDate: "",
     AddressLine1: 'Test',
     City: 'Kolkata',
     CountryCode: 'IN',
     CountryName: 'India',
-    ContactNo: '9632587410',
+    ContactNo: 9632587410,
     Email: 'support@srdvtechnologies.com',
-    IsLeadPax: 'True',
+    IsLeadPax: 1,
     Fare:fair,
   });
 
   const handleInputChange = (e) => {
+    console.log("change hitting")
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    console.log(`${name},${value}`)
+    if(name==='ContactNo'){
+      setFormData({ ...formData, [name]: parseInt(value) });
+    }else{
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSave = () => {
@@ -72,13 +79,14 @@ const Passenger = ({addPassenger, fair, onClose})=>{
       Gender: '1',
       PassportNo: '',
       PassportExpiry: '',
+      PassportIssueDate: "",
       AddressLine1: 'Test',
       City: 'Kolkata',
       CountryCode: 'IN',
       CountryName: 'India',
-      ContactNo: '9632587410',
+      ContactNo: 9632587410,
       Email: 'support@srdvtechnologies.com',
-      IsLeadPax: 'True',
+      IsLeadPax: 1,
       Fare:fair,
     });
     onClose();
@@ -87,22 +95,23 @@ const Passenger = ({addPassenger, fair, onClose})=>{
     <div className="input_form">
         <h1>Please enter your info to continue booking</h1>
         <div className="gr">
-          <input type="text" placeholder="Title*" value={formData.Title} onChange={handleInputChange} />
-          <input type="text" placeholder="First Name*" value={formData.FirstName} onChange={handleInputChange} />
-          <input type="text" placeholder="Last Name*" value={formData.LastName} onChange={handleInputChange} />
-          <input type="text" placeholder="Pax Type*" value={formData.PaxType} onChange={handleInputChange} />
-          <input type="text" placeholder="Date Of Birth*" value={formData.DateOfBirth} onChange={handleInputChange} />
-          <input type="text" placeholder="Gender*" value={formData.Gender} onChange={handleInputChange} />
-          <input type="text" placeholder="Passport Number" value={formData.PassportNo} onChange={handleInputChange} />
+          <input type="text" name="Title" placeholder="Title*" value={formData.Title} onChange={handleInputChange} />
+          <input type="text" name="FirstName" placeholder="First Name*" value={formData.FirstName} onChange={handleInputChange} />
+          <input type="text" name="Support" placeholder="Last Name*" value={formData.LastName} onChange={handleInputChange} />
+          <input type="text" name="PaxType" placeholder="Pax Type*" value={formData.PaxType} onChange={handleInputChange} />
+          <input type="text" name="DateOfBirth" placeholder="Date Of Birth*" value={formData.DateOfBirth} onChange={handleInputChange} />
+          <input type="text" name="Gender" placeholder="Gender*" value={formData.Gender} onChange={handleInputChange} />
+          <input type="text" name="PassportNo" placeholder="Passport Number" value={formData.PassportNo} onChange={handleInputChange} />
           
-          <input type="text" placeholder="Passport Expiry" value={formData.PassportExpiry} onChange={handleInputChange} />
-          <input type="text" placeholder="Address Line*" value={formData.AddressLine1} onChange={handleInputChange} />
-          <input type="text" placeholder="City*" value={formData.City} onChange={handleInputChange} />
-          <input type="text" placeholder="Country Code*" value={formData.CountryCode} onChange={handleInputChange} />
-          <input type="text" placeholder="Country Name*" value={formData.CountryName} onChange={handleInputChange} />
-          <input type="text" placeholder="Contact Number*" value={formData.ContactNo} onChange={handleInputChange} />
-          <input type="text" placeholder="Email*" value={formData.Email} onChange={handleInputChange} />
-          <input type="text" placeholder="Is Lead Pax" value={formData.IsLeadPax} onChange={handleInputChange} />
+          <input type="text" name="PassportExpiry" placeholder="Passport Expiry" value={formData.PassportExpiry} onChange={handleInputChange} />
+          <input type="text" name="PassportIssueDate" placeholder="Passport Issue Date" value={formData.PassportExpiry} onChange={handleInputChange} />
+          <input type="text" name="AddressLine1" placeholder="Address Line*" value={formData.AddressLine1} onChange={handleInputChange} />
+          <input type="text" name="City" placeholder="City*" value={formData.City} onChange={handleInputChange} />
+          <input type="text" name="CountryCode" placeholder="Country Code*" value={formData.CountryCode} onChange={handleInputChange} />
+          <input type="text" name="CountryName" placeholder="Country Name*" value={formData.CountryName} onChange={handleInputChange} />
+          <input type="number" name="ContactNo" placeholder="Contact Number*" value={formData.ContactNo} onChange={handleInputChange} />
+          <input type="text" name="Email" placeholder="Email*" value={formData.Email} onChange={handleInputChange} />
+          <input type="text" name="IsLeadPax" placeholder="Is Lead Pax" value={formData.IsLeadPax} onChange={handleInputChange} />
       </div>
       <button onClick={handleSave}>Save</button>
     </div>
@@ -198,6 +207,29 @@ export default function book() {
       
         </div>
 
+        {bookingData.Passengers.map((passenger, index) => (
+          <div
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              margin: "10px",
+            }}
+            className="P_details"
+            >
+            <p>
+              Name:{" "}
+              <span>
+                {passenger.FirstName} {passenger.LastName}
+              </span>
+            </p>
+            <p>
+              Date of Birth: <span>{passenger.DateOfBirth}</span>
+            </p>
+            <p>
+              Email: <span>{passenger.Email}</span>
+            </p>
+          </div>
+        ))}
         
         {isAddingPassenger?(
           <Passenger addPassenger={addPassenger} onClose={handlePassengerClose} fair={data.FareDataMultiple[0].Fare} />

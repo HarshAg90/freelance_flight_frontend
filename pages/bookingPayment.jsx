@@ -116,7 +116,7 @@ export default function BookingPayment({}) {
           const data = await response.json();
           setloading(false);
           console.log(data);
-          if (data.Error.ErrorCode) {
+          if (data.Error.ErrorCode !=='0') {
             alert("Error in response");
             // console.log(data)
           } else {
@@ -188,14 +188,14 @@ export default function BookingPayment({}) {
             <p>
               Name:{" "}
               <span>
-                {passenger.name} {passenger.LastName}
+              {passenger.FirstName} {passenger.LastName}
               </span>
             </p>
             <p>
-              Date of Birth: <span>{passenger.dob}</span>
+              Date of Birth: <span>{passenger.DateOfBirth}</span>
             </p>
             <p>
-              Email: <span>{passenger.email}</span>
+              Email: <span>{passenger.Email}</span>
             </p>
           </div>
         ))}
@@ -209,8 +209,8 @@ export default function BookingPayment({}) {
             <p>
               Total Price:{" "}
               <span>
-                {data.flight_data.FareDataMultiple[0].OfferedFare + 
-                (data.flight_data.FareDataMultiple[0].OfferedFare * 0.15)}
+                {data.flight_data.FareDataMultiple[0].PublishedFare + 
+                (data.flight_data.FareDataMultiple[0].PublishedFare * 0.1)}
               </span>
             </p>
             <p>
@@ -225,7 +225,7 @@ export default function BookingPayment({}) {
               Tax: <span>{data.flight_data.FareDataMultiple[0].Fare.Tax}</span>
             </p>
             <p>
-              Platform Charge (15%): <span>{(data.flight_data.FareDataMultiple[0].OfferedFare * 0.15).toFixed(2)}</span>
+              Platform Charge (10%): <span>{(data.flight_data.FareDataMultiple[0].PublishedFare * 0.1).toFixed(2)}</span>
             </p>
           </div>
         <button onClick={()=>make_payment_request()}>Pay</button>
