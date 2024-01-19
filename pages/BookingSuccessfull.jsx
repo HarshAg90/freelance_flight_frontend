@@ -12,7 +12,7 @@ export default function BookingSuccessfull() {
     setData(resp);
     // console.log(data)
 
-    console.log(data.Response.FlightItinerary.Passenger[0].Ticket.TicketNumber);
+    console.log(data?.Response.FlightItinerary.Passenger[0].Ticket.TicketNumber);
     // console.log((data.Response.FlightItinerary.Passenger[0]))
   }, []);
   if (!data) {

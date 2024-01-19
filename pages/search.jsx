@@ -266,6 +266,29 @@ function calculateDuration(minDepartureTime, maxArrivalTime) {
   return durationInMinutes;
 }
 
+function extractDistinctAirlineNames(data) {
+  // Use a Set to store unique airline names
+  const uniqueAirlineNames = new Set();
+
+  // Iterate through the array and extract AirlineName
+  data?.forEach((item) => {
+    console.log(item?.Segments)
+    if (item && item.Segments) {
+      const airlineName = item.Segments[0][0].Airline.AirlineName;
+      console.log(airlineName)
+  
+      if (airlineName) {
+        uniqueAirlineNames.add(airlineName);
+      }
+    }
+  });
+
+  // Convert the Set to an array
+  const distinctAirlineNames = Array.from(uniqueAirlineNames);
+  console.log(distinctAirlineNames);
+  return distinctAirlineNames;
+}
+
 export default function Search() {
   let [adults, setAdults] = useState(1);
   let [children, setChildren] = useState(0);
@@ -286,6 +309,19 @@ export default function Search() {
     minDepartureTime: "",
     maxArrivalTime: "",
   });
+
+  const [uid, setUid] = useState('');
+
+  useEffect(() => {
+    // Extract UID from local storage on component mount or page reload
+    const storedUid = localStorage.getItem('uid');
+    if (storedUid) {
+      setUid(storedUid);
+    }else{
+      window.location.href = '/AuthPage';
+    }
+  }, []);
+
   useEffect(() => {
     if (departure_time) {
       console.log(departure_time);
@@ -313,6 +349,8 @@ export default function Search() {
   let [bookingData, setBookingData] = useState();
   let [loading, setloading] = useState(false);
 
+  let [airlineNames, setAirlineName] = useState([]);
+
   let [allOptions, setAllOptions] = useState(false);
   const router = useRouter();
 
@@ -326,6 +364,7 @@ export default function Search() {
       res.minDepartureTime,
       res.maxArrivalTime
     );
+    setAirlineName(extractDistinctAirlineNames(searchResponse?.Results))
     // console.log('Minimum Departure Time:', minDepalTime);
   }, [searchResponse]);
 
@@ -607,19 +646,35 @@ export default function Search() {
             <p>{searchResponse?.Results?searchResponse.Results[0].length:"--"} number of results</p>
             <br />
             <h2>Flight Time</h2>
-            <p>
-              {timeConfig.minDepartureTime} {"<>"} {timeConfig.maxArrivalTime}{" "}
-            </p>
+            <div className="time">
+              <p>{departure_time}</p>
+              <p>{arrival_time}</p>
+            </div>
             <br />
+
             <h2>Flight Duration</h2>
             <p>addduration slider</p>
             <br />
+
+            <h2>From - To</h2>
+            <div className="time">
+              <p>{origin}</p>
+              <p>{Destination}</p>
+            </div>
+            <br />
+            
             <h2>Dates</h2>
+            <div className="checkBox">
             <input type="checkbox" name="" id="" />
             <p> Alternate Dates</p>
+            </div>
             <br />
             <h2>Arilines</h2>
-            <p> Airline Filter</p>
+            <ul>
+              {airlineNames.map((item, index) => (
+                <li key={index}>{/* Render your item properties here */}</li>
+              ))}
+            </ul>
             <br />
           </div>
           {/* <div className="content"> */}

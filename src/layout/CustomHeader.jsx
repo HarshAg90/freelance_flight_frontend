@@ -1,9 +1,18 @@
 import Link from "next/link";
 import Menu from "./Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const CustomHeader = () => {
   let [mobile, setMobile] = useState(false);
   let [destOpen, setDestOpen] = useState(false);
+  const [uid, setUid] = useState('');
+
+  useEffect(() => {
+    // Extract UID from local storage on component mount or page reload
+    const storedUid = localStorage.getItem('uid');
+    if (storedUid) {
+      setUid(storedUid);
+    }
+  }, []);
   return (
     <div id="customHeader">
       <div className="site-branding">
@@ -46,9 +55,9 @@ const CustomHeader = () => {
           </li>
         </ul>
       </nav>
-        <Link legacyBehavior href="/contact">
+        <Link legacyBehavior href="/AuthPage">
           <a className="login">
-            Login
+            {uid?("My profile"):("Login")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="16"

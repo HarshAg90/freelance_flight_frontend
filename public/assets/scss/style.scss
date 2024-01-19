@@ -397,11 +397,26 @@ body {
     // align-items: center;
     .sidebar {
       width: 10vw;
-      margin: 20px 20px;
+      margin: 20px 40px;
       &.one{
         width: 15vw;
         padding-right: 10px;
-        border-right: 1px solid black;
+        // border-right: 1px solid black;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.679);
+        padding: 20px;
+        border-radius: 10px;
+        
+        h2{
+          font-weight: 600;
+        }
+        .checkBox{
+          display: flex;
+          gap: 4px;
+        }
+        ul{
+          max-height: 400px;
+          overflow: scroll;
+        }
       }
     }
     .search_res {
@@ -903,7 +918,7 @@ body {
   .numbers {
     width: 50vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 10px;
     margin: 0 auto;
@@ -937,7 +952,78 @@ body {
   }
 }
 
+#AuthPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e8e8e8;
+  .login{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px grey;
+    .line{
+      margin: 10px;
+      width: 100%;
+      border: 1px solid gray;
+    }
+    h1{
+      font-size: 1.8rem;
+      text-align: center;
+      color: black;
+      font-weight: 500;
+    }
+  }
+  &>h1{
+    font-size: 2.1rem;
+    text-align: center;
+    color: black;
+    font-weight: 400;
+  }
+  input {
+    font-size: 1.2rem;
+    background-color: none;
+    background-color: #d2e3c8;
+    // background-color: rgba(255, 255, 255, 0.648);
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 10px;
+    border: none;
+    margin: 10px;
+  }
+  button {
+    border: none;
+    padding: 10px 40px;
+    background-color: #4f6f52;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 100ms ease;
+    &:hover{
+      border:1px solid #4f6f52;
+      background-color: transparent;
+      color: #4f6f52;
+      transition: 100ms ease;
+    }
+    &.google{
+      width: 100%;
+    }
+  }
+}
+
+
 /*-----------------------------------------------------------------------------------
+#4f6f52
+#86a789
 
     Template Name: Gowilds - Tours and Travel HTML Template
     Template URI: site.com

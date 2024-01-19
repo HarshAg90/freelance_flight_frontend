@@ -10,12 +10,23 @@ import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import Link from "next/link";
 import Slider from "react-slick";
 import ImageSlider from "@/src/components/sliders/ImageSlider";
+import { useEffect, useState } from "react";
 
 const Counter = dynamic(() => import("@/src/components/Counter"), {
   ssr: false,
 });
 
 const Index4 = () => {
+  const [uid, setUid] = useState('');
+
+  useEffect(() => {
+  // Extract UID from local storage on component mount or page reload
+    const storedUid = localStorage.getItem('uid');
+    if (storedUid) {
+      setUid(storedUid);
+    }
+    console.log(uid);
+  }, []);
   const slides = [
     { url: "/assets/images/carousel/varanasi.png", title: "beach" },
     { url: "/assets/images/carousel/city2.jpg", title: "boat" },
@@ -36,10 +47,15 @@ const Index4 = () => {
                 <img src="assets/images/hero/heroPlane.png" />
               </span>
             </div>
-
+            {(uid !== "")?(
             <Link id="search_button" href="/search" className="wow fadeInDown" data-wow-delay="1.5s">
               GET STARTED
             </Link>
+            ):(
+            <Link id="search_button" href="/AuthPage" className="wow fadeInDown" data-wow-delay="1.5s">
+              Login / Signup
+            </Link>
+            )}
 
             <div className="shapeSub wow fadeInDown" data-wow-delay="2s">
               <span>

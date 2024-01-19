@@ -10,6 +10,17 @@ export default function BookingPayment({}) {
   let [isLoading, setloading] = useState(false);
   let [PaymentPortalGen, setPaymentPortalGen] = useState(false);
   let [PaymentPortal, setPaymentPortal] = useState(false);
+  const [uid, setUid] = useState('');
+
+  useEffect(() => {
+    // Extract UID from local storage on component mount or page reload
+    const storedUid = localStorage.getItem('uid');
+    if (storedUid) {
+      setUid(storedUid);
+    }else{
+      window.location.href = '/AuthPage';
+    }
+  }, []);
 
   const router = useRouter();
   const data = JSON.parse(router.query.data);
@@ -29,7 +40,7 @@ export default function BookingPayment({}) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authentication: "random_id",
+            Authorization: uid,
           },
           body: JSON.stringify({ data: data }),
         });
