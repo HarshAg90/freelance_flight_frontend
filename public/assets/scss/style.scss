@@ -405,7 +405,9 @@ body {
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.679);
         padding: 20px;
         border-radius: 10px;
-        
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
         h2{
           font-weight: 600;
         }
