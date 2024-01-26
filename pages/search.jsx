@@ -192,9 +192,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
     console.log(selectedDateTime);
   };
   return (
-    <div className="">
       <input type="date" value={date} onChange={handleDateTimeChange} />
-    </div>
   );
 };
 
