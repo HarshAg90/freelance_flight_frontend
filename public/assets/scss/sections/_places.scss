@@ -163,7 +163,7 @@
 .single-place-item-three{
     @extend %gray-bg;
     padding: 10px 10px 0;
-    @include border-radius(50px);
+    @include border-radius(20px);
     @include transition(.3s);
     &:hover{
         @extend %white-bg;

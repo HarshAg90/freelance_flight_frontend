@@ -521,127 +521,131 @@ export default function Search() {
 
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner pageTitle={"Flight Search"} />
+      {/* <PageBanner pageTitle={"Flight Search"} /> */}
       <div id="Search_page">
-        <div className={loading ? "loader" : ""}></div>
-        <div className="querry">
-          <div className="top">
-            <CitySelector
-              cityData={cityData}
-              setSelectedOption={setOrigin}
-              str_desp={"From where?"}
-            />
-            <CitySelector
-              cityData={cityData}
-              setSelectedOption={setDestinationo}
-              str_desp={"To where?"}
-            />
+        <div className="page_title">
+          <h1>Flight Search</h1>
+          <div className="querry">
+            <div className="top">
+              <CitySelector
+                cityData={cityData}
+                setSelectedOption={setOrigin}
+                str_desp={"From where?"}
+              />
+              <CitySelector
+                cityData={cityData}
+                setSelectedOption={setDestinationo}
+                str_desp={"To where?"}
+              />
 
-            <div className="box">
-              <label className="tLabel" onClick={() => toggleSection("")}>
-                Travelers: {totalCount}
-              </label>
-              <div
-                className="travelers-input"
-                style={{ display: popup ? "block" : "none" }}
-                ref={popupRef}
-              >
-                <div className="section">
-                  Adults
-                  <div>
-                    <button onClick={() => decrementCount("adults")}>-</button>
-                    {adults}
-                    <button onClick={() => incrementCount("adults")}>+</button>
+              <div className="box">
+                <label className="tLabel" onClick={() => toggleSection("")}>
+                  Travelers: {totalCount}
+                </label>
+                <div
+                  className="travelers-input"
+                  style={{ display: popup ? "block" : "none" }}
+                  ref={popupRef}
+                >
+                  <div className="section">
+                    Adults
+                    <div>
+                      <button onClick={() => decrementCount("adults")}>-</button>
+                      {adults}
+                      <button onClick={() => incrementCount("adults")}>+</button>
+                    </div>
                   </div>
-                </div>
-                <div className="section">
-                  Children
-                  <div>
-                    <button onClick={() => decrementCount("children")}>
-                      -
-                    </button>
-                    {children}
-                    <button onClick={() => incrementCount("children")}>
-                      +
-                    </button>
+                  <div className="section">
+                    Children
+                    <div>
+                      <button onClick={() => decrementCount("children")}>
+                        -
+                      </button>
+                      {children}
+                      <button onClick={() => incrementCount("children")}>
+                        +
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className="section">
-                  Infants
-                  <div>
-                    <button onClick={() => decrementCount("infants")}>-</button>
-                    {infants}
-                    <button onClick={() => incrementCount("infants")}>+</button>
+                  <div className="section">
+                    Infants
+                    <div>
+                      <button onClick={() => decrementCount("infants")}>-</button>
+                      {infants}
+                      <button onClick={() => incrementCount("infants")}>+</button>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="datePicker">
+                {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
+                <DateTimePicker
+                  selectedDateTime={departure_time}
+                  setSelectedDateTime={setDepTime}
+                />
+              </div>
+              <button
+                className="submit"
+                onClick={() => {
+                  Search_function();
+                }}
+              >
+                Search
+              </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={() => {
+                  setAllOptions(!allOptions);
+                }}
+                className="moreBtn"
+                height="16"
+                width="10"
+                viewBox="0 0 320 512"
+              >
+                <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+              </svg>
             </div>
-            <div className="datePicker">
-              {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
-              <DateTimePicker
-                selectedDateTime={departure_time}
-                setSelectedDateTime={setDepTime}
-              />
-            </div>
-            <button
-              className="submit"
-              onClick={() => {
-                Search_function();
-              }}
-            >
-              Search
-            </button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              onClick={() => {
-                setAllOptions(!allOptions);
-              }}
-              className="moreBtn"
-              height="16"
-              width="10"
-              viewBox="0 0 320 512"
-            >
-              <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-            </svg>
-          </div>
-          <div className={"down " + (allOptions ? "show" : "")}>
-            <div className="">
-              <label>Cabin Class:</label>
+            <div className={"down " + (allOptions ? "show" : "")}>
+              <div className="">
+                <label>Cabin Class:</label>
+                <select
+                  class="display-block"
+                  value={seat_class}
+                  onChange={handleClassChange}
+                >
+                  <option value="1">All</option>
+                  <option value="2">Economy</option>
+                  <option value="3">Premium economy</option>
+                  <option value="4">Business</option>
+                  <option value="5">Premium</option>
+                  <option value="6">First</option>
+                </select>
+              </div>
+              <div className="datePicker">
+                <label>Arrival Date</label>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
+                <DateTimePicker
+                  selectedDateTime={arrival_time}
+                  setSelectedDateTime={setArrTime}
+                />
+              </div>
               <select
                 class="display-block"
-                value={seat_class}
-                onChange={handleClassChange}
+                value={selectValue}
+                onChange={handleSelectChange}
               >
-                <option value="1">All</option>
-                <option value="2">Economy</option>
-                <option value="3">Premium economy</option>
-                <option value="4">Business</option>
-                <option value="5">Premium</option>
-                <option value="6">First</option>
+                <option value="1">OneWay</option>
+                <option value="2">Return</option>
+                {/* <option value="3">multiCity</option> */}
               </select>
             </div>
-            <div className="datePicker">
-              <label>Arrival Date</label>
-              {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
-              <DateTimePicker
-                selectedDateTime={arrival_time}
-                setSelectedDateTime={setArrTime}
-              />
-            </div>
-            <select
-              class="display-block"
-              value={selectValue}
-              onChange={handleSelectChange}
-            >
-              <option value="1">OneWay</option>
-              <option value="2">Return</option>
-              {/* <option value="3">multiCity</option> */}
-            </select>
           </div>
         </div>
+        <div className={loading ? "loader" : ""}></div>
         <div className="main">
           <div className="sidebar one">
             <a href="">Get Fair alert</a>
+            <br />
             <h2>Filter Your Results</h2>
             <p>{searchResponse?.Results?searchResponse.Results[0].length:"--"} number of results</p>
             <br />
@@ -651,11 +655,9 @@ export default function Search() {
               <p>{arrival_time}</p>
             </div>
             <br />
-
             <h2>Flight Duration</h2>
             <p>addduration slider</p>
             <br />
-
             <h2>From - To</h2>
             <div className="time">
               <p>{origin}</p>
@@ -685,9 +687,7 @@ export default function Search() {
             />
           ) : (
             <div className="search_res">
-              <h1 className="heading">
-                {loading?("Looking for your perfect flight, Please wait...."):"Search route for your dream vacation...."}
-              </h1>
+              <h1 className="heading">{loading?("Looking for your perfect flight, Please wait...."):("Search route for your dream vacation....")}</h1>
             </div>
           )}
           {/* </div> */}
