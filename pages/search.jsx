@@ -528,6 +528,7 @@ export default function Search() {
           <div className="querry">
             <div className="top">
               <CitySelector
+                className='start'
                 cityData={cityData}
                 setSelectedOption={setOrigin}
                 str_desp={"From where?"}
@@ -548,7 +549,7 @@ export default function Search() {
                   ref={popupRef}
                 >
                   <div className="section">
-                    Adults
+                    <p>Adults</p>
                     <div>
                       <button onClick={() => decrementCount("adults")}>-</button>
                       {adults}
@@ -556,7 +557,7 @@ export default function Search() {
                     </div>
                   </div>
                   <div className="section">
-                    Children
+                    <p>Children</p>
                     <div>
                       <button onClick={() => decrementCount("children")}>
                         -
@@ -568,7 +569,7 @@ export default function Search() {
                     </div>
                   </div>
                   <div className="section">
-                    Infants
+                    <p>Infants</p>
                     <div>
                       <button onClick={() => decrementCount("infants")}>-</button>
                       {infants}
@@ -592,7 +593,14 @@ export default function Search() {
               >
                 Search
               </button>
-              <svg
+              <button
+              
+                className='end'
+                onClick={() => {
+                  setAllOptions(!allOptions);
+                }}
+              >More</button>
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 onClick={() => {
                   setAllOptions(!allOptions);
@@ -603,16 +611,16 @@ export default function Search() {
                 viewBox="0 0 320 512"
               >
                 <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-              </svg>
+              </svg> */}
             </div>
             <div className={"down " + (allOptions ? "show" : "")}>
-              <div className="">
+              <div className="cont">
                 <label>Cabin Class:</label>
                 <select
                   class="display-block"
                   value={seat_class}
                   onChange={handleClassChange}
-                >
+                  >
                   <option value="1">All</option>
                   <option value="2">Economy</option>
                   <option value="3">Premium economy</option>

@@ -238,21 +238,23 @@ body {
       position: relative;
       // margin-top: -70px;
       z-index: 5;
-      background-color: rgb(237, 237, 237);
-      padding: 2px;
-      padding-right: 10px;
+      // background-color: rgb(237, 237, 237);
+      // padding: 2px;
+      // padding-right: 10px;
       border-radius: 10px;
-      width: 85%;
+      // overflow: hidden;
+      width: auto;
       @media screen and (max-width: 1250px) {
         width: 100%;
         border-radius: 0px;
       }
       .top {
-        padding: 5px;
+        // padding: 5px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         width: 100%;
+        gap: 5px;
   
         @media screen and (max-width: 540px) {
           & {
@@ -271,16 +273,20 @@ body {
         .travelers-input {
           position: absolute;
           background-color: white;
-          padding: 20px;
-          border-radius: 10px;
+          padding: 10px 0px;
+          // border-radius: 10px;
+          margin: 10px 0;
           box-shadow: 5px 5px 20px black;
           .section {
-            font-size: 1.3rem;
+            p{
+              font-size: 1rem;
+              text-transform: uppercase;
+            }
             text-align: center;
             div {
               button {
                 margin: 0px 10px;
-                padding: 2px 20px;
+                padding: 0px 20px;
                 border: 1px solid black;
                 background-color: rgb(30, 30, 30);
                 color: white;
@@ -297,8 +303,8 @@ body {
         }
         .tLabel {
           // background-color: #D2E3C8;
-          background-color: rgba(255, 255, 255, 0.648);
-          border-radius: 5px;
+          background-color: rgb(255, 255, 255);
+          border-radius: 0px;
           padding: 10px 20px;
           font-size: 1.2rem;
         }
@@ -308,7 +314,12 @@ body {
           background: #4f6f52;
           color: white;
           font-size: 1.2rem;
-          border-radius: 5px;
+          border-radius: 0px;
+          transition: 200ms ease;
+          &:hover{
+            background: #4f6f52bf;
+            transition: 200ms ease;
+          }
         }
         svg.moreBtn {
           // padding: 10px;
@@ -319,8 +330,8 @@ body {
       .down {
         padding: 5px;
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
+        justify-content: center;
+        gap: 5px;
         width: 100%;
         display: none;
         &.show {
@@ -342,11 +353,18 @@ body {
             gap: 10px;
           }
         }
+        .cont{
+          background: white;
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+        }
       }
       .datePicker {
-        background-color: #d2e3c8;
+        // background-color: #d2e3c8;
+        background-color: #ffffff;
         // background-color: rgba(255, 255, 255, 0.648);
-        border-radius: 5px;
+        border-radius: 0px;
         padding: 0 10px;
         label {
           font-size: 1.2rem;
@@ -379,7 +397,8 @@ body {
         margin-left: 10px;
         padding: 5px 10px;
         font-size: 1.3rem;
-        background-color: #d2e3c8;
+        background-color: #ffffff;
+        // background-color: #d2e3c8;
         // background-color: rgba(255, 255, 255, 0.349);
         border-radius: 2px;
         outline: none;
@@ -393,9 +412,10 @@ body {
     input {
       font-size: 1.2rem;
       background-color: none;
-      background-color: #d2e3c8;
+      // background-color: #d2e3c8;
+      background-color: #fff;
       // background-color: rgba(255, 255, 255, 0.648);
-      border-radius: 5px;
+      border-radius: 0px;
       padding: 10px 10px;
       border: none;
     }
