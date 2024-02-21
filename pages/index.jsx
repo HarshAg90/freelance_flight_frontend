@@ -59,7 +59,7 @@ const Index4 = () => {
                 </svg>
               </Link>
               <Link
-                href="/search"
+                href="/HotelSearch"
                 className="search_button mid"
                 // data-wow-delay="1.7s"
               >
@@ -69,7 +69,7 @@ const Index4 = () => {
                 </svg>
               </Link>
               <Link
-                href="/search"
+                href="/BusSearch"
                 className="search_button"
                 // data-wow-delay="1.9s"
               >

@@ -2,72 +2,10 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import PageBanner from "@/src/components/PageBanner";
 import CitySelector from "@/src/components/city_selector";
+import { useSpring, animated } from "react-spring";
 import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
-// import sideimg from "@/public/assets/images/search/fairflyings_sidebar.png"
-import Image from "next/image";
-
-// const SelectOptionsExample = ({
-//   selectedOption,
-//   setSelectedOption,
-//   str_desp,
-// }) => {
-//   const optionsData = [
-//     { name: "Andhra Pradesh", value: "AND" },
-//     { name: "Arunachal Pradesh", value: "ARU" },
-//     { name: "Assam", value: "ASM" },
-//     { name: "Bihar", value: "BIH" },
-//     { name: "Chhattisgarh", value: "CHG" },
-//     { name: "Goa", value: "GOA" },
-//     { name: "Gujarat", value: "GUJ" },
-//     { name: "Haryana", value: "HAR" },
-//     { name: "Himachal Pradesh", value: "HIM" },
-//     { name: "Jharkhand", value: "JHA" },
-//     { name: "Karnataka", value: "KAR" },
-//     { name: "Kerala", value: "KER" },
-//     { name: "Madhya Pradesh", value: "MAD" },
-//     { name: "Maharashtra", value: "MAH" },
-//     { name: "Manipur", value: "MAN" },
-//     { name: "Meghalaya", value: "MEG" },
-//     { name: "Mizoram", value: "MIZ" },
-//     { name: "Nagaland", value: "NAG" },
-//     { name: "Odisha", value: "ODI" },
-//     { name: "Punjab", value: "PUN" },
-//     { name: "Rajasthan", value: "RAJ" },
-//     { name: "Sikkim", value: "SIK" },
-//     { name: "Tamil Nadu", value: "TAM" },
-//     { name: "Telangana", value: "TEL" },
-//     { name: "Tripura", value: "TRI" },
-//     { name: "Uttar Pradesh", value: "UTT" },
-//     { name: "Uttarakhand", value: "UTK" },
-//     { name: "West Bengal", value: "WES" },
-//     { name: "Andaman and Nicobar Islands", value: "ANI" },
-//     { name: "Chandigarh", value: "CHD" },
-//     { name: "Dadra and Nagar Haveli and Daman and Diu", value: "DNH" },
-//     { name: "Lakshadweep", value: "LAK" },
-//     { name: "Delhi", value: "DEL" },
-//     { name: "Puducherry", value: "PUD" },
-//   ];
-
-//   const handleOptionChange = (event) => {
-//     setSelectedOption(event.target.value);
-//   };
-//   return (
-//     <select
-//       class="display-block"
-//       value={selectedOption}
-//       onChange={handleOptionChange}
-//     >
-//       <option value="">{str_desp}</option>
-//       {optionsData.map((option) => (
-//         <option key={option.value} value={option.value}>
-//           {option.name}
-//         </option>
-//       ))}
-//     </select>
-//   );
-// };
 
 const FlightSearchResults = ({ results, onResultClick }) => {
   const handleResultClick = (resultIndex) => {
@@ -76,56 +14,41 @@ const FlightSearchResults = ({ results, onResultClick }) => {
 
   return (
     <div className="search_res">
-      <h1>Available Flights</h1>
       {results.map((resultGroup, index) => (
         <div key={index} className="results">
           {/* <h3>Result Group {index + 1}</h3> */}
           {resultGroup.map((result) => (
-            <div
-              key={result.ResultIndex}
-              style={{
-                border: "1px solid #ddd",
-                padding: "10px",
-                margin: "10px",
-              }}
-              className="results_tile"
-            >
+            <div key={result.ResultIndex} style={{}} className="results_tile">
               {/* {console.log(result)} */}
-
+              {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <path d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
+              </svg> */}
               <div className="top">
                 <h2>{result.Segments[0][0].FlightStatus}</h2>
                 <h2>
                   Airline:{" "}
                   <span>{result.Segments[0][0].Airline.AirlineName}</span> |
+                </h2>
+                <h2>
                   Code: <span>{result.Segments[0][0].Airline.AirlineCode}</span>
                 </h2>
-                <p>
-                  {result.Segments[0][0].Origin.CityName},
-                  {result.Segments[0][0].Origin.CountryName} @{" "}
-                  <span>
-                    {" "}
-                    {breakdownDateTime(result.Segments[0][0].DepTime).time}
-                  </span>{" "}
-                  {">"} {result.Segments[0][0].Destination.CityName},
-                  {result.Segments[0][0].Destination.CountryName} @{" "}
-                  <span>
-                    {breakdownDateTime(result.Segments[0][0].ArrTime).time}
-                  </span>
-                </p>
               </div>
-              {/* <div className="mid">
-                <p>
-                  takeoff:{" "}
-                  {breakdownDateTime(result.Segments[0][0].DepTime).date} @{" "}
+              <p>
+                {result.Segments[0][0].Origin.CityName},
+                {result.Segments[0][0].Origin.CountryName}{" "}
+                <span>
+                  {" "}
                   {breakdownDateTime(result.Segments[0][0].DepTime).time}
-                </p>
-                <p>
-                  landing:{" "}
-                  {breakdownDateTime(result.Segments[0][0].ArrTime).date} @{" "}
+                </span>{" "}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                </svg>
+                {result.Segments[0][0].Destination.CityName},
+                {result.Segments[0][0].Destination.CountryName} -{" "}
+                <span>
                   {breakdownDateTime(result.Segments[0][0].ArrTime).time}
-                  {}
-                </p>
-              </div> */}
+                </span>
+              </p>
               <div className="down">
                 <p>
                   Fare -{" "}
@@ -191,9 +114,7 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
     setSelectedDateTime(`${event.target.value}T${time}`);
     console.log(selectedDateTime);
   };
-  return (
-      <input type="date" value={date} onChange={handleDateTimeChange} />
-  );
+  return <input type="date" value={date} onChange={handleDateTimeChange} />;
 };
 
 function findMinMaxTime(data) {
@@ -270,11 +191,11 @@ function extractDistinctAirlineNames(data) {
 
   // Iterate through the array and extract AirlineName
   data?.forEach((item) => {
-    console.log(item?.Segments)
+    console.log(item?.Segments);
     if (item && item.Segments) {
       const airlineName = item.Segments[0][0].Airline.AirlineName;
-      console.log(airlineName)
-  
+      console.log(airlineName);
+
       if (airlineName) {
         uniqueAirlineNames.add(airlineName);
       }
@@ -308,15 +229,15 @@ export default function Search() {
     maxArrivalTime: "",
   });
 
-  const [uid, setUid] = useState('');
+  const [uid, setUid] = useState("");
 
   useEffect(() => {
     // Extract UID from local storage on component mount or page reload
-    const storedUid = localStorage.getItem('uid');
+    const storedUid = localStorage.getItem("uid");
     if (storedUid) {
       setUid(storedUid);
-    }else{
-      window.location.href = '/AuthPage';
+    } else {
+      window.location.href = "/AuthPage";
     }
   }, []);
 
@@ -362,7 +283,7 @@ export default function Search() {
       res.minDepartureTime,
       res.maxArrivalTime
     );
-    setAirlineName(extractDistinctAirlineNames(searchResponse?.Results))
+    setAirlineName(extractDistinctAirlineNames(searchResponse?.Results));
     // console.log('Minimum Departure Time:', minDepalTime);
   }, [searchResponse]);
 
@@ -447,6 +368,7 @@ export default function Search() {
             console.log(data);
             setSearchResponse(data);
             setSearch(true);
+            setIsHalfScreen(!isHalfScreen);
           }
         } else {
           setloading(false);
@@ -517,16 +439,27 @@ export default function Search() {
     };
   }, []);
 
+  const [isHalfScreen, setIsHalfScreen] = useState(false);
+
+  const { height } = useSpring({
+    height: isHalfScreen ? "50vh" : "100vh",
+    config: { duration: 300 },
+  });
+
+  const toggleSize = () => {
+    setIsHalfScreen(!isHalfScreen);
+  };
+
   return (
     <Layout extraClass={"pt-160"}>
       {/* <PageBanner pageTitle={"Flight Search"} /> */}
       <div id="Search_page">
-        <div className="page_title">
+        <animated.div className="fullscreen page_title" style={{ height }}>
           <h1>Flight Search</h1>
           <div className="querry">
             <div className="top">
               <CitySelector
-                className='start'
+                className="start"
                 cityData={cityData}
                 setSelectedOption={setOrigin}
                 str_desp={"From where?"}
@@ -549,9 +482,13 @@ export default function Search() {
                   <div className="section">
                     <p>Adults</p>
                     <div>
-                      <button onClick={() => decrementCount("adults")}>-</button>
+                      <button onClick={() => decrementCount("adults")}>
+                        -
+                      </button>
                       {adults}
-                      <button onClick={() => incrementCount("adults")}>+</button>
+                      <button onClick={() => incrementCount("adults")}>
+                        +
+                      </button>
                     </div>
                   </div>
                   <div className="section">
@@ -569,9 +506,13 @@ export default function Search() {
                   <div className="section">
                     <p>Infants</p>
                     <div>
-                      <button onClick={() => decrementCount("infants")}>-</button>
+                      <button onClick={() => decrementCount("infants")}>
+                        -
+                      </button>
                       {infants}
-                      <button onClick={() => incrementCount("infants")}>+</button>
+                      <button onClick={() => incrementCount("infants")}>
+                        +
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -592,12 +533,13 @@ export default function Search() {
                 Search
               </button>
               <button
-              
-                className='end'
+                className="end"
                 onClick={() => {
                   setAllOptions(!allOptions);
                 }}
-              >More</button>
+              >
+                More
+              </button>
               {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 onClick={() => {
@@ -618,7 +560,7 @@ export default function Search() {
                   class="display-block"
                   value={seat_class}
                   onChange={handleClassChange}
-                  >
+                >
                   <option value="1">All</option>
                   <option value="2">Economy</option>
                   <option value="3">Premium economy</option>
@@ -646,64 +588,97 @@ export default function Search() {
               </select>
             </div>
           </div>
-        </div>
-        <div className={loading ? "loader" : ""}></div>
-        <div className="main">
-          <div className="sidebar one">
-            <a href="">Get Fair alert</a>
-            <br />
-            <h2>Filter Your Results</h2>
-            <p>{searchResponse?.Results?searchResponse.Results[0].length:"--"} number of results</p>
-            <br />
-            <h2>Flight Time</h2>
-            <div className="time">
-              <p>{departure_time}</p>
-              <p>{arrival_time}</p>
+        </animated.div>
+
+        {/* <div className={loading ? "loader" : ""}> */}
+        {loading && <div className="loader"></div>}
+        {search && (
+          <div className="main">
+            <div className="head">
+              <h2>
+                {searchResponse?.Results
+                  ? searchResponse.Results[0].length
+                  : "--"}{" "}
+                results
+              </h2>
+              <h1>
+                {
+                  search && "Available flights"
+                  // ? "Looking for your perfect flight, Please wait...."
+                  // : "Search route for your dream vacation...."
+                }
+              </h1>
+              <h2>
+                {origin} - {Destination}
+              </h2>
             </div>
-            <br />
-            <h2>Flight Duration</h2>
-            <p>addduration slider</p>
-            <br />
-            <h2>From - To</h2>
-            <div className="time">
-              <p>{origin}</p>
-              <p>{Destination}</p>
+            <div className="res">
+              <div className="sidebar one">
+                <h2>Filter Your Results</h2>
+                <p>
+                  {searchResponse?.Results
+                    ? searchResponse.Results[0].length
+                    : "--"}{" "}
+                  number of results
+                </p>
+                <h2>Flight Time</h2>
+                <div className="time">
+                  <p>
+                    {breakdownDateTime(departure_time).date} -
+                    {breakdownDateTime(departure_time).time}
+                  </p>
+                  <p>
+                    {breakdownDateTime(arrival_time).date} -
+                    {breakdownDateTime(arrival_time).time}
+                  </p>
+                </div>
+                <h2>Flight Duration</h2>
+                <p>addduration slider</p>
+                <h2>From - To</h2>
+                <div className="time">
+                  <p>
+                    {origin} - {Destination}
+                  </p>
+                </div>
+                <h2>Dates</h2>
+                <div className="checkBox">
+                  <input type="checkbox" name="" id="" />
+                  <p> Alternate Dates</p>
+                </div>
+                <h2>Arilines</h2>
+                <ul>
+                  {airlineNames.map((item, index) => (
+                    <li key={index}>
+                      {/* Render your item properties here */}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* <div className="content"> */}
+              {search ? (
+                <FlightSearchResults
+                  results={searchResponse.Results}
+                  onResultClick={book_req_Fn}
+                />
+              ) : (
+                <div className="search_res">
+                  <h1 className="heading">
+                    {loading
+                      ? "Looking for your perfect flight, Please wait...."
+                      : "Search route for your dream vacation...."}
+                  </h1>
+                </div>
+              )}
+              {/* </div> */}
+              <div className="sidebar">
+                <img
+                  src="/assets/images/search/fairflyings_sidebar.png"
+                  alt="this is an img"
+                />
+              </div>
             </div>
-            <br />
-            
-            <h2>Dates</h2>
-            <div className="checkBox">
-            <input type="checkbox" name="" id="" />
-            <p> Alternate Dates</p>
-            </div>
-            <br />
-            <h2>Arilines</h2>
-            <ul>
-              {airlineNames.map((item, index) => (
-                <li key={index}>{/* Render your item properties here */}</li>
-              ))}
-            </ul>
-            <br />
           </div>
-          {/* <div className="content"> */}
-          {search ? (
-            <FlightSearchResults
-              results={searchResponse.Results}
-              onResultClick={book_req_Fn}
-            />
-          ) : (
-            <div className="search_res">
-              <h1 className="heading">{loading?("Looking for your perfect flight, Please wait...."):("Search route for your dream vacation....")}</h1>
-            </div>
-          )}
-          {/* </div> */}
-          <div className="sidebar">
-            <img
-              src="/assets/images/search/fairflyings_sidebar.png"
-              alt="this is an img"
-            />
-          </div>
-        </div>
+        )}
       </div>
     </Layout>
   );
