@@ -152,8 +152,10 @@ const Footer = ({ bg, extraClass }) => {
               <div className="footer-text">
                 <p>
                   Copy@ 2024{" "}
-                  <span style={{ color: "#F7921E" }}>Fair Flying</span>, All
-                  Right Reserved
+                  <span style={{ color: "#F7921E" }}>
+                    Fair flyings Services Pvt Ltd
+                  </span>
+                  , All Right Reserved
                 </p>
               </div>
             </div>
