@@ -44,11 +44,7 @@ const Footer = ({ bg, extraClass }) => {
               {/*=== Footer Widget ===*/}
               <div className="footer-widget about-company-widget mb-40">
                 <h4 className="widget-title">About</h4>
-                <div className="footer-content">
-                  <p>
-                    To take trivial example which us ever undertakes laborious
-                    physica exercise except obsome
-                  </p>
+                <div className="footer-content footer-widget-nav">
                   <a href="#" className="footer-logo">
                     <img
                       src={
@@ -58,6 +54,25 @@ const Footer = ({ bg, extraClass }) => {
                       }
                       alt="Site Logo"
                     />
+                  </a>
+                  <br />
+                  <br />
+                  <a href="/about" style={{ textDecoration: "underline" }}>
+                    About us
+                  </a>
+                  <br />
+                  <a
+                    href="/terms#terms"
+                    style={{ textDecoration: "underline" }}
+                  >
+                    Terms & Services
+                  </a>
+                  <br />
+                  <a
+                    href="/terms#policy"
+                    style={{ textDecoration: "underline" }}
+                  >
+                    Privacy Policy
                   </a>
                 </div>
               </div>
@@ -136,8 +151,9 @@ const Footer = ({ bg, extraClass }) => {
               {/*=== Footer Text ===*/}
               <div className="footer-text">
                 <p>
-                  Copy@ 2023 <span style={{ color: "#F7921E" }}>GoWilds</span>,
-                  All Right Reserved
+                  Copy@ 2024{" "}
+                  <span style={{ color: "#F7921E" }}>Fair Flying</span>, All
+                  Right Reserved
                 </p>
               </div>
             </div>

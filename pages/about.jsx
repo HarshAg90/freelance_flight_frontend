@@ -18,7 +18,7 @@ const About = () => {
                 {/*=== Section Title ===*/}
                 <div className="section-title mb-30">
                   <span className="sub-title">Availability</span>
-                  <h2>Explore GoWilds Real Adventure &amp; Travels</h2>
+                  <h2>Explore Fair Flying Real Adventure &amp; Travels</h2>
                 </div>
                 <p className="mb-30">
                   Sit amet consectetur integer tincidunt sceleries noda lesry
