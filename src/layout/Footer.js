@@ -74,6 +74,10 @@ const Footer = ({ bg, extraClass }) => {
                   >
                     Privacy Policy
                   </a>
+                  <br />
+                  <a href="/contact_us" style={{ textDecoration: "underline" }}>
+                    Contact us
+                  </a>
                 </div>
               </div>
             </div>
