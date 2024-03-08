@@ -97,7 +97,14 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
     setSelectedDateTime(`${event.target.value}T${time}`);
     console.log(selectedDateTime);
   };
-  return <input type="date" value={date} onChange={handleDateTimeChange} />;
+  return (
+    <input
+      className="date"
+      type="date"
+      value={date}
+      onChange={handleDateTimeChange}
+    />
+  );
 };
 
 export default function HotelSearch() {
@@ -210,11 +217,11 @@ export default function HotelSearch() {
       {/* <PageBanner pageTitle={"Flight Search"} /> */}
       <div id="Search_page">
         <animated.div
-          className="fullscreen page_title Hotels"
+          className={`page_title Hotels ${!search && "fullscreen"}`}
           style={{ height }}
         >
           <h1>Hotel Search</h1>
-          <div className="querry">
+          <div className="querry hotels">
             <div className="top">
               <CitySelector
                 className="start"
@@ -227,23 +234,6 @@ export default function HotelSearch() {
                 setSelectedOption={setCountryCode}
                 str_desp={"Country"}
               />
-
-              <div className="box">
-                <button onClick={() => setNoOfAdults(NoOfAdults - 1)}>-</button>
-                {NoOfAdults} adults
-                <button onClick={() => setNoOfAdults(NoOfAdults + 1)}>+</button>
-              </div>
-              <div className="box">
-                <button onClick={() => setNoOfRooms(NoOfRooms - 1)}>-</button>
-                {NoOfRooms} rooms
-                <button onClick={() => setNoOfRooms(NoOfRooms + 1)}>+</button>
-              </div>
-              <div className="box">
-                <button onClick={() => setNoOfNights(NoOfNights - 1)}>-</button>
-                {NoOfNights} nights
-                <button onClick={() => setNoOfNights(NoOfNights + 1)}>+</button>
-              </div>
-
               <div className="datePicker">
                 {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
                 <DateTimePicker
@@ -251,6 +241,36 @@ export default function HotelSearch() {
                   setSelectedDateTime={setCheckInDate}
                 />
               </div>
+            </div>
+            <div className="mid">
+              <div className="box">
+                <button onClick={() => setNoOfAdults(NoOfAdults - 1)}>-</button>
+                <p>{NoOfAdults} adults</p>
+                <button onClick={() => setNoOfAdults(NoOfAdults + 1)}>+</button>
+              </div>
+              <div className="box">
+                <button onClick={() => setNoOfRooms(NoOfRooms - 1)}>-</button>
+                <p>{NoOfRooms} rooms</p>
+                <button onClick={() => setNoOfRooms(NoOfRooms + 1)}>+</button>
+              </div>
+              <CitySelector
+                cityData={hotels_list}
+                setSelectedOption={setPreferedCurrency}
+                str_desp={"prefered currency"}
+              />
+              <div className="box">
+                <button onClick={() => setNoOfNights(NoOfNights - 1)}>-</button>
+                <p>{NoOfNights} nights</p>
+                <button onClick={() => setNoOfNights(NoOfNights + 1)}>+</button>
+              </div>
+
+              <div className="box">
+                <button onClick={() => setNoOfNights(NoOfNights - 1)}>-</button>
+                <p>{NoOfNights} stars</p>
+                <button onClick={() => setNoOfNights(NoOfNights + 1)}>+</button>
+              </div>
+            </div>
+            <div className="bottom">
               <button
                 className="submit"
                 onClick={() => {
@@ -259,16 +279,6 @@ export default function HotelSearch() {
               >
                 Search
               </button>
-              <div className="box">
-                <button onClick={() => setNoOfNights(NoOfNights - 1)}>-</button>
-                {NoOfNights} stars
-                <button onClick={() => setNoOfNights(NoOfNights + 1)}>+</button>
-              </div>
-              <CitySelector
-                cityData={hotels_list}
-                setSelectedOption={setPreferedCurrency}
-                str_desp={"prefered currency"}
-              />
             </div>
           </div>
         </animated.div>

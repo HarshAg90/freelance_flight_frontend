@@ -11,7 +11,7 @@ const CitySelector = ({ cityData, setSelectedOption, str_desp }) => {
   useEffect(() => {
     if (searchTerm !== "") {
       const filtered = Object.keys(cityData).filter((key, value) =>
-        cityData.key.toLowerCase().includes(searchTerm.toLowerCase())
+        cityData.key?.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredCities(filtered);
       console.log(filteredCities);
