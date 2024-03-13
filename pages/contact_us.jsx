@@ -20,16 +20,16 @@ export default function contact_us() {
         <br />
         <h2>Contact Information</h2>
         <p>Address:</p>
-        <p>123 Main Street</p>
-        <p>City, State, Zip Code</p>
-        <p>Country</p>
+        <p>3RD FLOOR, ORCHID CENTRE, SECTOR 53, DEF QE, DLF QE</p>
+        <p>GURGAON- 122002, HARYANA</p>
+        <p>India</p>
 
         <br />
         <p>Phone:</p>
-        <p>+1 (123) 456-7890</p>
+        <p>+91 9654 5411 48</p>
         <br />
         <p>Email:</p>
-        <p>info@example.com</p>
+        <p>Fairflying7@gmail.com</p>
         <br />
         <h2>Contact Form</h2>
         <p>

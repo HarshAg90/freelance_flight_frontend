@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import PageBanner from "@/src/components/PageBanner";
 import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
 import hotels_list from "@/src/components/search_hotels";
 import { server_url } from "@/src/config";
-import Image from "next/image";
 import { useSpring, animated } from "react-spring";
 
 const FlightSearchResults = ({ results, onResultClick }) => {
@@ -116,13 +114,13 @@ export default function HotelSearch() {
 
   let [PreferedCurrency, setPreferedCurrency] = useState("INR");
   let GuestNationality = CountryCode;
-  let [NoOfRooms, setNoOfRooms] = useState("1");
-  let [NoOfAdults, setNoOfAdults] = useState("1");
+  let [NoOfRooms, setNoOfRooms] = useState(1);
+  let [NoOfAdults, setNoOfAdults] = useState(1);
   // let [NoOfChilds, setNoOfChilds] = useState("0");
   // let [ChildAge, setChildAge] = useState([]);
 
-  let [MaxRating, setMaxRating] = useState("5");
-  let [MinRating, setMinRating] = useState("0");
+  let [rating, setRating] = useState(5);
+  let [MinRating, setMinRating] = useState(0);
 
   let [search, setSearch] = useState(false);
   let [searchResponse, setSearchResponse] = useState(null);
@@ -148,8 +146,8 @@ export default function HotelSearch() {
       },
     ],
     PreferredHotel: "",
-    MaxRating: MaxRating,
-    MinRating: MinRating,
+    MaxRating: rating,
+    MinRating: "0",
     ReviewScore: null,
     IsNearBySearchAllowed: false,
   };
@@ -228,11 +226,13 @@ export default function HotelSearch() {
                 cityData={hotels_list}
                 setSelectedOption={setCityCode}
                 str_desp={"City"}
+                type={"hotel"}
               />
               <CitySelector
                 cityData={hotels_list}
                 setSelectedOption={setCountryCode}
                 str_desp={"Country"}
+                type={"hotel"}
               />
               <div className="datePicker">
                 {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
@@ -265,9 +265,21 @@ export default function HotelSearch() {
               </div>
 
               <div className="box">
-                <button onClick={() => setNoOfNights(NoOfNights - 1)}>-</button>
-                <p>{NoOfNights} stars</p>
-                <button onClick={() => setNoOfNights(NoOfNights + 1)}>+</button>
+                <button
+                  onClick={() => {
+                    rating > 0 && setRating(rating - 1);
+                  }}
+                >
+                  -
+                </button>
+                <p>{rating} stars</p>
+                <button
+                  onClick={() => {
+                    rating < 5 && setRating(rating + 1);
+                  }}
+                >
+                  +
+                </button>
               </div>
             </div>
             <div className="bottom">

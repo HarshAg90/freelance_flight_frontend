@@ -261,24 +261,6 @@ body {
       left: 0;
       will-change: height; /* Optimize for smoother animations */
       transition: height 0.6s ease-in-out;
-      &.hotels {
-        margin: 0;
-        width: 70vw;
-        overflow: hidden;
-        display: block;
-        button.submit {
-          padding: 5px 50px;
-          border-radius: 10px;
-          background: #a4f1daab;
-          color: black;
-          font-size: 1.2rem;
-          transition: 200ms ease;
-          &:hover {
-            background: #a4f1da;
-            transition: 200ms ease;
-          }
-        }
-      }
 
       @media screen and (max-width: 1250px) {
         width: 100%;
@@ -317,7 +299,7 @@ body {
             }
             // background-color: rgba(255, 255, 255, 0.648);
             border-radius: 5px;
-            padding: 5px 10px;
+            padding: 10px 10px;
             border: none;
             width: 200px;
             @media (max-width: 540px) {
@@ -399,9 +381,12 @@ body {
           }
         }
         .tLabel {
-          // background-color: #D2E3C8;
-          background-color: rgb(255, 255, 255);
-          border-radius: 0px;
+          // background-color: #D2E3C8;background-color: #ffffffa3;
+          &:hover {
+            background-color: #ffffff;
+          }
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 10px;
           padding: 10px 20px;
           font-size: 1.2rem;
           @media (max-width: 700px) {
@@ -418,35 +403,18 @@ body {
               width: 100%;
             }
           }
-          background: #4f6f52;
+          background: #4f6f52ae;
           color: white;
           font-size: 1.2rem;
           border-radius: 0px;
+          border-radius: 10px;
           transition: 200ms ease;
           &:hover {
-            background: #4f6f52bf;
+            background: #4f6f52;
             transition: 200ms ease;
           }
         }
-        & > input.date {
-          font-size: 0.9rem;
-          background-color: none;
-          // background-color: #d2e3c8;
-          background-color: #ffffffba;
-          &:hover {
-            background-color: white;
-          }
-          // background-color: rgba(255, 255, 255, 0.648);
-          border-radius: 5px;
-          padding: 5px 10px;
-          border: none;
-          width: 200px;
-          @media (max-width: 540px) {
-            & {
-              width: 70vw;
-            }
-          }
-        }
+
         svg.moreBtn {
           // padding: 10px;
           font-size: 1.4rem;
@@ -455,15 +423,17 @@ body {
         .box {
           display: flex;
           align-items: center;
-          background-color: rgba(255, 255, 255, 0.273);
           border-radius: 10px;
           height: fit-content;
           overflow: hidden;
+          background-color: #ffffffa3;
           &:hover {
-            background-color: rgba(255, 255, 255, 0.358);
+            background-color: #ffffff;
           }
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 10px;
           p {
-            color: white;
+            color: black;
             margin: 5px 10px;
             font-size: 1.2rem;
           }
@@ -486,7 +456,7 @@ body {
           }
           // background-color: rgba(255, 255, 255, 0.648);
           border-radius: 0px;
-          padding: 0 10px;
+          padding: 5px 10px;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -545,11 +515,21 @@ body {
           }
         }
         .cont {
-          background: white;
+          background-color: #ffffffa3;
+          &:hover {
+            background-color: #ffffff;
+            select {
+              background-color: #ffffff;
+            }
+          }
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 10px;
           display: flex;
           align-items: center;
           padding: 0 10px;
-
+          select {
+            background-color: transparent;
+          }
           @media screen and (max-width: 540px) {
             & {
               display: flex;
@@ -561,56 +541,62 @@ body {
             }
           }
         }
-      }
-      .datePicker {
-        // background-color: #d2e3c8;
-        background-color: #ffffff;
-        // background-color: rgba(255, 255, 255, 0.648);
-        border-radius: 0px;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        @media screen and (max-width: 540px) {
-          & {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            width: 70vw;
-            gap: 10px;
+        .datePicker {
+          // background-color: #d2e3c8;
+          background-color: #ffffffa3;
+          &:hover {
+            background-color: #ffffff;
           }
-        }
-        label {
-          font-size: 1.2rem;
-          text-align: center;
-          width: 100%;
-        }
-        svg {
-          font-size: 1.2rem;
-          fill: #4f6f52;
-        }
-        input {
-          font-size: 1.2rem;
-          padding: 10px;
-          padding: 10px;
-          @media (max-width: 700px) {
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 10px;
+          padding: 0px 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          @media screen and (max-width: 540px) {
             & {
-              margin: 0px auto;
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              width: 70vw;
+              gap: 10px;
             }
           }
-          background-color: transparent;
-          border: none;
-          outline: none;
+          label {
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+          }
+          svg {
+            font-size: 1.2rem;
+            fill: #4f6f52;
+          }
+          input {
+            font-size: 1.2rem;
+            padding: 10px;
+            @media (max-width: 700px) {
+              & {
+                margin: 0px auto;
+              }
+            }
+            background-color: transparent;
+            border: none;
+            outline: none;
+          }
         }
       }
       select {
         // margin-left: 10px;
         padding: 5px 10px;
         font-size: 1.3rem;
-        background-color: #ffffff;
+        background-color: #ffffffa3;
+        &:hover {
+          background-color: #ffffff;
+        }
+        // background-color: rgba(255, 255, 255, 0.648);
+        border-radius: 10px;
         // background-color: #d2e3c8;
         // background-color: rgba(255, 255, 255, 0.349);
-        border-radius: 2px;
         outline: none;
         border: none;
         @media screen and (max-width: 540px) {
@@ -620,6 +606,126 @@ body {
           }
         }
         // border: 1px solid rgb(53, 53, 53);
+      }
+      &.hotels {
+        margin: 0;
+        width: 70vw;
+        overflow: hidden;
+        display: block;
+        button.submit {
+          padding: 5px 50px;
+          border-radius: 10px;
+          background: #a4f1daab;
+          color: black;
+          font-size: 1.2rem;
+          transition: 200ms ease;
+          &:hover {
+            background: #a4f1da;
+            transition: 200ms ease;
+          }
+        }
+        input.date {
+          font-size: 0.9rem;
+          background-color: none;
+          // background-color: #d2e3c8;
+          background-color: #ffffffba;
+          &:hover {
+            background-color: white;
+          }
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 5px;
+          padding: 5px 10px;
+          border: none;
+          width: 200px;
+          @media (max-width: 540px) {
+            & {
+              width: 70vw;
+            }
+          }
+        }
+        .City_search {
+          width: fit-content;
+          @media (max-width: 540px) {
+            & {
+              width: 70vw;
+            }
+          }
+          input {
+            font-size: 1.2rem;
+            background-color: none;
+            // background-color: #d2e3c8;
+            background-color: #ffffffba;
+            &:hover {
+              background-color: white;
+            }
+            // background-color: rgba(255, 255, 255, 0.648);
+            border-radius: 5px;
+            padding: 5px 10px;
+            border: none;
+            width: 200px;
+            @media (max-width: 540px) {
+              & {
+                width: 70vw;
+              }
+            }
+          }
+          .search_list {
+            position: absolute;
+            background-color: white;
+            padding: 2px;
+            border-radius: 10px;
+            width: 200px;
+            li {
+              padding: 5px 10px;
+              margin: 5px;
+              color: black;
+              border-radius: 8px;
+              // border-bottom: 1px solid rgb(35, 35, 35) ;
+              background-color: rgb(245, 245, 245);
+            }
+          }
+        }
+        .datePicker {
+          // background-color: #d2e3c8;
+          background-color: #ffffff;
+          // background-color: rgba(255, 255, 255, 0.648);
+          border-radius: 0px;
+          padding: 0px 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          @media screen and (max-width: 540px) {
+            & {
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              width: 70vw;
+              gap: 10px;
+            }
+          }
+          label {
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+          }
+          svg {
+            font-size: 1.2rem;
+            fill: #4f6f52;
+          }
+          input {
+            font-size: 1.2rem;
+            padding: 10px;
+            padding: 5px 10px;
+            @media (max-width: 700px) {
+              & {
+                margin: 0px auto;
+              }
+            }
+            background-color: transparent;
+            border: none;
+            outline: none;
+          }
+        }
       }
     }
   }

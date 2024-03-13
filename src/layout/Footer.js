@@ -45,7 +45,7 @@ const Footer = ({ bg, extraClass }) => {
               <div className="footer-widget about-company-widget mb-40">
                 <h4 className="widget-title">About</h4>
                 <div className="footer-content footer-widget-nav">
-                  <a href="#" className="footer-logo">
+                  <a href="/" className="footer-logo">
                     <img
                       src={
                         bg === "gray"
@@ -168,13 +168,13 @@ const Footer = ({ bg, extraClass }) => {
               <div className="footer-nav float-lg-end">
                 <ul>
                   <li>
-                    <a href="#">Setting &amp; privacy</a>
+                    <a href="/terms#policy">Setting &amp; privacy</a>
                   </li>
                   <li>
-                    <a href="#">Faqs</a>
+                    <a href="/terms#terms">Faqs</a>
                   </li>
                   <li>
-                    <a href="#">Support</a>
+                    <a href="/contact_us">Support</a>
                   </li>
                 </ul>
               </div>
