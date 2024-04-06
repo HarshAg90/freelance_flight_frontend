@@ -7,7 +7,14 @@ import Footer from "./Footer";
 // import Header from "./header/Index";
 import CustomHeader from "./CustomHeader";
 
-const Layout = ({ header, children, footerBG, noFooter, extraClass }) => {
+const Layout = ({
+  header,
+  children,
+  footerBG,
+  noFooter,
+  extraClass,
+  home = false,
+}) => {
   useEffect(() => {
     niceSelect();
   }, []);
@@ -19,7 +26,7 @@ const Layout = ({ header, children, footerBG, noFooter, extraClass }) => {
       <VideoPopup />
       <ImageView />
       {/* <Header header={header} /> */}
-      <CustomHeader/>
+      <CustomHeader page={home ? "home" : null} />
       {children}
       {!noFooter && <Footer bg={footerBG} extraClass={extraClass} />}
     </Fragment>

@@ -1,4 +1,4 @@
-const hotels_list={
+export const hotels_list={
     "151671": "Stella Maris, Bahamas",
     "151672": "Takapoto, French Polynesia",
     "151673": "Tara, Australia",

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
@@ -10,15 +10,17 @@ export default function BookingPayment({}) {
   let [isLoading, setloading] = useState(false);
   let [PaymentPortalGen, setPaymentPortalGen] = useState(false);
   let [PaymentPortal, setPaymentPortal] = useState(false);
-  const [uid, setUid] = useState('');
+  let [meta, setmeta] = useState(false);
+  let [metadata, setmetaData] = useState(false);
+  const [uid, setUid] = useState("");
 
   useEffect(() => {
     // Extract UID from local storage on component mount or page reload
-    const storedUid = localStorage.getItem('uid');
+    const storedUid = localStorage.getItem("uid");
     if (storedUid) {
       setUid(storedUid);
-    }else{
-      window.location.href = '/AuthPage';
+    } else {
+      window.location.href = "/AuthPage";
     }
   }, []);
 
@@ -26,6 +28,10 @@ export default function BookingPayment({}) {
   const data = JSON.parse(router.query.data);
 
   console.log(data);
+
+  let MetaData = () => {
+    setmeta(!meta);
+  };
 
   let make_payment_request = () => {
     if (!data) {
@@ -35,31 +41,31 @@ export default function BookingPayment({}) {
     setloading(true);
     const performApiCall = async (data) => {
       // try {
-        // console.log(data);
-        const response = await fetch(`${server_url}/create_payment_request`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: uid,
-          },
-          body: JSON.stringify({ data: data }),
-        });
+      // console.log(data);
+      const response = await fetch(`${server_url}/create_payment_request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: uid,
+        },
+        body: JSON.stringify({ data: data }),
+      });
 
-        if (response.ok) {
-          const data = await response.json();
-          setloading(false);
-          // console.log('API Response:', data);
-          if (data?.resp) {
-            // alert("payment request created")
-            setPaymentPortalGen(true)
-            setPaymentPortal(data.resp)
-          }else{
-            alert("error creating payment request")
-          }
+      if (response.ok) {
+        const data = await response.json();
+        setloading(false);
+        // console.log('API Response:', data);
+        if (data?.resp) {
+          // alert("payment request created")
+          setPaymentPortalGen(true);
+          setPaymentPortal(data.resp);
         } else {
-          setloading(false);
-          alert("API Request Failed:", response.status, response.statusText);
+          alert("error creating payment request");
         }
+      } else {
+        setloading(false);
+        alert("API Request Failed:", response.status, response.statusText);
+      }
       // } catch (error) {
       //   setloading(false);
       //   alert("An error occurred during the API request:", error);
@@ -111,9 +117,8 @@ export default function BookingPayment({}) {
     setloading(true);
     const performApiCall = async (requestData) => {
       try {
-
         console.log(data);
-        data.booking_data.TraceId = `${data.booking_data.TraceId}`
+        data.booking_data.TraceId = `${data.booking_data.TraceId}`;
         const response = await fetch(`${server_url}/book_flight`, {
           method: "POST",
           headers: {
@@ -127,7 +132,7 @@ export default function BookingPayment({}) {
           const data = await response.json();
           setloading(false);
           console.log(data);
-          if (data.Error.ErrorCode !=='0') {
+          if (data.Error.ErrorCode !== "0") {
             alert("Error in response");
             // console.log(data)
           } else {
@@ -153,10 +158,10 @@ export default function BookingPayment({}) {
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Book Flight"} />
       <div className="top1">
-          <p className="">Enter Your details</p>
-          <p className="selected">Complete Payment</p>
-          <p className="">Book Your Flight</p>
-        </div>
+        <p className="">Enter Your details</p>
+        <p className="selected">Complete Payment</p>
+        <p className="">Book Your Flight</p>
+      </div>
       <div id="BookingPayment">
         <h1>Please confirm your payment</h1>
         <hr />
@@ -195,11 +200,11 @@ export default function BookingPayment({}) {
               margin: "10px",
             }}
             className="P_details"
-            >
+          >
             <p>
               Name:{" "}
               <span>
-              {passenger.FirstName} {passenger.LastName}
+                {passenger.FirstName} {passenger.LastName}
               </span>
             </p>
             <p>
@@ -220,8 +225,11 @@ export default function BookingPayment({}) {
             <p>
               Total Price:{" "}
               <span>
-                {data.flight_data.FareDataMultiple[0].PublishedFare + 
-                (data.flight_data.FareDataMultiple[0].PublishedFare * 0.1)}
+                {data.flight_data.FareDataMultiple[0].PublishedFare
+                  ? data.flight_data.FareDataMultiple[0].PublishedFare +
+                    data.flight_data.FareDataMultiple[0].PublishedFare * 0.1
+                  : data.flight_data.FareDataMultiple[0].OfferedFare +
+                    data.flight_data.FareDataMultiple[0].OfferedFare * 0.1}
               </span>
             </p>
             <p>
@@ -236,17 +244,35 @@ export default function BookingPayment({}) {
               Tax: <span>{data.flight_data.FareDataMultiple[0].Fare.Tax}</span>
             </p>
             <p>
-              Platform Charge (10%): <span>{(data.flight_data.FareDataMultiple[0].PublishedFare * 0.1).toFixed(2)}</span>
+              Platform Charge (10%):{" "}
+              <span>
+                {data.flight_data.FareDataMultiple[0].PublishedFare
+                  ? (
+                      data.flight_data.FareDataMultiple[0].PublishedFare * 0.1
+                    ).toFixed(2)
+                  : (
+                      data.flight_data.FareDataMultiple[0].OfferedFare * 0.1
+                    ).toFixed(2)}
+              </span>
             </p>
           </div>
-        <button onClick={()=>make_payment_request()}>Pay</button>
-        {PaymentPortalGen && (
-        <button onClick={()=>check_payment_request()}>Check Status</button>
-        )}
-        {/* <Payment/> */}
-        <p className="customer_care">*if money deducted and not showing here, please wait 10 minuts, if still a problem contact <span>XXXXXXXX98</span> </p>
+          <Payment
+            data={data.booking_data}
+            amount={
+              data.flight_data.FareDataMultiple[0].PublishedFare
+                ? data.flight_data.FareDataMultiple[0].PublishedFare +
+                  data.flight_data.FareDataMultiple[0].PublishedFare * 0.1
+                : data.flight_data.FareDataMultiple[0].OfferedFare +
+                  data.flight_data.FareDataMultiple[0].OfferedFare * 0.1
+            }
+            type="flight"
+          />
+          {/* <Payment/> */}
+          <p className="customer_care">
+            *if money deducted and not showing here, please wait 10 minuts, if
+            still a problem contact <span>XXXXXXXX98</span>{" "}
+          </p>
         </div>
-        <button className={isPaid?"book success":"book"} onClick={()=>book_flight()}>Book Flight</button>
       </div>
     </Layout>
   );

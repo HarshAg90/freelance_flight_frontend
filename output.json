@@ -1,6 +1,0 @@
-{
-    "Error": {
-        "ErrorCode": "2",
-        "ErrorMessage": "Exception due to multiple booking in the queue"
-    }
-}

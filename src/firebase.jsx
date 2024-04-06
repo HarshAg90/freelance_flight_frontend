@@ -10,8 +10,7 @@ import {
   sendPasswordResetEmail,
   signOut,
   EmailAuthProvider,
-  reauthenticateWithCredential
-
+  reauthenticateWithCredential,
 } from "firebase/auth";
 
 import {
@@ -33,13 +32,13 @@ import {
 //   measurementId: "G-DBV3L9VYMT",
 // };
 const firebaseConfig = {
-    apiKey: "AIzaSyC_v_wo9p3AqP-61DVF8zCGwWmqOe70Gww",
-    authDomain: "flight-project-freelance.firebaseapp.com",
-    projectId: "flight-project-freelance",
-    storageBucket: "flight-project-freelance.appspot.com",
-    messagingSenderId: "490171233304",
-    appId: "1:490171233304:web:67a04564e0560372043f6d"
-  };
+  apiKey: "AIzaSyAfM7PDBXIqWi_L3xhipb0ZtuHXl2S4Ujw",
+  authDomain: "fairflying-dd573.firebaseapp.com",
+  projectId: "fairflying-dd573",
+  storageBucket: "fairflying-dd573.appspot.com",
+  messagingSenderId: "487603547553",
+  appId: "1:487603547553:web:9f9c73d1a1882d168aafe0",
+};
 
 const app = initializeApp(firebaseConfig);
 
@@ -91,14 +90,13 @@ const fetchUsers = async () => {
     const fetchedUsers = snapshot.docs.map((doc) => doc.data());
     return fetchedUsers;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 };
 
-
 const logInWithEmailAndPassword = async (email, password) => {
   // console.log("signin hit");
-  let res =  await signInWithEmailAndPassword(auth, email, password);
+  let res = await signInWithEmailAndPassword(auth, email, password);
   // console.log(res);
   return res;
 };
@@ -130,7 +128,7 @@ const sendPasswordReset = async (email) => {
   }
 };
 
-const logout = async() => {
+const logout = async () => {
   await signOut(auth);
 };
 

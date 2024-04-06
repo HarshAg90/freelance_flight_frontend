@@ -33,7 +33,7 @@ const Index4 = () => {
   ];
 
   return (
-    <Layout header={4}>
+    <Layout header={4} home={true}>
       <section className="hero-section">
         <div className="content">
           <h1 className="wow fadeInDown" data-wow-delay=".5s">

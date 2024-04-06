@@ -3,20 +3,47 @@ import React, { useEffect, useState } from "react";
 
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
+import { server_url } from "@/src/config";
 
 export default function BookingSuccessfull() {
   var [data, setData] = useState();
+  var [orderId, setOrderId] = useState();
   const router = useRouter();
   useEffect(() => {
-    const resp = JSON.parse(router.query.data);
-    setData(resp);
-    // console.log(data)
-
-    console.log(data?.Response.FlightItinerary.Passenger[0].Ticket.TicketNumber);
-    // console.log((data.Response.FlightItinerary.Passenger[0]))
+    setData(JSON.parse(router.query.data));
+    setOrderId(router.query.orderId);
   }, []);
+  const generateAndOpenPDF = async () => {
+    try {
+      // Make a POST request to Flask route to generate PDF
+      const response = await fetch(server_url + "/get_pdf", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId: orderId }),
+      });
+
+      if (response.ok) {
+        // If response is successful, open PDF in new tab
+        const blob = await response.blob();
+        const pdfUrl = URL.createObjectURL(blob);
+        window.open(pdfUrl, "_blank");
+      } else {
+        // Handle API request failure
+        console.error(
+          "Failed to generate PDF:",
+          response.status,
+          response.statusText
+        );
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("An error occurred during PDF generation:", error);
+    }
+  };
   if (!data) {
-    return <h1>hi</h1>;
+    return <h1>loading</h1>;
   }
   return (
     <Layout extraClass={"pt-160"}>
@@ -134,7 +161,7 @@ export default function BookingSuccessfull() {
         </div>
 
         <div className="btns">
-          <button>Download Invoice</button>
+          <button onClick={() => generateAndOpenPDF()}>Download Invoice</button>
           <button>Download Ticket</button>
         </div>
       </div>
