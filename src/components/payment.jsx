@@ -34,10 +34,7 @@ function Payment({ data, amount, type = "flight" }) {
   async function displayRazorpayPaymentSdk() {
     let reqdata = { data: data, metadata: metaData, type: type };
     console.log(reqdata);
-    const result = await axios.post(
-      "http://127.0.0.1:5000/razorpay_order",
-      reqdata
-    );
+    const result = await axios.post(server_url + "/razorpay_order", reqdata);
 
     if (!result) {
       alert("Server error. please check are you onlin?");
