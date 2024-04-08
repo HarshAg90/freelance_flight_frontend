@@ -2,10 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/BookingSuccessfull": "pages/BookingSuccessfull.js",
-  "/booking-success": "pages/booking-success.js",
-  "/bookingPayment": "pages/bookingPayment.js",
-  "/book": "pages/book.js",
-  "/search": "pages/search.js",
-  "/": "pages/index.js"
+  "/search": "pages/search.js"
 }

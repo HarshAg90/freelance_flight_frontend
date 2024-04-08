@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "@/src/layout/Layout";
 import { server_url } from "@/src/config";
 import { useSpring, animated } from "react-spring";
+import Payment from "@/src/components/payment";
 
 export default function Search() {
   let [SourceCity, setSourceCity] = useState();
@@ -35,6 +36,7 @@ export default function Search() {
             `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
           );
           console.log(data.Error.ErrorCode);
+          console.log(data);
           // alert("Unable to Retrive Bus City List");
         }
         // console.log(data);
@@ -43,11 +45,6 @@ export default function Search() {
         setloading(false);
         alert("API Request Failed:", response.status, response.statusText);
       }
-      // } catch (error) {
-      //   setloading(false);
-      //   console.error(error);
-      //   alert("An error occurred during the API request:", error);
-      // }
     };
     getBusList();
   }, []);
@@ -122,10 +119,12 @@ export default function Search() {
           className={`fullscreen page_title bus ${isHalfScreen && "half"}`}
           style={{ height }}
         >
+          {/* <div className="overlay"></div> */}
           <h1>Bus Search</h1>
-          <div className="querry busSearch">
+          <div className="querry hotels">
             <div className="top">
               <div className="search">
+                <p>Where from?</p>
                 <input
                   type="text"
                   value={
@@ -164,6 +163,7 @@ export default function Search() {
                 )}
               </div>
               <div className="search">
+                <p>where to?</p>
                 <input
                   type="text"
                   value={
@@ -201,6 +201,106 @@ export default function Search() {
                   </ul>
                 )}
               </div>
+              <div className="search">
+                <p>when?</p>
+                <input
+                  type="date"
+                  name=""
+                  value={departure_time}
+                  onChange={(e) => setDepTime(e.target.value)}
+                  id=""
+                />
+              </div>
+              <div className="search">
+                <p>🚌</p>
+                <button
+                  className="submit"
+                  onClick={() => {
+                    Search_function();
+                  }}
+                >
+                  Search bus
+                </button>
+              </div>
+            </div>
+            {/* <div className="mid"></div> */}
+          </div>
+          {/* <div className="querry busSearch">
+            <div className="top">
+              <div className="search">
+                <input
+                  type="text"
+                  value={
+                    SearchQuerry.source_city
+                      ? SearchQuerry.source_city
+                      : SourceCity
+                  }
+                  onChange={(e) => setSourceCity(e.target.value)}
+                />
+                {SourceCity && (
+                  <ul className="search_list">
+                    {busList
+                      .filter((city) =>
+                        city.CityName.toLowerCase().includes(
+                          SourceCity.toLowerCase()
+                        )
+                      )
+                      .map((city) => (
+                        <li
+                          key={city.CityId}
+                          onClick={() => {
+                            // i should probably add more than a name to improve future search filter
+                            setSearchQuerry({
+                              ...SearchQuerry,
+                              source_city: city.CityName,
+                              source_code: city.CityId,
+                            });
+                            setSourceCity();
+                          }}
+                        >
+                          {city.CityName}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+              <div className="search">
+                <input
+                  type="text"
+                  value={
+                    SearchQuerry.destination_city
+                      ? SearchQuerry.destination_city
+                      : Destination
+                  }
+                  onChange={(e) => setDestination(e.target.value)}
+                />
+                {Destination && (
+                  <ul className="search_list">
+                    {busList
+                      .filter((city) =>
+                        city.CityName.toLowerCase().includes(
+                          Destination.toLowerCase()
+                        )
+                      )
+                      .map((city) => (
+                        <li
+                          key={city.CityId}
+                          onClick={() => {
+                            // i should probably add more than a name to improve future search filter
+                            setSearchQuerry({
+                              ...SearchQuerry,
+                              destination_city: city.CityName,
+                              destination_code: city.CityId,
+                            });
+                            setDestination();
+                          }}
+                        >
+                          {city.CityName}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
               <input
                 type="date"
                 name=""
@@ -208,8 +308,6 @@ export default function Search() {
                 onChange={(e) => setDepTime(e.target.value)}
                 id=""
               />
-              {/* <div className="datePicker">
-              </div> */}
               <button
                 className="submit"
                 onClick={() => {
@@ -219,7 +317,7 @@ export default function Search() {
                 Search
               </button>
             </div>
-          </div>
+          </div> */}
         </animated.div>
         {loading && (
           <div className="loader">
@@ -325,13 +423,14 @@ export default function Search() {
           <div className="bus-search-res">
             <div className="topBar">
               <div className="t">
-                <button>Filter</button>
                 <h2>
                   {" "}
-                  {searchResponse.Result.BusResults.length} Bus found in{" "}
-                  {SearchQuerry.source_city}
+                  <span>{searchResponse.Result.BusResults.length}</span> Bus
+                  found for <span>{SearchQuerry.source_city}</span> to{" "}
+                  <span>{SearchQuerry.destination_city}</span>
                 </h2>
-                <a href=""> lean about low prices</a>
+                <a href="">*lean about low prices</a>
+                <button>Filter</button>
                 <button
                   onClick={(e) => {
                     setIsHalfScreen(false);
@@ -349,15 +448,16 @@ export default function Search() {
                 <button>Nearest First</button>
               </div>
             </div>
-            {console.log(searchResponse.Result.TraceId)}
             {searchResponse.Result.BusResults.map((result, index) => (
               <Buses
                 result={result}
                 index={index}
                 TraceId={searchResponse.Result.TraceId}
+                loading={loading}
+                setloading={setloading}
               />
             ))}
-            <p>... No more results</p>
+            <p>🚌.o0O° </p>
           </div>
         )}
       </div>
@@ -365,7 +465,7 @@ export default function Search() {
   );
 }
 
-function Buses({ result, index, TraceId }) {
+function Buses({ result, index, TraceId, loading, setloading }) {
   // old code
   const router = useRouter();
   function handleClick(body, rec = null) {
@@ -377,56 +477,535 @@ function Buses({ result, index, TraceId }) {
 
   // new code
   let [toggleDetails, setToggleDetails] = useState(false);
+  let [toggleSearch, settoggleSearch] = useState(false);
   let [SelectedBusSeats, setSelectedBusSeats] = useState([]);
+  let [PassengerInfo, setPassengerInfo] = useState([]);
+  let [SelectedPoints, setSelectedPoints] = useState({});
+  let [Points, setPoints] = useState();
+  let [pointPg, setPointPg] = useState(true);
+
+  let [page, setPage] = useState("points");
+  const handleInputChange = (index, field, value) => {
+    const updatedPassengerInfo = [...PassengerInfo];
+    updatedPassengerInfo[index] = {
+      ...updatedPassengerInfo[index],
+      [field]: value,
+    };
+    setPassengerInfo(updatedPassengerInfo);
+  };
+
+  useEffect(() => {
+    if (toggleSearch) {
+      const getBusPoint = async () => {
+        const response = await fetch(`${server_url}/bus_points`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            TraceId: TraceId,
+            ResultIndex: result.ResultIndex,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setPoints(data);
+        } else {
+          alert("API Request Failed:", response.status, response.statusText);
+        }
+      };
+      getBusPoint();
+    }
+  }, [toggleSearch]);
+
+  let getFare = () => {
+    return {
+      base: SelectedBusSeats.reduce(
+        (total, currentSeat) => total + parseInt(currentSeat.SeatFare),
+        0
+      ),
+      total:
+        SelectedBusSeats.reduce(
+          (total, currentSeat) => total + parseInt(currentSeat.SeatFare),
+          0
+        ) +
+        SelectedBusSeats.reduce(
+          (total, currentSeat) => total + parseInt(currentSeat.SeatFare),
+          0
+        ) *
+          0.1,
+    };
+  };
+
+  let bookingReqData = () => {
+    return {
+      BoardingPoints: SelectedPoints,
+      seatInfo: SelectedBusSeats,
+      PassengerInfo: PassengerInfo,
+      total: getFare().total,
+    };
+  };
 
   return (
     <div key={index} className="results">
-      <div className="top">
-        <h2>{result.BusType}</h2>
-        <p>
-          {result.DepartureTime} - {result.ArrivalTime}
-        </p>
-        <p>
-          {result.BoardingPoints[0].CityPointName} {">"}{" "}
-          {result.BoardingPoints[1].CityPointName} {">"}{" "}
-          {result.BoardingPoints[2].CityPointName} ...
-        </p>
-        <p>
-          {result.DroppingPoints[0].CityPointName} {">"}{" "}
-          {result.DroppingPoints[1]?.CityPointName} {">"}{" "}
-          {result.DroppingPoints[2]?.CityPointName} ...
-        </p>
+      <div className="t">
+        <div className="top">
+          <div className="a">
+            <h2>{result.BusType}</h2>
+            <p className="price">
+              Fare per seat -{" "}
+              <span>
+                {result.Price.CurrencyCode}{" "}
+                {result.Price?.PublishedPrice
+                  ? result.Price.PublishedPrice
+                  : result.Price.OfferedPrice
+                  ? result.Price.OfferedPrice
+                  : ""}
+              </span>
+            </p>
+          </div>
+          <div className="a">
+            <p>
+              <span>{breakdownDateTime(result.DepartureTime).time}</span>
+              {" > "}
+              {result.BoardingPoints[0].CityPointName}
+            </p>
+            <p className="date">
+              {breakdownDateTime(result.DepartureTime).date}
+            </p>
+          </div>
+          <div className="a">
+            <p>
+              <span>{breakdownDateTime(result.ArrivalTime).time}</span>
+              {" > "}
+              {
+                result.DroppingPoints[result.DroppingPoints.length - 1]
+                  ?.CityPointName
+              }
+            </p>
+            <p className="date">{breakdownDateTime(result.ArrivalTime).date}</p>
+          </div>
+          <div className="a">
+            {SelectedBusSeats.length <= 0 ? (
+              <button onClick={() => setToggleDetails(!toggleDetails)}>
+                {!toggleDetails ? "View Details" : "Hide Details"}
+              </button>
+            ) : (
+              <button onClick={() => settoggleSearch(!toggleSearch)}>
+                Book Seat
+              </button>
+            )}
+          </div>
+        </div>
+        {/* bus seat layout */}
+        {toggleDetails && (
+          <div className="down">
+            <div className="details">
+              <p>*driver this side</p>
+              <p>*click to select</p>
+            </div>
+            <BusSeatLayout
+              data={{ TraceId: TraceId, ResultIndex: result.ResultIndex }}
+              SelectedBusSeats={SelectedBusSeats}
+              setSelectedBusSeats={setSelectedBusSeats}
+            />
+          </div>
+        )}
       </div>
-      <div className="down">
-        <p>
-          Fare -{" "}
-          <span>
-            {result.Price.CurrencyCode}{" "}
-            {result.Price?.PublishedPrice
-              ? result.Price.PublishedPrice
-              : result.Price.OfferedPrice
-              ? result.Price.OfferedPrice
-              : ""}
-          </span>
-        </p>
-        <button
-          // onClick={() =>
-          //   handleClick({
-          //     ...result,
-          //     TraceId: searchResponse.Result.TraceId,
-          //   })
-          // }
-          onClick={setToggleDetails(!toggleDetails)}
-        >
-          {!toggleDetails ? "View Details" : "Hide Details"}
-        </button>
-      </div>
-      {toggleDetails && (
-        <BusSeatLayout
-          data={{ TraceId: TraceId, ResultIndex: result.ResultIndex }}
-          SelectedBusSeats={SelectedBusSeats}
-          setSelectedBusSeats={setSelectedBusSeats}
-        />
+      {/* sidebar */}
+      {toggleSearch && (
+        <div className="fp">
+          {page == "points" &&
+            (Points ? (
+              <div className="bookingPg">
+                <div className="tpBtn">
+                  <button onClick={() => settoggleSearch(!toggleSearch)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
+                    </svg>
+                  </button>
+                </div>
+                <div className="top">
+                  <button
+                    className={pointPg ? "selected" : ""}
+                    onClick={() => setPointPg(!pointPg)}
+                  >
+                    Boaring Points
+                  </button>
+                  <button
+                    className={!pointPg ? "selected" : ""}
+                    onClick={() => setPointPg(!pointPg)}
+                  >
+                    Droping Points
+                  </button>
+                </div>
+                {pointPg ? (
+                  <div className="points">
+                    {Points.GetBusRouteDetailResult.BoardingPointsDetails.map(
+                      (pt) => {
+                        {
+                          console.log(pt);
+                        }
+
+                        return (
+                          <div
+                            className={
+                              SelectedPoints.pickup?.CityPointTime ===
+                              pt.CityPointTime
+                                ? "point selected"
+                                : "point"
+                            }
+                            onClick={() => {
+                              setSelectedPoints({
+                                ...SelectedPoints,
+                                pickup: pt,
+                              });
+                              setPointPg(!pointPg);
+                            }}
+                          >
+                            <div>
+                              <h2>
+                                <span>
+                                  {breakdownDateTime(pt.CityPointTime).time}
+                                </span>
+                              </h2>
+                              <p>{breakdownDateTime(pt.CityPointTime).date}</p>
+                            </div>
+                            <div>
+                              <h2>
+                                <span> {pt.CityPointName}</span>
+                              </h2>
+                              <p className="end">{pt.CityPointAddress}</p>
+                            </div>
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <div className="points">
+                      {Points.GetBusRouteDetailResult.DroppingPointsDetails.map(
+                        (pt) => {
+                          {
+                            console.log(pt);
+                          }
+
+                          return (
+                            <div
+                              // className="point"
+                              onClick={() => {
+                                setSelectedPoints({
+                                  ...SelectedPoints,
+                                  drop: pt,
+                                });
+                                setPointPg(!pointPg);
+                              }}
+                              className={
+                                SelectedPoints.drop?.CityPointTime ===
+                                pt.CityPointTime
+                                  ? "point selected"
+                                  : "point"
+                              }
+                            >
+                              <div>
+                                <h2>
+                                  <span>
+                                    {breakdownDateTime(pt.CityPointTime).time}
+                                  </span>
+                                </h2>
+                                <p>
+                                  {breakdownDateTime(pt.CityPointTime).date}
+                                </p>
+                              </div>
+                              <div>
+                                <h2>
+                                  <span> {pt.CityPointName}</span>
+                                </h2>
+                                <p className="end">{pt.CityPointAddress}</p>
+                              </div>
+                            </div>
+                          );
+                        }
+                      )}
+                    </div>
+                  </>
+                )}
+                <p classNamxe="sub">*click to select</p>
+                <div className="down">
+                  <div className="">
+                    <p>base fare - ₹ {getFare().base}</p>
+                    <h2>
+                      Total fare - <span>₹ {getFare().total}</span>
+                    </h2>
+                    <p classNamxe="sub">*10% service charge</p>
+                  </div>
+                  {SelectedPoints.pickup && SelectedPoints.drop ? (
+                    <button
+                      className="success"
+                      onClick={() => {
+                        setPage("details");
+                      }}
+                    >
+                      CONTINUE
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        settoggleSearch(false);
+                        setPoints();
+                      }}
+                    >
+                      Go back
+                    </button>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <h1>Loading..</h1>
+            ))}
+          {page === "details" && (
+            <div className="bookingPg details">
+              <div className="tpBtn">
+                <button onClick={() => settoggleSearch(!toggleSearch)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
+                  </svg>
+                </button>
+              </div>
+              <h1>Boarding & Dropping</h1>
+              <div className="points">
+                <div>
+                  <h2>
+                    <span>
+                      {
+                        breakdownDateTime(SelectedPoints.pickup.CityPointTime)
+                          .time
+                      }
+                    </span>
+                  </h2>
+                  <p>
+                    {
+                      breakdownDateTime(SelectedPoints.pickup.CityPointTime)
+                        .date
+                    }
+                  </p>
+                </div>
+                <div>
+                  <h2>
+                    <span> {SelectedPoints.pickup.CityPointName}</span>
+                  </h2>
+                  <p className="end">
+                    {SelectedPoints.pickup.CityPointAddress}
+                  </p>
+                </div>
+              </div>
+              <div className="points">
+                <div>
+                  <h2>
+                    <span>
+                      {
+                        breakdownDateTime(SelectedPoints.drop.CityPointTime)
+                          .time
+                      }
+                    </span>
+                  </h2>
+                  <p>
+                    {breakdownDateTime(SelectedPoints.drop.CityPointTime).date}
+                  </p>
+                </div>
+                <div>
+                  <h2>
+                    <span> {SelectedPoints.drop.CityPointName}</span>
+                  </h2>
+                  <p className="end">{SelectedPoints.drop.CityPointAddress}</p>
+                </div>
+              </div>
+              <h1>Seats</h1>
+              <div className="seats">
+                {SelectedBusSeats.map((seat) => (
+                  <p>{seat.SeatName}</p>
+                ))}
+              </div>
+              <h1>Fair</h1>
+              <div className="fair">
+                <p>base fare - ₹ {getFare().base}</p>
+                <h2>
+                  Total fare - <span>₹ {getFare().total}</span>
+                </h2>
+                <p className="sub">*10% service charge</p>
+              </div>
+              <div className="down">
+                <div className="btns">
+                  <button
+                    className=""
+                    onClick={() => {
+                      setPage("points");
+                    }}
+                  >
+                    Go Back
+                  </button>
+                  <button
+                    className="success"
+                    onClick={() => {
+                      setPage("personalInfo");
+                    }}
+                  >
+                    Procede to Booking
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          {page === "personalInfo" && (
+            <div className="bookingPg infoPg">
+              <div className="tpBtn">
+                <button onClick={() => settoggleSearch(!toggleSearch)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
+                  </svg>
+                </button>
+              </div>
+              <div className="info">
+                <h1>Passengers Info</h1>
+                {Array.from({ length: SelectedBusSeats.length }, (_, index) => (
+                  <div key={index} className="passenger">
+                    <h2>Passenger {index + 1}</h2>
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      value={PassengerInfo[index]?.FirstName || ""}
+                      onChange={(e) =>
+                        handleInputChange(index, "FirstName", e.target.value)
+                      }
+                    />
+                    <div className="mid">
+                      <div>
+                        <input
+                          type="radio"
+                          className="radio"
+                          id={`Male${index}`}
+                          name={`gender${index}`}
+                          value="1"
+                          checked={PassengerInfo[index]?.gender === "1"}
+                          onChange={(e) =>
+                            handleInputChange(index, "gender", e.target.value)
+                          }
+                        />
+                        <label htmlFor={`Male${index}`}>Male</label>
+                        {/* <div></div> */}
+
+                        <input
+                          type="radio"
+                          className="radio"
+                          id={`Female${index}`}
+                          name={`gender${index}`}
+                          value="2"
+                          checked={PassengerInfo[index]?.gender === "2"}
+                          onChange={(e) =>
+                            handleInputChange(index, "gender", e.target.value)
+                          }
+                        />
+                        <label htmlFor={`Female${index}`}>Female</label>
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Age"
+                          value={PassengerInfo[index]?.age || ""}
+                          onChange={(e) =>
+                            handleInputChange(index, "age", e.target.value)
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className="mid">
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Phone number"
+                          value={PassengerInfo[index]?.phoneN || ""}
+                          onChange={(e) =>
+                            handleInputChange(index, "phoneN", e.target.value)
+                          }
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Email"
+                          value={PassengerInfo[index]?.email || ""}
+                          onChange={(e) =>
+                            handleInputChange(index, "email", e.target.value)
+                          }
+                        />
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="State of residence"
+                      value={PassengerInfo[index]?.state || ""}
+                      onChange={(e) =>
+                        handleInputChange(index, "state", e.target.value)
+                      }
+                    />
+                  </div>
+                ))}
+
+                <div className="down">
+                  <div className="">
+                    <h2>
+                      Total fare - <span>₹ {getFare().total}</span>
+                    </h2>
+                  </div>
+                  <div className="btns">
+                    <button
+                      className=""
+                      onClick={() => {
+                        setPage("details");
+                      }}
+                    >
+                      Go Back
+                    </button>
+
+                    <Payment
+                      data={bookingReqData()}
+                      amount={
+                        SelectedBusSeats.reduce(
+                          (total, currentSeat) =>
+                            total + parseInt(currentSeat.SeatFare),
+                          0
+                        ) +
+                        SelectedBusSeats.reduce(
+                          (total, currentSeat) =>
+                            total + parseInt(currentSeat.SeatFare),
+                          0
+                        ) *
+                          0.1
+                      }
+                      type="bus"
+                      setLoading={setloading}
+                      btnClass={"success"}
+                    />
+                    {/* <button
+                      className="success"
+                      onClick={() => {
+                        bookingReq();
+                      }}
+                    >
+                      Procede To Pay
+                    </button> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
@@ -435,44 +1014,48 @@ function Buses({ result, index, TraceId }) {
 function BusSeatLayout({ data, SelectedBusSeats, setSelectedBusSeats }) {
   const [selectedSeats, setSelectedSeats] = useState(SelectedBusSeats);
   const [seatLayout, setSeatLayout] = useState();
-
+  const [loading, setloading] = useState(false);
   // handle seat select
   const handleSeatClick = (seat) => {
-    const seatIndex = selectedSeats.indexOf(seat);
+    const seatIndex = SelectedBusSeats.indexOf(seat);
     if (seatIndex === -1) {
-      setSelectedSeats([...selectedSeats, seat]);
+      setSelectedBusSeats([...SelectedBusSeats, seat]);
+      setSelectedSeats([...selectedSeats, seat.SeatName]);
     } else {
+      setSelectedBusSeats(
+        SelectedBusSeats.filter(
+          (selectedSeat) => selectedSeat.SeatName !== seat.SeatName
+        )
+      );
       setSelectedSeats(
-        selectedSeats.filter((selectedSeat) => selectedSeat !== seat)
+        selectedSeats.filter((selectedSeat) => selectedSeat !== seat.SeatName)
       );
     }
   };
 
   // search for seating
   useEffect(() => {
-    let bodyContent = JSON.stringify({
-      TraceId: toString(data.TraceId),
-      ResultIndex: toString(result.ResultIndex),
-    });
     const getBusList = async () => {
       const response = await fetch(`${server_url}/bus_seat_layout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: bodyContent,
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
         const data = await response.json();
         setloading(false);
-        if (data.Error.ErrorCode === 1) {
+        if (data.Error.ErrorCode === 0) {
           setSeatLayout(data);
         } else {
-          alert(
-            `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
-          );
-          setSeatLayout(data);
+          // alert(
+          //   `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
+          // );
+          // console.log(bodyContent);
+          console.log(data);
+          setSeatLayout("failed");
           // console.log(data.Error.ErrorCode);
         }
       } else {
@@ -483,22 +1066,71 @@ function BusSeatLayout({ data, SelectedBusSeats, setSelectedBusSeats }) {
     getBusList();
   }, []);
 
+  if (loading || !seatLayout)
+    return (
+      <div className="seats">
+        <h1>Loading...</h1>
+      </div>
+    );
+  if (seatLayout == "failed")
+    return (
+      <div className="seats">
+        <h1>Error - Seat info Unavailable for this bus</h1>
+      </div>
+    );
+
   return (
-    <div className="seats">
-      {data.Result.SeatLayout.Layout.seatDetails[0].map((seat) => {
-        const isSeatSelected = selectedSeats.includes(seat.SeatName);
-        return (
-          <div
-            key={seat.SeatIndex}
-            className={`seat ${isSeatSelected ? "selected" : ""}`}
-            onClick={() => handleSeatClick(seat.SeatName)}
-          >
-            <div className="hover">
-              <p>{`Seat No: ${seat.SeatName} | C: ${seat.ColumnNo} | R: ${seat.RowNo} | Price: ${seat.Price.SeatFare}`}</p>
+    <div
+      className="seats"
+      // dangerouslySetInnerHTML={{
+      //   __html: seatLayout.Result.SeatLayout.SeatLayoutDetails.HTMLLayout,
+      // }}
+    >
+      {/* {seatLayout.Result.SeatLayout.SeatLayoutDetails.HTMLLayout} */}
+      {seatLayout.Result.SeatLayout.SeatLayoutDetails.Layout.seatDetails.map(
+        (rows) => {
+          return (
+            <div className="row">
+              {rows.map((seat) => {
+                return (
+                  <div
+                    key={seat.SeatIndex}
+                    // className={`seat`}
+                    className={
+                      selectedSeats.includes(seat.SeatName)
+                        ? "seat selected"
+                        : "seat"
+                    }
+                    onClick={() => handleSeatClick(seat)}
+                  >
+                    <div className="hover">
+                      <p>{`Seat No: ${seat.SeatName} | C: ${seat.ColumnNo} | R: ${seat.RowNo} | price: ${seat.SeatFare}`}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
     </div>
   );
+}
+
+function breakdownDateTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString);
+
+  // Format date
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const dateFormatted = dateTime
+    .toLocaleDateString("en-GB", options)
+    .replace(/\//g, "-");
+
+  // Format time
+  const timeFormatted = dateTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return { date: dateFormatted, time: timeFormatted };
 }

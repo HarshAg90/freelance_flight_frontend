@@ -2,108 +2,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import CitySelector from "@/src/components/city_selector";
 import Layout from "@/src/layout/Layout";
-// import hotels_list from "../src/components/search_hotels";
 import { hotels_list } from "../src/components/search_hotels";
 import { server_url } from "@/src/config";
 import { useSpring, animated } from "react-spring";
-import CustomInput from "@/src/components/CustomInput";
-
-// const FlightSearchResults = ({ results, onResultClick }) => {
-//   const handleResultClick = (resultIndex) => {
-//     onResultClick(resultIndex);
-//   };
-//   console.log(results);
-//   // return (
-//   //   <>
-//   //     <h1>hey</h1>
-//   //   </>
-//   // );
-//   return (
-//     <div className="hotel_search_res">
-//       <div className="topBar">
-//         <div className="t">
-//           <button>Filter</button>
-//           <h2> - hotels found in -</h2>
-//           <a href=""> lean about low prices</a>
-//         </div>
-//         <div className="b">
-//           <button className="selected">Recomended</button>
-//           <button>Top review</button>
-//           <button>Most Stars</button>
-//           <button>Nearest First</button>
-//         </div>
-//       </div>
-//       {results.map((result, index) => (
-//         <div key={index} className="results">
-//           {/* {resultGroup.map((result) => ( */}
-//           {/* <div key={result.ResultIndex} className="results_tile"> */}
-//           {/* {console.log(result)} */}
-
-//           <div className="top">
-//             <img src={result.HotelPicture} alt="" />
-//           </div>
-//           <div className="mid">
-//             <h2>{result.HotelName}</h2>
-//             {/* <h2>{result.HotelDescription}</h2> */}
-//             <p>{result.HotelPromotion}</p>
-//             <p>{result.HotelAddress}</p>
-//           </div>
-//           <div className="down">
-//             <p>
-//               Fare -{" "}
-//               <span>
-//                 {result.Price.CurrencyCode}{" "}
-//                 {result.Price?.PublishedPrice
-//                   ? result.Price.PublishedPrice
-//                   : result.Price.OfferedPrice
-//                   ? result.Price.OfferedPrice
-//                   : ""}
-//               </span>
-//               {/* FareDataMultiple */}
-//             </p>
-//             <button onClick={() => handleResultClick(result)}>
-//               View Details
-//             </button>
-//           </div>
-//           {/* </div> */}
-//           {/* ))} */}
-//         </div>
-//       ))}
-//       <h1>... No more results</h1>
-//     </div>
-//   );
-// };
-
-const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
-  let [date, changeDate] = useState("");
-  let [time, changeTime] = useState("00:00:00");
-  const list = {
-    Anytime: "00:00:00",
-    Morning: "08:00:00",
-    AfterNoon: "14:00:00",
-    Evening: "19:00:00",
-    Night: "01:00:00",
-  };
-  const handleSelect = (event) => {
-    changeTime(event.target.value);
-    setSelectedDateTime(`${date}T${event.target.value}`);
-    console.log(`${date}T${event.target.value}`);
-    console.log(selectedDateTime);
-  };
-  const handleDateTimeChange = (event) => {
-    changeDate(event.target.value);
-    setSelectedDateTime(`${event.target.value}T${time}`);
-    console.log(selectedDateTime);
-  };
-  return (
-    <input
-      className="date"
-      type="date"
-      value={date}
-      onChange={handleDateTimeChange}
-    />
-  );
-};
 
 export default function HotelSearch() {
   let [CheckInDate, setCheckInDate] = useState("30/04/2020");
@@ -545,7 +446,21 @@ export default function HotelSearch() {
                           : ""}
                       </span>
                     </p>
-                    <button onClick={() => handleResultClick(result)}>
+                    <button
+                      onClick={() => {
+                        router.push({
+                          pathname: "/hotel-details",
+                          query: {
+                            data: JSON.stringify({
+                              ...result,
+                              TraceId: searchResponse.TraceId,
+                              SrdvType: searchResponse.SrdvType,
+                            }),
+                          },
+                        });
+                        // handleResultClick(result);
+                      }}
+                    >
                       View Details
                     </button>
                   </div>

@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { server_url } from "@/src/config";
 
-function Payment({ data, amount, type = "flight" }) {
+function Payment({
+  data,
+  amount,
+  type = "flight",
+  setLoading,
+  btnClass = null,
+}) {
   let [toggle, setToggle] = useState(false);
   // razorpay inport
   const loadScript = (src) => {
@@ -21,7 +27,9 @@ function Payment({ data, amount, type = "flight" }) {
     });
   };
   useEffect(() => {
+    setLoading(true);
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
+    setLoading(false);
   });
 
   const [metaData, setmetadata] = useState({
@@ -32,6 +40,7 @@ function Payment({ data, amount, type = "flight" }) {
   });
 
   async function displayRazorpayPaymentSdk() {
+    setLoading(true);
     let reqdata = { data: data, metadata: metaData, type: type };
     console.log(reqdata);
     const result = await axios.post(server_url + "/razorpay_order", reqdata);
@@ -75,6 +84,7 @@ function Payment({ data, amount, type = "flight" }) {
 
     console.log(options);
     const paymentObject = new window.Razorpay(options);
+    setLoading(false);
     paymentObject.open();
   }
 
@@ -82,8 +92,11 @@ function Payment({ data, amount, type = "flight" }) {
     <div className="payment">
       <div className="header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>Razorpay Payments ! Try it Once </p>
-        <button className="App-link" onClick={() => setToggle(!toggle)}>
+        {/* <p>Razorpay Payments ! Try it Once </p> */}
+        <button
+          className={"App-link " + btnClass}
+          onClick={() => setToggle(!toggle)}
+        >
           Pay with RazorPay
         </button>
         {toggle && (

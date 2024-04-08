@@ -10,8 +10,12 @@ export default function BookingSuccessfull() {
   var [orderId, setOrderId] = useState();
   const router = useRouter();
   useEffect(() => {
-    setData(JSON.parse(router.query.data));
-    setOrderId(router.query.orderId);
+    try {
+      setData(JSON.parse(router.query.data));
+      setOrderId(router.query.orderId);
+    } catch {
+      console.log(router.query.data);
+    }
   }, []);
   const generateAndOpenPDF = async () => {
     try {

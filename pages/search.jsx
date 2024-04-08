@@ -7,207 +7,6 @@ import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
 
-const FlightSearchResults = ({ results, onResultClick }) => {
-  const handleResultClick = (resultIndex) => {
-    onResultClick(resultIndex);
-  };
-
-  return (
-    <div className="search_res">
-      {results.map((resultGroup, index) => (
-        <div key={index} className="results">
-          {/* <h3>Result Group {index + 1}</h3> */}
-          {resultGroup.map((result) => (
-            <div key={result.ResultIndex} style={{}} className="results_tile">
-              {/* {console.log(result)} */}
-              {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                <path d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
-              </svg> */}
-              <div className="top">
-                <h2>{result.Segments[0][0].FlightStatus}</h2>
-                <h2>
-                  Airline:{" "}
-                  <span>{result.Segments[0][0].Airline.AirlineName}</span> |
-                </h2>
-                <h2>
-                  Code: <span>{result.Segments[0][0].Airline.AirlineCode}</span>
-                </h2>
-              </div>
-              <p>
-                {result.Segments[0][0].Origin.CityName},
-                {result.Segments[0][0].Origin.CountryName}{" "}
-                <span>
-                  {" "}
-                  {breakdownDateTime(result.Segments[0][0].DepTime).time}
-                </span>{" "}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                  <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                </svg>
-                {result.Segments[0][0].Destination.CityName},
-                {result.Segments[0][0].Destination.CountryName} -{" "}
-                <span>
-                  {breakdownDateTime(result.Segments[0][0].ArrTime).time}
-                </span>
-              </p>
-              <div className="down">
-                <p>
-                  Fare -{" "}
-                  <span>
-                    {result.FareDataMultiple[0].Fare.Currency}{" "}
-                    {result.Fare?.PublishedFare
-                      ? result.Fare.PublishedFare
-                      : result.OfferedFare
-                      ? result.OfferedFare
-                      : ""}
-                  </span>
-                  {/* FareDataMultiple */}
-                </p>
-                <button onClick={() => handleResultClick(result)}>
-                  View Details
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      ))}
-      <h1>... No more results</h1>
-    </div>
-  );
-};
-
-function breakdownDateTime(dateTimeString) {
-  const dateTime = new Date(dateTimeString);
-
-  // Format date
-  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const dateFormatted = dateTime
-    .toLocaleDateString("en-GB", options)
-    .replace(/\//g, "-");
-
-  // Format time
-  const timeFormatted = dateTime.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  return { date: dateFormatted, time: timeFormatted };
-}
-
-const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
-  let [date, changeDate] = useState("");
-  let [time, changeTime] = useState("00:00:00");
-  const list = {
-    Anytime: "00:00:00",
-    Morning: "08:00:00",
-    AfterNoon: "14:00:00",
-    Evening: "19:00:00",
-    Night: "01:00:00",
-  };
-  const handleSelect = (event) => {
-    changeTime(event.target.value);
-    setSelectedDateTime(`${date}T${event.target.value}`);
-    console.log(`${date}T${event.target.value}`);
-    console.log(selectedDateTime);
-  };
-  const handleDateTimeChange = (event) => {
-    changeDate(event.target.value);
-    setSelectedDateTime(`${event.target.value}T${time}`);
-    console.log(selectedDateTime);
-  };
-  return <input type="date" value={date} onChange={handleDateTimeChange} />;
-};
-
-function findMinMaxTime(data) {
-  let minDepartureTime = null;
-  let maxArrivalTime = null;
-
-  data?.forEach((item) => {
-    if (
-      item &&
-      item.Segments &&
-      item.Segments.length > 0 &&
-      item.Segments[0].length > 0
-    ) {
-      const arrivalTime = item.Segments[0][0].ArrTime;
-      const departureTime = item.Segments[0][0].DepTime;
-
-      if (arrivalTime) {
-        if (!maxArrivalTime || arrivalTime > maxArrivalTime) {
-          maxArrivalTime = arrivalTime;
-        }
-      }
-
-      if (departureTime) {
-        if (!minDepartureTime || departureTime < minDepartureTime) {
-          minDepartureTime = departureTime;
-        }
-      }
-    }
-  });
-
-  return { minDepartureTime, maxArrivalTime };
-}
-
-function filterArrayByTimeRange(data, startTime, endTime) {
-  return data?.filter((item) => {
-    if (
-      item &&
-      item.Segments &&
-      item.Segments.length > 0 &&
-      item.Segments[0].length > 0
-    ) {
-      const arrivalTime = item.Segments[0][0].ArrTime;
-      const departureTime = item.Segments[0][0].DepTime;
-
-      return (
-        arrivalTime >= startTime &&
-        arrivalTime <= endTime &&
-        departureTime >= startTime &&
-        departureTime <= endTime
-      );
-    }
-
-    return false;
-  });
-}
-
-function calculateDuration(minDepartureTime, maxArrivalTime) {
-  if (!minDepartureTime || !maxArrivalTime) {
-    return null; // Handle invalid input
-  }
-
-  const minTime = new Date(minDepartureTime);
-  const maxTime = new Date(maxArrivalTime);
-
-  const durationInMilliseconds = maxTime - minTime;
-  const durationInMinutes = durationInMilliseconds / (1000 * 60);
-
-  return durationInMinutes;
-}
-
-function extractDistinctAirlineNames(data) {
-  // Use a Set to store unique airline names
-  const uniqueAirlineNames = new Set();
-
-  // Iterate through the array and extract AirlineName
-  data?.forEach((item) => {
-    console.log(item?.Segments);
-    if (item && item.Segments) {
-      const airlineName = item.Segments[0][0].Airline.AirlineName;
-      console.log(airlineName);
-
-      if (airlineName) {
-        uniqueAirlineNames.add(airlineName);
-      }
-    }
-  });
-
-  // Convert the Set to an array
-  const distinctAirlineNames = Array.from(uniqueAirlineNames);
-  console.log(distinctAirlineNames);
-  return distinctAirlineNames;
-}
-
 export default function Search() {
   let [adults, setAdults] = useState(1);
   let [children, setChildren] = useState(0);
@@ -231,15 +30,15 @@ export default function Search() {
 
   const [uid, setUid] = useState("");
 
-  useEffect(() => {
-    // Extract UID from local storage on component mount or page reload
-    const storedUid = localStorage.getItem("uid");
-    if (storedUid) {
-      setUid(storedUid);
-    } else {
-      window.location.href = "/AuthPage";
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Extract UID from local storage on component mount or page reload
+  //   const storedUid = localStorage.getItem("uid");
+  //   if (storedUid) {
+  //     setUid(storedUid);
+  //   } else {
+  //     window.location.href = "/AuthPage";
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (departure_time) {
@@ -781,4 +580,208 @@ export default function Search() {
       </div>
     </Layout>
   );
+}
+
+const FlightSearchResults = ({ results, onResultClick }) => {
+  const handleResultClick = (resultIndex) => {
+    onResultClick(resultIndex);
+  };
+  console.log(results);
+  return (
+    <div className="search_res">
+      {results.map((resultGroup, index) => (
+        <div key={index} className="results">
+          {/* <h3>Result Group {index + 1}</h3> */}
+          {resultGroup
+            .filter((flight) => flight.FareDataMultiple[0].IsLCC === true)
+            .map((result) => (
+              <div key={result.ResultIndex} style={{}} className="results_tile">
+                {/* {console.log(result)} */}
+                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <path d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
+              </svg> */}
+                <div className="top">
+                  <h2>{result.Segments[0][0].FlightStatus}</h2>
+                  <h2>
+                    Airline:{" "}
+                    <span>{result.Segments[0][0].Airline.AirlineName}</span> |
+                  </h2>
+                  <h2>
+                    Code:{" "}
+                    <span>{result.Segments[0][0].Airline.AirlineCode}</span>
+                  </h2>
+                </div>
+                <p>
+                  {result.Segments[0][0].Origin.CityName},
+                  {result.Segments[0][0].Origin.CountryName}{" "}
+                  <span>
+                    {" "}
+                    {breakdownDateTime(result.Segments[0][0].DepTime).time}
+                  </span>{" "}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                  </svg>
+                  {result.Segments[0][0].Destination.CityName},
+                  {result.Segments[0][0].Destination.CountryName} -{" "}
+                  <span>
+                    {breakdownDateTime(result.Segments[0][0].ArrTime).time}
+                  </span>
+                </p>
+                <div className="down">
+                  <p>
+                    Fare -{" "}
+                    <span>
+                      {result.FareDataMultiple[0].Fare.Currency}{" "}
+                      {result.Fare?.PublishedFare
+                        ? result.Fare.PublishedFare
+                        : result.OfferedFare
+                        ? result.OfferedFare
+                        : ""}
+                    </span>
+                    {/* FareDataMultiple */}
+                  </p>
+                  <button onClick={() => handleResultClick(result)}>
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
+      ))}
+      <h1>... No more results</h1>
+    </div>
+  );
+};
+
+function breakdownDateTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString);
+
+  // Format date
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const dateFormatted = dateTime
+    .toLocaleDateString("en-GB", options)
+    .replace(/\//g, "-");
+
+  // Format time
+  const timeFormatted = dateTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return { date: dateFormatted, time: timeFormatted };
+}
+
+const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
+  let [date, changeDate] = useState("");
+  let [time, changeTime] = useState("00:00:00");
+  const list = {
+    Anytime: "00:00:00",
+    Morning: "08:00:00",
+    AfterNoon: "14:00:00",
+    Evening: "19:00:00",
+    Night: "01:00:00",
+  };
+  const handleSelect = (event) => {
+    changeTime(event.target.value);
+    setSelectedDateTime(`${date}T${event.target.value}`);
+    console.log(`${date}T${event.target.value}`);
+    console.log(selectedDateTime);
+  };
+  const handleDateTimeChange = (event) => {
+    changeDate(event.target.value);
+    setSelectedDateTime(`${event.target.value}T${time}`);
+    console.log(selectedDateTime);
+  };
+  return <input type="date" value={date} onChange={handleDateTimeChange} />;
+};
+
+function findMinMaxTime(data) {
+  let minDepartureTime = null;
+  let maxArrivalTime = null;
+
+  data?.forEach((item) => {
+    if (
+      item &&
+      item.Segments &&
+      item.Segments.length > 0 &&
+      item.Segments[0].length > 0
+    ) {
+      const arrivalTime = item.Segments[0][0].ArrTime;
+      const departureTime = item.Segments[0][0].DepTime;
+
+      if (arrivalTime) {
+        if (!maxArrivalTime || arrivalTime > maxArrivalTime) {
+          maxArrivalTime = arrivalTime;
+        }
+      }
+
+      if (departureTime) {
+        if (!minDepartureTime || departureTime < minDepartureTime) {
+          minDepartureTime = departureTime;
+        }
+      }
+    }
+  });
+
+  return { minDepartureTime, maxArrivalTime };
+}
+
+function filterArrayByTimeRange(data, startTime, endTime) {
+  return data?.filter((item) => {
+    if (
+      item &&
+      item.Segments &&
+      item.Segments.length > 0 &&
+      item.Segments[0].length > 0
+    ) {
+      const arrivalTime = item.Segments[0][0].ArrTime;
+      const departureTime = item.Segments[0][0].DepTime;
+
+      return (
+        arrivalTime >= startTime &&
+        arrivalTime <= endTime &&
+        departureTime >= startTime &&
+        departureTime <= endTime
+      );
+    }
+
+    return false;
+  });
+}
+
+function calculateDuration(minDepartureTime, maxArrivalTime) {
+  if (!minDepartureTime || !maxArrivalTime) {
+    return null; // Handle invalid input
+  }
+
+  const minTime = new Date(minDepartureTime);
+  const maxTime = new Date(maxArrivalTime);
+
+  const durationInMilliseconds = maxTime - minTime;
+  const durationInMinutes = durationInMilliseconds / (1000 * 60);
+
+  return durationInMinutes;
+}
+
+function extractDistinctAirlineNames(data) {
+  // Use a Set to store unique airline names
+  const uniqueAirlineNames = new Set();
+
+  // Iterate through the array and extract AirlineName
+  data?.forEach((item) => {
+    console.log(item?.Segments);
+    if (item && item.Segments) {
+      const airlineName = item.Segments[0][0].Airline.AirlineName;
+      console.log(airlineName);
+
+      if (airlineName) {
+        uniqueAirlineNames.add(airlineName);
+      }
+    }
+  });
+
+  // Convert the Set to an array
+  const distinctAirlineNames = Array.from(uniqueAirlineNames);
+  console.log(distinctAirlineNames);
+  return distinctAirlineNames;
 }

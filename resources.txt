@@ -26,3 +26,4 @@ Bus
 https://www.redbus.in/search?fromCityName=ISBT%20Kashmiri%20Gate,%20Delhi&fromCityId=67062&srcCountry=IND&toCityName=Rishikesh&toCityId=842&destCountry=IND&onward=7-Apr-2024&opId=0&busType=Any&routeId=29004904
 
 
+change the result index to be took from result and not "9" for hotel detail page
