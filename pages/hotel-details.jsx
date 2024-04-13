@@ -1,3 +1,4 @@
+import Payment from "@/src/components/payment";
 import { server_url } from "@/src/config";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
@@ -96,9 +97,8 @@ export default function HotelDetails() {
     }
   }, [data]);
 
-  const bookHotel = async () => {
-    setLoading(true);
-    let querryData = {
+  let bookData = () => {
+    return {
       TraceId: HotelInfo.TraceId, // hb
       SrdvType: HotelInfo.SrdvType, // hb
       SrdvIndex: HotelInfo.SrdvIndex, // hb
@@ -111,31 +111,48 @@ export default function HotelDetails() {
       IsVoucherBooking: true, // manual
       HotelRoomsDetails: selectedRooms,
     };
-    console.log(querryData);
-    try {
-      const response = await fetch(`${server_url}/hotelsbooking`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authentication: "random_id", // Ensure correct header format
-        },
-        body: JSON.stringify({ data: querryData }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        router.push({
-          pathname: "/hotel-booking-successfull",
-          query: { data: JSON.stringify(bookingData) },
-        });
-      } else {
-        alert("API Request Failed:", response.status, response.statusText);
-      }
-    } catch (error) {
-      console.log("An error occurred during the API request:", error);
-    }
-    setLoading(false);
   };
+
+  // const bookHotel = async () => {
+  //   setLoading(true);
+  //   let querryData = {
+  //     TraceId: HotelInfo.TraceId, // hb
+  //     SrdvType: HotelInfo.SrdvType, // hb
+  //     SrdvIndex: HotelInfo.SrdvIndex, // hb
+  //     ResultIndex: HotelInfo.ResultIndex, // hb
+  //     HotelCode: HotelInfo.HotelDetails.HotelCode, // hb
+  //     HotelName: HotelInfo.HotelDetails.HotelName, // hb
+  //     GuestNationality: "IN", // manual
+  //     NoOfRooms: toString(selectedRooms.length), // manual
+  //     ClientReferenceNo: 0, // manual
+  //     IsVoucherBooking: true, // manual
+  //     HotelRoomsDetails: selectedRooms,
+  //   };
+  //   console.log(querryData);
+  //   try {
+  //     const response = await fetch(`${server_url}/hotelsbooking`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         authentication: "random_id", // Ensure correct header format
+  //       },
+  //       body: JSON.stringify({ data: querryData }),
+  //     });
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       router.push({
+  //         pathname: "/hotel-booking-successfull",
+  //         query: { data: JSON.stringify(bookingData) },
+  //       });
+  //     } else {
+  //       alert("API Request Failed:", response.status, response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.log("An error occurred during the API request:", error);
+  //   }
+  //   setLoading(false);
+  // };
 
   const toggleRoomSelection = (element, index) => {
     let priceToAdd =
@@ -159,7 +176,109 @@ export default function HotelDetails() {
     }
   };
 
-  if (!HotelInfo || !RoomInfo) return <h1>loading</h1>;
+  if (!HotelInfo || !RoomInfo)
+    return (
+      <>
+        <div className="loader">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".8"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin="0.05"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".6"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".1"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".4"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".15"
+              ></animate>
+            </circle>
+            <circle
+              fill="#FF156D"
+              stroke="#FF156D"
+              stroke-width="15"
+              opacity=".2"
+              r="15"
+              cx="35"
+              cy="100"
+            >
+              <animate
+                attributeName="cx"
+                calcMode="spline"
+                dur="2"
+                values="35;165;165;35;35"
+                keySplines="0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1"
+                repeatCount="indefinite"
+                begin=".2"
+              ></animate>
+            </circle>
+          </svg>
+        </div>
+      </>
+    );
   return (
     <Layout extraClass={"pt-160"}>
       <div id="HotelInfo">
@@ -264,7 +383,15 @@ export default function HotelDetails() {
             <h1>
               Total Price: <span>₹{Total}</span>
             </h1>
-            <button onClick={() => bookHotel()}>Book hotel</button>
+            {Total && (
+              <Payment
+                data={bookData()}
+                amount={Total}
+                type="hotel"
+                setLoading={setLoading}
+                btnClass={"success"}
+              />
+            )}
           </div>
         </div>
         {loading && (

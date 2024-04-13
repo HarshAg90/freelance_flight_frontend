@@ -25,26 +25,31 @@ export default function BookingSuccess() {
           const data = await response.json();
           setResp(data);
           console.log(data);
-          // if (data.Booking.Response.Error.ErrorCode !== "0") {
-          //   alert("Error in response");
-          //   // console.log(data)
-          // } else {
-          // console.log("resp")
-          // if (data.type == "flight") {
-          //   router.push({
-          //     pathname: "/BookingSuccessfull",
-          //     query: {
-          //       data: JSON.stringify(data.Booking.Response),
-          //       orderId: orderId,
-          //     },
-          //   });
-          // }
+          if (data.type == "flight") {
+            router.push({
+              pathname: "/BookingSuccessfull",
+              query: {
+                data: JSON.stringify(data.Booking.Response),
+                orderId: orderId,
+              },
+            });
+          }
           if (data.type === "bus") {
             router.push({
               pathname: "/bus-booking-successfull",
               query: {
                 block: JSON.stringify(data.Booking.block.Result),
                 book: JSON.stringify(data.Booking.book.Result),
+                orderId: orderId,
+              },
+            });
+          }
+          if (data.type === "hotel") {
+            router.push({
+              pathname: "/hotel-booking-successfull",
+              query: {
+                block: JSON.stringify(data.Booking.block.BlockRoomResult),
+                book: JSON.stringify(data.Booking.book.BookResult),
                 orderId: orderId,
               },
             });

@@ -12,6 +12,8 @@ function Payment({
   btnClass = null,
 }) {
   let [toggle, setToggle] = useState(false);
+  let [ammount, setammount] = useState(amount);
+  console.log(amount);
   // razorpay inport
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -30,19 +32,24 @@ function Payment({
     setLoading(true);
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
     setLoading(false);
-  });
+  }, []);
 
   const [metaData, setmetadata] = useState({
     name: "",
-    email: "sudoharsh404@gmail.com",
+    email: "",
     contact: "",
-    amount: amount,
   });
+  const getammount = () => amount;
 
   async function displayRazorpayPaymentSdk() {
     setLoading(true);
-    let reqdata = { data: data, metadata: metaData, type: type };
-    console.log(reqdata);
+    let reqdata = {
+      data: data,
+      metadata: { ...metaData, amount: getammount() },
+      type: type,
+    };
+    // console.log(getammount());
+    console.log(reqdata.metadata.amount);
     const result = await axios.post(server_url + "/razorpay_order", reqdata);
 
     if (!result) {
@@ -102,14 +109,11 @@ function Payment({
         {toggle && (
           <div className="popup">
             <div className="content">
-              <p>
-                *We will use this information to contact you so please fill
-                carefully
-              </p>
+              <h1>PAYMENT INFO</h1>
               <input
                 type="text"
                 name=""
-                placeholder="*name"
+                placeholder="Name"
                 onChange={(e) =>
                   setmetadata({ ...metaData, name: e.target.value })
                 }
@@ -119,7 +123,7 @@ function Payment({
               <input
                 type="text"
                 name=""
-                placeholder="*phone number"
+                placeholder="Phone number"
                 onChange={(e) =>
                   setmetadata({ ...metaData, contact: e.target.value })
                 }
@@ -129,7 +133,7 @@ function Payment({
               <input
                 type="text"
                 name=""
-                placeholder="*email"
+                placeholder="Email"
                 onChange={(e) =>
                   setmetadata({ ...metaData, email: e.target.value })
                 }
@@ -137,8 +141,12 @@ function Payment({
                 id=""
               />
               <button className="App-link" onClick={displayRazorpayPaymentSdk}>
-                Procede to payment page
+                Procede to Payment Page
               </button>
+              <p>
+                *We will use this information to contact you so please fill
+                carefully
+              </p>
             </div>
           </div>
         )}
