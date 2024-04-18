@@ -15,6 +15,11 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/BookingSuccessfull": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/BookingSuccessfull.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -25,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/bus-booking-successfull": [
+    "/booking-success": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/bus-booking-successfull.js"
+      "static/chunks/pages/booking-success.js"
     ]
   },
   "ampFirstPages": []

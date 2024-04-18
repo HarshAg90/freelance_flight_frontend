@@ -99,13 +99,13 @@ export default function Search() {
   var book_req_Fn = async (data) => {
     console.log(data);
     if (data.FareDataMultiple[0].IsLCC) {
-      console.log(data);
+      // console.log(data);
       const { ["Results"]: removedKey, ...rest } = searchResponse;
-      console.log(rest);
+      // console.log(rest);
 
       // console.log(rest)
       setBookingData({ ...rest, ...data });
-      console.log(bookingData);
+      // console.log(bookingData);
       if (bookingData) {
         router.push({
           pathname: "/book",
@@ -586,7 +586,7 @@ const FlightSearchResults = ({ results, onResultClick }) => {
   const handleResultClick = (resultIndex) => {
     onResultClick(resultIndex);
   };
-  console.log(results);
+  // console.log(results);
   return (
     <div className="search_res">
       {results.map((resultGroup, index) => (

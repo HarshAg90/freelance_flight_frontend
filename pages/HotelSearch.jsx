@@ -423,49 +423,52 @@ export default function HotelSearch() {
                   <button>Nearest First</button>
                 </div>
               </div>
-              {searchResponse.Results.map((result, index) => (
-                <div key={index} className="results">
-                  <div className="top">
-                    <img src={result.HotelPicture} alt="" />
+              {/* // {searchResponse.Results.map((result, index) => ( */}
+              {searchResponse.Results.filter((res) => res.ResultIndex == 9).map(
+                (result, index) => (
+                  <div key={index} className="results">
+                    <div className="top">
+                      <img src={result.HotelPicture} alt="" />
+                    </div>
+                    <div className="mid">
+                      <h2>{result.HotelName}</h2>
+                      {/* <h2>{result.HotelDescription}</h2> */}
+                      <p>{result.HotelPromotion}</p>
+                      <p>{result.HotelAddress}</p>
+                    </div>
+                    <div className="down">
+                      <p>
+                        Fare -{" "}
+                        <span>
+                          {result.Price.CurrencyCode}{" "}
+                          {result.Price?.PublishedPrice
+                            ? result.Price.PublishedPrice
+                            : result.Price.OfferedPrice
+                            ? result.Price.OfferedPrice
+                            : ""}
+                        </span>
+                      </p>
+                      <button
+                        onClick={() => {
+                          router.push({
+                            pathname: "/hotel-details",
+                            query: {
+                              data: JSON.stringify({
+                                ...result,
+                                TraceId: searchResponse.TraceId,
+                                SrdvType: searchResponse.SrdvType,
+                              }),
+                            },
+                          });
+                          // handleResultClick(result);
+                        }}
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
-                  <div className="mid">
-                    <h2>{result.HotelName}</h2>
-                    {/* <h2>{result.HotelDescription}</h2> */}
-                    <p>{result.HotelPromotion}</p>
-                    <p>{result.HotelAddress}</p>
-                  </div>
-                  <div className="down">
-                    <p>
-                      Fare -{" "}
-                      <span>
-                        {result.Price.CurrencyCode}{" "}
-                        {result.Price?.PublishedPrice
-                          ? result.Price.PublishedPrice
-                          : result.Price.OfferedPrice
-                          ? result.Price.OfferedPrice
-                          : ""}
-                      </span>
-                    </p>
-                    <button
-                      onClick={() => {
-                        router.push({
-                          pathname: "/hotel-details",
-                          query: {
-                            data: JSON.stringify({
-                              ...result,
-                              TraceId: searchResponse.TraceId,
-                              SrdvType: searchResponse.SrdvType,
-                            }),
-                          },
-                        });
-                        // handleResultClick(result);
-                      }}
-                    >
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              ))}
+                )
+              )}
               <h1>... No more results</h1>
             </div>
           </div>

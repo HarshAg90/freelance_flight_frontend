@@ -18,7 +18,7 @@ export default function HotelDetails() {
   const router = useRouter();
   useEffect(() => {
     setData(JSON.parse(router.query.data));
-    console.log(JSON.parse(router.query.data));
+    // console.log(JSON.parse(router.query.data));
   }, []);
   useEffect(() => {
     if (data) {
@@ -27,8 +27,7 @@ export default function HotelDetails() {
         TraceId: data.TraceId,
         SrdvType: data.SrdvType,
         SrdvIndex: data.SrdvIndex,
-        // ResultIndex: data.ResultIndex,
-        ResultIndex: 9,
+        ResultIndex: data.ResultIndex,
         HotelCode: data.HotelCode,
       };
       const fetchhotelInfo = async () => {
@@ -46,8 +45,8 @@ export default function HotelDetails() {
           });
           if (response.ok) {
             const data = await response.json();
-            console.log("hotel info");
-            console.log(data);
+            // console.log("hotel info");
+            // console.log(data);
             if (data.HotelInfoResult.Error.ErrorCode !== 0) {
               alert("Error in response");
             } else {
@@ -76,8 +75,8 @@ export default function HotelDetails() {
           });
           if (response.ok) {
             const data = await response.json();
-            console.log("roomInfo");
-            console.log(data);
+            // console.log("roomInfo");
+            // console.log(data);
             if (data.GetHotelRoomResult.Error.ErrorCode !== 0) {
               alert("Error in response");
             } else {
@@ -99,7 +98,8 @@ export default function HotelDetails() {
 
   let bookData = () => {
     return {
-      TraceId: HotelInfo.TraceId, // hb
+      // TraceId: HotelInfo.TraceId, // hb
+      TraceId: "1", // hb
       SrdvType: HotelInfo.SrdvType, // hb
       SrdvIndex: HotelInfo.SrdvIndex, // hb
       ResultIndex: HotelInfo.ResultIndex, // hb
@@ -115,20 +115,6 @@ export default function HotelDetails() {
 
   // const bookHotel = async () => {
   //   setLoading(true);
-  //   let querryData = {
-  //     TraceId: HotelInfo.TraceId, // hb
-  //     SrdvType: HotelInfo.SrdvType, // hb
-  //     SrdvIndex: HotelInfo.SrdvIndex, // hb
-  //     ResultIndex: HotelInfo.ResultIndex, // hb
-  //     HotelCode: HotelInfo.HotelDetails.HotelCode, // hb
-  //     HotelName: HotelInfo.HotelDetails.HotelName, // hb
-  //     GuestNationality: "IN", // manual
-  //     NoOfRooms: toString(selectedRooms.length), // manual
-  //     ClientReferenceNo: 0, // manual
-  //     IsVoucherBooking: true, // manual
-  //     HotelRoomsDetails: selectedRooms,
-  //   };
-  //   console.log(querryData);
   //   try {
   //     const response = await fetch(`${server_url}/hotelsbooking`, {
   //       method: "POST",
@@ -136,7 +122,7 @@ export default function HotelDetails() {
   //         "Content-Type": "application/json",
   //         authentication: "random_id", // Ensure correct header format
   //       },
-  //       body: JSON.stringify({ data: querryData }),
+  //       body: JSON.stringify({ data: bookData() }),
   //     });
   //     if (response.ok) {
   //       const data = await response.json();
@@ -383,6 +369,7 @@ export default function HotelDetails() {
             <h1>
               Total Price: <span>₹{Total}</span>
             </h1>
+            {/* {Total && <button onClick={() => bookHotel()}>Book Now!</button>} */}
             {Total && (
               <Payment
                 data={bookData()}

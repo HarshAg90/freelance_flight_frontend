@@ -12,8 +12,7 @@ function Payment({
   btnClass = null,
 }) {
   let [toggle, setToggle] = useState(false);
-  let [ammount, setammount] = useState(amount);
-  console.log(amount);
+  console.log(data);
   // razorpay inport
   const loadScript = (src) => {
     return new Promise((resolve) => {

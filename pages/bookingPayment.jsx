@@ -105,47 +105,47 @@ export default function BookingPayment({}) {
   //   performApiCall(data);
   // };
 
-  let book_flight = () => {
-    setloading(true);
-    const performApiCall = async () => {
-      // try {
-      console.log(data);
-      data.booking_data.TraceId = `${data.booking_data.TraceId}`;
-      const response = await fetch(`${server_url}/book_flight`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authentication: "random_id",
-        },
-        body: JSON.stringify({ data: data.booking_data }),
-      });
+  // let book_flight = () => {
+  //   setloading(true);
+  //   const performApiCall = async () => {
+  //     // try {
+  //     console.log(data);
+  //     // data.booking_data.TraceId = `${data.booking_data.TraceId}`;
+  //     const response = await fetch(`${server_url}/book_flight`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         authentication: "random_id",
+  //       },
+  //       body: JSON.stringify({ data: data.booking_data }),
+  //     });
 
-      if (response.ok) {
-        const data = await response.json();
-        setloading(false);
-        console.log(data);
-        if (data.Response.Error.ErrorCode !== "0") {
-          alert("Error in response");
-          // console.log(data)
-        } else {
-          // console.log("resp")
-          router.push({
-            pathname: "/BookingSuccessfull",
-            query: { data: JSON.stringify(data.Response) },
-          });
-        }
-      } else {
-        setloading(false);
-        alert("API Request Failed:", response.status, response.statusText);
-      }
-      // } catch (error) {
-      //   setloading(false);
-      //   alert("An error occurred during the API request:", error);
-      // }
-    };
-    performApiCall();
-    // console.log(data)
-  };
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setloading(false);
+  //       console.log(data);
+  //       if (data.Response.Error.ErrorCode !== "0") {
+  //         alert("Error in response");
+  //         // console.log(data)
+  //       } else {
+  //         // console.log("resp")
+  //         router.push({
+  //           pathname: "/BookingSuccessfull",
+  //           query: { data: JSON.stringify(data.Response) },
+  //         });
+  //       }
+  //     } else {
+  //       setloading(false);
+  //       alert("API Request Failed:", response.status, response.statusText);
+  //     }
+  //     // } catch (error) {
+  //     //   setloading(false);
+  //     //   alert("An error occurred during the API request:", error);
+  //     // }
+  //   };
+  //   performApiCall();
+  //   // console.log(data)
+  // };
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner pageTitle={"Book Flight"} />
@@ -265,7 +265,7 @@ export default function BookingPayment({}) {
             *if money deducted and not showing here, please wait 10 minuts, if
             still a problem contact <span>XXXXXXXX98</span>{" "}
           </p>
-          {/* <button onClick={() => book_flight(data.booking_data)}></button> */}
+          {/* <button onClick={() => book_flight(data.booking_data)}>Book</button> */}
         </div>
         {loading && (
           <div className="loader">

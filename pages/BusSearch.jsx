@@ -224,7 +224,7 @@ export default function Search() {
               </div>
             </div>
           </div>
-      </animated.div>
+        </animated.div>
         {loading && (
           <div className="loader">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -394,6 +394,12 @@ function Buses({ result, index, TraceId, loading, setloading }) {
   const handleInputChange = (index, field, value) => {
     const updatedPassengerInfo = [...PassengerInfo];
     updatedPassengerInfo[index] = {
+      LeadPassenger: true,
+      PassengerId: 0,
+      Title: "Mr",
+      LastName: "",
+      IdType: null,
+      IdNumber: null,
       ...updatedPassengerInfo[index],
       [field]: value,
     };
@@ -446,13 +452,49 @@ function Buses({ result, index, TraceId, loading, setloading }) {
   };
 
   let bookingReqData = () => {
-    return {
-      BoardingPoints: SelectedPoints,
-      seatInfo: SelectedBusSeats,
-      PassengerInfo: PassengerInfo,
-      total: getFare().total,
+    let passenger = [];
+    for (let i = 0; i < SelectedBusSeats.length; i++) {
+      passenger.push({ ...PassengerInfo[i], seat: SelectedBusSeats[i] });
+    }
+    let data = {
+      ResultIndex: result.ResultIndex,
+      TraceId: TraceId,
+      BoardingPointId: SelectedPoints.pickup.CityPointIndex,
+      DroppingPointId: SelectedPoints.drop.CityPointIndex,
+      RefID: "",
+      Passenger: passenger,
+      // total: getFare().total,
     };
+    console.log(data);
+    return data;
   };
+
+  // let bookingReq = async () => {
+  //   let data = bookingReqData();
+  //   console.log(data);
+  //   const response = await fetch(`${server_url}/busbooking`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       authentication: "random_id",
+  //     },
+  //     body: JSON.stringify({ data: data }),
+  //   });
+
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     setloading(false);
+  //     console.error("Booking Success");
+  //     console.log(data);
+  //     router.push({
+  //       pathname: "/bus-booking-successfull",
+  //       query: { data: JSON.stringify(data) },
+  //     });
+  //   } else {
+  //     setloading(false);
+  //     alert("API Request Failed:", response.status, response.statusText);
+  //   }
+  // };
 
   return (
     <div key={index} className="results">
@@ -554,9 +596,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                   <div className="points">
                     {Points.GetBusRouteDetailResult.BoardingPointsDetails.map(
                       (pt) => {
-                        {
-                          console.log(pt);
-                        }
+                        // {
+                        //   console.log(pt);
+                        // }
 
                         return (
                           <div
@@ -598,9 +640,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                     <div className="points">
                       {Points.GetBusRouteDetailResult.DroppingPointsDetails.map(
                         (pt) => {
-                          {
-                            console.log(pt);
-                          }
+                          // {
+                          //   console.log(pt);
+                          // }
 
                           return (
                             <div
@@ -798,9 +840,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                           id={`Male${index}`}
                           name={`gender${index}`}
                           value="1"
-                          checked={PassengerInfo[index]?.gender === "1"}
+                          checked={PassengerInfo[index]?.Gender === "1"}
                           onChange={(e) =>
-                            handleInputChange(index, "gender", e.target.value)
+                            handleInputChange(index, "Gender", e.target.value)
                           }
                         />
                         <label htmlFor={`Male${index}`}>Male</label>
@@ -812,9 +854,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                           id={`Female${index}`}
                           name={`gender${index}`}
                           value="2"
-                          checked={PassengerInfo[index]?.gender === "2"}
+                          checked={PassengerInfo[index]?.Gender === "2"}
                           onChange={(e) =>
-                            handleInputChange(index, "gender", e.target.value)
+                            handleInputChange(index, "Gender", e.target.value)
                           }
                         />
                         <label htmlFor={`Female${index}`}>Female</label>
@@ -823,9 +865,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                         <input
                           type="text"
                           placeholder="Age"
-                          value={PassengerInfo[index]?.age || ""}
+                          value={PassengerInfo[index]?.Age || ""}
                           onChange={(e) =>
-                            handleInputChange(index, "age", e.target.value)
+                            handleInputChange(index, "Age", e.target.value)
                           }
                         />
                       </div>
@@ -835,9 +877,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                         <input
                           type="text"
                           placeholder="Phone number"
-                          value={PassengerInfo[index]?.phoneN || ""}
+                          value={PassengerInfo[index]?.Phoneno || ""}
                           onChange={(e) =>
-                            handleInputChange(index, "phoneN", e.target.value)
+                            handleInputChange(index, "Phoneno", e.target.value)
                           }
                         />
                       </div>
@@ -845,9 +887,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                         <input
                           type="text"
                           placeholder="Email"
-                          value={PassengerInfo[index]?.email || ""}
+                          value={PassengerInfo[index]?.Email || ""}
                           onChange={(e) =>
-                            handleInputChange(index, "email", e.target.value)
+                            handleInputChange(index, "Email", e.target.value)
                           }
                         />
                       </div>
@@ -855,9 +897,9 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                     <input
                       type="text"
                       placeholder="State of residence"
-                      value={PassengerInfo[index]?.state || ""}
+                      value={PassengerInfo[index]?.Address || ""}
                       onChange={(e) =>
-                        handleInputChange(index, "state", e.target.value)
+                        handleInputChange(index, "Address", e.target.value)
                       }
                     />
                   </div>
@@ -904,7 +946,7 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                         bookingReq();
                       }}
                     >
-                      Procede To Pay
+                      Procede to Book
                     </button> */}
                   </div>
                 </div>
@@ -942,31 +984,35 @@ function BusSeatLayout({ data, SelectedBusSeats, setSelectedBusSeats }) {
   // search for seating
   useEffect(() => {
     const getBusList = async () => {
-      const response = await fetch(`${server_url}/bus_seat_layout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      try {
+        const response = await fetch(`${server_url}/bus_seat_layout`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        setloading(false);
-        if (data.Error.ErrorCode === 0) {
-          setSeatLayout(data);
+        if (response.ok) {
+          const data = await response.json();
+          setloading(false);
+          if (data.Error.ErrorCode === 0) {
+            setSeatLayout(data);
+          } else {
+            // alert(
+            //   `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
+            // );
+            // console.log(bodyContent);
+            console.log(data);
+            setSeatLayout("failed");
+            // console.log(data.Error.ErrorCode);
+          }
         } else {
-          // alert(
-          //   `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
-          // );
-          // console.log(bodyContent);
-          console.log(data);
-          setSeatLayout("failed");
-          // console.log(data.Error.ErrorCode);
+          setloading(false);
+          alert("API Request Failed:", response.status, response.statusText);
         }
-      } else {
-        setloading(false);
-        alert("API Request Failed:", response.status, response.statusText);
+      } catch {
+        console.error("error in fetching city list");
       }
     };
     getBusList();
