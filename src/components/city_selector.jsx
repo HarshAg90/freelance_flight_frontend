@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-const CitySelector = ({
-  cityData,
-  setSelectedOption,
-  str_desp,
-  type = null,
-}) => {
+const CitySelector = ({ cityData, setSelectedOption, str_desp }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCities, setFilteredCities] = useState([]);
-  const [selectedKey, setSelectedKey] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isListHovered, setIsListHovered] = useState(false);
 
-  const majorCities = type
-    ? ["130443", "144306"]
-    : ["DEL", "BLR", "BOM", "HDD", "MAA"];
+  const majorCities = ["DEL", "BLR", "BOM", "HDD", "MAA"];
   useEffect(() => {
     if (searchTerm !== "") {
-      const filtered = Object.keys(cityData).filter((key, value) => {
-        type
-          ? cityData.key?.includes(searchTerm.toLowerCase())
-          : cityData.key?.toLowerCase().includes(searchTerm.toLowerCase());
-      });
+      const filtered = Object.keys(cityData).filter((cityCode) =>
+        cityData[cityCode].toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      console.log(searchTerm);
+      console.log(filtered);
       setFilteredCities(filtered);
-      console.log(filteredCities);
     } else {
       setFilteredCities(majorCities);
     }

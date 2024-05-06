@@ -95,7 +95,10 @@ export default function book() {
   };
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner pageTitle={"Flight Booking Fourm"} />
+      <PageBanner
+        pageTitle={"Flight Booking Fourm"}
+        url={"./assets/images/flight_search/flight_search.png"}
+      />
       <div id="Booking_page">
         <div className="top">
           <p className="selected">Enter Your details</p>
@@ -255,21 +258,21 @@ function breakdownDateTime(dateTimeString) {
 
 const Passenger = ({ addPassenger, fair, onClose }) => {
   const [formData, setFormData] = useState({
-    Title: "Mr",
-    FirstName: "FirstName",
-    LastName: "LastName",
-    PaxType: "1",
+    Title: "",
+    FirstName: "",
+    LastName: "",
+    PaxType: "",
     DateOfBirth: "",
-    Gender: "1",
+    Gender: "",
     PassportNo: "",
     PassportExpiry: "",
     PassportIssueDate: "",
-    AddressLine1: "Address line 1",
-    City: "Delhi",
-    CountryCode: "IN",
-    CountryName: "India",
-    ContactNo: 9632587410,
-    Email: "sudoharsh404@gmail.com",
+    AddressLine1: "",
+    City: "",
+    CountryCode: "",
+    CountryName: "",
+    ContactNo: null,
+    Email: "",
     IsLeadPax: 1,
   });
 
@@ -287,21 +290,21 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
   const handleSave = () => {
     addPassenger({ ...formData });
     setFormData({
-      Title: "Mr",
-      FirstName: "SRDV",
-      LastName: "Support",
-      PaxType: "1",
-      DateOfBirth: "1992-03-12",
-      Gender: "1",
+      Title: "",
+      FirstName: "",
+      LastName: "",
+      PaxType: "",
+      DateOfBirth: "",
+      Gender: "",
       PassportNo: "",
       PassportExpiry: "",
       PassportIssueDate: "",
-      AddressLine1: "Test",
-      City: "Kolkata",
-      CountryCode: "IN",
-      CountryName: "India",
-      ContactNo: 9632587410,
-      Email: "support@srdvtechnologies.com",
+      AddressLine1: "",
+      City: "",
+      CountryCode: "",
+      CountryName: "",
+      ContactNo: 0,
+      Email: "",
       IsLeadPax: 1,
       Fare: fair,
     });
@@ -311,119 +314,214 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
     <div className="input_form">
       <h1>Please enter your info to continue booking</h1>
       <div className="gr">
-        <input
+        {/* <input
           type="text"
           name="Title"
           placeholder="Title*"
           value={formData.Title}
           onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="FirstName"
-          placeholder="First Name*"
-          value={formData.FirstName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="Support"
-          placeholder="Last Name*"
-          value={formData.LastName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="PaxType"
-          placeholder="Pax Type*"
-          value={formData.PaxType}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="DateOfBirth"
-          placeholder="Date Of Birth*"
-          value={formData.DateOfBirth}
-          onChange={handleInputChange}
-        />
-        <input
+        /> */}
+        <div className="radio">
+          <span>Title</span>
+          <div>
+            <input
+              type="radio"
+              id="mr"
+              name="Title"
+              value="Mr"
+              checked={formData.Title === "Mr"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="mr">Mr</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="ms"
+              name="Title"
+              value="Ms"
+              checked={formData.Title === "Ms"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="ms">Ms</label>
+          </div>
+        </div>
+        <div>
+          <span>First Name*</span>
+          <input
+            type="text"
+            name="FirstName"
+            placeholder="value..."
+            value={formData.FirstName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Last Name*</span>
+
+          <input
+            type="text"
+            name="LastName"
+            placeholder="value..."
+            value={formData.LastName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Pax Type</span>
+          <input
+            type="text"
+            name="PaxType"
+            placeholder="(put 1 for Default)"
+            value={formData.PaxType}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Date of Birth *</span>
+          <input
+            type="date"
+            name="DateOfBirth"
+            placeholder="Date Of Birth*"
+            value={formData.DateOfBirth}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Gender</span>
+          <div>
+            <input
+              type="radio"
+              id="Male"
+              name="Gender"
+              value="Male"
+              checked={formData.Gender === "Male"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="Male">Male</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="Female"
+              name="Gender"
+              value="Female"
+              checked={formData.Gender === "Female"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="Female">Female</label>
+          </div>
+        </div>
+        {/* <input
           type="text"
           name="Gender"
           placeholder="Gender*"
           value={formData.Gender}
           onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="PassportNo"
-          placeholder="Passport Number"
-          value={formData.PassportNo}
-          onChange={handleInputChange}
-        />
+        /> */}
 
-        <input
-          type="text"
-          name="PassportExpiry"
-          placeholder="Passport Expiry"
-          value={formData.PassportExpiry}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="PassportIssueDate"
-          placeholder="Passport Issue Date"
-          value={formData.PassportExpiry}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="AddressLine1"
-          placeholder="Address Line*"
-          value={formData.AddressLine1}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="City"
-          placeholder="City*"
-          value={formData.City}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="CountryCode"
-          placeholder="Country Code*"
-          value={formData.CountryCode}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="CountryName"
-          placeholder="Country Name*"
-          value={formData.CountryName}
-          onChange={handleInputChange}
-        />
-        <input
-          type="number"
-          name="ContactNo"
-          placeholder="Contact Number*"
-          value={formData.ContactNo}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="Email"
-          placeholder="Email*"
-          value={formData.Email}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="IsLeadPax"
-          placeholder="Is Lead Pax"
-          value={formData.IsLeadPax}
-          onChange={handleInputChange}
-        />
+        <div>
+          <span>Passport Numeber</span>
+
+          <input
+            type="text"
+            name="PassportNo"
+            placeholder="* for international flights"
+            value={formData.PassportNo}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Passport Expiry</span>
+          <input
+            type="text"
+            name="PassportExpiry"
+            placeholder="* for international flights"
+            value={formData.PassportExpiry}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Passport Issue Date</span>
+          <input
+            type="text"
+            name="PassportIssueDate"
+            placeholder="* for international flights"
+            value={formData.PassportExpiry}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Address Line - 1</span>
+          <input
+            type="text"
+            name="AddressLine1"
+            placeholder="Address Line*"
+            value={formData.AddressLine1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>City</span>
+          <input
+            type="text"
+            name="City"
+            placeholder="City*"
+            value={formData.City}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Country Code</span>
+          <input
+            type="text"
+            name="CountryCode"
+            placeholder="2 Character Code"
+            value={formData.CountryCode}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Country *</span>
+          <input
+            type="text"
+            name="CountryName"
+            placeholder="Country Name*"
+            value={formData.CountryName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Contact Number</span>
+          <input
+            type="number"
+            name="Number"
+            placeholder="Contact Number*"
+            value={formData.ContactNo}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Email</span>
+          <input
+            type="text"
+            name="Email"
+            placeholder="Email*"
+            value={formData.Email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Is Lead Pax</span>
+
+          <input
+            type="text"
+            name="IsLeadPax"
+            placeholder="'1' as default"
+            value={formData.IsLeadPax}
+            onChange={handleInputChange}
+          />
+        </div>
       </div>
       <button onClick={handleSave}>Save</button>
     </div>

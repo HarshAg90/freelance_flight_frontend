@@ -49,6 +49,21 @@ export default function Search() {
     getBusList();
   }, []);
 
+  let data = {
+    source_city: "Mumbai",
+    source_code: "3534",
+    destination_city: "Pune",
+    destination_code: "9771",
+    depart_date: "2020-06-14",
+  };
+
+  // let [SearchQuerry, setSearchQuerry] = useState({
+  //   source_city: null,
+  //   source_code: null,
+  //   destination_city: null,
+  //   destination_code: null,
+  //   depart_date: "",
+  // });
   let [SearchQuerry, setSearchQuerry] = useState({
     source_city: "Mumbai",
     source_code: "3534",
@@ -115,116 +130,204 @@ export default function Search() {
   return (
     <Layout extraClass={"pt-160"}>
       <div id="Search_page">
-        <animated.div
+        <img
+          src="./assets/images/busSearch/bus_search.png"
+          alt=""
+          className={!isHalfScreen ? "topimg " : "topimg shrink"}
+        />
+        {/* <animated.div
           className={`fullscreen page_title bus ${isHalfScreen && "half"}`}
           style={{ height }}
         >
-          {/* <div className="overlay"></div> */}
           <h1>Bus Search</h1>
-          <div className="querry hotels">
-            <div className="top">
-              <div className="search">
-                <p>Where from?</p>
-                <input
-                  type="text"
-                  value={
-                    SearchQuerry.source_city
-                      ? SearchQuerry.source_city
-                      : SourceCity
-                  }
-                  onChange={(e) => setSourceCity(e.target.value)}
+        </animated.div> */}
+        <div className={!isHalfScreen ? "querry " : "querry active"}>
+          <div className="pg_logo">
+            <svg
+              width="90"
+              height="90"
+              viewBox="0 0 90 90"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M78.75 22.5787C78.7613 22.0312 78.7238 17.085 73.875 12.3225C69.1013 7.635 64.2863 7.5 63.75 7.5H26.235C25.3387 7.5 20.6363 7.73625 16.08 12.3825C11.385 17.1675 11.25 21.9712 11.25 22.5V33.75H7.5V45H11.25V67.5C11.25 70.2525 12.7725 72.6488 15 73.9538V78.75C15 79.7446 15.3951 80.6984 16.0984 81.4017C16.8016 82.1049 17.7554 82.5 18.75 82.5H22.5C23.4946 82.5 24.4484 82.1049 25.1516 81.4017C25.8549 80.6984 26.25 79.7446 26.25 78.75V75H63.75V78.75C63.75 79.7446 64.1451 80.6984 64.8483 81.4017C65.5516 82.1049 66.5054 82.5 67.5 82.5H71.25C72.2446 82.5 73.1984 82.1049 73.9017 81.4017C74.6049 80.6984 75 79.7446 75 78.75V73.9613C76.1377 73.3088 77.0834 72.368 77.7417 71.2337C78.4001 70.0993 78.7478 68.8115 78.75 67.5V45H82.5V33.75H78.75V22.5787ZM33.75 15H56.25V22.5H33.75V15ZM24.375 67.5C22.8827 67.4995 21.4516 66.9062 20.3967 65.8506C19.3419 64.795 18.7495 63.3636 18.75 61.8713C18.7505 60.3789 19.3438 58.9479 20.3994 57.893C21.455 56.8381 22.8864 56.2458 24.3787 56.2463C25.8711 56.2467 27.3021 56.8401 28.357 57.8956C29.4119 58.9512 30.0042 60.3827 30.0038 61.875C30.0033 63.3673 29.4099 64.7984 28.3544 65.8533C27.2988 66.9081 25.8673 67.5005 24.375 67.5ZM41.25 48.75H18.75V30H41.25V48.75ZM65.625 67.5C64.1327 67.4995 62.7016 66.9062 61.6467 65.8506C60.5919 64.795 59.9995 63.3636 60 61.8713C60.0005 60.3789 60.5938 58.9479 61.6494 57.893C62.705 56.8381 64.1364 56.2458 65.6287 56.2463C67.1211 56.2467 68.5521 56.8401 69.607 57.8956C70.6619 58.9512 71.2542 60.3827 71.2537 61.875C71.2533 63.3673 70.66 64.7984 69.6044 65.8533C68.5488 66.9081 67.1173 67.5005 65.625 67.5ZM71.25 48.75H48.75V30H71.25V48.75Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+          <div className="top">
+            <div className="logo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                 />
-                {SourceCity && (
-                  <ul className="search_list">
-                    {/* {console.log(busList)} */}
-                    {busList
-                      .filter((city) =>
-                        city.CityName.toLowerCase().includes(
-                          SourceCity.toLowerCase()
-                        )
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                />
+              </svg>
+            </div>
+
+            <div className="search">
+              <p>Where from?</p>
+              <input
+                type="text"
+                value={SourceCity?.city ? SourceCity.city : ""}
+                onChange={(e) =>
+                  setSourceCity({ done: false, city: e.target.value })
+                }
+                placeholder="place name"
+              />
+              {SourceCity?.city && !SourceCity?.done && (
+                <ul className="search_list">
+                  {/* {console.log(busList)} */}
+                  {busList
+                    .filter((city) =>
+                      city.CityName.toLowerCase().includes(
+                        SourceCity.city.toLowerCase()
                       )
-                      .map((city) => (
-                        <li
-                          key={city.CityId}
-                          onClick={() => {
-                            // i should probably add more than a name to improve future search filter
-                            setSearchQuerry({
-                              ...SearchQuerry,
-                              source_city: city.CityName,
-                              source_code: city.CityId,
-                            });
-                            setSourceCity();
-                          }}
-                        >
-                          {city.CityName}
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </div>
-              <div className="search">
-                <p>where to?</p>
-                <input
-                  type="text"
-                  value={
-                    SearchQuerry.destination_city
-                      ? SearchQuerry.destination_city
-                      : Destination
-                  }
-                  onChange={(e) => setDestination(e.target.value)}
+                    )
+                    .map((city) => (
+                      <li
+                        key={city.CityId}
+                        onClick={() => {
+                          // i should probably add more than a name to improve future search filter
+                          setSearchQuerry({
+                            ...SearchQuerry,
+                            source_city: city.CityName,
+                            source_code: city.CityId,
+                          });
+                          setSourceCity({ city: city.CityName, done: true });
+                        }}
+                      >
+                        {city.CityName}
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+            <div className="logo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
                 />
-                {Destination && (
-                  <ul className="search_list">
-                    {/* {console.log(busList)} */}
-                    {busList
-                      .filter((city) =>
-                        city.CityName.toLowerCase().includes(
-                          Destination.toLowerCase()
-                        )
+              </svg>
+            </div>
+
+            <div className="search">
+              <p>where to?</p>
+              <input
+                type="text"
+                value={Destination?.city ? Destination.city : ""}
+                onChange={(e) =>
+                  setDestination({ done: false, city: e.target.value })
+                }
+                placeholder="place name"
+              />
+              {Destination?.city && !Destination?.done && (
+                <ul className="search_list">
+                  {/* {console.log(busList)} */}
+                  {busList
+                    .filter((city) =>
+                      city.CityName.toLowerCase().includes(
+                        Destination.city.toLowerCase()
                       )
-                      .map((city) => (
-                        <li
-                          key={city.CityId}
-                          onClick={() => {
-                            // i should probably add more than a name to improve future search filter
-                            setSearchQuerry({
-                              ...SearchQuerry,
-                              destination_city: city.CityName,
-                              destination_code: city.CityId,
-                            });
-                            setDestination();
-                          }}
-                        >
-                          {city.CityName}
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </div>
-              <div className="search">
-                <p>when?</p>
-                <input
-                  type="date"
-                  name=""
-                  value={departure_time}
-                  onChange={(e) => setDepTime(e.target.value)}
-                  id=""
+                    )
+                    .map((city) => (
+                      <li
+                        key={city.CityId}
+                        onClick={() => {
+                          // i should probably add more than a name to improve future search filter
+                          setSearchQuerry({
+                            ...SearchQuerry,
+                            destination_city: city.CityName,
+                            destination_code: city.CityId,
+                          });
+                          setDestination({ done: true, city: city.CityName });
+                        }}
+                      >
+                        {city.CityName}
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+            <div className="logo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
                 />
-              </div>
-              <div className="search">
-                <p>🚌</p>
-                <button
-                  className="submit"
-                  onClick={() => {
-                    Search_function();
-                  }}
+              </svg>
+            </div>
+
+            <div className="search">
+              <p>when?</p>
+              <input
+                type="date"
+                name=""
+                onChange={(e) =>
+                  setSearchQuerry({
+                    ...SearchQuerry,
+                    depart_date: convertToSlashFormat(e.target.value),
+                  })
+                }
+                id=""
+              />
+            </div>
+            <div className="search">
+              <button
+                className="submit"
+                onClick={() => {
+                  Search_function();
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
                 >
-                  Search bus
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
-        </animated.div>
+        </div>
         {loading && (
           <div className="loader">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -325,45 +428,94 @@ export default function Search() {
             </svg>
           </div>
         )}
-        {search && (
-          <div className="bus-search-res">
-            <div className="topBar">
-              <div className="t">
-                <h2>
-                  {" "}
-                  <span>{searchResponse.Result.BusResults.length}</span> Bus
-                  found for <span>{SearchQuerry.source_city}</span> to{" "}
-                  <span>{SearchQuerry.destination_city}</span>
-                </h2>
-                <a href="">*lean about low prices</a>
-                <button>Filter</button>
-                <button
-                  onClick={(e) => {
-                    setIsHalfScreen(false);
-                    setSearch(false);
-                    setSearchResponse();
-                  }}
-                >
-                  Modify
-                </button>
+        {search ? (
+          <div className="main">
+            <div className="res">
+              <div className="sidebar">
+                <h1>Filter By</h1>
+                <h2> Result count</h2>
+                <p>{searchResponse.Result.BusResults.length}</p>
+                <h2>Paces</h2>
+                <p>
+                  {SearchQuerry.source_city} to {SearchQuerry.destination_city}
+                </p>
+                <h2>Sort</h2>
+                <div className="checkBox">
+                  <input type="radio" name="sort" id="sort" />
+                  <p> Recomended</p>
+                </div>
+                <div className="checkBox">
+                  <input type="radio" name="sort" id="sort" />
+                  <p> Top Review</p>
+                </div>
+                <div className="checkBox">
+                  <input type="radio" name="sort" id="sort" />
+                  <p> Most Stars</p>
+                </div>
+                <div className="checkBox">
+                  <input type="radio" name="sort" id="sort" />
+                  <p> Nearest First</p>
+                </div>
               </div>
-              <div className="b">
-                <button className="selected">Recomended</button>
-                <button>Top review</button>
-                <button>Most Stars</button>
-                <button>Nearest First</button>
+              <div className="search_res">
+                <h1>Select Your Bus</h1>
+                {searchResponse.Result.BusResults.map((result, index) => (
+                  <Buses
+                    result={result}
+                    index={index}
+                    TraceId={searchResponse.Result.TraceId}
+                    loading={loading}
+                    setloading={setloading}
+                  />
+                ))}
+                <p>🚌.o0O° </p>
               </div>
             </div>
-            {searchResponse.Result.BusResults.map((result, index) => (
-              <Buses
-                result={result}
-                index={index}
-                TraceId={searchResponse.Result.TraceId}
-                loading={loading}
-                setloading={setloading}
-              />
-            ))}
-            <p>🚌.o0O° </p>
+          </div>
+        ) : (
+          <div className="beforeContent">
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t1.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t2.png" alt="" />
+              <div className="cnt">
+                <h1>Uttrakhand</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t3.png" alt="" />
+              <div>
+                <h1>Delhi</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t4.png" alt="" />
+              <div className="cnt">
+                <h1>Mumbai</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t5.png" alt="" />
+              <div className="cnt">
+                <h1>Himachal</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t6.png" alt="" />
+              <div className="cnt">
+                <h1>Agra</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -372,15 +524,6 @@ export default function Search() {
 }
 
 function Buses({ result, index, TraceId, loading, setloading }) {
-  // old code
-  const router = useRouter();
-  function handleClick(body, rec = null) {
-    router.push({
-      pathname: "/busProfile",
-      query: { body: JSON.stringify(body) },
-    });
-  }
-
   // new code
   let [toggleDetails, setToggleDetails] = useState(false);
   let [toggleSearch, settoggleSearch] = useState(false);
@@ -497,13 +640,39 @@ function Buses({ result, index, TraceId, loading, setloading }) {
   // };
 
   return (
-    <div key={index} className="results">
+    <div
+      key={index}
+      className="results"
+      onClick={
+        SelectedBusSeats.length <= 0
+          ? () => setToggleDetails(!toggleDetails)
+          : () => settoggleSearch(!toggleSearch)
+      }
+    >
       <div className="t">
         <div className="top">
           <div className="a">
-            <h2>{result.BusType}</h2>
+            <h2>
+              {breakdownDateTime(result.DepartureTime).time} -{" "}
+              {breakdownDateTime(result.ArrivalTime).time}
+            </h2>
+            <h3>
+              {breakdownDateTime(result.DepartureTime).date} -{" "}
+              {breakdownDateTime(result.ArrivalTime).date}
+            </h3>
+            <h3>{result.BusType}</h3>
+          </div>
+          <div className="a">
+            <p>
+              {result.BoardingPoints[0].CityPointName} {" > "}
+              {
+                result.DroppingPoints[result.DroppingPoints.length - 1]
+                  ?.CityPointName
+              }
+            </p>
+          </div>
+          <div className="a">
             <p className="price">
-              Fare per seat -{" "}
               <span>
                 {result.Price.CurrencyCode}{" "}
                 {result.Price?.PublishedPrice
@@ -511,48 +680,16 @@ function Buses({ result, index, TraceId, loading, setloading }) {
                   : result.Price.OfferedPrice
                   ? result.Price.OfferedPrice
                   : ""}
-              </span>
+              </span>{" "}
+              per seat
             </p>
-          </div>
-          <div className="a">
-            <p>
-              <span>{breakdownDateTime(result.DepartureTime).time}</span>
-              {" > "}
-              {result.BoardingPoints[0].CityPointName}
-            </p>
-            <p className="date">
-              {breakdownDateTime(result.DepartureTime).date}
-            </p>
-          </div>
-          <div className="a">
-            <p>
-              <span>{breakdownDateTime(result.ArrivalTime).time}</span>
-              {" > "}
-              {
-                result.DroppingPoints[result.DroppingPoints.length - 1]
-                  ?.CityPointName
-              }
-            </p>
-            <p className="date">{breakdownDateTime(result.ArrivalTime).date}</p>
-          </div>
-          <div className="a">
-            {SelectedBusSeats.length <= 0 ? (
-              <button onClick={() => setToggleDetails(!toggleDetails)}>
-                {!toggleDetails ? "View Details" : "Hide Details"}
-              </button>
-            ) : (
-              <button onClick={() => settoggleSearch(!toggleSearch)}>
-                Book Seat
-              </button>
-            )}
           </div>
         </div>
         {/* bus seat layout */}
         {toggleDetails && (
           <div className="down">
             <div className="details">
-              <p>*driver this side</p>
-              <p>*click to select</p>
+              <p>(front of bus this side, click to select)</p>
             </div>
             <BusSeatLayout
               data={{ TraceId: TraceId, ResultIndex: result.ResultIndex }}
@@ -1086,3 +1223,13 @@ function breakdownDateTime(dateTimeString) {
 
   return { date: dateFormatted, time: timeFormatted };
 }
+
+const convertToSlashFormat = (dateString) => {
+  const parts = dateString.split("-");
+  if (parts.length !== 3) {
+    throw new Error(
+      "Invalid date format. Please provide a date in DD-MM-YYYY format."
+    );
+  }
+  return parts.join("/");
+};

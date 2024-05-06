@@ -14,8 +14,8 @@ export default function Search() {
 
   let [popup, setpopup] = useState(false);
 
-  let [origin, setOrigin] = useState("");
-  let [Destination, setDestinationo] = useState("");
+  let [origin, setOrigin] = useState({ city: "" });
+  let [Destination, setDestinationo] = useState({ city: "" });
   let [seat_class, setSeat_Class] = useState("1");
   let [departure_time, setDepTime] = useState("");
   let [arrival_time, setArrTime] = useState("");
@@ -117,8 +117,8 @@ export default function Search() {
     }
   };
 
-  var data = {
-    AdultCount: adults.toString(),
+  var [data, setData] = useState({
+    AdultCount: 1,
     ChildCount: children.toString(),
     InfantCount: infants.toString(),
     JourneyType: selectValue,
@@ -133,7 +133,7 @@ export default function Search() {
         PreferredArrivalTime: arrival_time,
       },
     ],
-  };
+  });
 
   let Search_function = () => {
     if (!origin || !Destination) {
@@ -240,35 +240,134 @@ export default function Search() {
 
   const [isHalfScreen, setIsHalfScreen] = useState(false);
 
-  const { height } = useSpring({
-    height: isHalfScreen ? "50vh" : "100vh",
-    config: { duration: 300 },
-  });
-
-  const toggleSize = () => {
-    setIsHalfScreen(!isHalfScreen);
-  };
-
   return (
     <Layout extraClass={"pt-160"}>
-      {/* <PageBanner pageTitle={"Flight Search"} /> */}
       <div id="Search_page">
-        <animated.div className="fullscreen page_title" style={{ height }}>
-          <h1>Flight Search</h1>
-          <div className="querry">
+        <img
+          src="./assets/images/flight_search/flight_search.png"
+          alt=""
+          className={!isHalfScreen ? "topimg " : "topimg shrink"}
+        />
+        <div className={!isHalfScreen ? "querry " : "querry active"}>
+          <div className="pg_logo">
+            <svg
+              width="90"
+              height="90"
+              viewBox="0 0 90 90"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M37.4707 71.3086L29.9707 76.9336V82.5586L43.0957 78.8086L56.2207 82.5586V76.9336L48.7207 71.3086V50.6836L78.7207 60.0586V52.5586L48.7207 33.8086V13.1836C48.7207 10.0711 46.2082 7.55859 43.0957 7.55859C39.9832 7.55859 37.4707 10.0711 37.4707 13.1836V33.8086L7.4707 52.5586V60.0586L37.4707 50.6836V71.3086Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+          <div className="">
             <div className="top">
+              <div className="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                  />
+                </svg>
+              </div>
+              {/* <div className="search">
+                <input
+                  type="text"
+                  value={origin?.city ? origin.city : ""}
+                  onChange={(e) =>
+                    setOrigin({ done: false, city: e.target.value })
+                  }
+                  placeholder="Source City"
+                />
+                {origin?.city && !origin?.done && (
+                  <ul className="search_list">
+                    {Object.keys(cityData)
+                      .filter((cityCode) =>
+                        cityData[cityCode]
+                          .toLowerCase()
+                          .includes(origin.city.toLowerCase())
+                      )
+                      .map((city) => (
+                        <li
+                          key={city}
+                          onClick={() => {
+                            // i should probably add more than a name to improve future search filter
+                            setData({
+                              ...data,
+                              Segments: { ...data.Segments, Origin: city },
+                            });
+                            setOrigin({
+                              ...InputBox,
+                              city: cityData[cityCode],
+                              done: true,
+                            });
+                          }}
+                        >
+                          {cityData[city]}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div> */}
               <CitySelector
                 className="start"
                 cityData={cityData}
                 setSelectedOption={setOrigin}
                 str_desp={"From where?"}
               />
+              <div className="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                  />
+                </svg>
+              </div>
               <CitySelector
                 cityData={cityData}
                 setSelectedOption={setDestinationo}
                 str_desp={"To where?"}
               />
-
+              <div className="logo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
+                  />
+                </svg>
+              </div>
               <div className="box">
                 <label className="tLabel" onClick={() => toggleSection("")}>
                   Travelers: {totalCount}
@@ -281,24 +380,112 @@ export default function Search() {
                   <div className="section">
                     <p>Adults</p>
                     <div>
-                      <button onClick={() => decrementCount("adults")}>
-                        -
+                      <button
+                        onClick={() =>
+                          data.AdultCount > 0
+                            ? setData({
+                                ...data,
+                                AdultCount: data.AdultCount - 1,
+                              })
+                            : null
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14"
+                          />
+                        </svg>
                       </button>
-                      {adults}
-                      <button onClick={() => incrementCount("adults")}>
-                        +
+                      <p>{adults}</p>
+                      <button
+                        onClick={() =>
+                          data.AdultCount > 0
+                            ? setData({
+                                ...data,
+                                AdultCount: data.AdultCount + 1,
+                              })
+                            : null
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>
                   <div className="section">
                     <p>Children</p>
                     <div>
-                      <button onClick={() => decrementCount("children")}>
-                        -
+                      <button
+                        onClick={() =>
+                          data.ChildCount > 0
+                            ? setData({
+                                ...data,
+                                ChildCount: data.ChildCount - 1,
+                              })
+                            : null
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14"
+                          />
+                        </svg>
                       </button>
-                      {children}
-                      <button onClick={() => incrementCount("children")}>
-                        +
+                      <p>{children}</p>
+                      <button
+                        onClick={() =>
+                          data.ChildCount > 0
+                            ? setData({
+                                ...data,
+                                ChildCount: data.ChildCount + 1,
+                              })
+                            : null
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -306,18 +493,43 @@ export default function Search() {
                     <p>Infants</p>
                     <div>
                       <button onClick={() => decrementCount("infants")}>
-                        -
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14"
+                          />
+                        </svg>
                       </button>
-                      {infants}
+                      <p>{infants}</p>
                       <button onClick={() => incrementCount("infants")}>
-                        +
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="datePicker">
-                {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
                 <DateTimePicker
                   selectedDateTime={departure_time}
                   setSelectedDateTime={setDepTime}
@@ -329,53 +541,37 @@ export default function Search() {
                   Search_function();
                 }}
               >
-                Search
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  />
+                </svg>
               </button>
-              <button
-                className="end"
-                onClick={() => {
-                  setAllOptions(!allOptions);
-                }}
-              >
-                More
-              </button>
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={() => {
-                  setAllOptions(!allOptions);
-                }}
-                className="moreBtn"
-                height="16"
-                width="10"
-                viewBox="0 0 320 512"
-              >
-                <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-              </svg> */}
             </div>
             <div className={"down " + (allOptions ? "show" : "")}>
-              <div className="cont">
-                <label>Cabin Class:</label>
-                <select
-                  class="display-block"
-                  value={seat_class}
-                  onChange={handleClassChange}
-                >
-                  <option value="1">All</option>
-                  <option value="2">Economy</option>
-                  <option value="3">Premium economy</option>
-                  <option value="4">Business</option>
-                  <option value="5">Premium</option>
-                  <option value="6">First</option>
-                </select>
-              </div>
-              <div className="datePicker">
-                <label>Arrival Date</label>
-                {/* <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/></svg> */}
-                <DateTimePicker
-                  selectedDateTime={arrival_time}
-                  setSelectedDateTime={setArrTime}
-                />
-              </div>
+              {/* <label>Cabin Class:</label> */}
+              <select
+                class="display-block"
+                value={seat_class}
+                onChange={handleClassChange}
+              >
+                <option value="1">All</option>
+                <option value="2">Economy</option>
+                <option value="3">Premium economy</option>
+                <option value="4">Business</option>
+                <option value="5">Premium</option>
+                <option value="6">First</option>
+              </select>
+              {/* <label>flight type:</label> */}
               <select
                 class="display-block"
                 value={selectValue}
@@ -387,9 +583,7 @@ export default function Search() {
               </select>
             </div>
           </div>
-        </animated.div>
-
-        {/* <div className={loading ? "loader" : ""}> */}
+        </div>
         {loading && (
           <div className="loader">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -490,48 +684,31 @@ export default function Search() {
             </svg>
           </div>
         )}
-        {search && (
+        {search ? (
           <div className="main">
-            <div className="head">
-              <h2>
-                {searchResponse?.Results
-                  ? searchResponse.Results[0].length
-                  : "--"}{" "}
-                results
-              </h2>
-              <h1>
-                {
-                  search && "Available flights"
-                  // ? "Looking for your perfect flight, Please wait...."
-                  // : "Search route for your dream vacation...."
-                }
-              </h1>
-              <h2>
-                {origin} - {Destination}
-              </h2>
-            </div>
             <div className="res">
-              <div className="sidebar one">
-                <h2>Filter Your Results</h2>
+              <div className="sidebar">
+                <h1>Filter By</h1>
+                <h2>Results</h2>
                 <p>
                   {searchResponse?.Results
                     ? searchResponse.Results[0].length
                     : "--"}{" "}
                   number of results
                 </p>
-                <h2>Flight Time</h2>
+                <h2>Range</h2>
                 <div className="time">
                   <p>
-                    {breakdownDateTime(departure_time).date} -
+                    From - {breakdownDateTime(departure_time).date} -{" "}
                     {breakdownDateTime(departure_time).time}
                   </p>
                   <p>
-                    {breakdownDateTime(arrival_time).date} -
+                    To - {breakdownDateTime(arrival_time).date} -{" "}
                     {breakdownDateTime(arrival_time).time}
                   </p>
                 </div>
                 <h2>Flight Duration</h2>
-                <p>addduration slider</p>
+                <p>-</p>
                 <h2>From - To</h2>
                 <div className="time">
                   <p>
@@ -552,27 +729,137 @@ export default function Search() {
                   ))}
                 </ul>
               </div>
-              {/* <div className="content"> */}
-              {search ? (
-                <FlightSearchResults
-                  results={searchResponse.Results}
-                  onResultClick={book_req_Fn}
-                />
-              ) : (
-                <div className="search_res">
-                  <h1 className="heading">
-                    {loading
-                      ? "Looking for your perfect flight, Please wait...."
-                      : "Search route for your dream vacation...."}
-                  </h1>
-                </div>
-              )}
-              {/* </div> */}
-              <div className="sidebar">
+              <div className="search_res">
+                <h1>
+                  Choose your Flight -{" "}
+                  {searchResponse?.Results
+                    ? searchResponse.Results[0].length
+                    : "--"}{" "}
+                  results
+                </h1>
+                {searchResponse.Results.map((resultGroup, index) => (
+                  <div key={index} className="results">
+                    {resultGroup
+                      .filter(
+                        (flight) => flight.FareDataMultiple[0].IsLCC === true
+                      )
+                      .map((result) => (
+                        <div
+                          key={result.ResultIndex}
+                          style={{}}
+                          className="results_tile"
+                          onClick={() => book_req_Fn(result)}
+                        >
+                          <div className="top">
+                            <h2>
+                              {/* Airline:{" "} */}
+                              {result.Segments[0][0].Airline.AirlineName}
+                              {/* <span></span>{" "} */}
+                            </h2>
+                          </div>
+                          <p>
+                            {result.Segments[0][0].Origin.CityName}{" "}
+                            <span>
+                              {" "}
+                              {
+                                breakdownDateTime(result.Segments[0][0].DepTime)
+                                  .time
+                              }
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+                              />
+                            </svg>
+                            {result.Segments[0][0].Destination.CityName}{" "}
+                            <span>
+                              {
+                                breakdownDateTime(result.Segments[0][0].ArrTime)
+                                  .time
+                              }
+                            </span>
+                          </p>
+                          <div className="down">
+                            <h2>
+                              {result.FareDataMultiple[0].Fare.Currency}{" "}
+                              <span>
+                                {result.Fare?.PublishedFare
+                                  ? result.Fare.PublishedFare
+                                  : result.OfferedFare
+                                  ? result.OfferedFare
+                                  : ""}
+                              </span>
+                            </h2>
+                            <h2>{result.Segments[0][0].FlightStatus}</h2>
+                            {/* <button>
+                                View Details
+                              </button> */}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                ))}
+                <h1>... No more results</h1>
+              </div>
+              {/* <div className="sidebar">
                 <img
                   src="/assets/images/search/fairflyings_sidebar.png"
                   alt="this is an img"
                 />
+              </div> */}
+            </div>
+          </div>
+        ) : (
+          <div className="beforeContent">
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t1.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t2.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t3.png" alt="" />
+              <div>
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t4.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t5.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
+              </div>
+            </div>
+            <div className="tile">
+              <img src="./assets/images/flight_search/flight_t6.png" alt="" />
+              <div className="cnt">
+                <h1>Chennai Flights</h1>
+                <p>Via Delhi, Mumbai, Coimbatore</p>
               </div>
             </div>
           </div>
@@ -581,78 +868,6 @@ export default function Search() {
     </Layout>
   );
 }
-
-const FlightSearchResults = ({ results, onResultClick }) => {
-  const handleResultClick = (resultIndex) => {
-    onResultClick(resultIndex);
-  };
-  // console.log(results);
-  return (
-    <div className="search_res">
-      {results.map((resultGroup, index) => (
-        <div key={index} className="results">
-          {/* <h3>Result Group {index + 1}</h3> */}
-          {resultGroup
-            .filter((flight) => flight.FareDataMultiple[0].IsLCC === true)
-            .map((result) => (
-              <div key={result.ResultIndex} style={{}} className="results_tile">
-                {/* {console.log(result)} */}
-                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                <path d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
-              </svg> */}
-                <div className="top">
-                  <h2>{result.Segments[0][0].FlightStatus}</h2>
-                  <h2>
-                    Airline:{" "}
-                    <span>{result.Segments[0][0].Airline.AirlineName}</span> |
-                  </h2>
-                  <h2>
-                    Code:{" "}
-                    <span>{result.Segments[0][0].Airline.AirlineCode}</span>
-                  </h2>
-                </div>
-                <p>
-                  {result.Segments[0][0].Origin.CityName},
-                  {result.Segments[0][0].Origin.CountryName}{" "}
-                  <span>
-                    {" "}
-                    {breakdownDateTime(result.Segments[0][0].DepTime).time}
-                  </span>{" "}
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                  </svg>
-                  {result.Segments[0][0].Destination.CityName},
-                  {result.Segments[0][0].Destination.CountryName} -{" "}
-                  <span>
-                    {breakdownDateTime(result.Segments[0][0].ArrTime).time}
-                  </span>
-                </p>
-                <div className="down">
-                  <p>
-                    Fare -{" "}
-                    <span>
-                      {result.FareDataMultiple[0].Fare.Currency}{" "}
-                      {result.Fare?.PublishedFare
-                        ? result.Fare.PublishedFare
-                        : result.OfferedFare
-                        ? result.OfferedFare
-                        : ""}
-                    </span>
-                    {/* FareDataMultiple */}
-                  </p>
-                  <button onClick={() => handleResultClick(result)}>
-                    View Details
-                  </button>
-                </div>
-              </div>
-            ))}
-        </div>
-      ))}
-      <h1>... No more results</h1>
-    </div>
-  );
-};
-
 function breakdownDateTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);
 
@@ -724,29 +939,6 @@ function findMinMaxTime(data) {
   });
 
   return { minDepartureTime, maxArrivalTime };
-}
-
-function filterArrayByTimeRange(data, startTime, endTime) {
-  return data?.filter((item) => {
-    if (
-      item &&
-      item.Segments &&
-      item.Segments.length > 0 &&
-      item.Segments[0].length > 0
-    ) {
-      const arrivalTime = item.Segments[0][0].ArrTime;
-      const departureTime = item.Segments[0][0].DepTime;
-
-      return (
-        arrivalTime >= startTime &&
-        arrivalTime <= endTime &&
-        departureTime >= startTime &&
-        departureTime <= endTime
-      );
-    }
-
-    return false;
-  });
 }
 
 function calculateDuration(minDepartureTime, maxArrivalTime) {

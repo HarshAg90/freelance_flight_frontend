@@ -148,7 +148,10 @@ export default function BookingPayment({}) {
   // };
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner pageTitle={"Book Flight"} />
+      <PageBanner
+        pageTitle={"Book Flight"}
+        url={"./assets/images/flight_search/flight_search.png"}
+      />
       <div className="top1">
         <p className="">Enter Your details</p>
         <p className="selected">Complete Payment</p>
