@@ -8,6 +8,8 @@ https://blog.learncodeonline.in/razorpay-integration-in-react
 https://blog.learncodeonline.in/razorpay-integration-in-react
 
 
+
+
 AWS
 billingbabaofficial@gmail.com
 Billingbaba@123
@@ -15,6 +17,9 @@ Billingbaba@123
 Vercel (mine)
 https://freelance-flight-frontend.vercel.app/
 https://vercel.com/harshag90s-projects/freelance-flight-frontend
+
+Admin Panal
+https://dsa.srdvapi.com/admin
 
 hotels
 https://www.srdvtechnologies.com/doc/hotel/v8/block-room-json

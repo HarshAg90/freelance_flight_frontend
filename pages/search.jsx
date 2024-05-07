@@ -14,8 +14,8 @@ export default function Search() {
 
   let [popup, setpopup] = useState(false);
 
-  let [origin, setOrigin] = useState({ city: "" });
-  let [Destination, setDestinationo] = useState({ city: "" });
+  let [origin, setOrigin] = useState();
+  let [Destination, setDestinationo] = useState();
   let [seat_class, setSeat_Class] = useState("1");
   let [departure_time, setDepTime] = useState("");
   let [arrival_time, setArrTime] = useState("");
@@ -117,8 +117,8 @@ export default function Search() {
     }
   };
 
-  var [data, setData] = useState({
-    AdultCount: 1,
+  var data = {
+    AdultCount: adults.toString(),
     ChildCount: children.toString(),
     InfantCount: infants.toString(),
     JourneyType: selectValue,
@@ -133,13 +133,24 @@ export default function Search() {
         PreferredArrivalTime: arrival_time,
       },
     ],
-  });
+  };
 
   let Search_function = () => {
     if (!origin || !Destination) {
       alert("Please select origin and destination");
       return false;
     }
+    console.log(origin, Destination, departure_time, arrival_time);
+    // setData({
+    //   ...data,
+    //   Seggments: {
+    //     ...data.Segments,
+    //     Origin: origin,
+    //     Destination: Destination,
+    //     PreferredDepartureTime: departure_time,
+    //     PreferredArrivalTime: arrival_time,
+    //   },
+    // });
     if (!departure_time || !arrival_time) {
       alert("Please select departure and arrival time");
       return false;
@@ -380,16 +391,7 @@ export default function Search() {
                   <div className="section">
                     <p>Adults</p>
                     <div>
-                      <button
-                        onClick={() =>
-                          data.AdultCount > 0
-                            ? setData({
-                                ...data,
-                                AdultCount: data.AdultCount - 1,
-                              })
-                            : null
-                        }
-                      >
+                      <button onClick={() => decrementCount("adult")}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -406,16 +408,7 @@ export default function Search() {
                         </svg>
                       </button>
                       <p>{adults}</p>
-                      <button
-                        onClick={() =>
-                          data.AdultCount > 0
-                            ? setData({
-                                ...data,
-                                AdultCount: data.AdultCount + 1,
-                              })
-                            : null
-                        }
-                      >
+                      <button onClick={() => incrementCount("adult")}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -436,16 +429,7 @@ export default function Search() {
                   <div className="section">
                     <p>Children</p>
                     <div>
-                      <button
-                        onClick={() =>
-                          data.ChildCount > 0
-                            ? setData({
-                                ...data,
-                                ChildCount: data.ChildCount - 1,
-                              })
-                            : null
-                        }
-                      >
+                      <button onClick={() => decrementCount("children")}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -462,16 +446,7 @@ export default function Search() {
                         </svg>
                       </button>
                       <p>{children}</p>
-                      <button
-                        onClick={() =>
-                          data.ChildCount > 0
-                            ? setData({
-                                ...data,
-                                ChildCount: data.ChildCount + 1,
-                              })
-                            : null
-                        }
-                      >
+                      <button onClick={() => incrementCount("children")}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -738,7 +713,7 @@ export default function Search() {
                   results
                 </h1>
                 {searchResponse.Results.map((resultGroup, index) => (
-                  <div key={index} className="results">
+                  <div key={index} className="fly_results">
                     {resultGroup
                       .filter(
                         (flight) => flight.FareDataMultiple[0].IsLCC === true
@@ -896,18 +871,46 @@ const DateTimePicker = ({ selectedDateTime, setSelectedDateTime }) => {
     Evening: "19:00:00",
     Night: "01:00:00",
   };
-  const handleSelect = (event) => {
-    changeTime(event.target.value);
-    setSelectedDateTime(`${date}T${event.target.value}`);
-    console.log(`${date}T${event.target.value}`);
-    console.log(selectedDateTime);
-  };
+  // const handleSelect = (event) => {
+  //   changeTime(event.target.value);
+  //   setSelectedDateTime(`${date}T${event.target.value}`);
+  //   console.log(`${date}T${event.target.value}`);
+  //   console.log(selectedDateTime);
+  // };
   const handleDateTimeChange = (event) => {
     changeDate(event.target.value);
     setSelectedDateTime(`${event.target.value}T${time}`);
     console.log(selectedDateTime);
   };
-  return <input type="date" value={date} onChange={handleDateTimeChange} />;
+  const convertToSlashFormat = (dateString) => {
+    const parts = dateString.split("-");
+    if (parts.length !== 3) {
+      throw new Error(
+        "Invalid date format. Please provide a date in DD-MM-YYYY format."
+      );
+    }
+    return parts[2] + "/" + parts[1] + "/" + parts[0];
+  };
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+
+    // Ensure month and day are in two digits format
+    month = month < 10 ? "0" + month : month;
+    day = day < 10 ? "0" + day : day;
+
+    return `${year}-${month}-${day}`;
+  };
+  return (
+    <input
+      type="date"
+      value={date}
+      onChange={handleDateTimeChange}
+      min={getCurrentDate()}
+    />
+  );
 };
 
 function findMinMaxTime(data) {

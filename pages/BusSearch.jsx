@@ -297,10 +297,11 @@ export default function Search() {
                 onChange={(e) =>
                   setSearchQuerry({
                     ...SearchQuerry,
-                    depart_date: convertToSlashFormat(e.target.value),
+                    depart_date: e.target.value,
                   })
                 }
                 id=""
+                min={getCurrentDate()}
               />
             </div>
             <div className="search">
@@ -1224,12 +1225,33 @@ function breakdownDateTime(dateTimeString) {
   return { date: dateFormatted, time: timeFormatted };
 }
 
-const convertToSlashFormat = (dateString) => {
-  const parts = dateString.split("-");
-  if (parts.length !== 3) {
-    throw new Error(
-      "Invalid date format. Please provide a date in DD-MM-YYYY format."
-    );
-  }
-  return parts.join("/");
+const getCurrentDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+
+  // Ensure month and day are in two digits format
+  month = month < 10 ? "0" + month : month;
+  day = day < 10 ? "0" + day : day;
+
+  return `${year}-${month}-${day}`;
 };
+// const convertToSlashFormat = (dateString) => {
+//   const parts = dateString.split("-");
+//   if (parts.length !== 3) {
+//     throw new Error(
+//       "Invalid date format. Please provide a date in DD-MM-YYYY format."
+//     );
+//   }
+//   return parts.join("/");
+// };
+// const convertToSlashFormat = (dateString) => {
+//   const parts = dateString.split("-");
+//   if (parts.length !== 3) {
+//     throw new Error(
+//       "Invalid date format. Please provide a date in DD-MM-YYYY format."
+//     );
+//   }
+//   return parts[2] + "/" + parts[1] + "/" + parts[0];
+// };

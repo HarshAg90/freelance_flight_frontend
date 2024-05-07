@@ -21,9 +21,8 @@ const CitySelector = ({ cityData, setSelectedOption, str_desp }) => {
   }, [searchTerm, cityData]);
 
   const handleItemClick = (key) => {
-    setSelectedKey(key);
+    console.log(key);
     setSelectedOption(key);
-    setSelectedValue(cityData[key]);
     setIsInputFocused(false);
     setIsListHovered(false);
     setSearchTerm(`${cityData[key]} | ${key}`);

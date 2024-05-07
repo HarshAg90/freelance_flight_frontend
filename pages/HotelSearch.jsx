@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import Layout from "@/src/layout/Layout";
-import { hotels_list } from "../src/components/search_hotels";
+import { hotels_list } from "../src/components/search_hotels_old";
 import { server_url } from "@/src/config";
 import { useSpring, animated } from "react-spring";
 
@@ -237,12 +237,13 @@ export default function HotelSearch() {
                 <input
                   type="date"
                   name=""
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setSearchQuerry({
                       ...searchQuerry,
                       CheckInDate: convertToSlashFormat(e.target.value),
-                    })
-                  }
+                    });
+                    console.log(convertToSlashFormat(e.target.value));
+                  }}
                   id=""
                   min={getCurrentDate()}
                 />
@@ -842,5 +843,5 @@ const convertToSlashFormat = (dateString) => {
       "Invalid date format. Please provide a date in DD-MM-YYYY format."
     );
   }
-  return parts.join("/");
+  return parts[2] + "/" + parts[1] + "/" + parts[0];
 };
