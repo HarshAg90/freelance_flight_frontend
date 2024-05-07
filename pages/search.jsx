@@ -28,18 +28,6 @@ export default function Search() {
     maxArrivalTime: "",
   });
 
-  const [uid, setUid] = useState("");
-
-  // useEffect(() => {
-  //   // Extract UID from local storage on component mount or page reload
-  //   const storedUid = localStorage.getItem("uid");
-  //   if (storedUid) {
-  //     setUid(storedUid);
-  //   } else {
-  //     window.location.href = "/AuthPage";
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (departure_time) {
       console.log(departure_time);

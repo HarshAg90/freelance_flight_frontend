@@ -15,10 +15,10 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/BusSearch": [
+    "/HotelSearch": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/BusSearch.js"
+      "static/chunks/pages/HotelSearch.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",

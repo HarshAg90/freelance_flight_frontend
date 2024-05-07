@@ -94,6 +94,10 @@ export default function HotelSearch() {
           // console.log('API Response:', data);
           if (data.Error.ErrorCode === "100") {
             alert("no result found, please select different city");
+          } else if (data.Error.ErrorCode === 3) {
+            alert(
+              "This City is Unavailable for now, Please try different City"
+            );
           } else {
             console.log(data);
             setSearchResponse(data);

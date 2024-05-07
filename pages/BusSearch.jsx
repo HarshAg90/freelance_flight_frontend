@@ -100,7 +100,9 @@ export default function Search() {
           setloading(false);
           // console.log('API Response:', data);
           if (data.Error.ErrorCode === "100") {
-            alert("no result found, please select different city");
+            alert("Backend Facing Problems, please try later");
+          } else if (data.Error.ErrorCode === 25) {
+            alert("no Results found, please select different city");
           } else {
             console.log(data);
             setSearchResponse(data);
