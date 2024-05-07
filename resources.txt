@@ -7,9 +7,6 @@ https://dashboard.razorpay.com/?screen=sign_in&next=app%2Fdevelopers%2Fapis
 https://blog.learncodeonline.in/razorpay-integration-in-react
 https://blog.learncodeonline.in/razorpay-integration-in-react
 
-
-
-
 AWS
 billingbabaofficial@gmail.com
 Billingbaba@123
@@ -32,3 +29,5 @@ https://www.redbus.in/search?fromCityName=ISBT%20Kashmiri%20Gate,%20Delhi&fromCi
 
 
 change the result index to be took from result and not "9" for hotel detail page
+ssh command 
+ssh -i "flight_freelance_ssh.pem" ubuntu@api.fairflyings.com
