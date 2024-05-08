@@ -8,7 +8,7 @@ const Destination = () => {
       <PageBanner pageTitle={"Destination"} />
       {/*====== Start Booking Section ======*/}
       <section className="booking-form-section pb-100">
-        <div className="container-fluid">
+        {/* <div className="container-fluid">
           <div className="booking-form-wrapper p-r z-2">
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -67,7 +67,7 @@ const Destination = () => {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
       </section>
       {/*====== End Booking Section ======*/}
       {/*====== Start Destination Section ======*/}

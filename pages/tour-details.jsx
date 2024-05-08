@@ -62,7 +62,7 @@ const TourDetails = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-xl-6">
+                {/* <div className="col-xl-6">
                   <div className="tour-widget-info">
                     <div className="info-box mb-20">
                       <div className="icon">
@@ -95,7 +95,7 @@ const TourDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {/*=== Tour Area Nav ===*/}
@@ -125,7 +125,7 @@ const TourDetails = () => {
                     </ul>
                   </div>
                 </div>
-                <div className="col-md-8">
+                {/* <div className="col-md-8">
                   <div className="share-nav">
                     <a href="#">
                       Share
@@ -140,7 +140,7 @@ const TourDetails = () => {
                       <i className="far fa-heart" />
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="row">
@@ -1025,7 +1025,7 @@ const TourDetails = () => {
                 {/*=== Sidebar Widget Area ===*/}
                 <div className="sidebar-widget-area pt-60 pl-lg-30">
                   {/*=== Booking Widget ===*/}
-                  <div className="sidebar-widget booking-form-widget wow fadeInUp mb-40">
+                  {/* <div className="sidebar-widget booking-form-widget wow fadeInUp mb-40">
                     <h4 className="widget-title">Book Your Flight Now</h4>
                     <form
                       onSubmit={(e) => e.preventDefault()}
@@ -1035,33 +1035,25 @@ const TourDetails = () => {
                         <div className="booking-item">
                           <label>From</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>To</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Departure</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Return</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                       </div>
@@ -1111,7 +1103,7 @@ const TourDetails = () => {
                         </button>
                       </div>
                     </form>
-                  </div>
+                  </div> */}
                   {/*=== Booking Info Widget ===*/}
                   <div className="sidebar-widget booking-info-widget wow fadeInUp mb-40">
                     <h4 className="widget-title">Tour Information</h4>

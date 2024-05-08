@@ -123,9 +123,9 @@ const Index4 = () => {
             </div>
           )} */}
 
-          <div className="shapeSub wow fadeInDown" data-wow-delay="2s">
+          {/* <div className="shapeSub wow fadeInDown" data-wow-delay="2s">
             <span></span>
-          </div>
+          </div> */}
         </div>
         {/* <div className="hero-wrapper-four">
         </div> */}
@@ -195,7 +195,10 @@ const Index4 = () => {
             </div>
           </div>
           <div className="row justify-content-center">
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -224,8 +227,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -254,8 +260,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -284,8 +293,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -314,8 +326,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -344,8 +359,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -374,8 +392,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -404,8 +425,11 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            </Link>
+            <Link
+              href="/tour-details"
+              className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+            >
               {/*=== Single Place Item Three ===*/}
               <div className="single-place-item-three mb-30 wow fadeInUp">
                 <div className="place-img">
@@ -434,7 +458,7 @@ const Index4 = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

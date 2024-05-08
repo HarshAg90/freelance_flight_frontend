@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/HotelSearch": "pages/HotelSearch.js"
+  "/": "pages/index.js",
+  "/tour": "pages/tour.js"
 }
