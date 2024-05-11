@@ -57,20 +57,20 @@ export default function Search() {
     depart_date: "2020-06-14",
   };
 
-  // let [SearchQuerry, setSearchQuerry] = useState({
-  //   source_city: null,
-  //   source_code: null,
-  //   destination_city: null,
-  //   destination_code: null,
-  //   depart_date: "",
-  // });
   let [SearchQuerry, setSearchQuerry] = useState({
-    source_city: "Mumbai",
-    source_code: "3534",
-    destination_city: "Pune",
-    destination_code: "9771",
-    depart_date: "2020-06-14",
+    source_city: null,
+    source_code: null,
+    destination_city: null,
+    destination_code: null,
+    depart_date: "",
   });
+  // let [SearchQuerry, setSearchQuerry] = useState({
+  //   source_city: "Mumbai",
+  //   source_code: "3534",
+  //   destination_city: "Pune",
+  //   destination_code: "9771",
+  //   depart_date: "2020-06-14",
+  // });
 
   let Search_function = () => {
     if (!SearchQuerry.source_city || !SearchQuerry.destination_city) {
@@ -101,8 +101,8 @@ export default function Search() {
           // console.log('API Response:', data);
           if (data.Error.ErrorCode === "100") {
             alert("Backend Facing Problems, please try later");
-          } else if (data.Error.ErrorCode === 25) {
-            alert("no Results found, please select different city");
+            // } else if (data.Error.ErrorCode === 25) {
+            //   alert("no Results found, please select different city");
           } else {
             console.log(data);
             setSearchResponse(data);
@@ -208,7 +208,7 @@ export default function Search() {
                           setSearchQuerry({
                             ...SearchQuerry,
                             source_city: city.CityName,
-                            source_code: city.CityId,
+                            source_code: toString(city.CityId),
                           });
                           setSourceCity({ city: city.CityName, done: true });
                         }}
