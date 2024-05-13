@@ -17,6 +17,7 @@ export default function Search() {
 
   useEffect(() => {
     const getBusList = async () => {
+      setloading(true);
       // try {
       const response = await fetch(`${server_url}/bus_city_list`, {
         method: "GET",
@@ -27,11 +28,11 @@ export default function Search() {
 
       if (response.ok) {
         const data = await response.json();
-        setloading(false);
-        // console.log(data);
         if (data.Error.ErrorCode === 1) {
           setBusList(data.Result.CityList);
+          setloading(false);
         } else {
+          setloading(false);
           alert(
             `Unable to Retrive Bus City List, error code: ${data.Error.ErrorCode}`
           );
@@ -191,7 +192,7 @@ export default function Search() {
                 }
                 placeholder="place name"
               />
-              {SourceCity?.city && !SourceCity?.done && (
+              {SourceCity?.city && !SourceCity?.done && busList && (
                 <ul className="search_list">
                   {/* {console.log(busList)} */}
                   {busList
@@ -208,7 +209,7 @@ export default function Search() {
                           setSearchQuerry({
                             ...SearchQuerry,
                             source_city: city.CityName,
-                            source_code: toString(city.CityId),
+                            source_code: city.CityId,
                           });
                           setSourceCity({ city: city.CityName, done: true });
                         }}
