@@ -468,7 +468,7 @@ export default function HotelSearch() {
         </div>
         {loading && (
           <div className="loader">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
               <circle
                 fill="#FF156D"
                 stroke="#FF156D"
@@ -563,7 +563,13 @@ export default function HotelSearch() {
                   begin=".2"
                 ></animate>
               </circle>
-            </svg>
+            </svg> */}
+            <div class="container">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
           </div>
         )}
         {search ? (
