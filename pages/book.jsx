@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import { server_url } from "@/src/config";
+import { Dropdown } from "react-bootstrap";
 
 export default function book() {
   const router = useRouter();
@@ -276,6 +277,8 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
     IsLeadPax: 1,
   });
 
+  let [Dropdown, setDropdown] = useState(false);
+
   const handleInputChange = (e) => {
     console.log("change hitting");
     const { name, value } = e.target;
@@ -314,42 +317,12 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
     <div className="input_form">
       <h1>Please enter your info to continue booking</h1>
       <div className="gr">
-        {/* <input
-          type="text"
-          name="Title"
-          placeholder="Title*"
-          value={formData.Title}
-          onChange={handleInputChange}
-        /> */}
         <div className="radio">
           <span>Title</span>
           <select name="Title" id="" onChange={(e) => handleInputChange(e)}>
             <option value="Mr">Mr</option>
             <option value="Ms">Ms</option>
           </select>
-          {/* <div>
-
-            <input
-              type="radio"
-              id="mr"
-              name="Title"
-              value="Mr"
-              checked={formData.Title === "Mr"}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="mr">Mr</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="ms"
-              name="Title"
-              value="Ms"
-              checked={formData.Title === "Ms"}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="ms">Ms</label>
-          </div> */}
         </div>
         <div>
           <span>First Name*</span>
@@ -373,16 +346,6 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
           />
         </div>
         <div>
-          <span>Pax Type</span>
-          <input
-            type="text"
-            name="PaxType"
-            placeholder="(put 1 for Default)"
-            value={formData.PaxType}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
           <span>Date of Birth *</span>
           <input
             type="date"
@@ -398,67 +361,6 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-          {/* <div>
-            <input
-              type="radio"
-              id="Male"
-              name="Gender"
-              value="Male"
-              checked={formData.Gender === "Male"}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="Male">Male</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="Female"
-              name="Gender"
-              value="Female"
-              checked={formData.Gender === "Female"}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="Female">Female</label>
-          </div> */}
-        </div>
-        {/* <input
-          type="text"
-          name="Gender"
-          placeholder="Gender*"
-          value={formData.Gender}
-          onChange={handleInputChange}
-        /> */}
-
-        <div>
-          <span>Passport Numeber</span>
-
-          <input
-            type="text"
-            name="PassportNo"
-            placeholder="* for international flights"
-            value={formData.PassportNo}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <span>Passport Expiry</span>
-          <input
-            type="text"
-            name="PassportExpiry"
-            placeholder="* for international flights"
-            value={formData.PassportExpiry}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <span>Passport Issue Date</span>
-          <input
-            type="text"
-            name="PassportIssueDate"
-            placeholder="* for international flights"
-            value={formData.PassportExpiry}
-            onChange={handleInputChange}
-          />
         </div>
         <div>
           <span>Address Line - 1</span>
@@ -481,22 +383,22 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
           />
         </div>
         <div>
-          <span>Country Code</span>
-          <input
-            type="text"
-            name="CountryCode"
-            placeholder="2 Character Code"
-            value={formData.CountryCode}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
           <span>Country *</span>
           <input
             type="text"
             name="CountryName"
             placeholder="Country Name*"
             value={formData.CountryName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <span>Country Code</span>
+          <input
+            type="text"
+            name="CountryCode"
+            placeholder="2 Character Code"
+            value={formData.CountryCode}
             onChange={handleInputChange}
           />
         </div>
@@ -520,18 +422,75 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <span>Is Lead Pax</span>
-
-          <input
-            type="text"
-            name="IsLeadPax"
-            placeholder="'1' as default"
-            value={formData.IsLeadPax}
-            onChange={handleInputChange}
-          />
-        </div>
       </div>
+      <button className="expand" onClick={() => setDropdown(!Dropdown)}>
+        {!Dropdown ? (
+          <>
+            More Options{" "}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+            </svg>
+          </>
+        ) : (
+          "Hide More options"
+        )}
+      </button>
+      {Dropdown && (
+        <div className="gr">
+          <div>
+            <span>Passport Numeber</span>
+
+            <input
+              type="text"
+              name="PassportNo"
+              placeholder="* for international flights"
+              value={formData.PassportNo}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <span>Passport Expiry</span>
+            <input
+              type="text"
+              name="PassportExpiry"
+              placeholder="* for international flights"
+              value={formData.PassportExpiry}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <span>Passport Issue Date</span>
+            <input
+              type="text"
+              name="PassportIssueDate"
+              placeholder="* for international flights"
+              value={formData.PassportExpiry}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <span>Is Lead Pax</span>
+
+            <input
+              type="text"
+              name="IsLeadPax"
+              placeholder="'1' as default"
+              value={formData.IsLeadPax}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <span>Pax Type</span>
+            <input
+              type="text"
+              name="PaxType"
+              placeholder="(put 1 for Default)"
+              value={formData.PaxType}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+      )}
       <button onClick={handleSave}>Save</button>
     </div>
   );

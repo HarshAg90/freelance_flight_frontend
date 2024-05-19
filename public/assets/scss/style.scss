@@ -158,8 +158,9 @@ body {
     }
     .gr {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
+      column-gap: 5vw;
       background: transparent;
       margin: 10px 0;
       & > div {
@@ -184,12 +185,12 @@ body {
     select {
       padding: 5px 10px;
       border: none;
-      border: 1px solid rgb(49, 49, 49);
+      border: 1px solid rgb(180, 180, 180);
       background: transparent;
       border-radius: 6px;
       width: 100%;
       &:focus {
-        border: 1px solid rgb(0, 132, 255);
+        border: 1px solid rgb(0, 60, 255);
       }
     }
     button {
@@ -203,6 +204,20 @@ body {
       margin: 20px 0;
       &:hover {
         background-color: #4a3affbf;
+      }
+      &.expand {
+        background: transparent;
+        color: #4a3aff;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        svg {
+          fill: #4a3aff;
+          height: 1.3rem;
+          width: auto;
+        }
       }
     }
   }
