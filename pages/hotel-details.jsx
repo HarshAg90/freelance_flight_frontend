@@ -48,7 +48,9 @@ export default function HotelDetails() {
             // console.log("hotel info");
             // console.log(data);
             if (data.HotelInfoResult.Error.ErrorCode !== 0) {
-              alert("Error in response");
+              alert(
+                "Error in fetching hotel info, please retry with different hotel"
+              );
             } else {
               setHotelInfo(data.HotelInfoResult);
             }

@@ -15,16 +15,6 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/BusSearch": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/BusSearch.js"
-    ],
-    "/HotelSearch": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/HotelSearch.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -34,6 +24,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/hotel-details": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/hotel-details.js"
     ]
   },
   "ampFirstPages": []

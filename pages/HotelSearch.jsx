@@ -5,6 +5,8 @@ import { hotels_list } from "../src/components/search_hotels_old";
 import { server_url } from "@/src/config";
 import { useSpring, animated } from "react-spring";
 
+import { isMobile } from "react-device-detect";
+
 export default function HotelSearch() {
   let [NoOfRooms, setNoOfRooms] = useState(1);
   let [NoOfAdults, setNoOfAdults] = useState(1);
@@ -129,6 +131,14 @@ export default function HotelSearch() {
 
     return `${year}-${month}-${day}`;
   };
+  let [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    if (isMobile) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+  }, []);
   return (
     <Layout extraClass={"pt-160"}>
       <div id="Search_page">
@@ -153,134 +163,11 @@ export default function HotelSearch() {
             </svg>
           </div>
           <div className="">
-            <div className="top">
-              {/* <div className="search"> */}
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
-              </div>
-              <div className="search">
-                <p>Where?</p>
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  className="citySearch"
-                  placeholder="Enter destination or hotel name"
-                  value={InputBox.city}
-                  onChange={(e) =>
-                    setInputBox({ done: false, city: e.target.value })
-                  }
-                />
-                {InputBox?.city && !InputBox?.done && hotels_list && (
-                  <ul className="search_list">
-                    {Object.keys(hotels_list)
-                      .filter((cityCode) =>
-                        hotels_list[cityCode]
-                          .toLowerCase()
-                          .includes(InputBox.city.toLowerCase())
-                      )
-                      .map((cityCode) => (
-                        <li
-                          key={cityCode}
-                          onClick={() => {
-                            // i should probably add more than a name to improve future search filter
-                            setSearchQuerry({
-                              ...searchQuerry,
-                              CityId: cityCode,
-                            });
-                            setInputBox({
-                              ...InputBox,
-                              city: hotels_list[cityCode],
-                              done: true,
-                            });
-                          }}
-                        >
-                          {hotels_list[cityCode]}
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </div>
-              {/* </div> */}
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                  />
-                </svg>
-              </div>
-              <div className="search">
-                <p>Check-in</p>
-                <input
-                  type="date"
-                  name=""
-                  onChange={(e) => {
-                    setSearchQuerry({
-                      ...searchQuerry,
-                      CheckInDate: convertToSlashFormat(e.target.value),
-                    });
-                    console.log(convertToSlashFormat(e.target.value));
-                  }}
-                  id=""
-                  min={getCurrentDate()}
-                />
-              </div>
-              {/* <span>Check-in</span> */}
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
-                  />
-                </svg>
-              </div>
-
-              <div className="search">
-                <p>Number of nights?</p>
-                <div className="nights">
-                  <button
-                    onClick={() =>
-                      setSearchQuerry({
-                        ...searchQuerry,
-                        NoOfNights: searchQuerry.NoOfNights + 1,
-                      })
-                    }
-                  >
+            {mobile ? (
+              <div className="top mobile">
+                {/* <div className="search"> */}
+                <div className="d">
+                  <div className="logo">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -292,20 +179,95 @@ export default function HotelSearch() {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
+                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                       />
                     </svg>
-                  </button>
-                  <span>{searchQuerry.NoOfNights}</span>
-                  <button
-                    onClick={() => {
-                      searchQuerry.NoOfNights > 1 &&
+                  </div>
+                  <div className="search">
+                    <p>Where?</p>
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      className="citySearch"
+                      placeholder="Enter hotel / city"
+                      value={InputBox.city}
+                      onChange={(e) =>
+                        setInputBox({ done: false, city: e.target.value })
+                      }
+                    />
+                    {InputBox?.city && !InputBox?.done && hotels_list && (
+                      <ul className="search_list">
+                        {Object.keys(hotels_list)
+                          .filter((cityCode) =>
+                            hotels_list[cityCode]
+                              .toLowerCase()
+                              .includes(InputBox.city.toLowerCase())
+                          )
+                          .map((cityCode) => (
+                            <li
+                              key={cityCode}
+                              onClick={() => {
+                                // i should probably add more than a name to improve future search filter
+                                setSearchQuerry({
+                                  ...searchQuerry,
+                                  CityId: cityCode,
+                                });
+                                setInputBox({
+                                  ...InputBox,
+                                  city: hotels_list[cityCode],
+                                  done: true,
+                                });
+                              }}
+                            >
+                              {hotels_list[cityCode]}
+                            </li>
+                          ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                      />
+                    </svg>
+                  </div>
+                  <div className="search">
+                    <p>Check-in</p>
+                    <input
+                      type="date"
+                      name=""
+                      onChange={(e) => {
                         setSearchQuerry({
                           ...searchQuerry,
-                          NoOfNights: searchQuerry.NoOfNights - 1,
+                          CheckInDate: convertToSlashFormat(e.target.value),
                         });
-                    }}
-                  >
+                        console.log(convertToSlashFormat(e.target.value));
+                      }}
+                      id=""
+                      min={getCurrentDate()}
+                    />
+                  </div>
+                </div>
+                <div className="d">
+                  <div className="logo">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -317,141 +279,499 @@ export default function HotelSearch() {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M5 12h14"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
                       />
                     </svg>
-                  </button>
-                </div>
-              </div>
-              {/* <span>Check-out</span> */}
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg>
-              </div>
+                  </div>
 
-              <div className="box">
-                <div className="tlabel" onClick={() => setpopup(!popup)}>
-                  <p>Guest and rooms</p>
-                  <h2>
-                    {NoOfAdults} Adults, {NoOfRooms} Room
-                  </h2>
+                  <div className="search">
+                    <p>Number of nights?</p>
+                    <div className="nights">
+                      <button
+                        onClick={() =>
+                          setSearchQuerry({
+                            ...searchQuerry,
+                            NoOfNights: searchQuerry.NoOfNights + 1,
+                          })
+                        }
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
+                      </button>
+                      <span>{searchQuerry.NoOfNights}</span>
+                      <button
+                        onClick={() => {
+                          searchQuerry.NoOfNights > 1 &&
+                            setSearchQuerry({
+                              ...searchQuerry,
+                              NoOfNights: searchQuerry.NoOfNights - 1,
+                            });
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div
-                  className="travelers-input"
-                  style={{ display: popup ? "block" : "none" }}
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="box">
+                    <div className="tlabel" onClick={() => setpopup(!popup)}>
+                      <p>Guest and rooms</p>
+                      <h2>
+                        {NoOfAdults} Adults, {NoOfRooms} Room
+                      </h2>
+                    </div>
+                    <div
+                      className="travelers-input"
+                      style={{ display: popup ? "block" : "none" }}
+                    >
+                      <div className="section">
+                        <p>Adults</p>
+                        <div className="box">
+                          <button onClick={() => setNoOfAdults(NoOfAdults - 1)}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14"
+                              />
+                            </svg>
+                          </button>
+                          <p>{NoOfAdults}</p>
+                          <button onClick={() => setNoOfAdults(NoOfAdults + 1)}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div className="section">
+                        <p>Rooms</p>
+                        <div className="box">
+                          <button onClick={() => setNoOfRooms(NoOfRooms - 1)}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14"
+                              />
+                            </svg>
+                          </button>
+                          <p>{NoOfRooms}</p>
+                          <button onClick={() => setNoOfRooms(NoOfRooms + 1)}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* </div> */}
+                {/* <span>Check-in</span> */}
+                {/* <span>Check-out</span> */}
+                <button
+                  className="submit"
+                  onClick={() => {
+                    Search_function();
+                  }}
                 >
-                  <div className="section">
-                    <p>Adults</p>
-                    <div className="box">
-                      <button onClick={() => setNoOfAdults(NoOfAdults - 1)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          />
-                        </svg>
-                      </button>
-                      <p>{NoOfAdults}</p>
-                      <button onClick={() => setNoOfAdults(NoOfAdults + 1)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="section">
-                    <p>Rooms</p>
-                    <div className="box">
-                      <button onClick={() => setNoOfRooms(NoOfRooms - 1)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          />
-                        </svg>
-                      </button>
-                      <p>{NoOfRooms}</p>
-                      <button onClick={() => setNoOfRooms(NoOfRooms + 1)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </button>
               </div>
-              <button
-                className="submit"
-                onClick={() => {
-                  Search_function();
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+            ) : (
+              <div className="top">
+                {/* <div className="search"> */}
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                    />
+                  </svg>
+                </div>
+                <div className="search">
+                  <p>Where?</p>
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    className="citySearch"
+                    placeholder="Enter hotel / city"
+                    value={InputBox.city}
+                    onChange={(e) =>
+                      setInputBox({ done: false, city: e.target.value })
+                    }
                   />
-                </svg>
-              </button>
-            </div>
+                  {InputBox?.city && !InputBox?.done && hotels_list && (
+                    <ul className="search_list">
+                      {Object.keys(hotels_list)
+                        .filter((cityCode) =>
+                          hotels_list[cityCode]
+                            .toLowerCase()
+                            .includes(InputBox.city.toLowerCase())
+                        )
+                        .map((cityCode) => (
+                          <li
+                            key={cityCode}
+                            onClick={() => {
+                              // i should probably add more than a name to improve future search filter
+                              setSearchQuerry({
+                                ...searchQuerry,
+                                CityId: cityCode,
+                              });
+                              setInputBox({
+                                ...InputBox,
+                                city: hotels_list[cityCode],
+                                done: true,
+                              });
+                            }}
+                          >
+                            {hotels_list[cityCode]}
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </div>
+                {/* </div> */}
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                    />
+                  </svg>
+                </div>
+                <div className="search">
+                  <p>Check-in</p>
+                  <input
+                    type="date"
+                    name=""
+                    onChange={(e) => {
+                      setSearchQuerry({
+                        ...searchQuerry,
+                        CheckInDate: convertToSlashFormat(e.target.value),
+                      });
+                      console.log(convertToSlashFormat(e.target.value));
+                    }}
+                    id=""
+                    min={getCurrentDate()}
+                  />
+                </div>
+                {/* <span>Check-in</span> */}
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
+                    />
+                  </svg>
+                </div>
+
+                <div className="search">
+                  <p>Number of nights?</p>
+                  <div className="nights">
+                    <button
+                      onClick={() =>
+                        setSearchQuerry({
+                          ...searchQuerry,
+                          NoOfNights: searchQuerry.NoOfNights + 1,
+                        })
+                      }
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </button>
+                    <span>{searchQuerry.NoOfNights}</span>
+                    <button
+                      onClick={() => {
+                        searchQuerry.NoOfNights > 1 &&
+                          setSearchQuerry({
+                            ...searchQuerry,
+                            NoOfNights: searchQuerry.NoOfNights - 1,
+                          });
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 12h14"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                {/* <span>Check-out</span> */}
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </div>
+
+                <div className="box">
+                  <div className="tlabel" onClick={() => setpopup(!popup)}>
+                    <p>Guest and rooms</p>
+                    <h2>
+                      {NoOfAdults} Adults, {NoOfRooms} Room
+                    </h2>
+                  </div>
+                  <div
+                    className="travelers-input"
+                    style={{ display: popup ? "block" : "none" }}
+                  >
+                    <div className="section">
+                      <p>Adults</p>
+                      <div className="box">
+                        <button onClick={() => setNoOfAdults(NoOfAdults - 1)}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 12h14"
+                            />
+                          </svg>
+                        </button>
+                        <p>{NoOfAdults}</p>
+                        <button onClick={() => setNoOfAdults(NoOfAdults + 1)}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="section">
+                      <p>Rooms</p>
+                      <div className="box">
+                        <button onClick={() => setNoOfRooms(NoOfRooms - 1)}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 12h14"
+                            />
+                          </svg>
+                        </button>
+                        <p>{NoOfRooms}</p>
+                        <button onClick={() => setNoOfRooms(NoOfRooms + 1)}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className="submit"
+                  onClick={() => {
+                    Search_function();
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            )}
             <div className="down">
               {/* <div className="f"> */}
               {/* </div> */}

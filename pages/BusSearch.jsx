@@ -5,6 +5,8 @@ import { server_url } from "@/src/config";
 import { useSpring, animated } from "react-spring";
 import Payment from "@/src/components/payment";
 
+import { isMobile } from "react-device-detect";
+
 export default function Search() {
   let [SourceCity, setSourceCity] = useState();
   let [Destination, setDestination] = useState();
@@ -129,7 +131,14 @@ export default function Search() {
     height: isHalfScreen ? "0vh" : "100vh",
     config: { duration: 300 },
   });
-
+  let [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    if (isMobile) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+  }, []);
   return (
     <Layout extraClass={"pt-160"}>
       <div id="Search_page">
@@ -159,6 +168,7 @@ export default function Search() {
               />
             </svg>
           </div>
+
           <div className="top">
             <div className="logo">
               <svg
