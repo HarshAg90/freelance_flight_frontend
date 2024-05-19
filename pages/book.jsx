@@ -323,7 +323,12 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
         /> */}
         <div className="radio">
           <span>Title</span>
-          <div>
+          <select name="Title" id="" onChange={(e) => handleInputChange(e)}>
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+          </select>
+          {/* <div>
+
             <input
               type="radio"
               id="mr"
@@ -344,7 +349,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
               onChange={handleInputChange}
             />
             <label htmlFor="ms">Ms</label>
-          </div>
+          </div> */}
         </div>
         <div>
           <span>First Name*</span>
@@ -389,7 +394,11 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
         </div>
         <div>
           <span>Gender</span>
-          <div>
+          <select name="Gender" id="" onChange={(e) => handleInputChange(e)}>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          {/* <div>
             <input
               type="radio"
               id="Male"
@@ -410,7 +419,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
               onChange={handleInputChange}
             />
             <label htmlFor="Female">Female</label>
-          </div>
+          </div> */}
         </div>
         {/* <input
           type="text"

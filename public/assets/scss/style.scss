@@ -85,17 +85,28 @@ body {
         display: flex;
         width: auto;
         justify-content: space-evenly;
-        padding: 20px;
+        // padding: 20px;
         border-radius: 20px;
         // background-color: #d2e3c8;
-        background-color: #d2d4d1;
+        background-color: #ffffff;
         // background-color: rgb(243, 243, 243);
-        gap: 30px;
+        // gap: 30px;
+        box-shadow: 0 0 10px rgb(228, 228, 228);
         div {
-          padding: 20px;
+          // padding: 20px;
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          // gap: 5px;
+          height: fit-content;
+          width: 100%;
+        }
+        h2 {
+          background-color: #e7eeff;
+          padding: 10px 20px;
+        }
+        h1,
+        p {
+          padding: 5px 20px;
         }
       }
     }
@@ -120,9 +131,9 @@ body {
           display: flex;
           flex-direction: column;
           .ori_dest {
-            padding: 8px;
+            // padding: 8px;
             display: flex;
-            gap: 10px;
+            // gap: 10px;
           }
         }
       }
@@ -136,13 +147,14 @@ body {
   }
 
   .input_form {
-    background: #f3f3f3;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgb(230, 230, 230);
     // background: rgba(214, 255, 148, 0.823);
     padding: 40px 10%;
     h1 {
       margin-bottom: 30px;
       font-weight: 600;
-      text-align: center;
+      text-align: start;
     }
     .gr {
       display: grid;
@@ -150,16 +162,17 @@ body {
       gap: 30px;
       background: transparent;
       margin: 10px 0;
-      div {
+      & > div {
         span {
           font-size: 1.1rem;
           font-weight: 500;
         }
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        align-items: center;
-        div {
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        align-items: start;
+        & > div {
           display: flex;
           gap: 10px;
           justify-content: center;
@@ -167,11 +180,17 @@ body {
         }
       }
     }
-    input {
+    input,
+    select {
       padding: 5px 10px;
       border: none;
-      border-bottom: 1px solid rgb(49, 49, 49);
+      border: 1px solid rgb(49, 49, 49);
       background: transparent;
+      border-radius: 6px;
+      width: 100%;
+      &:focus {
+        border: 1px solid rgb(0, 132, 255);
+      }
     }
     button {
       padding: 10px 20px;
