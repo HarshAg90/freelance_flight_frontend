@@ -271,15 +271,26 @@ body {
     z-index: 1;
     transition: transform 0.2s ease;
     margin-top: 0px;
+    @media (max-width: 700px) {
+      flex-direction: column;
+      gap: 10px;
+      transform: translateY(-70%);
+    }
     &.active {
       // margin-top: 20px;
       transform: translateY(0%);
     }
     .pg_logo {
-      padding: 20px;
-      border-radius: 10px;
       background-color: white;
       box-shadow: 0 0 10px rgba(137, 137, 137, 0.479);
+      @media (max-width: 700px) {
+        padding: 5px;
+        border-radius: 10px;
+        svg {
+          height: 5vh;
+          width: auto;
+        }
+      }
     }
     .top {
       background-color: white;
@@ -289,12 +300,40 @@ body {
       padding: 10px;
       border-radius: 50px;
       box-shadow: 0 0 10px rgba(137, 137, 137, 0.479);
+      // @media (max-width: 700px) {
+      //   display: grid;
+      //   grid-template-columns: 1fr 1fr;
+      // }
+      &.mobile {
+        flex-direction: column;
+        border-radius: 10px;
+        div.d {
+          display: flex;
+          width: 100% !important;
+          justify-content: start;
+          align-items: center;
+          .box {
+            width: 100% !important;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+          }
+        }
+        input[type="date"] {
+          padding-right: 0; /* Adjust as needed */
+          width: 100%;
+        }
+        button {
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
       .logo svg {
         margin: 10px;
         height: 1.5rem;
         width: auto;
         color: black;
-        // fill: black;
+        // fill: black
       }
       p {
         font-size: 0.8rem;
@@ -302,7 +341,9 @@ body {
       }
       input {
         border: none;
-        width: 10vw;
+        @media (max-width: 700px) {
+          width: 100%;
+        }
       }
       ul {
         position: absolute;
@@ -364,13 +405,6 @@ body {
           }
         }
       }
-      // input[type="date"]::before {
-      //   content: "\1F4C5"; /* Unicode for calendar icon, you can replace it with your preferred calendar icon */
-      //   position: absolute;
-      //   right: 50px; /* Adjust as needed */
-      //   top: 50%;
-      //   transform: translateY(-50%);
-      // }
       input[type="date"] {
         padding-right: 25px; /* Adjust as needed */
       }
@@ -435,6 +469,12 @@ body {
         color: #4a3aff;
         font-weight: 500;
       }
+      @media (max-width: 700px) {
+        margin: 10px 0;
+        select {
+          margin: 0;
+        }
+      }
     }
   }
 
@@ -474,14 +514,17 @@ body {
         // border: 1px solid black;
         margin: 0px auto;
         @media (max-width: 540px) {
-          & {
-            width: 95vw;
+          width: 95vw;
+          & > h1 {
+            font-size: 3vh !important;
+            text-align: center;
+            margin: 10px !important;
           }
         }
         & > h1 {
           margin-bottom: 20px;
           font-weight: 600;
-          font-size: 1.6srem;
+          font-size: 1.6rem;
         }
         .results_tile {
           padding: 20px;
@@ -494,6 +537,10 @@ body {
           justify-content: space-between;
           align-items: center;
           cursor: pointer !important;
+          @media (max-width: 700px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+          }
           svg {
             height: 1rem;
             margin: 0 10px;
@@ -1537,6 +1584,11 @@ body {
     gap: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    @media (max-width: 700px) {
+      padding: 15px 10px;
+      width: 90%;
+      margin: 5vh auto;
+    }
     .tile {
       height: fit-content;
       display: flex;
@@ -1544,9 +1596,17 @@ body {
       align-items: center;
       gap: 20px;
       margin: 10px 20px;
+      @media (max-width: 700px) {
+        gap: 5px;
+        margin: 0;
+        width: fit-content;
+      }
       img {
-        height: 70px;
         width: auto;
+        @media (max-width: 700px) {
+          width: 60px;
+          height: auto;
+        }
       }
       .cnt {
         height: fit-content;
@@ -1767,6 +1827,9 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
   }
   .pay {
     background-color: #cfcaff;
@@ -1781,6 +1844,9 @@ body {
       color: black;
       display: flex;
       gap: 10px;
+      @media (max-width: 700px) {
+        flex-direction: column;
+      }
       p {
         margin: 10px;
       }
@@ -2194,25 +2260,31 @@ body {
     // .numbers {
     @media (max-width: 700px) {
       & {
-        margin-top: 10vh;
+        margin-top: 5vh;
         justify-content: space-between;
-        margin: 10vh 0;
+        margin: 5vh 0;
         width: 100vw;
       }
     }
 
     .counter-item {
       p {
-        font: 400 0.8vw "Prompt", sans-serif;
+        font: 400 2.5vh "Prompt", sans-serif;
       }
       h2.number {
-        font: 500 2.5vw "Prompt", sans-serif;
+        font: 500 5vh "Prompt", sans-serif;
         line-height: 1;
         margin-bottom: 5px;
       }
       @media (max-width: 767px) {
         & {
           text-align: center;
+          p {
+            font: 400 1.5vh "Prompt", sans-serif;
+          }
+          h2.number {
+            font: 500 3vh "Prompt", sans-serif;
+          }
         }
       }
     }
@@ -2809,6 +2881,26 @@ body {
     padding: 20px;
     border-radius: 10px;
     background-color: rgb(29, 29, 29);
+  }
+  @media (max-width: 700px) {
+    .cont {
+      padding: 10px;
+      border-radius: 5px;
+    }
+    a {
+      font-size: 1vh;
+      text-wrap: nowrap;
+    }
+    .div {
+      margin-left: 10px;
+    }
+    .footerT {
+      display: flex;
+      align-items: center;
+    }
+    p {
+      font-size: 1.2vh;
+    }
   }
   .footerT {
     // width: 90%;

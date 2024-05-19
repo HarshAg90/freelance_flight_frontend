@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import PageBanner from "@/src/components/PageBanner";
+// import PageBanner from "@/src/components/PageBanner";
 import CitySelector from "@/src/components/city_selector";
-import { useSpring, animated } from "react-spring";
+// import { useSpring, animated } from "react-spring";
 import Layout from "@/src/layout/Layout";
 import cityData from "@/src/components/data";
 import { server_url } from "@/src/config";
+
+import { isMobile } from "react-device-detect";
 
 export default function Search() {
   let [adults, setAdults] = useState(1);
@@ -182,7 +184,7 @@ export default function Search() {
   };
 
   // Passanger count code
-  const toggleSection = (section) => {
+  const toggleSection = () => {
     if (popup) {
       setpopup(false);
     } else {
@@ -239,6 +241,14 @@ export default function Search() {
 
   const [isHalfScreen, setIsHalfScreen] = useState(false);
 
+  let [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    if (isMobile) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+  }, []);
   return (
     <Layout extraClass={"pt-160"}>
       <div id="Search_page">
@@ -263,263 +273,462 @@ export default function Search() {
             </svg>
           </div>
           <div className="">
-            <div className="top">
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
+            {mobile ? (
+              <div className="top mobile">
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                      />
+                    </svg>
+                  </div>
+                  <CitySelector
+                    className="start"
+                    cityData={cityData}
+                    setSelectedOption={setOrigin}
+                    str_desp={"From where?"}
+                  />
+                </div>
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                      />
+                    </svg>
+                  </div>
+                  <CitySelector
+                    cityData={cityData}
+                    setSelectedOption={setDestinationo}
+                    str_desp={"To where?"}
+                  />
+                </div>
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
+                      />
+                    </svg>
+                  </div>
+                  <div className="box">
+                    <label className="tLabel" onClick={() => toggleSection()}>
+                      Travelers: {totalCount}
+                    </label>
+                    <div
+                      className="travelers-input"
+                      style={{ display: popup ? "block" : "none" }}
+                      ref={popupRef}
+                    >
+                      <div className="section">
+                        <p>Adults</p>
+                        <div>
+                          <button onClick={() => decrementCount("adults")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14"
+                              />
+                            </svg>
+                          </button>
+                          <p>{adults}</p>
+                          <button onClick={() => incrementCount("adults")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div className="section">
+                        <p>Children</p>
+                        <div>
+                          <button onClick={() => decrementCount("children")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14"
+                              />
+                            </svg>
+                          </button>
+                          <p>{children}</p>
+                          <button onClick={() => incrementCount("children")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div className="section">
+                        <p>Infants</p>
+                        <div>
+                          <button onClick={() => decrementCount("infants")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14"
+                              />
+                            </svg>
+                          </button>
+                          <p>{infants}</p>
+                          <button onClick={() => incrementCount("infants")}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4.5v15m7.5-7.5h-15"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* </div>
+                <div> */}
+                </div>
+                <div className="d">
+                  <div className="logo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                      className="w-6 h-6"
+                    >
+                      <path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z" />
+                    </svg>
+                  </div>
+                  <DateTimePicker
+                    selectedDateTime={departure_time}
+                    setSelectedDateTime={setDepTime}
+                  />
+                </div>
+                <button
+                  className="submit"
+                  onClick={() => {
+                    Search_function();
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </button>
               </div>
-              {/* <div className="search">
-                <input
-                  type="text"
-                  value={origin?.city ? origin.city : ""}
-                  onChange={(e) =>
-                    setOrigin({ done: false, city: e.target.value })
-                  }
-                  placeholder="Source City"
+            ) : (
+              <div className="top">
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                    />
+                  </svg>
+                </div>
+                <CitySelector
+                  className="start"
+                  cityData={cityData}
+                  setSelectedOption={setOrigin}
+                  str_desp={"From where?"}
                 />
-                {origin?.city && !origin?.done && (
-                  <ul className="search_list">
-                    {Object.keys(cityData)
-                      .filter((cityCode) =>
-                        cityData[cityCode]
-                          .toLowerCase()
-                          .includes(origin.city.toLowerCase())
-                      )
-                      .map((city) => (
-                        <li
-                          key={city}
-                          onClick={() => {
-                            // i should probably add more than a name to improve future search filter
-                            setData({
-                              ...data,
-                              Segments: { ...data.Segments, Origin: city },
-                            });
-                            setOrigin({
-                              ...InputBox,
-                              city: cityData[cityCode],
-                              done: true,
-                            });
-                          }}
-                        >
-                          {cityData[city]}
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </div> */}
-              <CitySelector
-                className="start"
-                cityData={cityData}
-                setSelectedOption={setOrigin}
-                str_desp={"From where?"}
-              />
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                  />
-                </svg>
-              </div>
-              <CitySelector
-                cityData={cityData}
-                setSelectedOption={setDestinationo}
-                str_desp={"To where?"}
-              />
-              <div className="logo">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
-                  />
-                </svg>
-              </div>
-              <div className="box">
-                <label className="tLabel" onClick={() => toggleSection("")}>
-                  Travelers: {totalCount}
-                </label>
-                <div
-                  className="travelers-input"
-                  style={{ display: popup ? "block" : "none" }}
-                  ref={popupRef}
-                >
-                  <div className="section">
-                    <p>Adults</p>
-                    <div>
-                      <button onClick={() => decrementCount("adult")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          />
-                        </svg>
-                      </button>
-                      <p>{adults}</p>
-                      <button onClick={() => incrementCount("adult")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </button>
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                    />
+                  </svg>
+                </div>
+                <CitySelector
+                  cityData={cityData}
+                  setSelectedOption={setDestinationo}
+                  str_desp={"To where?"}
+                />
+                <div className="logo">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
+                    />
+                  </svg>
+                </div>
+                <div className="box">
+                  <label className="tLabel" onClick={() => toggleSection("")}>
+                    Travelers: {totalCount}
+                  </label>
+                  <div
+                    className="travelers-input"
+                    style={{ display: popup ? "block" : "none" }}
+                    ref={popupRef}
+                  >
+                    <div className="section">
+                      <p>Adults</p>
+                      <div>
+                        <button onClick={() => decrementCount("adult")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 12h14"
+                            />
+                          </svg>
+                        </button>
+                        <p>{adults}</p>
+                        <button onClick={() => incrementCount("adult")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="section">
-                    <p>Children</p>
-                    <div>
-                      <button onClick={() => decrementCount("children")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          />
-                        </svg>
-                      </button>
-                      <p>{children}</p>
-                      <button onClick={() => incrementCount("children")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </button>
+                    <div className="section">
+                      <p>Children</p>
+                      <div>
+                        <button onClick={() => decrementCount("children")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 12h14"
+                            />
+                          </svg>
+                        </button>
+                        <p>{children}</p>
+                        <button onClick={() => incrementCount("children")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="section">
-                    <p>Infants</p>
-                    <div>
-                      <button onClick={() => decrementCount("infants")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14"
-                          />
-                        </svg>
-                      </button>
-                      <p>{infants}</p>
-                      <button onClick={() => incrementCount("infants")}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </button>
+                    <div className="section">
+                      <p>Infants</p>
+                      <div>
+                        <button onClick={() => decrementCount("infants")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 12h14"
+                            />
+                          </svg>
+                        </button>
+                        <p>{infants}</p>
+                        <button onClick={() => incrementCount("infants")}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="datePicker">
-                <DateTimePicker
-                  selectedDateTime={departure_time}
-                  setSelectedDateTime={setDepTime}
-                />
-              </div>
-              <button
-                className="submit"
-                onClick={() => {
-                  Search_function();
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                <div className="datePicker">
+                  <DateTimePicker
+                    selectedDateTime={departure_time}
+                    setSelectedDateTime={setDepTime}
                   />
-                </svg>
-              </button>
-            </div>
+                </div>
+                <button
+                  className="submit"
+                  onClick={() => {
+                    Search_function();
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            )}
             <div className={"down " + (allOptions ? "show" : "")}>
               {/* <label>Cabin Class:</label> */}
               <select
@@ -541,7 +750,9 @@ export default function Search() {
                 onChange={handleSelectChange}
               >
                 <option value="1">OneWay</option>
-                <option value="2">Return</option>
+                <option value="2" disabled>
+                  Return
+                </option>
                 {/* <option value="3">multiCity</option> */}
               </select>
             </div>
@@ -630,37 +841,66 @@ export default function Search() {
                               {/* <span></span>{" "} */}
                             </h2>
                           </div>
-                          <p>
-                            {result.Segments[0][0].Origin.CityName}{" "}
-                            <span>
-                              {" "}
-                              {
-                                breakdownDateTime(result.Segments[0][0].DepTime)
-                                  .time
-                              }
-                            </span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-6 h-6"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
-                              />
-                            </svg>
-                            {result.Segments[0][0].Destination.CityName}{" "}
-                            <span>
-                              {
-                                breakdownDateTime(result.Segments[0][0].ArrTime)
-                                  .time
-                              }
-                            </span>
-                          </p>
+                          {mobile ? (
+                            <div>
+                              <p>
+                                {result.Segments[0][0].Origin.CityName}{" "}
+                                <span>
+                                  {" "}
+                                  {
+                                    breakdownDateTime(
+                                      result.Segments[0][0].DepTime
+                                    ).time
+                                  }
+                                </span>
+                              </p>
+
+                              <p>
+                                {result.Segments[0][0].Destination.CityName}{" "}
+                                <span>
+                                  {
+                                    breakdownDateTime(
+                                      result.Segments[0][0].ArrTime
+                                    ).time
+                                  }
+                                </span>
+                              </p>
+                            </div>
+                          ) : (
+                            <p>
+                              {result.Segments[0][0].Origin.CityName}{" "}
+                              <span>
+                                {" "}
+                                {
+                                  breakdownDateTime(
+                                    result.Segments[0][0].DepTime
+                                  ).time
+                                }
+                              </span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+                                />
+                              </svg>
+                              {result.Segments[0][0].Destination.CityName}{" "}
+                              <span>
+                                {
+                                  breakdownDateTime(
+                                    result.Segments[0][0].ArrTime
+                                  ).time
+                                }
+                              </span>
+                            </p>
+                          )}
                           <div className="down">
                             <h2>
                               {result.FareDataMultiple[0].Fare.Currency}{" "}
