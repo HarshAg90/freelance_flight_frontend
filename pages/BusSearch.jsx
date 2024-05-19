@@ -650,17 +650,16 @@ function Buses({ result, index, TraceId, loading, setloading }) {
   // };
 
   return (
-    <div
-      key={index}
-      className="results"
-      onClick={
-        SelectedBusSeats.length <= 0
-          ? () => setToggleDetails(!toggleDetails)
-          : () => settoggleSearch(!toggleSearch)
-      }
-    >
+    <div key={index} className="results">
       <div className="t">
-        <div className="top">
+        <div
+          className="top"
+          onClick={
+            SelectedBusSeats.length <= 0
+              ? () => setToggleDetails(!toggleDetails)
+              : () => settoggleSearch(!toggleSearch)
+          }
+        >
           <div className="a">
             <h2>
               {breakdownDateTime(result.DepartureTime).time} -{" "}
