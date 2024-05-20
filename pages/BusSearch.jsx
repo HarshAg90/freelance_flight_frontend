@@ -488,7 +488,7 @@ export default function Search() {
                     setloading={setloading}
                   />
                 ))}
-                <p>🚌.o0O° </p>
+                {/* <p>🚌.o0O° </p> */}
               </div>
             </div>
           </div>

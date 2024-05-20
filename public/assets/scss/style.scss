@@ -2044,16 +2044,21 @@ body {
 }
 
 #customHeader {
-  width: 98%;
+  width: 100%;
+  // width: 98%;
   display: flex;
   justify-content: space-between;
   position: fixed;
-  top: 10px;
-  margin: 0 20px;
+  top: 0;
+  // top: 10px;
+  margin: 0 0;
+  // margin: 0 20px;
   background: white;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 0px;
+  // border-radius: 10px;
   z-index: 100;
+  box-shadow: 0 0 10px rgb(241, 241, 241);
   @media (max-width: 700px) {
     & {
       width: 94vw;
@@ -2083,8 +2088,15 @@ body {
           transition: 200ms ease;
         }
         transition: 100ms ease;
+        font-weight: 500;
         &:hover {
           transition: 100ms ease;
+          font-weight: 500;
+          color: black;
+          a {
+            text-decoration: underline !important;
+          }
+          // text-shadow: 0 0 10px gray;
           svg {
             opacity: 1;
             transition: 200ms ease;

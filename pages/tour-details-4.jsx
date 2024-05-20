@@ -55,7 +55,9 @@ const TourDetails = () => {
               <div className="row">
                 <div className="col-xl-6">
                   <div className="tour-title mb-20">
-                    <h3 className="title">Sitting on Boat Spreading Her Arms</h3>
+                    <h3 className="title">
+                      Sitting on Boat Spreading Her Arms
+                    </h3>
                     <p>
                       <i className="far fa-map-marker-alt" />
                       Arefu, AG, Romania
@@ -1035,34 +1037,25 @@ const TourDetails = () => {
                         <div className="booking-item">
                           <label>From</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>To</label>
                           <div className="bk-item booking-time">
-                            <input
-                            value={"Romania"}
-                              type="text"
-                            />
+                            <input value={"Romania"} type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Departure</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Return</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                       </div>
@@ -1123,12 +1116,12 @@ const TourDetails = () => {
                           Max Guests<span>35</span>
                         </span>
                       </li>
-                      <li>
+                      {/* <li>
                         <span>
                           <i className="far fa-user-circle" />
                           Minimum Age<span>12+</span>
                         </span>
-                      </li>
+                      </li> */}
                       <li>
                         <span>
                           <i className="far fa-map-marker-alt" />

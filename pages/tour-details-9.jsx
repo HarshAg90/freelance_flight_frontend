@@ -1035,34 +1035,25 @@ const TourDetails = () => {
                         <div className="booking-item">
                           <label>From</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>To</label>
                           <div className="bk-item booking-time">
-                            <input
-                            value={"Indonesia"}
-                              type="text"
-                            />
+                            <input value={"Indonesia"} type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Departure</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
                           <label>Return</label>
                           <div className="bk-item booking-time">
-                            <input
-                              type="text"
-                            />
+                            <input type="text" />
                           </div>
                         </div>
                       </div>
@@ -1123,12 +1114,12 @@ const TourDetails = () => {
                           Max Guests<span>35</span>
                         </span>
                       </li>
-                      <li>
+                      {/* <li>
                         <span>
                           <i className="far fa-user-circle" />
                           Minimum Age<span>12+</span>
                         </span>
-                      </li>
+                      </li> */}
                       <li>
                         <span>
                           <i className="far fa-map-marker-alt" />

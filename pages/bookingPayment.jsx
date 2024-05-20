@@ -266,7 +266,7 @@ export default function BookingPayment({}) {
           {/* <Payment/> */}
           <p className="customer_care">
             *if money deducted and not showing here, please wait 10 minuts, if
-            still a problem contact <span>XXXXXXXX98</span>{" "}
+            still a problem contact us
           </p>
           {/* <button onClick={() => book_flight(data.booking_data)}>Book</button> */}
         </div>

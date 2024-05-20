@@ -97,7 +97,7 @@ export default function book() {
   return (
     <Layout extraClass={"pt-160"}>
       <PageBanner
-        pageTitle={"Flight Booking Fourm"}
+        pageTitle={"Flight Booking - User details"}
         url={"./assets/images/flight_search/flight_search.png"}
       />
       <div id="Booking_page">
@@ -121,10 +121,12 @@ export default function book() {
             <p>
               Flight Number <span>{flight_details.Airline.FlightNumber}</span>
             </p>
-            <p>
-              Opperating carrier:{" "}
-              <span>{flight_details.Airline.OperatingCarrier}</span>
-            </p>
+            {flight_details.Airline.OperatingCarrier && (
+              <p>
+                Opperating carrier:{" "}
+                <span>{flight_details.Airline.OperatingCarrier}</span>
+              </p>
+            )}
           </div>
           <div className="details">
             <div className="ori_dest">
@@ -169,7 +171,7 @@ export default function book() {
                 </span>
               </p>
               <p>
-                Flight Duration: <span>{flight_details.Duration} minuts</span>
+                Flight Duration: <span>{flight_details.Duration} minutes</span>
               </p>
               <p>Baggage: {flight_details.Baggage}</p>
               <p>CabbinBaggage: {flight_details.CabinBaggage}</p>
@@ -262,7 +264,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
     Title: "",
     FirstName: "",
     LastName: "",
-    PaxType: "",
+    PaxType: "1",
     DateOfBirth: "",
     Gender: "",
     PassportNo: "",
@@ -443,7 +445,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             <input
               type="text"
               name="PassportNo"
-              placeholder="* for international flights"
+              placeholder="Required for international flights"
               value={formData.PassportNo}
               onChange={handleInputChange}
             />
@@ -453,7 +455,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             <input
               type="text"
               name="PassportExpiry"
-              placeholder="* for international flights"
+              placeholder="Required for international flights"
               value={formData.PassportExpiry}
               onChange={handleInputChange}
             />
@@ -474,7 +476,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             <input
               type="text"
               name="IsLeadPax"
-              placeholder="'1' as default"
+              placeholder="Optional"
               value={formData.IsLeadPax}
               onChange={handleInputChange}
             />
@@ -484,7 +486,7 @@ const Passenger = ({ addPassenger, fair, onClose }) => {
             <input
               type="text"
               name="PaxType"
-              placeholder="(put 1 for Default)"
+              placeholder="Optional"
               value={formData.PaxType}
               onChange={handleInputChange}
             />

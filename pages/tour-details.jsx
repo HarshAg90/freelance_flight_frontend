@@ -55,14 +55,14 @@ const TourDetails = () => {
               <div className="row">
                 <div className="col-xl-6">
                   <div className="tour-title mb-20">
-                    <h3 className="title">Boat Traveling on Made River</h3>
+                    <h3 className="title">Sitting on Boat Spreading Arms</h3>
                     <p>
                       <i className="far fa-map-marker-alt" />
-                      Tambon Khlong Sok, Thailand
+                      North Province, Maldives
                     </p>
                   </div>
                 </div>
-                {/* <div className="col-xl-6">
+                <div className="col-xl-6">
                   <div className="tour-widget-info">
                     <div className="info-box mb-20">
                       <div className="icon">
@@ -95,7 +95,7 @@ const TourDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
             {/*=== Tour Area Nav ===*/}
@@ -125,7 +125,7 @@ const TourDetails = () => {
                     </ul>
                   </div>
                 </div>
-                {/* <div className="col-md-8">
+                <div className="col-md-8">
                   <div className="share-nav">
                     <a href="#">
                       Share
@@ -140,7 +140,7 @@ const TourDetails = () => {
                       <i className="far fa-heart" />
                     </a>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
             <div className="row">
@@ -149,27 +149,36 @@ const TourDetails = () => {
                 <div className="place-content-wrap pt-45 wow fadeInUp">
                   <h3 className="title">Explore Tours</h3>
                   <p>
-                    Sed ut perspiciatis unde omniste natus error sit voluptatem
-                    accusantium doloremque laudantium totam rem aperiam, eaque
-                    ip quae abillo inventore veritatis et quasi architecto
-                    beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                    voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                    sed quia consequuntur magni dolores eos qui ratione
-                    voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                    dolorem ipsum quia dolor si amet consectetur adipisci velit
-                    sed quian numquam eius modi tempora incidunt ut labore
-                    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-                    veniam qunostrum exercitationem ullam corporis suscipit
-                    laboriosaey nisi ut aliquid ex ea commodi consequatur? Quis
-                    autem vel eum iure reprehenderit qui in ea voluptate velit
-                    esse quam nihil molestiae consequatur veillum qui dolorem
-                    voluptas nulla pariatur
+                    Tourism has long been a critical economic driver for many
+                    regions around the world, and its impact on hilly areas is
+                    particularly profound. Hills and mountainous regions, with
+                    their unique landscapes, cultures, and ecosystems, have much
+                    to gain from a well-managed tourism industry. One of the
+                    most significant advantages of tourism for hilly regions is
+                    the economic boost it provides. Tourism generates income and
+                    employment opportunities, which are often scarce in remote
+                    and less accessible areas. Small towns and villages in hilly
+                    regions can benefit from the influx of tourists who spend
+                    money on accommodation, food, transportation, and souvenirs.
+                    This revenue can help improve local infrastructure, such as
+                    roads, hospitals, and schools, enhancing the quality of life
+                    for residents. Additionally, tourism can stimulate local
+                    businesses and entrepreneurship. Local artisans,
+                    craftspeople, and food producers can find new markets for
+                    their products, thus preserving traditional crafts and
+                    encouraging the production of local specialties. The
+                    development of tourist-related services, such as guided
+                    tours, adventure sports, and hospitality services, creates a
+                    wide range of jobs that can help diversify the local
+                    economy.
                   </p>
                   <h4>Advance Facilities</h4>
                   <p>
-                    Neque porro quisquam est dolorem ipsum quia dolor si amet
-                    consectetur adipisci velit sed quian numquam eius tempora
-                    incidunt labore dolore magnam aliquam quaerat voluptatem.
+                    Tourism also has substantial social benefits for hilly
+                    regions. The interaction between tourists and locals can
+                    lead to a greater appreciation of different cultures and
+                    lifestyles. This cultural exchange can foster understanding
+                    and tolerance, reducing the likelihood of social conflicts.
                   </p>
                   <div className="row align-items-lg-center">
                     <div className="col-lg-5">
@@ -213,9 +222,9 @@ const TourDetails = () => {
                   </div>
                   <h4>Tour Plan</h4>
                   <p>
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate
-                    velit esse quam nihil molestiae consequatur vel eillum qui
-                    dolorem eum fugiat quo voluptas nulla pariatur
+                    Moreover, the pride and sense of identity that come from
+                    sharing one's culture and natural heritage with visitors can
+                    strengthen community cohesion and resilience.
                   </p>
                 </div>
                 {/*=== Days Area ===*/}
@@ -272,12 +281,13 @@ const TourDetails = () => {
                       <Tab.Pane className="tab-pane fade" eventKey="day1">
                         <div className="content-box">
                           <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit sed quia consequuntur
-                            magne doloreseos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor si amet consectetur adipisci velit
-                            sed quian numquam eius modi tempora incidunt
+                            The development of tourism infrastructure, such as
+                            better roads, healthcare facilities, and
+                            communication networks, often benefits local
+                            communities as much as tourists. Improved
+                            infrastructure can lead to better access to
+                            education and healthcare, reducing social
+                            inequalities.
                           </p>
                           <ul className="check-list">
                             <li>
@@ -298,12 +308,9 @@ const TourDetails = () => {
                       <Tab.Pane className="tab-pane fade" eventKey="day2">
                         <div className="content-box">
                           <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit sed quia consequuntur
-                            magne doloreseos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor si amet consectetur adipisci velit
-                            sed quian numquam eius modi tempora incidunt
+                            Furthermore, tourism can provide funding for social
+                            programs and community projects that enhance the
+                            welfare of local populations.
                           </p>
                           <ul className="check-list">
                             <li>
@@ -324,12 +331,13 @@ const TourDetails = () => {
                       <Tab.Pane className="tab-pane fade" eventKey="day3">
                         <div className="content-box">
                           <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit sed quia consequuntur
-                            magne doloreseos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor si amet consectetur adipisci velit
-                            sed quian numquam eius modi tempora incidunt
+                            While tourism can pose challenges to the
+                            environment, it also offers significant
+                            environmental benefits, particularly when managed
+                            sustainably. Eco-tourism and sustainable tourism
+                            initiatives can promote environmental conservation
+                            by raising awareness about the importance of
+                            protecting natural habitats and biodiversity
                           </p>
                           <ul className="check-list">
                             <li>
@@ -350,12 +358,14 @@ const TourDetails = () => {
                       <Tab.Pane className="tab-pane fade" eventKey="day4">
                         <div className="content-box">
                           <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit sed quia consequuntur
-                            magne doloreseos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor si amet consectetur adipisci velit
-                            sed quian numquam eius modi tempora incidunt
+                            Revenue from tourism can be reinvested in
+                            conservation efforts, such as maintaining hiking
+                            trails, protecting wildlife, and preserving natural
+                            landscapes. Tourism can also incentivize the
+                            preservation of natural areas. Governments and local
+                            communities may be more motivated to protect their
+                            natural resources if they see a direct economic
+                            benefit from doing so.
                           </p>
                           <ul className="check-list">
                             <li>
@@ -376,12 +386,9 @@ const TourDetails = () => {
                       <Tab.Pane className="tab-pane fade" eventKey="day5">
                         <div className="content-box">
                           <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit sed quia consequuntur
-                            magne doloreseos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor si amet consectetur adipisci velit
-                            sed quian numquam eius modi tempora incidunt
+                            For example, national parks and protected areas can
+                            attract tourists, providing a financial reason to
+                            maintain and conserve these spaces.
                           </p>
                           <ul className="check-list">
                             <li>
@@ -609,10 +616,10 @@ const TourDetails = () => {
                               </li>
                             </ul>
                             <p>
-                              At vero eos et accusamus et iusto odio dignissimos
-                              ducimus qui blanditiis praesentium voluptatum
-                              deleniti atque corrupti quos dolores et quas
-                              molestias excepture
+                              Moreover, tourism can lead to the development of
+                              environmental education programs that teach both
+                              visitors and locals about the importance of
+                              sustainability and conservation.
                             </p>
                             <a href="#" className="btn-link">
                               Reply
@@ -734,10 +741,12 @@ const TourDetails = () => {
                                   </li>
                                 </ul>
                                 <p>
-                                  At vero eos et accusamus et iusto odio
-                                  dignissimos ducimus qui blanditiis praesentium
-                                  voluptatum deleniti atque corrupti quos
-                                  dolores et quas molestias excepture
+                                  Hilly regions are often rich in cultural
+                                  heritage, including historical sites,
+                                  traditional practices, and indigenous
+                                  knowledge. Tourism can play a crucial role in
+                                  preserving and revitalizing this cultural
+                                  heritage.
                                 </p>
                                 <a href="#" className="btn-link">
                                   Reply
@@ -859,10 +868,13 @@ const TourDetails = () => {
                               </li>
                             </ul>
                             <p>
-                              At vero eos et accusamus et iusto odio dignissimos
-                              ducimus qui blanditiis praesentium voluptatum
-                              deleniti atque corrupti quos dolores et quas
-                              molestias excepture
+                              By creating demand for cultural experiences,
+                              tourism can encourage the maintenance and
+                              restoration of historical sites, the continuation
+                              of traditional festivals, and the practice of
+                              local crafts and arts. Furthermore, tourism can
+                              support cultural exchange and mutual
+                              understanding.
                             </p>
                             <a href="#" className="btn-link">
                               Reply
@@ -1025,7 +1037,7 @@ const TourDetails = () => {
                 {/*=== Sidebar Widget Area ===*/}
                 <div className="sidebar-widget-area pt-60 pl-lg-30">
                   {/*=== Booking Widget ===*/}
-                  {/* <div className="sidebar-widget booking-form-widget wow fadeInUp mb-40">
+                  <div className="sidebar-widget booking-form-widget wow fadeInUp mb-40">
                     <h4 className="widget-title">Book Your Flight Now</h4>
                     <form
                       onSubmit={(e) => e.preventDefault()}
@@ -1041,7 +1053,7 @@ const TourDetails = () => {
                         <div className="booking-item">
                           <label>To</label>
                           <div className="bk-item booking-time">
-                            <input type="text" />
+                            <input value={"Maldives"} type="text" />
                           </div>
                         </div>
                         <div className="booking-item">
@@ -1103,7 +1115,7 @@ const TourDetails = () => {
                         </button>
                       </div>
                     </form>
-                  </div> */}
+                  </div>
                   {/*=== Booking Info Widget ===*/}
                   <div className="sidebar-widget booking-info-widget wow fadeInUp mb-40">
                     <h4 className="widget-title">Tour Information</h4>
@@ -1114,12 +1126,12 @@ const TourDetails = () => {
                           Max Guests<span>35</span>
                         </span>
                       </li>
-                      <li>
+                      {/* <li>
                         <span>
                           <i className="far fa-user-circle" />
                           Minimum Age<span>12+</span>
                         </span>
-                      </li>
+                      </li> */}
                       <li>
                         <span>
                           <i className="far fa-map-marker-alt" />
