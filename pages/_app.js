@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
         {/*====== Favicon Icon ======*/}
         <link
           rel="shortcut icon"
-          href="assets/images/favicon.ico"
+          href="assets/images/logo-mod.png"
           type="image/png"
         />
         {/*====== Google Fonts ======*/}

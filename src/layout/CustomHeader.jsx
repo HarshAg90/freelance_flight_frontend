@@ -18,7 +18,8 @@ const CustomHeader = ({ page }) => {
       <div className="site-branding">
         <Link legacyBehavior href="/">
           <a className="brand-logo">
-            <img src="assets/images/logo/logo-black.png" alt="Site Logo" />
+            {/* <img src="assets/images/logo/logo-black.png" alt="Site Logo" /> */}
+            <img src="assets/images/logo-mod-2.png" alt="Site Logo" />
           </a>
         </Link>
       </div>
@@ -37,7 +38,7 @@ const CustomHeader = ({ page }) => {
           <ul>
             <li className="">
               <a href="/">Home</a>
-            </li>
+            </l->
             <li className="">
               <a href="tour">
                 Tours
