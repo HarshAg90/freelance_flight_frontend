@@ -14,9 +14,9 @@ export default function Search() {
 
   let [search, setSearch] = useState(false);
   let [searchResponse, setSearchResponse] = useState();
-  let [busList, setBusList] = useState();
   let [loading, setloading] = useState(false);
 
+  let [busList, setBusList] = useState();
   useEffect(() => {
     const getBusList = async () => {
       setloading(true);

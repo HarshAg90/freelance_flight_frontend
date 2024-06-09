@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Mrs+Sheppards|Poppins&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+// @import "./base.css";
+
+html {
+  @apply scrollbar-thin;
+}
 body {
   margin: 0;
   padding: 0;
@@ -3054,3 +3062,5 @@ body {
     }
   }
 }
+
+@import "tailwindcss/utilities";
