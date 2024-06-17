@@ -21,6 +21,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/booking-success": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/booking-success.js"
+    ],
+    "/hotel-booking-successfull": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/hotel-booking-successfull.js"
     ]
   },
   "ampFirstPages": []

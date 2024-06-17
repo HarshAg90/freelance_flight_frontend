@@ -1,5 +1,7 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/booking-success": "pages/booking-success.js",
+  "/hotel-booking-successfull": "pages/hotel-booking-successfull.js"
 }

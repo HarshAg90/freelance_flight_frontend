@@ -1,4 +1,4 @@
-import PageBanner from "@/src/components/PageBanner";
+// import PageBanner from "@/src/components/PageBanner";
 import { server_url } from "@/src/config";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
@@ -7,8 +7,8 @@ import React, { useEffect, useState } from "react";
 export default function BusBookingSuccessfull() {
   var [book, setBook] = useState();
   var [block, setBlock] = useState();
-  var [loading, setLoading] = useState(false);
   var [orderId, setOrderId] = useState();
+  var [loading, setLoading] = useState(false);
   const router = useRouter();
   useEffect(() => {
     setBlock(JSON.parse(router.query.block));
@@ -154,7 +154,7 @@ export default function BusBookingSuccessfull() {
   }
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner pageTitle={"Bus Booking"} url={"assets/images/bg/bus.png"} />
+      {/* <PageBanner pageTitle={"Bus Booking"} url={"assets/images/bg/bus.png"} /> */}
       <div id="BookingSuccess">
         <h1>Booking Succesfull 🎊</h1>
         <br />

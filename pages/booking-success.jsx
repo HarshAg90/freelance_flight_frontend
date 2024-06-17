@@ -10,7 +10,8 @@ export default function BookingSuccess() {
     const fetchData = async () => {
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get("order_id");
+        console.log(urlParams);
+        const orderId = urlParams.get("orderId");
 
         const response = await fetch(`${server_url}/get-order-info`, {
           method: "POST",
@@ -22,14 +23,18 @@ export default function BookingSuccess() {
         });
 
         if (response.ok) {
-          const data = await response.json();
+          let data = await response.json();
+          // data = JSON.parse(data.data);
+          if (typeof data.data === "string") {
+            data = JSON.parse(data.data);
+          }
           setResp(data);
           console.log(data);
           if (data.type == "flight") {
             router.push({
               pathname: "/BookingSuccessfull",
               query: {
-                data: JSON.stringify(data.Booking.Response),
+                data: JSON.stringify(data),
                 orderId: orderId,
               },
             });

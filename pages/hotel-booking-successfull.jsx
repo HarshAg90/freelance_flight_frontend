@@ -1,4 +1,4 @@
-import PageBanner from "@/src/components/PageBanner";
+// import PageBanner from "@/src/components/PageBanner";
 import { server_url } from "@/src/config";
 import Layout from "@/src/layout/Layout";
 import { useRouter } from "next/router";
@@ -154,10 +154,10 @@ export default function hotelBookingSuccessfull() {
   }
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner
+      {/* <PageBanner
         pageTitle={"Hotel Booking"}
         url={"assets/images/bg/hotel_success.png"}
-      />
+      /> */}
       <div id="BookingSuccess">
         <h1>Booking Succesfull 🎊</h1>
         <br />

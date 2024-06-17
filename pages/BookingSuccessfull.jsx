@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import PageBanner from "@/src/components/PageBanner";
+// import PageBanner from "@/src/components/PageBanner";
 import Layout from "@/src/layout/Layout";
 import { server_url } from "@/src/config";
 
@@ -11,7 +11,7 @@ export default function BookingSuccessfull() {
   const router = useRouter();
   useEffect(() => {
     try {
-      setData(JSON.parse(router.query.data));
+      setData(JSON.parse(router.query.data.Booking));
       setOrderId(router.query.orderId);
     } catch {
       console.log(router.query.data);
@@ -51,7 +51,7 @@ export default function BookingSuccessfull() {
   }
   return (
     <Layout extraClass={"pt-160"}>
-      <PageBanner pageTitle={"Book Flight"} />
+      {/* <PageBanner pageTitle={"Book Flight"} /> */}
       <div className="top1">
         <p className="">Enter Your details</p>
         <p className="">Complete Payment</p>
