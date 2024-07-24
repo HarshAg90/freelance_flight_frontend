@@ -22,6 +22,7 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+<<<<<<< HEAD
     "/booking-success": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -31,6 +32,12 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/hotel-booking-successfull.js"
+=======
+    "/search": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/search.js"
+>>>>>>> parent of 931b108 (filter works)
     ]
   },
   "ampFirstPages": []

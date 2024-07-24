@@ -1,0 +1,303 @@
+{
+  "type": "hotel",
+  "metadata": {
+    "amount": 4355.384,
+    "merchantId": "rzp_test_yqVvMl0YE5XiGh",
+    "currency": "INR",
+    "payment_id": "pay_Ny4RIP8mYuo5i1",
+    "contact": "08882662421",
+    "email": "harshagnihotri90@gmail.com",
+    "orderId": "order_Ny3zHPT9L1Rbws",
+    "status": "Success",
+    "signature_id": "64837b6da214c7779b7ab00795b1cfc1aa7745daef29674115c86b6fb36f06ef",
+    "name": "Harsh Agnihotri"
+  },
+  "Booking": {
+    "book": {
+      "BookResult": {
+        "BookingId": 1554760,
+        "Status": 1,
+        "IsCancellationPolicyChanged": false,
+        "TraceId": "1",
+        "InvoiceNumber": "MW/1920/17991",
+        "IsPriceChanged": false,
+        "BookingRefNo": "270-300706",
+        "VoucherStatus": true,
+        "HotelBookingStatus": "Confirmed",
+        "ConfirmationNo": "270-300706",
+        "ResponseStatus": 1,
+        "Error": { "ErrorMessage": "", "ErrorCode": 0 }
+      }
+    },
+    "block": {
+      "BlockRoomResult": {
+        "IsHotelPolicyChanged": true,
+        "IsCancellationPolicyChanged": false,
+        "AddressLine2": "\n Phone No: 911123580007\n Fax : 911123587103",
+        "BookingAllowedForRoamer": false,
+        "AddressLine1": "Road Pahar Ganj, 3425 DB Gupta Rd, Arya  110015 DELHI India",
+        "StarRating": 2,
+        "AvailabilityType": "Confirm",
+        "GSTAllowed": false,
+        "IsPriceChanged": false,
+        "IsPackageDetailsMandatory": false,
+        "HotelName": "Avtar",
+        "Latitude": "28.6443589",
+        "HotelRoomsDetails": [
+          {
+            "RatePlanCode": "007:92G:228:SGLyDXzGRvALLvROzROz:N:828857|1",
+            "SequenceNo": "1",
+            "RatePlan": 0,
+            "HotelSupplements": [],
+            "Price": {
+              "TotalGSTAmount": 44.75,
+              "AgentCommission": 0,
+              "Discount": 0,
+              "ServiceTax": 44.75,
+              "TDS": 0,
+              "ChildCharge": 0,
+              "CurrencyCode": "INR",
+              "RoomPrice": 1658.17,
+              "OtherCharges": 248.5,
+              "PublishedPriceRoundedOff": 1907,
+              "PublishedPrice": 1906.67,
+              "AgentMarkUp": 0,
+              "Tax": 0,
+              "GST": {
+                "SGSTAmount": 0,
+                "CessRate": 0,
+                "SGSTRate": 0,
+                "CGSTRate": 0,
+                "CGSTAmount": 0,
+                "TaxableAmount": 248.7,
+                "CessAmount": 0,
+                "IGSTAmount": 44.75,
+                "IGSTRate": 18
+              },
+              "ExtraGuestCharge": 0,
+              "OfferedPriceRoundedOff": 1907,
+              "OfferedPrice": 1906.67,
+              "ServiceCharge": 0
+            },
+            "SupplierPrice": null,
+            "Amenities": ["Room Only"],
+            "SmokingPreference": "NoPreference",
+            "LastCancellationDate": "2020-04-16T23:59:59",
+            "RoomPromotion": "",
+            "Inclusion": ["Room Only"],
+            "RoomId": 0,
+            "Amenity": [],
+            "RoomIndex": 1,
+            "RequireAllPaxDetails": true,
+            "RoomTypeCode": "007:92G:228:SGLyDXzGRvALLvROzROz:N:828857$#$1",
+            "DayRates": [{ "Date": "2020-04-30T00:00:00", "Amount": 1658.17 }],
+            "RoomStatus": 0,
+            "ChildCount": 0,
+            "InfoSource": "OpenCombination",
+            "CancellationPolicies": [
+              {
+                "Charge": 1658,
+                "Currency": "INR",
+                "ToDate": "2020-04-20T23:59:59",
+                "FromDate": "2020-04-17T00:00:00",
+                "ChargeType": 1
+              },
+              {
+                "Charge": 100,
+                "Currency": "INR",
+                "ToDate": "2020-05-01T23:59:59",
+                "FromDate": "2020-04-21T00:00:00",
+                "ChargeType": 2
+              },
+              {
+                "Charge": 100,
+                "Currency": "INR",
+                "ToDate": "2020-05-01T00:00:00",
+                "FromDate": "2020-04-30T00:00:00",
+                "ChargeType": 2
+              }
+            ],
+            "RoomTypeName": "SINGLE DELUXE",
+            "CancellationPolicy": "SINGLE DELUXE#^#INR 1658.00 will be charged, If cancelled between 17-Apr-2020 00:00:00 and 20-Apr-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 21-Apr-2020 00:00:00 and 01-May-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 30-Apr-2020 00:00:00 and 01-May-2020 00:00:00.|#!#",
+            "BedTypes": []
+          }
+        ],
+        "HotelNorms": "india - land of mystries \"//\" \"  /// \"  |<ul><li>Check-in hour 14:00 - .  Valid From 2020-04-30 through 2020-05-01Identification card at arrival.  Valid From 2020-04-30 through 2020-05-01Minimum check-in age 18.  Valid From 2020-04-30 through 2020-05-01Car park YES (without additional debit notes).  Valid From 2020-04-30 through 2020-05-01</li><li>Amendments cannot be made against this booking once your booking has been requested.</li></ul>",
+        "IsPackageFare": false,
+        "TraceId": "1",
+        "Longitude": "77.2128331",
+        "HotelPolicyDetail": "india - land of mystries \"//\" \"  /// \"  |<ul><li>Check-in hour 14:00 - .  Valid From 2020-04-30 through 2020-05-01Identification card at arrival.  Valid From 2020-04-30 through 2020-05-01Minimum check-in age 18.  Valid From 2020-04-30 through 2020-05-01Car park YES (without additional debit notes).  Valid From 2020-04-30 through 2020-05-01</li><li>Amendments cannot be made against this booking once your booking has been requested.</li></ul>",
+        "ResponseStatus": 1,
+        "Error": { "ErrorMessage": "", "ErrorCode": 0 }
+      }
+    }
+  },
+  "data": {
+    "SrdvIndex": "SrdvTB",
+    "HotelRoomsDetails": [
+      {
+        "RatePlanCode": "007:92G:228:SGLyDXzGRvALLvROzROz:N:828857|1",
+        "SequenceNo": "1",
+        "RatePlan": 0,
+        "HotelSupplements": [],
+        "Price": {
+          "TotalGSTAmount": 44.75,
+          "AgentCommission": 0,
+          "Discount": 0,
+          "ServiceTax": 44.75,
+          "TDS": 0,
+          "ChildCharge": 0,
+          "RoomPrice": 1658.17,
+          "CurrencyCode": "INR",
+          "OtherCharges": 248.5,
+          "PublishedPriceRoundedOff": 1907,
+          "PublishedPrice": 1906.67,
+          "AgentMarkUp": 0,
+          "Tax": 0,
+          "GST": {
+            "SGSTAmount": 0,
+            "CessRate": 0,
+            "SGSTRate": 0,
+            "CGSTRate": 0,
+            "CGSTAmount": 0,
+            "TaxableAmount": 248.7,
+            "CessAmount": 0,
+            "IGSTAmount": 44.75,
+            "IGSTRate": 18
+          },
+          "ExtraGuestCharge": 0,
+          "OfferedPriceRoundedOff": 1907,
+          "OfferedPrice": 1906.67,
+          "ServiceCharge": 0
+        },
+        "SupplierPrice": null,
+        "Amenities": ["Room Only"],
+        "SmokingPreference": "NoPreference",
+        "LastCancellationDate": "2020-04-16T23:59:59",
+        "RoomPromotion": "",
+        "Inclusion": ["Room Only"],
+        "RoomId": 0,
+        "Amenity": [],
+        "RoomIndex": 1,
+        "RequireAllPaxDetails": true,
+        "RoomTypeCode": "007:92G:228:SGLyDXzGRvALLvROzROz:N:828857$#$1",
+        "DayRates": [{ "Date": "2020-04-30T00:00:00", "Amount": 1658.17 }],
+        "RoomStatus": 0,
+        "ChildCount": 0,
+        "InfoSource": "OpenCombination",
+        "CancellationPolicies": [
+          {
+            "Charge": 1658,
+            "Currency": "INR",
+            "ToDate": "2020-04-20T23:59:59",
+            "FromDate": "2020-04-17T00:00:00",
+            "ChargeType": 1
+          },
+          {
+            "Charge": 100,
+            "Currency": "INR",
+            "ToDate": "2020-05-01T23:59:59",
+            "FromDate": "2020-04-21T00:00:00",
+            "ChargeType": 2
+          },
+          {
+            "Charge": 100,
+            "Currency": "INR",
+            "ToDate": "2020-05-01T00:00:00",
+            "FromDate": "2020-04-30T00:00:00",
+            "ChargeType": 2
+          }
+        ],
+        "RoomTypeName": "SINGLE DELUXE",
+        "CancellationPolicy": "SINGLE DELUXE#^#INR 1658.00 will be charged, If cancelled between 17-Apr-2020 00:00:00 and 20-Apr-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 21-Apr-2020 00:00:00 and 01-May-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 30-Apr-2020 00:00:00 and 01-May-2020 00:00:00.|#!#",
+        "BedTypes": []
+      },
+      {
+        "RatePlanCode": "007:92G:228:DBLyDXzGRvALLvROzROz:N:828855|1",
+        "SequenceNo": "1",
+        "RatePlan": 0,
+        "HotelSupplements": [],
+        "Price": {
+          "TotalGSTAmount": 47.94,
+          "AgentCommission": 0,
+          "Discount": 0,
+          "ServiceTax": 47.94,
+          "TDS": 0,
+          "ChildCharge": 0,
+          "RoomPrice": 1785.1,
+          "CurrencyCode": "INR",
+          "OtherCharges": 267.67,
+          "PublishedPriceRoundedOff": 2053,
+          "PublishedPrice": 2052.77,
+          "AgentMarkUp": 0,
+          "Tax": 0,
+          "GST": {
+            "SGSTAmount": 0,
+            "CessRate": 0,
+            "SGSTRate": 0,
+            "CGSTRate": 0,
+            "CGSTAmount": 0,
+            "TaxableAmount": 267.75,
+            "CessAmount": 0,
+            "IGSTAmount": 47.94,
+            "IGSTRate": 18
+          },
+          "ExtraGuestCharge": 0,
+          "OfferedPriceRoundedOff": 2053,
+          "OfferedPrice": 2052.77,
+          "ServiceCharge": 0
+        },
+        "SupplierPrice": null,
+        "Amenities": ["Room Only"],
+        "SmokingPreference": "NoPreference",
+        "LastCancellationDate": "2020-04-16T23:59:59",
+        "RoomPromotion": "",
+        "Inclusion": ["Room Only"],
+        "RoomId": 0,
+        "Amenity": [],
+        "RoomIndex": 2,
+        "RequireAllPaxDetails": true,
+        "RoomTypeCode": "007:92G:228:DBLyDXzGRvALLvROzROz:N:828855$#$1",
+        "DayRates": [{ "Date": "2020-04-30T00:00:00", "Amount": 1785.1 }],
+        "RoomStatus": 0,
+        "ChildCount": 0,
+        "InfoSource": "OpenCombination",
+        "CancellationPolicies": [
+          {
+            "Charge": 1785,
+            "Currency": "INR",
+            "ToDate": "2020-04-20T23:59:59",
+            "FromDate": "2020-04-17T00:00:00",
+            "ChargeType": 1
+          },
+          {
+            "Charge": 100,
+            "Currency": "INR",
+            "ToDate": "2020-05-01T23:59:59",
+            "FromDate": "2020-04-21T00:00:00",
+            "ChargeType": 2
+          },
+          {
+            "Charge": 100,
+            "Currency": "INR",
+            "ToDate": "2020-05-01T00:00:00",
+            "FromDate": "2020-04-30T00:00:00",
+            "ChargeType": 2
+          }
+        ],
+        "RoomTypeName": "DOUBLE Deluxe",
+        "CancellationPolicy": "DOUBLE Deluxe#^#INR 1785.00 will be charged, If cancelled between 17-Apr-2020 00:00:00 and 20-Apr-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 21-Apr-2020 00:00:00 and 01-May-2020 23:59:59.|100.00% of total amount will be charged, If cancelled between 30-Apr-2020 00:00:00 and 01-May-2020 00:00:00.|#!#",
+        "BedTypes": []
+      }
+    ],
+    "ClientReferenceNo": 0,
+    "NoOfRooms": "[object Undefined]",
+    "TraceId": "2c806d95-81c8-421d-adf9-b550033e2cf3",
+    "HotelCode": "92G|DEL",
+    "ResultIndex": 9,
+    "SrdvType": "SingleTB",
+    "GuestNationality": "IN",
+    "IsVoucherBooking": true,
+    "HotelName": "Avtar"
+  }
+}

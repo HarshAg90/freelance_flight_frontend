@@ -1,0 +1,32 @@
+Request
+{
+    "EndUserIp": "1.1.1.1",
+    "ClientId": "180120",
+    "UserName": "Fairfly2",
+    "Password": "Fairfly@22",
+    "SrdvType": "MixAPI",
+    "SrdvIndex": "1",
+    "TraceId": 154125,
+    "ResultIndex": "IB14_1_2"
+}
+ 
+Response
+{
+    "Error": {
+        "ErrorCode": 0,
+        "ErrorMessage": ""
+    },
+    "SrdvType": "MixAPI",
+    "ResultIndex": "IB14_1_2",
+    "TraceId": 154125,
+    "SpecialRule": "<div style=\"border: 1px solid #ededed;\n    box-shadow: 0px 1px 7px 1px #e2e1e1;\n    border-radius: 10px;\n    margin: 10px;\n    padding: 10px;\">\n    <p>this is test farerule</p>\n</div>",
+    "Results": [
+        {
+            "Airline": "SG",
+            "Origin": "BOM",
+            "Destination": "DEL",
+            "FareBasisCode": "USAV1",
+            "FareRuleDetail": "The FareBasisCode is: USAV1<br /> \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/><ul><li>APART FROM AIRLINE CHARGES,GST+RAF+ APPLICABLE CHARGES IF ANY, WILL BE CHARGED.</li><li>MENTIONED FEE ARE INDICATIVE PER PAX AND PER SECTOR.</li><li>FOR DOMESTIC BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 2 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li><li>FOR INTERNATIONAL BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 4 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li></ul>"
+        }
+    ]
+}

@@ -14,7 +14,6 @@ export default function HotelSearch() {
   let [search, setSearch] = useState(false);
   let [searchResponse, setSearchResponse] = useState(null);
   let [loading, setloading] = useState(false);
-  let [Filter, setFilter] = useState();
   let [InputBox, setInputBox] = useState(false);
   const [isHalfScreen, setIsHalfScreen] = useState(false);
 
@@ -140,7 +139,6 @@ export default function HotelSearch() {
       setMobile(false);
     }
   }, []);
-
   return (
     <Layout extraClass={"pt-160"}>
       <div id="Search_page">
@@ -778,35 +776,11 @@ export default function HotelSearch() {
               {/* <div className="f"> */}
               {/* </div> */}
               {/* <div className="f"> */}
-              <input
-                type="checkbox"
-                onChange={(e) => {
-                  // Filter
-                  //   ? setFilter(4)
-                  //   : Filter === 3
-                  //   ? setFilter(4)
-                  //   : setFilter();
-                  e.target.checked
-                    ? setFilter({ ...Filter, f: true })
-                    : setFilter({ ...Filter, f: false });
-                }}
-                name=""
-                id=""
-              />
+              <input type="checkbox" name="" id="" />
               <label htmlFor="">4 star</label>
               {/* </div> */}
               {/* <div className="f"> */}
-              <input
-                type="checkbox"
-                onChange={(e) => {
-                  e.target.checked
-                    ? setFilter({ ...Filter, th: true })
-                    : setFilter({ ...Filter, th: false });
-                  // console.log(e);
-                }}
-                name=""
-                id=""
-              />
+              <input type="checkbox" name="" id="" />
               <label htmlFor="">3 star</label>
               {/* </div> */}
             </div>
@@ -955,107 +929,54 @@ export default function HotelSearch() {
               </div>
               <div className="search_res">
                 <h1>Hotel for your search</h1>
-                {Filter
-                  ? searchResponse.Results.filter((result, index) =>
-                      Filter.th
-                        ? result.StarRating >= 3
-                        : Filter.f
-                        ? result.StarRating >= 4
-                        : true
-                    ).map((result, index) => (
-                      // {searchResponse.Results.filter(
-                      //   (res) => res.ResultIndex == 9
-                      // ).map((result, index) => (
-                      <div
-                        key={index}
-                        className="hotel_res_tiles"
-                        onClick={() => {
-                          router.push({
-                            pathname: "/hotel-details",
-                            query: {
-                              data: JSON.stringify({
-                                ...result,
-                                TraceId: searchResponse.TraceId,
-                                SrdvType: searchResponse.SrdvType,
-                              }),
-                            },
-                          });
-                          // handleResultClick(result);
-                        }}
-                      >
-                        <div className="top">
-                          <img src={result.HotelPicture} alt="" />
-                        </div>
-                        <div className="mid">
-                          <div className="">
-                            <h1>{result.HotelName}</h1>
-                            <p>{result.HotelPromotion}</p>
-                            <h2>
-                              <StarRating rating={result.StarRating} />
-                            </h2>
-                          </div>
-                          <h2>
-                            Fare -{" "}
-                            <span>
-                              {result.Price.CurrencyCode}{" "}
-                              {result.Price?.PublishedPrice
-                                ? result.Price.PublishedPrice
-                                : result.Price.OfferedPrice
-                                ? result.Price.OfferedPrice
-                                : ""}
-                            </span>
-                          </h2>
-                          <p>{result.HotelAddress}</p>
-                        </div>
+                {searchResponse.Results.map((result, index) => (
+                  // {searchResponse.Results.filter(
+                  //   (res) => res.ResultIndex == 9
+                  // ).map((result, index) => (
+                  <div
+                    key={index}
+                    className="hotel_res_tiles"
+                    onClick={() => {
+                      router.push({
+                        pathname: "/hotel-details",
+                        query: {
+                          data: JSON.stringify({
+                            ...result,
+                            TraceId: searchResponse.TraceId,
+                            SrdvType: searchResponse.SrdvType,
+                          }),
+                        },
+                      });
+                      // handleResultClick(result);
+                    }}
+                  >
+                    {console.log(result)}
+                    <div className="top">
+                      <img src={result.HotelPicture} alt="" />
+                    </div>
+                    <div className="mid">
+                      <div className="">
+                        <h1>{result.HotelName}</h1>
+                        <p>{result.HotelPromotion}</p>
+                        <h2>
+                          <StarRating rating={result.StarRating} />
+                        </h2>
                       </div>
-                    ))
-                  : searchResponse.Results.map((result, index) => (
-                      // {searchResponse.Results.filter(
-                      //   (res) => res.ResultIndex == 9
-                      // ).map((result, index) => (
-                      <div
-                        key={index}
-                        className="hotel_res_tiles"
-                        onClick={() => {
-                          router.push({
-                            pathname: "/hotel-details",
-                            query: {
-                              data: JSON.stringify({
-                                ...result,
-                                TraceId: searchResponse.TraceId,
-                                SrdvType: searchResponse.SrdvType,
-                              }),
-                            },
-                          });
-                          // handleResultClick(result);
-                        }}
-                      >
-                        <div className="top">
-                          <img src={result.HotelPicture} alt="" />
-                        </div>
-                        <div className="mid">
-                          <div className="">
-                            <h1>{result.HotelName}</h1>
-                            <p>{result.HotelPromotion}</p>
-                            <h2>
-                              <StarRating rating={result.StarRating} />
-                            </h2>
-                          </div>
-                          <h2>
-                            Fare -{" "}
-                            <span>
-                              {result.Price.CurrencyCode}{" "}
-                              {result.Price?.PublishedPrice
-                                ? result.Price.PublishedPrice
-                                : result.Price.OfferedPrice
-                                ? result.Price.OfferedPrice
-                                : ""}
-                            </span>
-                          </h2>
-                          <p>{result.HotelAddress}</p>
-                        </div>
-                      </div>
-                    ))}
+                      <h2>
+                        Fare -{" "}
+                        <span>
+                          {result.Price.CurrencyCode}{" "}
+                          {result.Price?.PublishedPrice
+                            ? result.Price.PublishedPrice
+                            : result.Price.OfferedPrice
+                            ? result.Price.OfferedPrice
+                            : ""}
+                        </span>
+                      </h2>
+                      <p>{result.HotelAddress}</p>
+                    </div>
+                  </div>
+                ))}
                 <span>... No more results</span>
               </div>
             </div>

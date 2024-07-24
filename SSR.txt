@@ -1,0 +1,337 @@
+Request
+{
+    "EndUserIp": "1.1.1.1",
+    "ClientId": "180120",
+    "UserName": "Fairfly2",
+    "Password": "Fairfly@22",
+    "SrdvType": "MixAPI",
+    "SrdvIndex": "1",
+    "TraceId": 154125,
+    "ResultIndex": "IB14_1_2"
+}
+ 
+Response
+{
+    "Error": {
+        "ErrorCode": "0",
+        "ErrorMessage": ""
+    },
+    "TraceId": 154125,
+    "SrdvType": "MixAPI",
+    "SrdvIndex": "1",
+    "ResultIndex": "IB14_1_2",
+    "Baggage": [
+        [
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NoBaggage",
+                "Description": 2,
+                "Weight": 0,
+                "Currency": "INR",
+                "Price": 0,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB03",
+                "Description": 2,
+                "Weight": 3,
+                "Currency": "INR",
+                "Price": 600,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB05",
+                "Description": 2,
+                "Weight": 5,
+                "Currency": "INR",
+                "Price": 2250,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB10",
+                "Description": 2,
+                "Weight": 10,
+                "Currency": "INR",
+                "Price": 4500,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB15",
+                "Description": 2,
+                "Weight": 15,
+                "Currency": "INR",
+                "Price": 6750,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB20",
+                "Description": 2,
+                "Weight": 20,
+                "Currency": "INR",
+                "Price": 9000,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "EB30",
+                "Description": 2,
+                "Weight": 30,
+                "Currency": "INR",
+                "Price": 13500,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            }
+        ]
+    ],
+    "MealDynamic": [
+        [
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NoMeal",
+                "Description": 2,
+                "AirlineDescription": "",
+                "Quantity": 0,
+                "Currency": "INR",
+                "Price": 0,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "VGSW",
+                "Description": 2,
+                "AirlineDescription": "Free Veg. Sandwich",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 290,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "VGML",
+                "Description": 2,
+                "AirlineDescription": "Paneer bhurji with Mixed vegetable Parantha and Mini moong dal Kachori ",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 0,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "VCC6",
+                "Description": 2,
+                "AirlineDescription": "Vegetable Daliya",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "VCC5",
+                "Description": 2,
+                "AirlineDescription": "Vegetable Pasta in Neapolitan sauce",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "VCC2",
+                "Description": 2,
+                "AirlineDescription": "Vegtable in Red Thai Curry with Steamed Rice",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NVSW",
+                "Description": 2,
+                "AirlineDescription": "Honey mustard chicken in oats sub",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 434,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NVML",
+                "Description": 2,
+                "AirlineDescription": "Chicken Keema with butter pav and potato roll ",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 275,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NCC6",
+                "Description": 2,
+                "AirlineDescription": "Chicken schezwan on bed of fried rice",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NCC5",
+                "Description": 2,
+                "AirlineDescription": "Tawa Fish masala on bed of  Steamed rice with tadka masoor dal",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NCC4",
+                "Description": 2,
+                "AirlineDescription": "Tandoori Chicken tangri with chicken haryali tikka & vegetable shami kebab.",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NCC2",
+                "Description": 2,
+                "AirlineDescription": "Chicken in Red Thai Curry with Steamed Rice",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "NCC1",
+                "Description": 2,
+                "AirlineDescription": "Grilled Chicken Breast with Mushroom Sauce, Yellow Rice, Saut\u00e9ed Carrots & Beans Baton",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 300,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "LCVS",
+                "Description": 2,
+                "AirlineDescription": "Low cal salad Vegetarian",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 532,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "LCNS",
+                "Description": 2,
+                "AirlineDescription": "Low cal salad Non \u2013 Vegetarian",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 532,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "JNSW",
+                "Description": 2,
+                "AirlineDescription": "Jain Cold Sandwich (current Cucumber and Tomato sandwich)",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 405,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            },
+            {
+                "AirlineCode": "SG",
+                "FlightNumber": "8252",
+                "WayType": 2,
+                "Code": "CAKE",
+                "Description": 2,
+                "AirlineDescription": "Cake",
+                "Quantity": 1,
+                "Currency": "INR",
+                "Price": 678,
+                "Origin": "BOM",
+                "Destination": "DEL"
+            }
+        ]
+    ],
+    "Meal": []
+}

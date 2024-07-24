@@ -131,7 +131,11 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
+<<<<<<< HEAD
 /******/ 		__webpack_require__.h = function() { return "916a40283468ff00"; }
+=======
+/******/ 		__webpack_require__.h = function() { return "636eb8dd782031f4"; }
+>>>>>>> parent of 931b108 (filter works)
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
