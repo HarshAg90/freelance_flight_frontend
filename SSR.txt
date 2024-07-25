@@ -6,8 +6,8 @@ Request
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "1",
-    "TraceId": 154125,
-    "ResultIndex": "IB14_1_2"
+    "TraceId": 154135,
+    "ResultIndex": "IB22_1_25"
 }
  
 Response
@@ -16,94 +16,94 @@ Response
         "ErrorCode": "0",
         "ErrorMessage": ""
     },
-    "TraceId": 154125,
+    "TraceId": 154135,
     "SrdvType": "MixAPI",
     "SrdvIndex": "1",
-    "ResultIndex": "IB14_1_2",
+    "ResultIndex": "IB22_1_25",
     "Baggage": [
         [
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NoBaggage",
                 "Description": 2,
                 "Weight": 0,
                 "Currency": "INR",
                 "Price": 0,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB03",
                 "Description": 2,
                 "Weight": 3,
                 "Currency": "INR",
                 "Price": 600,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB05",
                 "Description": 2,
                 "Weight": 5,
                 "Currency": "INR",
                 "Price": 2250,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB10",
                 "Description": 2,
                 "Weight": 10,
                 "Currency": "INR",
                 "Price": 4500,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB15",
                 "Description": 2,
                 "Weight": 15,
                 "Currency": "INR",
                 "Price": 6750,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB20",
                 "Description": 2,
                 "Weight": 20,
                 "Currency": "INR",
                 "Price": 9000,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "EB30",
                 "Description": 2,
                 "Weight": 30,
                 "Currency": "INR",
                 "Price": 13500,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             }
         ]
@@ -112,7 +112,7 @@ Response
         [
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NoMeal",
                 "Description": 2,
@@ -120,12 +120,12 @@ Response
                 "Quantity": 0,
                 "Currency": "INR",
                 "Price": 0,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "VGSW",
                 "Description": 2,
@@ -133,12 +133,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 290,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "VGML",
                 "Description": 2,
@@ -146,12 +146,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 0,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "VCC6",
                 "Description": 2,
@@ -159,12 +159,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "VCC5",
                 "Description": 2,
@@ -172,12 +172,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "VCC2",
                 "Description": 2,
@@ -185,12 +185,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NVSW",
                 "Description": 2,
@@ -198,12 +198,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 434,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NVML",
                 "Description": 2,
@@ -211,12 +211,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 275,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NCC6",
                 "Description": 2,
@@ -224,12 +224,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NCC5",
                 "Description": 2,
@@ -237,12 +237,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NCC4",
                 "Description": 2,
@@ -250,12 +250,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NCC2",
                 "Description": 2,
@@ -263,12 +263,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "NCC1",
                 "Description": 2,
@@ -276,12 +276,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 300,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "LCVS",
                 "Description": 2,
@@ -289,12 +289,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 532,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "LCNS",
                 "Description": 2,
@@ -302,12 +302,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 532,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "JNSW",
                 "Description": 2,
@@ -315,12 +315,12 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 405,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             },
             {
                 "AirlineCode": "SG",
-                "FlightNumber": "8252",
+                "FlightNumber": "160",
                 "WayType": 2,
                 "Code": "CAKE",
                 "Description": 2,
@@ -328,7 +328,7 @@ Response
                 "Quantity": 1,
                 "Currency": "INR",
                 "Price": 678,
-                "Origin": "BOM",
+                "Origin": "HYD",
                 "Destination": "DEL"
             }
         ]

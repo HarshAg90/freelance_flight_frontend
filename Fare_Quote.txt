@@ -6,8 +6,8 @@ Request
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "1",
-    "TraceId": 154125,
-    "ResultIndex": "IB14_1_2"
+    "TraceId": 154135,
+    "ResultIndex": "IB22_1_25"
 }
  
 Response
@@ -16,12 +16,12 @@ Response
         "ErrorCode": "0",
         "ErrorMessage": ""
     },
-    "TraceId": 154125,
+    "TraceId": 154135,
     "SrdvType": "MixAPI",
     "IsPriceChanged": false,
     "Results": {
         "SrdvIndex": "1",
-        "ResultIndex": "IB14_1_2",
+        "ResultIndex": "IB22_1_25",
         "Source": "Publish",
         "ButtonColor": "#0000ff",
         "TextColor": "#ffffff",
@@ -36,8 +36,8 @@ Response
         "IsGSTMandatory": false,
         "Fare": {
             "Currency": "INR",
-            "BaseFare": 3150,
-            "Tax": 1382,
+            "BaseFare": 3320,
+            "Tax": 1807,
             "YQTax": 900,
             "OtherCharges": 11.8,
             "TransactionFee": "0",
@@ -45,17 +45,17 @@ Response
             "AdditionalTxnFeePub": 0,
             "AirTransFee": "0",
             "Discount": 0,
-            "PublishedFare": 4543.8,
-            "OfferedFare": 4396,
-            "CommissionEarned": 73.69,
-            "TdsOnCommission": 29.48
+            "PublishedFare": 5138.8,
+            "OfferedFare": 4983,
+            "CommissionEarned": 77.67,
+            "TdsOnCommission": 31.07
         },
         "FareBreakdown": [
             {
                 "PassengerType": 1,
                 "PassengerCount": 1,
-                "BaseFare": 3150,
-                "Tax": 1382,
+                "BaseFare": 3320,
+                "Tax": 1807,
                 "YQTax": 900,
                 "AdditionalTxnFeeOfrd": 0,
                 "AdditionalTxnFeePub": 0
@@ -73,32 +73,32 @@ Response
                     "Airline": {
                         "AirlineCode": "SG",
                         "AirlineName": "SpiceJet",
-                        "FlightNumber": "8252",
+                        "FlightNumber": "160",
                         "FareClass": "U",
                         "OperatingCarrier": ""
                     },
                     "NoOfSeatAvailable": "not set",
                     "Origin": {
-                        "AirportCode": "BOM",
-                        "AirportName": "Chhatrapati Shivaji International Airport",
-                        "Terminal": "1",
-                        "CityCode": "BOM",
-                        "CityName": "Mumbai",
+                        "AirportCode": "HYD",
+                        "AirportName": "Shamsabad International Airport",
+                        "Terminal": "",
+                        "CityCode": "HYD",
+                        "CityName": "Hyderabad",
                         "CountryCode": "IN",
                         "CountryName": "India"
                     },
-                    "DepTime": "2024-07-31T06:25:00",
+                    "DepTime": "2024-07-31T06:00:00",
                     "Destination": {
                         "AirportCode": "DEL",
                         "AirportName": "Indira Gandhi Airport",
-                        "Terminal": "3",
+                        "Terminal": "1D",
                         "CityCode": "DEL",
                         "CityName": "Delhi",
                         "CountryCode": "IN",
                         "CountryName": "India"
                     },
-                    "ArrTime": "2024-07-31T08:35:00",
-                    "Duration": 130,
+                    "ArrTime": "2024-07-31T08:15:00",
+                    "Duration": 135,
                     "GroundTime": 0,
                     "Mile": 0,
                     "StopOver": false,

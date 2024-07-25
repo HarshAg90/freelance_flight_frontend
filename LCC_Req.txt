@@ -6,8 +6,8 @@ Request
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "1",
-    "TraceId": 154125,
-    "ResultIndex": "IB14_1_2",
+    "TraceId": 154135,
+    "ResultIndex": "IB22_1_25",
     "Passengers": [
         {
             "Title": "Mr",
@@ -26,20 +26,33 @@ Request
             "ContactNo": 9992220202,
             "Email": "support@srdvteshnology.com",
             "IsLeadPax": 1,
-            "Seat": [],
+            "Seat": [
+                {
+                    "Amount": 300,
+                    "Code": "6DSeKeyHYDDEL",
+                    "IsAisle": true,
+                    "IsBooked": false,
+                    "IsLegroom": false,
+                    "SeatNumber": "6D",
+                    "Origin": "HYD",
+                    "Destination": "DEL",
+                    "AirlineCode": "SG",
+                    "FlightNumber": "160"
+                }
+            ],
             "Fare": {
                 "AdditionalTxnFeeOfrd": 0,
                 "AdditionalTxnFeePub": 0,
                 "AirTransFee": "0",
-                "BaseFare": 3150,
-                "CommissionEarned": 73.69,
+                "BaseFare": 3320,
+                "CommissionEarned": 77.67,
                 "Currency": "INR",
                 "Discount": 0,
-                "OfferedFare": 4396,
+                "OfferedFare": 4983,
                 "OtherCharges": 11.8,
-                "PublishedFare": 4543.8,
-                "Tax": 1382,
-                "TdsOnCommission": 29.48,
+                "PublishedFare": 5138.8,
+                "Tax": 1807,
+                "TdsOnCommission": 31.07,
                 "TransactionFee": "0",
                 "YQTax": 0
             }
@@ -50,197 +63,7 @@ Request
 Response
 {
     "Error": {
-        "ErrorCode": "0",
-        "ErrorMessage": ""
-    },
-    "TraceId": 154125,
-    "ResponseStatus": 1,
-    "SrdvType": "MixAPI",
-    "Response": {
-        "SrdvIndex": "1",
-        "PNR": "LB4UWW",
-        "BookingId": 1910779,
-        "SSRDenied": false,
-        "SSRMessage": null,
-        "Status": 1,
-        "IsPriceChanged": false,
-        "IsTimeChanged": false,
-        "TicketStatus": 1,
-        "FlightItinerary": {
-            "BookingId": 1910779,
-            "IsManual": false,
-            "PNR": "LB4UWW",
-            "IsDomestic": true,
-            "Source": 3,
-            "Origin": "BOM",
-            "Destination": "DEL",
-            "AirlineCode": "SG",
-            "LastTicketDate": "9999-12-31T00:00:00",
-            "ValidatingAirlineCode": "SG",
-            "AirlineRemark": "SpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet Main",
-            "IsLCC": true,
-            "NonRefundable": false,
-            "FareType": "PUB",
-            "CreditNoteNo": null,
-            "Fare": {
-                "Currency": "INR",
-                "BaseFare": 3150,
-                "Tax": 1382,
-                "YQTax": 900,
-                "AdditionalTxnFeeOfrd": 0,
-                "AdditionalTxnFeePub": 0,
-                "PGCharge": 0,
-                "OtherCharges": 11.8,
-                "PublishedFare": 4543.8,
-                "OfferedFare": 4396,
-                "CommissionEarned": 73.69,
-                "TdsOnCommission": 29.48,
-                "ServiceFee": 0,
-                "TotalBaggageCharges": 0,
-                "TotalMealCharges": 0,
-                "TotalSeatCharges": 0,
-                "TotalSpecialServiceCharges": 0
-            },
-            "CreditNoteCreatedOn": null,
-            "Passenger": [
-                {
-                    "PaxId": 3139880,
-                    "Title": "Mr",
-                    "FirstName": "SRDV",
-                    "LastName": "Support",
-                    "PaxType": 1,
-                    "DateOfBirth": "1992-03-12T00:00:00",
-                    "Gender": 1,
-                    "PassportNo": "",
-                    "AddressLine1": "test",
-                    "City": "Kolkata",
-                    "CountryCode": "IN",
-                    "CountryName": "India",
-                    "Nationality": "IN",
-                    "ContactNo": "9992220202",
-                    "Email": "support@srdvteshnology.com",
-                    "IsLeadPax": true,
-                    "FFAirlineCode": null,
-                    "FFNumber": null,
-                    "Fare": {
-                        "Currency": "INR",
-                        "BaseFare": 3150,
-                        "Tax": 1382,
-                        "YQTax": 900,
-                        "AdditionalTxnFeeOfrd": 0,
-                        "AdditionalTxnFeePub": 0,
-                        "PGCharge": 0,
-                        "OtherCharges": 11.8,
-                        "PublishedFare": 4543.8,
-                        "OfferedFare": 4366,
-                        "ServiceFee": 0,
-                        "TotalBaggageCharges": 0,
-                        "TotalMealCharges": 0,
-                        "TotalSeatCharges": 0,
-                        "TotalSpecialServiceCharges": 0
-                    },
-                    "Ticket": {
-                        "TicketId": 2196305,
-                        "TicketNumber": "LB4UWW",
-                        "IssueDate": "2024-07-25T04:32:05",
-                        "ValidatingAirline": "001",
-                        "Remarks": "",
-                        "ServiceFeeDisplayType": "ShowInTax",
-                        "Status": "OK"
-                    },
-                    "Baggage": [
-                        {
-                            "AirlineCode": "SG",
-                            "FlightNumber": "8252",
-                            "WayType": 2,
-                            "Code": "NoBaggage",
-                            "Description": 2,
-                            "Weight": 0,
-                            "Currency": "INR",
-                            "Price": 0,
-                            "Origin": "BOM",
-                            "Destination": "DEL"
-                        }
-                    ],
-                    "Ssr": [],
-                    "SegmentAdditionalInfo": [
-                        {
-                            "FareBasis": "USAV1",
-                            "NVA": "",
-                            "NVB": "",
-                            "Baggage": "15 KG",
-                            "Meal": "0 Platter",
-                            "Seat": "",
-                            "SpecialService": ""
-                        }
-                    ]
-                }
-            ],
-            "CancellationCharges": null,
-            "Segments": [
-                {
-                    "Baggage": "15 KG",
-                    "CabinBaggage": "7 KG",
-                    "TripIndicator": 1,
-                    "SegmentIndicator": 1,
-                    "DepTime": "2024-07-31T06:25:00",
-                    "ArrTime": "2024-07-31T08:35:00",
-                    "Airline": {
-                        "AirlineCode": "SG",
-                        "AirlineName": "SpiceJet",
-                        "FlightNumber": "8252",
-                        "FareClass": "U",
-                        "OperatingCarrier": ""
-                    },
-                    "AirlinePNR": "",
-                    "AccumulatedDuration": "",
-                    "Origin": {
-                        "AirportCode": "BOM",
-                        "AirportName": "Chhatrapati Shivaji International Airport",
-                        "Terminal": "1",
-                        "CityCode": "BOM",
-                        "CityName": "Mumbai",
-                        "CountryCode": "IN",
-                        "CountryName": "India"
-                    },
-                    "Destination": {
-                        "AirportCode": "DEL",
-                        "AirportName": "Indira Gandhi Airport",
-                        "Terminal": "3",
-                        "CityCode": "DEL",
-                        "CityName": "Delhi",
-                        "CountryCode": "IN",
-                        "CountryName": "India"
-                    },
-                    "Duration": 130,
-                    "GroundTime": 0,
-                    "Mile": 0,
-                    "StopOver": false,
-                    "StopPoint": "",
-                    "StopPointArrivalTime": "0001-01-01T00:00:00",
-                    "StopPointDepartureTime": "0001-01-01T00:00:00",
-                    "Craft": "737",
-                    "Remark": null,
-                    "IsETicketEligible": true,
-                    "FlightStatus": "Confirmed",
-                    "Status": "HK"
-                }
-            ],
-            "FareRules": [
-                {
-                    "Origin": "BOM",
-                    "Destination": "DEL",
-                    "Airline": "SG",
-                    "FareBasisCode": "USAV1",
-                    "FareRuleDetail": "",
-                    "FareRestriction": null
-                }
-            ],
-            "InvoiceNo": "ID/2425/6283",
-            "InvoiceStatus": 3,
-            "InvoiceCreatedOn": "2024-07-25T04:32:06",
-            "Remarks": "",
-            "PartialSegmentCancellation": "Allowed"
-        }
+        "ErrorCode": "2",
+        "ErrorMessage": "Seat Code Metching Issue, Please contact support team"
     }
 }
