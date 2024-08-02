@@ -1,12 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-<<<<<<< HEAD
-  "/booking-success": "pages/booking-success.js",
-  "/hotel-booking-successfull": "pages/hotel-booking-successfull.js"
-=======
-  "/search": "pages/search.js",
-  "/HotelSearch": "pages/HotelSearch.js"
->>>>>>> parent of 931b108 (filter works)
-}
+{}

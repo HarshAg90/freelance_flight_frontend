@@ -1,32 +1,19 @@
 Request
 {
     "EndUserIp": "1.1.1.1",
-    "ClientId": "180120",
+    "ClientId": "180168",
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
-    "SrdvIndex": "1",
-    "TraceId": 154135,
-    "ResultIndex": "IB22_1_25"
+    "SrdvIndex": "2",
+    "TraceId": 4398026,
+    "ResultIndex": "5-8722316838_0DELJAI6E5343~63579255042676"
 }
  
 Response
 {
     "Error": {
-        "ErrorCode": 0,
-        "ErrorMessage": ""
-    },
-    "SrdvType": "MixAPI",
-    "ResultIndex": "IB22_1_25",
-    "TraceId": 154135,
-    "SpecialRule": "<div style=\"border: 1px solid #ededed;\n    box-shadow: 0px 1px 7px 1px #e2e1e1;\n    border-radius: 10px;\n    margin: 10px;\n    padding: 10px;\">\n    <p>this is test farerule</p>\n</div>",
-    "Results": [
-        {
-            "Airline": "SG",
-            "Origin": "HYD",
-            "Destination": "DEL",
-            "FareBasisCode": "USAV",
-            "FareRuleDetail": "The FareBasisCode is: USAV<br /> \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/><ul><li>APART FROM AIRLINE CHARGES,GST+RAF+ APPLICABLE CHARGES IF ANY, WILL BE CHARGED.</li><li>MENTIONED FEE ARE INDICATIVE PER PAX AND PER SECTOR.</li><li>FOR DOMESTIC BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 2 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li><li>FOR INTERNATIONAL BOOKINGS, PASSENGERS ARE REQUIRED TO SUBMIT THE CANCELLATION OR REISSUE REQUEST AT LEAST 4 HOURS BEFORE THE AIRLINES CANCELLATION AND REISSUE POLICY.</li></ul>"
-        }
-    ]
+        "ErrorCode": "808",
+        "ErrorMessage": "Keys Passed in the request is already expired. Please pass valid keys"
+    }
 }

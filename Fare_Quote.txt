@@ -1,119 +1,19 @@
 Request
 {
     "EndUserIp": "1.1.1.1",
-    "ClientId": "180120",
+    "ClientId": "180168",
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
-    "SrdvIndex": "1",
-    "TraceId": 154135,
-    "ResultIndex": "IB22_1_25"
+    "SrdvIndex": "2",
+    "TraceId": 4398026,
+    "ResultIndex": "5-8722316838_0DELJAI6E5343~63579255042676"
 }
  
 Response
 {
     "Error": {
-        "ErrorCode": "0",
-        "ErrorMessage": ""
-    },
-    "TraceId": 154135,
-    "SrdvType": "MixAPI",
-    "IsPriceChanged": false,
-    "Results": {
-        "SrdvIndex": "1",
-        "ResultIndex": "IB22_1_25",
-        "Source": "Publish",
-        "ButtonColor": "#0000ff",
-        "TextColor": "#ffffff",
-        "SingleSlotBooking": "No",
-        "IsLCC": true,
-        "IsRefundable": true,
-        "IsPriceChanged": false,
-        "AirlineRemark": "SpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet MainSpiceJet Main.",
-        "IsPassportFullDetailRequiredAtBook": false,
-        "IsPassportRequiredAtBook": false,
-        "GSTAllowed": true,
-        "IsGSTMandatory": false,
-        "Fare": {
-            "Currency": "INR",
-            "BaseFare": 3320,
-            "Tax": 1807,
-            "YQTax": 900,
-            "OtherCharges": 11.8,
-            "TransactionFee": "0",
-            "AdditionalTxnFeeOfrd": 0,
-            "AdditionalTxnFeePub": 0,
-            "AirTransFee": "0",
-            "Discount": 0,
-            "PublishedFare": 5138.8,
-            "OfferedFare": 4983,
-            "CommissionEarned": 77.67,
-            "TdsOnCommission": 31.07
-        },
-        "FareBreakdown": [
-            {
-                "PassengerType": 1,
-                "PassengerCount": 1,
-                "BaseFare": 3320,
-                "Tax": 1807,
-                "YQTax": 900,
-                "AdditionalTxnFeeOfrd": 0,
-                "AdditionalTxnFeePub": 0
-            }
-        ],
-        "Segments": [
-            [
-                {
-                    "Baggage": "15 KG",
-                    "CabinBaggage": "7 KG",
-                    "CabinClassName": "Economy",
-                    "CabinClassCode": 2,
-                    "TripIndicator": 1,
-                    "SegmentIndicator": 1,
-                    "Airline": {
-                        "AirlineCode": "SG",
-                        "AirlineName": "SpiceJet",
-                        "FlightNumber": "160",
-                        "FareClass": "U",
-                        "OperatingCarrier": ""
-                    },
-                    "NoOfSeatAvailable": "not set",
-                    "Origin": {
-                        "AirportCode": "HYD",
-                        "AirportName": "Shamsabad International Airport",
-                        "Terminal": "",
-                        "CityCode": "HYD",
-                        "CityName": "Hyderabad",
-                        "CountryCode": "IN",
-                        "CountryName": "India"
-                    },
-                    "DepTime": "2024-07-31T06:00:00",
-                    "Destination": {
-                        "AirportCode": "DEL",
-                        "AirportName": "Indira Gandhi Airport",
-                        "Terminal": "1D",
-                        "CityCode": "DEL",
-                        "CityName": "Delhi",
-                        "CountryCode": "IN",
-                        "CountryName": "India"
-                    },
-                    "ArrTime": "2024-07-31T08:15:00",
-                    "Duration": 135,
-                    "GroundTime": 0,
-                    "Mile": 0,
-                    "StopOver": false,
-                    "StopPoint": "",
-                    "StopPointArrivalTime": "0001-01-01T00:00:00",
-                    "StopPointDepartureTime": "0001-01-01T00:00:00",
-                    "Craft": "737",
-                    "Remark": null,
-                    "IsETicketEligible": true,
-                    "FlightStatus": "Confirmed",
-                    "Status": ""
-                }
-            ]
-        ],
-        "AirlineCode": "SG",
-        "ValidatingAirline": "SG"
+        "ErrorCode": "808",
+        "ErrorMessage": "Keys Passed in the request is already expired. Please pass valid keys"
     }
 }
