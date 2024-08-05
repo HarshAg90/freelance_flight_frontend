@@ -5,56 +5,44 @@ Request
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
-    "SrdvIndex": "1",
-    "TraceId": 154135,
-    "ResultIndex": "IB22_1_25",
+    "SrdvIndex": "2",
+    "TraceId": 155815,
+    "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930",
     "Passengers": [
         {
-            "Title": "Mr",
-            "FirstName": "SRDV",
-            "LastName": "Support",
+            "Title": "",
+            "FirstName": "Harsh",
+            "LastName": "ag",
             "PaxType": "1",
-            "DateOfBirth": "1992-03-12",
-            "Gender": "1",
+            "DateOfBirth": "",
+            "Gender": "",
             "PassportNo": "",
             "PassportExpiry": "",
             "PassportIssueDate": "",
-            "AddressLine1": "test",
-            "City": "Kolkata",
-            "CountryCode": "IN",
-            "CountryName": "India",
-            "ContactNo": 9992220202,
-            "Email": "support@srdvteshnology.com",
+            "AddressLine1": "add",
+            "City": "",
+            "CountryCode": "",
+            "CountryName": "",
+            "ContactNo": null,
+            "Email": "harshagnihotri90@gmail.com",
             "IsLeadPax": 1,
-            "Seat": [
-                {
-                    "Amount": 300,
-                    "Code": "6DSeKeyHYDDEL",
-                    "IsAisle": true,
-                    "IsBooked": false,
-                    "IsLegroom": false,
-                    "SeatNumber": "6D",
-                    "Origin": "HYD",
-                    "Destination": "DEL",
-                    "AirlineCode": "SG",
-                    "FlightNumber": "160"
-                }
-            ],
+            "Seat": [],
+            "": "8882228282",
             "Fare": {
                 "AdditionalTxnFeeOfrd": 0,
                 "AdditionalTxnFeePub": 0,
-                "AirTransFee": "0",
-                "BaseFare": 3320,
-                "CommissionEarned": 77.67,
+                "AirTransFee": 0,
+                "BaseFare": 4007,
+                "CommissionEarned": 0,
                 "Currency": "INR",
                 "Discount": 0,
-                "OfferedFare": 4983,
-                "OtherCharges": 11.8,
-                "PublishedFare": 5138.8,
-                "Tax": 1807,
-                "TdsOnCommission": 31.07,
-                "TransactionFee": "0",
-                "YQTax": 0
+                "OfferedFare": 4775,
+                "OtherCharges": 0,
+                "PublishedFare": 4775,
+                "Tax": 768,
+                "TdsOnCommission": 0,
+                "TransactionFee": 0,
+                "YQTax": ""
             }
         }
     ]
@@ -64,6 +52,6 @@ Response
 {
     "Error": {
         "ErrorCode": "2",
-        "ErrorMessage": "Seat Code Metching Issue, Please contact support team"
+        "ErrorMessage": "There is Problem in Booking Details."
     }
 }

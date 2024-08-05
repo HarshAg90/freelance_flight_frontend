@@ -1,19 +1,125 @@
 Request
 {
     "EndUserIp": "1.1.1.1",
-    "ClientId": "180168",
+    "ClientId": "180120",
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "2",
-    "TraceId": 4398026,
-    "ResultIndex": "5-8722316838_0DELJAI6E5343~63579255042676"
+    "TraceId": 155815,
+    "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930"
 }
  
 Response
 {
     "Error": {
-        "ErrorCode": "808",
-        "ErrorMessage": "Keys Passed in the request is already expired. Please pass valid keys"
+        "ErrorCode": "0",
+        "ErrorMessage": ""
+    },
+    "TraceId": 155815,
+    "SrdvType": "MixAPI",
+    "IsPriceChanged": false,
+    "Results": {
+        "SrdvIndex": "2",
+        "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930",
+        "Source": "Publish",
+        "ButtonColor": "#0000ff",
+        "TextColor": "#ffffff",
+        "SingleSlotBooking": "Yes",
+        "IsLCC": true,
+        "IsRefundable": true,
+        "IsPriceChanged": false,
+        "AirlineRemark": [],
+        "IsPassportFullDetailRequiredAtBook": false,
+        "IsPassportRequiredAtBook": false,
+        "GSTAllowed": true,
+        "IsGSTMandatory": false,
+        "AdultDobRequired": false,
+        "ChildDobRequired": false,
+        "InfantDobRequired": true,
+        "SeatSelectAllowed": false,
+        "HoldAllowed": true,
+        "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4007,
+            "Tax": 768,
+            "YQTax": 0,
+            "OtherCharges": 0,
+            "TransactionFee": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "AirTransFee": 0,
+            "Discount": 0,
+            "PublishedFare": 4775,
+            "OfferedFare": 4775,
+            "CommissionEarned": 0,
+            "TdsOnCommission": 0
+        },
+        "FareBreakdown": [
+            {
+                "PassengerType": 1,
+                "PassengerCount": 1,
+                "BaseFare": 4007,
+                "Tax": 768,
+                "YQTax": "",
+                "AdditionalTxnFeeOfrd": "",
+                "AdditionalTxnFeePub": ""
+            }
+        ],
+        "Segments": [
+            [
+                {
+                    "Baggage": "25 Kg (01 Piece only)",
+                    "CabinBaggage": "7 Kg",
+                    "CabinClassName": "Economy",
+                    "CabinClassCode": 2,
+                    "TripIndicator": 1,
+                    "SegmentIndicator": 1,
+                    "Airline": {
+                        "AirlineCode": "AI",
+                        "AirlineName": "Air India",
+                        "FlightNumber": "544",
+                        "FareClass": "S",
+                        "OperatingCarrier": ""
+                    },
+                    "NoOfSeatAvailable": 9,
+                    "Origin": {
+                        "AirportCode": "DEL",
+                        "AirportName": "Delhi Indira Gandhi Intl",
+                        "Terminal": "Terminal 3",
+                        "CityCode": "DEL",
+                        "CityName": "Delhi",
+                        "CountryCode": "IN",
+                        "CountryName": "India"
+                    },
+                    "DepTime": "2024-08-21T17:00",
+                    "Destination": {
+                        "AirportCode": "HYD",
+                        "AirportName": "Shamshabad Rajiv Gandhi Intl Arpt",
+                        "Terminal": "",
+                        "CityCode": "HYD",
+                        "CityName": "Hyderabad",
+                        "CountryCode": "IN",
+                        "CountryName": "India"
+                    },
+                    "ArrTime": "2024-08-21T19:10",
+                    "Duration": 130,
+                    "GroundTime": "",
+                    "AccumulatedDuration": 130,
+                    "Mile": "",
+                    "StopOver": "",
+                    "StopPoint": "",
+                    "StopPointArrivalTime": "",
+                    "StopPointDepartureTime": "",
+                    "Craft": "",
+                    "Remark": "",
+                    "IsETicketEligible": "",
+                    "FlightStatus": "",
+                    "Status": ""
+                }
+            ]
+        ],
+        "AirlineCode": "",
+        "ValidatingAirline": ""
     }
 }

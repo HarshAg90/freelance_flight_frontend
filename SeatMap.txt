@@ -1,19 +1,19 @@
 Request
 {
     "EndUserIp": "1.1.1.1",
-    "ClientId": "180168",
+    "ClientId": "180120",
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "2",
-    "TraceId": 4398026,
-    "ResultIndex": "5-8722316838_0DELJAI6E5343~63579255042676"
+    "TraceId": 155815,
+    "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930"
 }
  
 Response
 {
     "Error": {
-        "ErrorCode": "1",
-        "ErrorMessage": "Supplier Logs Not found for the trace ID, Please contact support team with TraceID"
+        "ErrorCode": 1,
+        "ErrorMessage": "Seat Selection Not Applicable for this Itinerary"
     }
 }

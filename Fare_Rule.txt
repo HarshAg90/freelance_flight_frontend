@@ -1,19 +1,32 @@
 Request
 {
     "EndUserIp": "1.1.1.1",
-    "ClientId": "180168",
+    "ClientId": "180120",
     "UserName": "Fairfly2",
     "Password": "Fairfly@22",
     "SrdvType": "MixAPI",
     "SrdvIndex": "2",
-    "TraceId": 4398026,
-    "ResultIndex": "5-8722316838_0DELJAI6E5343~63579255042676"
+    "TraceId": 155815,
+    "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930"
 }
  
 Response
 {
     "Error": {
-        "ErrorCode": "808",
-        "ErrorMessage": "Keys Passed in the request is already expired. Please pass valid keys"
-    }
+        "ErrorCode": 0,
+        "ErrorMessage": ""
+    },
+    "SrdvType": "MixAPI",
+    "ResultIndex": "15-2-10-9135048838_0DELHYDAI544~9310701508894930",
+    "TraceId": 155815,
+    "SpecialRule": "<div style=\"border: 1px solid #ededed;\n    box-shadow: 0px 1px 7px 1px #e2e1e1;\n    border-radius: 10px;\n    margin: 10px;\n    padding: 10px;\">\n    <p>this is test farerule</p>\n</div>",
+    "Results": [
+        {
+            "Airline": "",
+            "Origin": "DEL",
+            "Destination": "HYD",
+            "FareBasisCode": "",
+            "FareRuleDetail": "    <div style=\"width:100%; margin: auto;\">\n        <div style=\"border: 1px solid #ededed;  box-shadow: 0px 1px 7px 1px #e2e1e1;  border-radius: 10px; padding: 10px; margin-top: 20px;\">\n            <h4 style=\"font-size: 25px; font-weight: 600;margin:0px;\">No Show</h4>\n            <p style=\"margin:0px 0px 10px 0px;\"> </p>\n            <table style=\"border:1px solid #c7c2c2; width: 100%;\" cellspacing=\"0\" cellpadding=\"0\">\n                <tr style=\"background: #e0dfdf;\">\n                    <td width=\"250px\" style=\"font-size:17px; font-weight: 600; border: 1px solid #c7c2c2;padding: 10px;\"> Time Frame<br />\n                        <sapn style=\"font-size: 12px;\">(From Scheduled Flight Departure)</sapn>\n                    </td>\n                    <td style=\"font-size:17px; font-weight: 600;  border: 1px solid #c7c2c2;padding: 10px;\"> No Show Fee</td>\n                </tr>\n                                    <tr>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">\n                            0 Hours to\n                            365 Days                        </td>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">                             Non refundable (Only statutory taxes will be refunded)                        </td>\n                    </tr>\n                            </table>\n        </div>\n        <div style=\"width:100%; margin: auto;\">\n        <div style=\"border: 1px solid #ededed;  box-shadow: 0px 1px 7px 1px #e2e1e1;  border-radius: 10px; padding: 10px; margin-top: 20px;\">\n            <h4 style=\"font-size: 25px; font-weight: 600;margin:0px;\">Date Change</h4>\n            <p style=\"margin:0px 0px 10px 0px;\">+Fare difference if any </p>\n            <table style=\"border:1px solid #c7c2c2; width: 100%;\" cellspacing=\"0\" cellpadding=\"0\">\n                <tr style=\"background: #e0dfdf;\">\n                    <td width=\"250px\" style=\"font-size:17px; font-weight: 600; border: 1px solid #c7c2c2;padding: 10px;\"> Time Frame<br />\n                        <sapn style=\"font-size: 12px;\">(From Scheduled Flight Departure)</sapn>\n                    </td>\n                    <td style=\"font-size:17px; font-weight: 600;  border: 1px solid #c7c2c2;padding: 10px;\"> Date Change Fee</td>\n                </tr>\n                                    <tr>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">\n                            4 Hours to\n                            365 Days                        </td>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\"> 3000<br />                            <br> * Changes permitted 25 Hrs before scheduled departure<br> * Change Penalty : INR 3,000/- or basic fare whichever is lower + Fare Difference                        </td>\n                    </tr>\n                            </table>\n        </div>\n        <div style=\"width:100%; margin: auto;\">\n        <div style=\"border: 1px solid #ededed;  box-shadow: 0px 1px 7px 1px #e2e1e1;  border-radius: 10px; padding: 10px; margin-top: 20px;\">\n            <h4 style=\"font-size: 25px; font-weight: 600;margin:0px;\">Cancellation</h4>\n            <p style=\"margin:0px 0px 10px 0px;\"> </p>\n            <table style=\"border:1px solid #c7c2c2; width: 100%;\" cellspacing=\"0\" cellpadding=\"0\">\n                <tr style=\"background: #e0dfdf;\">\n                    <td width=\"250px\" style=\"font-size:17px; font-weight: 600; border: 1px solid #c7c2c2;padding: 10px;\"> Time Frame<br />\n                        <sapn style=\"font-size: 12px;\">(From Scheduled Flight Departure)</sapn>\n                    </td>\n                    <td style=\"font-size:17px; font-weight: 600;  border: 1px solid #c7c2c2;padding: 10px;\"> Cancellation Fee</td>\n                </tr>\n                                    <tr>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">\n                            4 Hours to\n                            365 Days                        </td>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\"> 3000<br />                            <br> * Cancellation permitted 25 Hrs before scheduled departure<br> * Cancellation Penalty : INR 3,000/- or basic fare whichever is lower                        </td>\n                    </tr>\n                            </table>\n        </div>\n        <div style=\"width:100%; margin: auto;\">\n        <div style=\"border: 1px solid #ededed;  box-shadow: 0px 1px 7px 1px #e2e1e1;  border-radius: 10px; padding: 10px; margin-top: 20px;\">\n            <h4 style=\"font-size: 25px; font-weight: 600;margin:0px;\">Seat</h4>\n            <p style=\"margin:0px 0px 10px 0px;\"> </p>\n            <table style=\"border:1px solid #c7c2c2; width: 100%;\" cellspacing=\"0\" cellpadding=\"0\">\n                <tr style=\"background: #e0dfdf;\">\n                    <td width=\"250px\" style=\"font-size:17px; font-weight: 600; border: 1px solid #c7c2c2;padding: 10px;\"> Time Frame<br />\n                        <sapn style=\"font-size: 12px;\">(From Scheduled Flight Departure)</sapn>\n                    </td>\n                    <td style=\"font-size:17px; font-weight: 600;  border: 1px solid #c7c2c2;padding: 10px;\"> Seat Fee</td>\n                </tr>\n                                    <tr>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">\n                            0 Hours to\n                            365 Days                        </td>\n                        <td style=\"border: 1px solid #c7c2c2;padding: 10px;\">                                                     </td>\n                    </tr>\n                            </table>\n        </div>\n    "
+        }
+    ]
 }
